@@ -54,8 +54,7 @@ divers . numérique . internet . durée journalière:
     je ne décroche pas: 8
   note: D'après Médiamétrie, les français ont passé en 2022, en moyenne, 2h18 sur Internet ([source](https://www.mediametrie.fr/fr/lannee-internet-2022))
 
-# On définit les options que l'on veut voir apparaître dans la mosaïque
-
+# On initialise les options que l'on veut voir apparaître dans la mosaïque
 divers . numérique . appareils . mosaic . téléphone . choix:
   titre: "téléphone"
   question: "l'avez-vous acheté l'année dernière ?"
@@ -121,6 +120,8 @@ divers . numérique . appareils . mosaic . console portable . choix:
   question: "l'avez-vous acheté l'année dernière ?"
   icônes: 🎮
 
+# On redéfinit les options que l'on veut voir apparaître dans la mosaïque.
+# En l'occurence une question de type nombre pour se calquer sur les mêmes réponses du premier choix
 divers . numérique . appareils . mosaic . téléphone . choix . nombre:
   titre: Nombre de téléphones
   question: Nombre de téléphones en 2023 ?
@@ -270,7 +271,7 @@ divers . numérique . appareils . mosaic . console portable:
 divers . numérique . appareils . mosaic:
   mosaique:
     type: nombre
-    optionsSi:
+    optionsConditionnelles:
       - téléphone . choix . nombre
       - TV . choix . nombre
       - ordinateur portable . choix . nombre
@@ -391,7 +392,6 @@ divers . numérique . appareils . téléphone:
 divers . numérique . appareils . téléphone . nombre:
   titre: Nombre de téléphones
   question: Utilisez-vous un téléphone ?
-  type: nombre
   plancher: 0
   par défaut: 1
 divers . numérique . appareils . téléphone . durée:
