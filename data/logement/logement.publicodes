@@ -18,7 +18,60 @@ logement:
       - piscine
       - extérieur
       - vacances
+      - quantité . dynamic
   unité: kgCO2e
+
+logement . quantité:
+  titre: Quantité de résidences secondaires
+  question: Combien de résidences secondaires possèdez-vous ?
+  icônes: ☕️🫖
+  plancher: 0
+  par défaut: 1
+  suggestions:
+    Un: 1
+    Deux: 2
+    Trois: 3
+    Quatre: 4
+
+logement . quantité . dynamic:
+  titre: Liste des questions dynamiques
+  formule:
+      somme:
+        - logement . quantité . electricité-1
+        - logement . quantité . electricité-2
+        - logement . quantité . electricité-3
+        - logement . quantité . electricité-4
+        - logement . quantité . electricité-5
+
+logement . quantité . electricité-1:
+  titre: Consommation éléctricité logement 1
+  question: Combien d'éléctricité consommez-vous par an dans votre première résidence secondaire ?
+  unité: kWh
+  applicable si: logement . quantité >= 1
+
+logement . quantité . electricité-2:
+  titre: Consommation éléctricité logement 2
+  question: Combien d'éléctricité consommez-vous par an dans votre seconde résidence secondaire ?
+  unité: kWh
+  applicable si: logement . quantité >= 2
+
+logement . quantité . electricité-3:
+  titre: Consommation éléctricité logement 3
+  question: Combien d'éléctricité consommez-vous par an dans votre troisième résidence secondaire ?
+  unité: kWh
+  applicable si: logement . quantité >= 3
+
+logement . quantité . electricité-4:
+  titre: Consommation éléctricité logement 4
+  question: Combien d'éléctricité consommez-vous par an dans votre quatrième résidence secondaire ?
+  unité: kWh
+  applicable si: logement . quantité >= 4
+
+logement . quantité . electricité-5:
+  titre: Consommation éléctricité logement 5
+  question: Combien d'éléctricité consommez-vous par an dans votre cinquième résidence secondaire ?
+  unité: kWh
+  applicable si: logement . quantité >= 5
 
 logement . habitants:
   titre: Nombre de personnes dans le logement
@@ -104,6 +157,8 @@ logement . âge:
     années 70: 50
     années 50: 70
     un siècle: 100
+
+
 
 logement . notif amortissement:
   type: notification
