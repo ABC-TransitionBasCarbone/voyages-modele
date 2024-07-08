@@ -57,67 +57,54 @@ divers . numérique . internet . durée journalière:
 # On initialise les options que l'on veut voir apparaître dans la mosaïque
 divers . numérique . appareils . mosaic . téléphone . choix:
   titre: "téléphone"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 📱
 
 divers . numérique . appareils . mosaic . TV . choix:
   titre: "TV"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 📺
 
 divers . numérique . appareils . mosaic . ordinateur portable . choix:
   titre: "ordinateur portable"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 💻
 
 divers . numérique . appareils . mosaic . ordinateur fixe . choix:
   titre: "ordinateur fixe"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 🖥
 
 divers . numérique . appareils . mosaic . tablette . choix:
   titre: "tablette"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: ⬛
 
 divers . numérique . appareils . mosaic . vidéoprojecteur . choix:
   titre: "vidéoprojecteur"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 📽️
 
 divers . numérique . appareils . mosaic . appareil photo . choix:
   titre: "appareil photo"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 📷
 
 divers . numérique . appareils . mosaic . home cinéma . choix:
   titre: "home cinéma"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 🔊🎬
 
 divers . numérique . appareils . mosaic . enceinte bluetooth . choix:
   titre: "enceinte bluetooth"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 🎵
 
 divers . numérique . appareils . mosaic . enceinte vocale . choix:
   titre: "enceinte vocale"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 🔊
 
 divers . numérique . appareils . mosaic . montre connectée . choix:
   titre: "montre connectée"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: ⌚️
 
 divers . numérique . appareils . mosaic . console de salon . choix:
   titre: "console de salon"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 🕹
 
 divers . numérique . appareils . mosaic . console portable . choix:
   titre: "console portable"
-  question: "l'avez-vous acheté l'année dernière ?"
   icônes: 🎮
 
 # On redéfinit les options que l'on veut voir apparaître dans la mosaïque.
@@ -269,13 +256,14 @@ divers . numérique . appareils . mosaic . console portable:
 
 # On définit notre mosaïque en réutilisant les infos définis plus haut
 divers . numérique . appareils . mosaic:
+  applicable si: divers . numérique . appareils . nombre total > 0
   mosaique:
     type: nombre
     optionsConditionnelles:
       - téléphone . choix . nombre
       - TV . choix . nombre
       - ordinateur portable . choix . nombre
-      - ordinateur . choix fixe . nombre
+      - ordinateur fixe . choix . nombre
       - tablette . choix . nombre
       - vidéoprojecteur . choix . nombre
       - appareil photo . choix . nombre
