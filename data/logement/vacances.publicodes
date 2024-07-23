@@ -91,6 +91,7 @@ logement . vacances . choix utilisateur:
       - est défini: famille ou amis . présent
       - est défini: échange . présent
       - est défini: résidences secondaires . présent
+      - est défini: résidences secondaires . nombre
 
 logement . vacances . nombre de nuits hors logement:
   formule: 26.5
@@ -513,7 +514,7 @@ logement . vacances . résidence secondaire . empreinte moyenne énergie:
 logement . vacances . résidence secondaire . construction-1:
   formule: surface-1 * annuelle et par surface
   unité: kgCO2e
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1  
+  applicable si: résidences secondaires . nombre >= 1  
 
 logement . vacances . résidence secondaire . surface-1:
   titre: Surface résidence 1
@@ -565,49 +566,44 @@ logement . vacances . résidence secondaire . localisation-1:
   description: Si votre résidence secondaire se situe en ville, sur le littoral, privilégiez "littoral".
 
 logement . vacances . résidence secondaire . localisation-1 . littoral méditerranéen:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Littoral méditerranéen
   icônes: 🏖️
   description: Appartement ou maison situé sur le pourtour méditerranéen
 logement . vacances . résidence secondaire . localisation-1 . littoral nord ouest:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Littoral nord-ouest
   icônes: 🌊
   description: Appartement ou maison situé en Atlantique, Manche ou Mer du Nord
 logement . vacances . résidence secondaire . localisation-1 . montagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Montagne
   icônes: ⛰️
   description: Appartement ou maison situé dans les Alpes, les Vosges, le Jura, le Massif Central ou les Pyrénées
 logement . vacances . résidence secondaire . localisation-1 . ville:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Ville
   icônes: 🏙️
   description: Appartement ou maison situé en centre-ville
 logement . vacances . résidence secondaire . localisation-1 . campagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Campagne
   icônes: 🚜
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . énergie-1:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1  
+  applicable si: résidences secondaires . nombre >= 1  
   formule:
     somme:
       - électricité-1
       - chauffage-1
 
 logement . vacances . résidence secondaire . électricité-1:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
+  applicable si: résidences secondaires . nombre >= 1 
   formule: parc français . empreinte électricité autre par m2 * surface-1 * pro-rata présence annuelle-1
   unité: kgCO2e
 
 logement . vacances . résidence secondaire . pro-rata présence annuelle-1:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
+  applicable si: résidences secondaires . nombre >= 1 
   formule: durée-1 / commun . jours par an * 1 jour/nuit
 
 logement . vacances . résidence secondaire . nombre de nuitées-1:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
+  applicable si: résidences secondaires . nombre >= 1 
 
 logement . vacances . résidence secondaire . nombre de nuitées:
 
@@ -624,7 +620,7 @@ logement . vacances . résidence secondaire . nombre de nuitées . moyenne . par
     On considère ici les hébergements "résidence secondaire".
 
 logement . vacances . résidence secondaire . durée-1:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
+  applicable si: résidences secondaires . nombre >= 1 
   mosaique:
     type: nombre
     options:
@@ -646,33 +642,29 @@ logement . vacances . résidence secondaire . durée-1:
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
 logement . vacances . résidence secondaire . durée-1 . nuitées week end:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-1 . nuitées week end . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   question: Combien de week-ends passez-vous dans votre première maison secondaire ?
   par défaut: 3
   unité: nuit
 
 logement . vacances . résidence secondaire . durée-1 . nuitées semaine:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-1 . nuitées semaine . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   question: Combien de semaines passez-vous dans votre première maison secondaire ?
   par défaut: 5
   unité: nuit
 
 logement . vacances . résidence secondaire . chauffage-1:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
+  applicable si: résidences secondaires . nombre >= 1 
   formule: facteur saison * (parc français . chauffage . empreinte moyenne par m2 hors électricité + parc français . chauffage . empreinte électricité moyenne par m2) * surface-1 * pro-rata présence annuelle-1
   unité: kgCO2e
   description: |
@@ -695,7 +687,6 @@ logement . vacances . résidence secondaire . chauffage-1:
     ![Facteurs multiplicateurs par zone climatique et par période](https://github.com/incubateur-ademe/nosgestesclimat/assets/55186402/c328fa42-bae6-4391-becf-a31cbaf32201)
 
 logement . vacances . résidence secondaire . chauffage-1 . facteur saison:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   formule:
     variations:
       - si: localisation-1 = 'littoral méditerranéen'
@@ -710,7 +701,6 @@ logement . vacances . résidence secondaire . chauffage-1 . facteur saison:
         alors: localisation-1 . ville . facteur saison
 
 logement . vacances . résidence secondaire . localisation-1 . littoral méditerranéen . facteur saison:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   avec:
     facteur hiver: 1.62
     facteur surtout hiver: 1.41
@@ -718,17 +708,16 @@ logement . vacances . résidence secondaire . localisation-1 . littoral méditer
     facteur surtout été: 0.13
   formule:
     variations:
-      - si: saison = 'hiver'
+      - si: saison-1 = 'hiver'
         alors: facteur hiver
-      - si: saison = 'surtout hiver'
+      - si: saison-1 = 'surtout hiver'
         alors: facteur surtout hiver
-      - si: saison = 'été'
+      - si: saison-1 = 'été'
         alors: facteur été
-      - si: saison = 'surtout été'
+      - si: saison-1 = 'surtout été'
         alors: facteur surtout été
 
 logement . vacances . résidence secondaire . localisation-1 . littoral nord ouest . facteur saison:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   avec:
     facteur hiver: 2.26
     facteur surtout hiver: 1.71
@@ -736,17 +725,16 @@ logement . vacances . résidence secondaire . localisation-1 . littoral nord oue
     facteur surtout été: 0.46
   formule:
     variations:
-      - si: saison = 'hiver'
+      - si: saison-1 = 'hiver'
         alors: facteur hiver
-      - si: saison = 'surtout hiver'
+      - si: saison-1 = 'surtout hiver'
         alors: facteur surtout hiver
-      - si: saison = 'été'
+      - si: saison-1 = 'été'
         alors: facteur été
-      - si: saison = 'surtout été'
+      - si: saison-1 = 'surtout été'
         alors: facteur surtout été
 
 logement . vacances . résidence secondaire . localisation-1 . campagne . facteur saison:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   avec:
     facteur hiver: 2.26
     facteur surtout hiver: 1.71
@@ -754,17 +742,16 @@ logement . vacances . résidence secondaire . localisation-1 . campagne . facteu
     facteur surtout été: 0.46
   formule:
     variations:
-      - si: saison = 'hiver'
+      - si: saison-1 = 'hiver'
         alors: facteur hiver
-      - si: saison = 'surtout hiver'
+      - si: saison-1 = 'surtout hiver'
         alors: facteur surtout hiver
-      - si: saison = 'été'
+      - si: saison-1 = 'été'
         alors: facteur été
-      - si: saison = 'surtout été'
+      - si: saison-1 = 'surtout été'
         alors: facteur surtout été
 
 logement . vacances . résidence secondaire . localisation-1 . ville . facteur saison:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   avec:
     facteur hiver: 2.26
     facteur surtout hiver: 1.71
@@ -772,17 +759,16 @@ logement . vacances . résidence secondaire . localisation-1 . ville . facteur s
     facteur surtout été: 0.46
   formule:
     variations:
-      - si: saison = 'hiver'
+      - si: saison-1 = 'hiver'
         alors: facteur hiver
-      - si: saison = 'surtout hiver'
+      - si: saison-1 = 'surtout hiver'
         alors: facteur surtout hiver
-      - si: saison = 'été'
+      - si: saison-1 = 'été'
         alors: facteur été
-      - si: saison = 'surtout été'
+      - si: saison-1 = 'surtout été'
         alors: facteur surtout été
 
 logement . vacances . résidence secondaire . localisation-1 . montagne . facteur saison:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   avec:
     facteur hiver: 2.68
     facteur surtout hiver: 2.15
@@ -790,13 +776,13 @@ logement . vacances . résidence secondaire . localisation-1 . montagne . facteu
     facteur surtout été: 0.76
   formule:
     variations:
-      - si: saison = 'hiver'
+      - si: saison-1 = 'hiver'
         alors: facteur hiver
-      - si: saison = 'surtout hiver'
+      - si: saison-1 = 'surtout hiver'
         alors: facteur surtout hiver
-      - si: saison = 'été'
+      - si: saison-1 = 'été'
         alors: facteur été
-      - si: saison = 'surtout été'
+      - si: saison-1 = 'surtout été'
         alors: facteur surtout été
 
 logement . vacances . résidence secondaire . saison-1:
@@ -815,22 +801,18 @@ logement . vacances . résidence secondaire . saison-1:
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
 logement . vacances . résidence secondaire . saison-1 . été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Seulement l'été
   icônes: ☀️
   description: Vous ne vous rendez dans votre première résidence secondaire qu'en été.
 logement . vacances . résidence secondaire . saison-1 . surtout été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Surtout l'été
   icônes: 🌤️
   description: Vous vous rendez dans votre première résidence secondaire majoritairement en été.
 logement . vacances . résidence secondaire . saison-1 . surtout hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Surtout l'hiver
   icônes: ⛈️
   description: Vous vous rendez dans votre première résidence secondaire majoritairement en hiver.
 logement . vacances . résidence secondaire . saison-1 . hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 1 
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre première résidence secondaire qu'en hiver.
@@ -890,33 +872,28 @@ logement . vacances . résidence secondaire . localisation-2:
   description: Si votre résidence secondaire se situe en ville, sur le littoral, privilégiez "littoral".
 
 logement . vacances . résidence secondaire . localisation-2 . littoral méditerranéen:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2
   titre: Littoral méditerranéen
   icônes: 🏖️
   description: Appartement ou maison situé sur le pourtour méditerranéen
 logement . vacances . résidence secondaire . localisation-2 . littoral nord ouest:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2
   titre: Littoral nord-ouest
   icônes: 🌊
   description: Appartement ou maison situé en Atlantique, Manche ou Mer du Nord
 logement . vacances . résidence secondaire . localisation-2 . montagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2
   titre: Montagne
   icônes: ⛰️
   description: Appartement ou maison situé dans les Alpes, les Vosges, le Jura, le Massif Central ou les Pyrénées
 logement . vacances . résidence secondaire . localisation-2 . ville:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2
   titre: Ville
   icônes: 🏙️
   description: Appartement ou maison situé en centre-ville
 logement . vacances . résidence secondaire . localisation-2 . campagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2 
   titre: Campagne
   icônes: 🚜
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-2:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2 
+  applicable si: résidences secondaires . nombre >= 2 
   mosaique:
     type: nombre
     options:
@@ -938,27 +915,23 @@ logement . vacances . résidence secondaire . durée-2:
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
 logement . vacances . résidence secondaire . durée-2 . nuitées week end:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2 
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-2 . nuitées week end . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2 
   question: Combien de week-ends passez-vous dans votre deuxième maison secondaire ?
   par défaut: 3
   unité: nuit
 
 logement . vacances . résidence secondaire . durée-2 . nuitées semaine:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2 
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-2 . nuitées semaine . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2 
   question: Combien de semaines passez-vous dans votre deuxième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -979,35 +952,21 @@ logement . vacances . résidence secondaire . saison-2:
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
 logement . vacances . résidence secondaire . saison-2 . été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2 
   titre: Seulement l'été
   icônes: ☀️
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en été.
 logement . vacances . résidence secondaire . saison-2 . surtout été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2
   titre: Surtout l'été
   icônes: 🌤️
   description: Vous vous rendez dans votre deuxième résidence secondaire majoritairement en été.
 logement . vacances . résidence secondaire . saison-2 . surtout hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2
   titre: Surtout l'hiver
   icônes: ⛈️
   description: Vous vous rendez dans votre deuxième résidence secondaire majoritairement en hiver.
 logement . vacances . résidence secondaire . saison-2 . hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 2
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en hiver.
-
-
-#logement . vacances . résidence secondaire . empreinte moyenne énergie:
-#  valeur: résidence secondaire . énergie-1
-#  contexte:
-#    résidence secondaire . surface-1: parc français . surface moyenne
-#    résidence secondaire . durée-1: résidence secondaire . nombre de nuitées . moyenne
-#    résidence secondaire . localisation-1: "'littoral nord ouest'"
-#    résidence secondaire . saison-1: "'surtout été'"
-#  unité: kgCO2e
 
 #### Règles pour la possession d'une troisième résidence
 
@@ -1063,33 +1022,28 @@ logement . vacances . résidence secondaire . localisation-3:
   description: Si votre résidence secondaire se situe en ville, sur le littoral, privilégiez "littoral".
 
 logement . vacances . résidence secondaire . localisation-3 . littoral méditerranéen:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3
   titre: Littoral méditerranéen
   icônes: 🏖️
   description: Appartement ou maison situé sur le pourtour méditerranéen
 logement . vacances . résidence secondaire . localisation-3 . littoral nord ouest:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3
   titre: Littoral nord-ouest
   icônes: 🌊
   description: Appartement ou maison situé en Atlantique, Manche ou Mer du Nord
 logement . vacances . résidence secondaire . localisation-3 . montagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3
   titre: Montagne
   icônes: ⛰️
   description: Appartement ou maison situé dans les Alpes, les Vosges, le Jura, le Massif Central ou les Pyrénées
 logement . vacances . résidence secondaire . localisation-3 . ville:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3
   titre: Ville
   icônes: 🏙️
   description: Appartement ou maison situé en centre-ville
 logement . vacances . résidence secondaire . localisation-3 . campagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3 
   titre: Campagne
   icônes: 🚜
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-3:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3 
+  applicable si: résidences secondaires . nombre >= 3 
   mosaique:
     type: nombre
     options:
@@ -1111,27 +1065,23 @@ logement . vacances . résidence secondaire . durée-3:
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
 logement . vacances . résidence secondaire . durée-3 . nuitées week end:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3 
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-3 . nuitées week end . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3 
   question: Combien de week-ends passez-vous dans votre troisième maison secondaire ?
   par défaut: 3
   unité: nuit
 
 logement . vacances . résidence secondaire . durée-3 . nuitées semaine:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3 
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-3 . nuitées semaine . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3 
   question: Combien de semaines passez-vous dans votre troisième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -1152,22 +1102,18 @@ logement . vacances . résidence secondaire . saison-3:
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
 logement . vacances . résidence secondaire . saison-3 . été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3 
   titre: Seulement l'été
   icônes: ☀️
   description: Vous ne vous rendez dans votre troisième résidence secondaire qu'en été.
 logement . vacances . résidence secondaire . saison-3 . surtout été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3
   titre: Surtout l'été
   icônes: 🌤️
   description: Vous vous rendez dans votre troisième résidence secondaire majoritairement en été.
 logement . vacances . résidence secondaire . saison-3 . surtout hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3
   titre: Surtout l'hiver
   icônes: ⛈️
   description: Vous vous rendez dans votre troisième résidence secondaire majoritairement en hiver.
 logement . vacances . résidence secondaire . saison-3 . hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 3
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre troisième résidence secondaire qu'en hiver.
@@ -1226,33 +1172,28 @@ logement . vacances . résidence secondaire . localisation-4:
   description: Si votre résidence secondaire se situe en ville, sur le littoral, privilégiez "littoral".
 
 logement . vacances . résidence secondaire . localisation-4 . littoral méditerranéen:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4
   titre: Littoral méditerranéen
   icônes: 🏖️
   description: Appartement ou maison situé sur le pourtour méditerranéen
 logement . vacances . résidence secondaire . localisation-4 . littoral nord ouest:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4
   titre: Littoral nord-ouest
   icônes: 🌊
   description: Appartement ou maison situé en Atlantique, Manche ou Mer du Nord
 logement . vacances . résidence secondaire . localisation-4 . montagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4
   titre: Montagne
   icônes: ⛰️
   description: Appartement ou maison situé dans les Alpes, les Vosges, le Jura, le Massif Central ou les Pyrénées
 logement . vacances . résidence secondaire . localisation-4 . ville:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4
   titre: Ville
   icônes: 🏙️
   description: Appartement ou maison situé en centre-ville
 logement . vacances . résidence secondaire . localisation-4 . campagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4 
   titre: Campagne
   icônes: 🚜
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-4:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4 
+  applicable si: résidences secondaires . nombre >= 4 
   mosaique:
     type: nombre
     options:
@@ -1274,27 +1215,23 @@ logement . vacances . résidence secondaire . durée-4:
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
 logement . vacances . résidence secondaire . durée-4 . nuitées week end:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4 
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-4 . nuitées week end . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4 
   question: Combien de week-ends passez-vous dans votre quatrième maison secondaire ?
   par défaut: 3
   unité: nuit
 
 logement . vacances . résidence secondaire . durée-4 . nuitées semaine:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4 
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-4 . nuitées semaine . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4 
   question: Combien de semaines passez-vous dans votre quatrième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -1315,22 +1252,18 @@ logement . vacances . résidence secondaire . saison-4:
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
 logement . vacances . résidence secondaire . saison-4 . été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4 
   titre: Seulement l'été
   icônes: ☀️
   description: Vous ne vous rendez dans votre quatrième résidence secondaire qu'en été.
 logement . vacances . résidence secondaire . saison-4 . surtout été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4
   titre: Surtout l'été
   icônes: 🌤️
   description: Vous vous rendez dans votre quatrième résidence secondaire majoritairement en été.
 logement . vacances . résidence secondaire . saison-4 . surtout hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4
   titre: Surtout l'hiver
   icônes: ⛈️
   description: Vous vous rendez dans votre quatrième résidence secondaire majoritairement en hiver.
 logement . vacances . résidence secondaire . saison-4 . hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 4
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre quatrième résidence secondaire qu'en hiver.
@@ -1389,33 +1322,28 @@ logement . vacances . résidence secondaire . localisation-5:
   description: Si votre résidence secondaire se situe en ville, sur le littoral, privilégiez "littoral".
 
 logement . vacances . résidence secondaire . localisation-5 . littoral méditerranéen:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5
   titre: Littoral méditerranéen
   icônes: 🏖️
   description: Appartement ou maison situé sur le pourtour méditerranéen
 logement . vacances . résidence secondaire . localisation-5 . littoral nord ouest:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5
   titre: Littoral nord-ouest
   icônes: 🌊
   description: Appartement ou maison situé en Atlantique, Manche ou Mer du Nord
 logement . vacances . résidence secondaire . localisation-5 . montagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5
   titre: Montagne
   icônes: ⛰️
   description: Appartement ou maison situé dans les Alpes, les Vosges, le Jura, le Massif Central ou les Pyrénées
 logement . vacances . résidence secondaire . localisation-5 . ville:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5
   titre: Ville
   icônes: 🏙️
   description: Appartement ou maison situé en centre-ville
 logement . vacances . résidence secondaire . localisation-5 . campagne:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5 
   titre: Campagne
   icônes: 🚜
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-5:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5 
+  applicable si: résidences secondaires . nombre >= 5 
   mosaique:
     type: nombre
     options:
@@ -1437,27 +1365,23 @@ logement . vacances . résidence secondaire . durée-5:
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
 logement . vacances . résidence secondaire . durée-5 . nuitées week end:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5 
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-5 . nuitées week end . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5 
   question: Combien de week-ends passez-vous dans votre cinquième maison secondaire ?
   par défaut: 3
   unité: nuit
 
 logement . vacances . résidence secondaire . durée-5 . nuitées semaine:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5 
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-5 . nuitées semaine . nombre:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5 
   question: Combien de semaines passez-vous dans votre cinquième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -1478,22 +1402,18 @@ logement . vacances . résidence secondaire . saison-5:
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
 logement . vacances . résidence secondaire . saison-5 . été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5 
   titre: Seulement l'été
   icônes: ☀️
   description: Vous ne vous rendez dans votre cinquième résidence secondaire qu'en été.
 logement . vacances . résidence secondaire . saison-5 . surtout été:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5
   titre: Surtout l'été
   icônes: 🌤️
   description: Vous vous rendez dans votre cinquième résidence secondaire majoritairement en été.
 logement . vacances . résidence secondaire . saison-5 . surtout hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5
   titre: Surtout l'hiver
   icônes: ⛈️
   description: Vous vous rendez dans votre cinquième résidence secondaire majoritairement en hiver.
 logement . vacances . résidence secondaire . saison-5 . hiver:
-  applicable si: logement . vacances . résidences secondaires . nombre >= 5
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre cinquième résidence secondaire qu'en hiver.
