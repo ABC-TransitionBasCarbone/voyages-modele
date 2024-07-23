@@ -731,3 +731,128 @@ divers . numérique . appareils . coefficient préservation:
       - si: préservation = 'moyen'
         alors: 1
       - sinon: 4 / 3
+
+
+### Calcul d'empreinte basé sur l'achat en 2023
+divers . numérique . appareils . mosaic:  
+  applicable si: divers . numérique . appareils . nombre total > 0  
+  mosaique:  
+    type: nombre  
+    optionsConditionnelles:  
+      - téléphone . choix . nombre  
+      - TV . choix . nombre  
+      - ordinateur portable . choix . nombre  
+      - ordinateur fixe . choix . nombre  
+      - tablette . choix . nombre  
+      - vidéoprojecteur . choix . nombre  
+      - appareil photo . choix . nombre  
+      - home cinéma . choix . nombre  
+      - enceinte bluetooth . choix . nombre  
+      - enceinte vocale . choix . nombre  
+      - montre connectée . choix . nombre  
+      - console de salon . choix . nombre  
+      - console portable . choix . nombre  
+    suggestions:  
+      aucun:  
+        téléphone . choix . nombre: 0  
+        TV . choix . nombre: 0  
+        ordinateur portable . choix . nombre: 0  
+        ordinateur fixe . choix . nombre: 0  
+        tablette . choix . nombre: 0  
+        vidéoprojecteur . choix . nombre: 0  
+        appareil photo . choix . nombre: 0  
+        home cinéma . choix . nombre: 0  
+        enceinte bluetooth . choix . nombre: 0  
+        enceinte vocale . choix . nombre: 0  
+        montre connectée . choix . nombre: 0  
+        console de salon . choix . nombre: 0  
+        console portable . choix . nombre: 0  
+  question: Parmi les appareils numériques de moins de 10 ans que vous possédez, lesquels avez-vous acheté en 2023 ?  
+  titre: Appareils achetés en 2023
+  formule:  
+    somme:  
+      - téléphone
+      - TV  
+      - ordinateur portable  
+      - ordinateur fixe  
+      - tablette  
+      - vidéoprojecteur  
+      - appareil photo  
+      - home cinéma  
+      - enceinte bluetooth  
+      - enceinte vocale  
+      - montre connectée  
+      - console de salon  
+      - console portable
+
+divers . numérique . appareils . mosaic . téléphone:
+  formule: divers . numérique . appareils . téléphone . empreinte * divers . numérique . appareils . mosaic . téléphone . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . téléphone . choix:
+  titre: Téléphone
+  icônes: 📱
+
+divers . numérique . appareils . mosaic . téléphone . choix . nombre:
+  titre: Nombre de téléphones achetés en 2023 
+  question: Nombre de téléphones achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . TV:
+  formule: divers . numérique . appareils . TV . empreinte * divers . numérique . appareils . mosaic . TV . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . TV . choix:  
+
+divers . numérique . appareils . mosaic . TV . choix . nombre:
+  titre: Nombre de TV achetés en 2023 
+  question: Nombre de TV achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . ordinateur portable:
+  formule: divers . numérique . appareils . ordinateur portable . empreinte * divers . numérique . appareils . mosaic . ordinateur portable . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . ordinateur portable . choix:  
+
+divers . numérique . appareils . mosaic . ordinateur portable . choix . nombre:
+  titre: Nombre de ordinateurs portables achetés en 2023 
+  question: Nombre de ordinateurs portables achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . ordinateur fixe:
+  formule: divers . numérique . appareils . ordinateur fixe . empreinte * divers . numérique . appareils . mosaic . ordinateur fixe . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . ordinateur fixe . choix:  
+
+divers . numérique . appareils . mosaic . ordinateur fixe . choix . nombre:
+  titre: Nombre de ordinateurs fixes achetés en 2023 
+  question: Nombre de ordinateur fixes achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . tablette:
+  formule: divers . numérique . appareils . tablette . empreinte * divers . numérique . appareils . mosaic . tablette . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . tablette . choix:  
+
+divers . numérique . appareils . mosaic . tablette . choix . nombre:
+  titre: Nombre de tablettes achetés en 2023 
+  question: Nombre de tablettes achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
