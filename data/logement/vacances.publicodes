@@ -817,6 +817,65 @@ logement . vacances . résidence secondaire . saison-1 . hiver:
   icônes: ❄️
   description: Vous ne vous rendez dans votre première résidence secondaire qu'en hiver.
 
+logement . vacances . résidence secondaire . DPE-1:
+  question: Quel est le DPE de votre première résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 1 
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
+    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+  mosaique:
+    type: selection
+    options:
+      - A . présent
+      - B . présent
+      - C . présent
+      - D . présent
+      - E . présent
+      - F . présent
+      - G . présent
+  par défaut: DPE-1 . D 
+
+logement . vacances . résidence secondaire . DPE-1 . A:
+  titre: DPE A
+
+logement . vacances . résidence secondaire . DPE-1 . B:
+  titre: DPE B
+
+logement . vacances . résidence secondaire . DPE-1 . C:
+  titre: DPE C
+
+logement . vacances . résidence secondaire . DPE-1 . D:
+  titre: DPE D
+
+logement . vacances . résidence secondaire . DPE-1 . E:
+  titre: DPE E
+
+logement . vacances . résidence secondaire . DPE-1 . F:
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-1 . G:
+  titre: DPE F
+
+logement . vacances . résidence secondaire . DPE-1 . A . présent:
+  question: Votre logement en location est-il un DPE A ?
+
+logement . vacances . résidence secondaire . DPE-1 . B . présent:
+  question: Votre logement en location est-il un DPE B ?
+
+logement . vacances . résidence secondaire . DPE-1 . C . présent:
+  question: Votre logement en location est-il un DPE C ?
+
+logement . vacances . résidence secondaire . DPE-1 . D . présent:
+  question: Votre logement en location est-il un DPE D ?
+
+logement . vacances . résidence secondaire . DPE-1 . E . présent:
+  question: Votre logement en location est-il un DPE E ?
+
+logement . vacances . résidence secondaire . DPE-1 . F . présent:
+  question: Votre logement en location est-il un DPE F ?
+
+logement . vacances . résidence secondaire . DPE-1 . G . présent:
+  question: Votre logement en location est-il un DPE G ?
 
 #### Règles pour la possession d'une deuxième résidence
 
@@ -968,6 +1027,66 @@ logement . vacances . résidence secondaire . saison-2 . hiver:
   icônes: ❄️
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en hiver.
 
+logement . vacances . résidence secondaire . DPE-2:
+  question: Quel est le DPE de votre première résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 2 
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
+    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+  mosaique:
+    type: selection
+    options:
+      - A . présent
+      - B . présent
+      - C . présent
+      - D . présent
+      - E . présent
+      - F . présent
+      - G . présent
+  par défaut: DPE-2 . D 
+
+logement . vacances . résidence secondaire . DPE-2 . A:
+  titre: DPE A
+
+logement . vacances . résidence secondaire . DPE-2 . B:
+  titre: DPE B
+
+logement . vacances . résidence secondaire . DPE-2 . C:
+  titre: DPE C
+
+logement . vacances . résidence secondaire . DPE-2 . D:
+  titre: DPE D
+
+logement . vacances . résidence secondaire . DPE-2 . E:
+  titre: DPE E
+
+logement . vacances . résidence secondaire . DPE-2 . F:
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-2 . G:
+  titre: DPE F
+
+logement . vacances . résidence secondaire . DPE-2 . A . présent:
+  question: Votre logement en location est-il un DPE A ?
+
+logement . vacances . résidence secondaire . DPE-2 . B . présent:
+  question: Votre logement en location est-il un DPE B ?
+
+logement . vacances . résidence secondaire . DPE-2 . C . présent:
+  question: Votre logement en location est-il un DPE C ?
+
+logement . vacances . résidence secondaire . DPE-2 . D . présent:
+  question: Votre logement en location est-il un DPE D ?
+
+logement . vacances . résidence secondaire . DPE-2 . E . présent:
+  question: Votre logement en location est-il un DPE E ?
+
+logement . vacances . résidence secondaire . DPE-2 . F . présent:
+  question: Votre logement en location est-il un DPE F ?
+
+logement . vacances . résidence secondaire . DPE-2 . G . présent:
+  question: Votre logement en location est-il un DPE G ?
+
 #### Règles pour la possession d'une troisième résidence
 
 logement . vacances . résidence secondaire . construction-3:
@@ -1117,6 +1236,67 @@ logement . vacances . résidence secondaire . saison-3 . hiver:
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre troisième résidence secondaire qu'en hiver.
+
+logement . vacances . résidence secondaire . DPE-3:
+  question: Quel est le DPE de votre première résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 3 
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
+    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+  mosaique:
+    type: selection
+    options:
+      - A . présent
+      - B . présent
+      - C . présent
+      - D . présent
+      - E . présent
+      - F . présent
+      - G . présent
+  par défaut: DPE-3 . D 
+
+logement . vacances . résidence secondaire . DPE-3 . A:
+  titre: DPE A
+
+logement . vacances . résidence secondaire . DPE-3 . B:
+  titre: DPE B
+
+logement . vacances . résidence secondaire . DPE-3 . C:
+  titre: DPE C
+
+logement . vacances . résidence secondaire . DPE-3 . D:
+  titre: DPE D
+
+logement . vacances . résidence secondaire . DPE-3 . E:
+  titre: DPE E
+
+logement . vacances . résidence secondaire . DPE-3 . F:
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-3 . G:
+  titre: DPE F
+
+logement . vacances . résidence secondaire . DPE-3 . A . présent:
+  question: Votre logement en location est-il un DPE A ?
+
+logement . vacances . résidence secondaire . DPE-3 . B . présent:
+  question: Votre logement en location est-il un DPE B ?
+
+logement . vacances . résidence secondaire . DPE-3 . C . présent:
+  question: Votre logement en location est-il un DPE C ?
+
+logement . vacances . résidence secondaire . DPE-3 . D . présent:
+  question: Votre logement en location est-il un DPE D ?
+
+logement . vacances . résidence secondaire . DPE-3 . E . présent:
+  question: Votre logement en location est-il un DPE E ?
+
+logement . vacances . résidence secondaire . DPE-3 . F . présent:
+  question: Votre logement en location est-il un DPE F ?
+
+logement . vacances . résidence secondaire . DPE-3 . G . présent:
+  question: Votre logement en location est-il un DPE G ?
+
 
 #### Règles pour la possession d'une quatrième résidence
 
@@ -1268,6 +1448,67 @@ logement . vacances . résidence secondaire . saison-4 . hiver:
   icônes: ❄️
   description: Vous ne vous rendez dans votre quatrième résidence secondaire qu'en hiver.
 
+logement . vacances . résidence secondaire . DPE-4:
+  question: Quel est le DPE de votre première résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 4 
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
+    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+  mosaique:
+    type: selection
+    options:
+      - A . présent
+      - B . présent
+      - C . présent
+      - D . présent
+      - E . présent
+      - F . présent
+      - G . présent
+  par défaut: DPE-4 . D 
+
+logement . vacances . résidence secondaire . DPE-4 . A:
+  titre: DPE A
+
+logement . vacances . résidence secondaire . DPE-4 . B:
+  titre: DPE B
+
+logement . vacances . résidence secondaire . DPE-4 . C:
+  titre: DPE C
+
+logement . vacances . résidence secondaire . DPE-4 . D:
+  titre: DPE D
+
+logement . vacances . résidence secondaire . DPE-4 . E:
+  titre: DPE E
+
+logement . vacances . résidence secondaire . DPE-4 . F:
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-4 . G:
+  titre: DPE F
+
+logement . vacances . résidence secondaire . DPE-4 . A . présent:
+  question: Votre logement en location est-il un DPE A ?
+
+logement . vacances . résidence secondaire . DPE-4 . B . présent:
+  question: Votre logement en location est-il un DPE B ?
+
+logement . vacances . résidence secondaire . DPE-4 . C . présent:
+  question: Votre logement en location est-il un DPE C ?
+
+logement . vacances . résidence secondaire . DPE-4 . D . présent:
+  question: Votre logement en location est-il un DPE D ?
+
+logement . vacances . résidence secondaire . DPE-4 . E . présent:
+  question: Votre logement en location est-il un DPE E ?
+
+logement . vacances . résidence secondaire . DPE-4 . F . présent:
+  question: Votre logement en location est-il un DPE F ?
+
+logement . vacances . résidence secondaire . DPE-4 . G . présent:
+  question: Votre logement en location est-il un DPE G ?
+
+
 #### Règles pour la possession d'une cinquième résidence
 
 logement . vacances . résidence secondaire . construction-5:
@@ -1417,3 +1658,63 @@ logement . vacances . résidence secondaire . saison-5 . hiver:
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre cinquième résidence secondaire qu'en hiver.
+
+logement . vacances . résidence secondaire . DPE-5:
+  question: Quel est le DPE de votre première résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 5 
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
+    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+  mosaique:
+    type: selection
+    options:
+      - A . présent
+      - B . présent
+      - C . présent
+      - D . présent
+      - E . présent
+      - F . présent
+      - G . présent
+  par défaut: DPE-5 . D 
+
+logement . vacances . résidence secondaire . DPE-5 . A:
+  titre: DPE A
+
+logement . vacances . résidence secondaire . DPE-5 . B:
+  titre: DPE B
+
+logement . vacances . résidence secondaire . DPE-5 . C:
+  titre: DPE C
+
+logement . vacances . résidence secondaire . DPE-5 . D:
+  titre: DPE D
+
+logement . vacances . résidence secondaire . DPE-5 . E:
+  titre: DPE E
+
+logement . vacances . résidence secondaire . DPE-5 . F:
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-5 . G:
+  titre: DPE F
+
+logement . vacances . résidence secondaire . DPE-5 . A . présent:
+  question: Votre logement en location est-il un DPE A ?
+
+logement . vacances . résidence secondaire . DPE-5 . B . présent:
+  question: Votre logement en location est-il un DPE B ?
+
+logement . vacances . résidence secondaire . DPE-5 . C . présent:
+  question: Votre logement en location est-il un DPE C ?
+
+logement . vacances . résidence secondaire . DPE-5 . D . présent:
+  question: Votre logement en location est-il un DPE D ?
+
+logement . vacances . résidence secondaire . DPE-5 . E . présent:
+  question: Votre logement en location est-il un DPE E ?
+
+logement . vacances . résidence secondaire . DPE-5 . F . présent:
+  question: Votre logement en location est-il un DPE F ?
+
+logement . vacances . résidence secondaire . DPE-5 . G . présent:
+  question: Votre logement en location est-il un DPE G ?

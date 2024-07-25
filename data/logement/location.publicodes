@@ -1,0 +1,226 @@
+logement . location:
+  titre: Location de logements
+  formule: location . empreinte
+
+logement . location . nombre:
+  titre: Nombre de logements en location
+  question: Combien de logements en location annuelle ou saisonnière (investissements locatifs) possédez-vous ?
+  plancher: 0
+  par défaut: 0
+  description: |
+    Ne comptez pas ici votre logement principal et d'éventuels résidences secondaires. Veuillez renseigner ici uniquement
+    les logements que vous possédez et que vous mettez en location longue durée et/ou saisonnière.    
+    S'il vous arrive parfois de louer en saison votre logement princpal et/ou certaines de vos résidences secondaires ne les 
+    comptez pas ici. Nous parlons uniquement ici d'investissements locatifs;
+
+logement . location . empreinte:
+  formule:
+    somme:
+      - logement-1
+  note: |
+    Cette empreinte est en réalité nulle car tous les éléments de la somme ont une empreinte nulle.
+    L'objet de cette variable et des variables filles est de pouvoir récolter des données.
+
+logement . location . logement-1:
+  applicable si: location . nombre >= 1
+  formule: 0
+  unité: kgCO2
+
+logement . location . logement-1 . surface:
+  titre: Surface location logement 1
+  question: Quelle est la surface de votre premier logement en location ?
+  applicable si: location . nombre >= 1
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-1 . appartement
+        alors:
+          variations:
+            - si: logement-1 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25
+    3 pièces: 70
+    maison: 120
+    château 🏰: 1000
+  unité: m2
+
+logement . location . logement-1 . appartement:
+  titre: Appartement location logement 1
+  question: Votre premier logement en location est-il un appartement ?
+  applicable si: location . nombre >= 1
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-1 . âge:
+  question: Quel est l'âge de votre premier logement en location ?
+  applicable si: location . nombre >= 1
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0
+    récent: 10
+    années 70: 50
+    années 50: 70
+    un siècle: 100
+
+logement . location . logement-1 . DPE:
+  question: Quel est le DPE de votre premier logement en location ?
+  applicable si: location . nombre >= 1
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
+    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+  mosaique:
+    type: selection
+    options:
+      - A . présent
+      - B . présent
+      - C . présent
+      - D . présent
+      - E . présent
+      - F . présent
+      - G . présent
+  par défaut: DPE . D 
+
+logement . location . logement-1 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-1 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-1 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-1 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-1 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-1 . DPE . F:
+  titre: DPE G
+
+logement . location . logement-1 . DPE . G:
+  titre: DPE F
+
+logement . location . logement-1 . DPE . A . présent:
+  question: Votre logement en location est-il un DPE A ?
+
+logement . location . logement-1 . DPE . B . présent:
+  question: Votre logement en location est-il un DPE B ?
+
+logement . location . logement-1 . DPE . C . présent:
+  question: Votre logement en location est-il un DPE C ?
+
+logement . location . logement-1 . DPE . D . présent:
+  question: Votre logement en location est-il un DPE D ?
+
+logement . location . logement-1 . DPE . E . présent:
+  question: Votre logement en location est-il un DPE E ?
+
+logement . location . logement-1 . DPE . F . présent:
+  question: Votre logement en location est-il un DPE F ?
+
+logement . location . logement-1 . DPE . G . présent:
+  question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-1 . chauffage:
+  titre: Energie location logement 1
+  applicable si: location . nombre >= 1
+  mosaique:
+    type: selection
+    options:
+      - PAC . présent
+      - électricité . présent
+      - gaz . présent
+      - réseau de chaleur . présent
+      - bouteille gaz . présent
+      - citerne propane . présent
+      - fioul . présent
+      - bois . présent
+    suggestions:
+      pas de chauffage:
+        PAC . présent: non
+        électricité . présent: non
+        gaz . présent: non
+        réseau de chaleur . présent: non
+        bouteille gaz . présent: non
+        citerne propane . présent: non
+        fioul . présent: non
+        bois . présent: non
+  icônes: 🌡️
+  question: Quel type d'énergie votre premier logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+
+logement . location . logement-1 . chauffage . PAC:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-1 . chauffage . PAC . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-1 . chauffage . électricité:
+  icônes: ⚡️
+
+logement . location . logement-1 . chauffage . électricité . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-1 . chauffage . gaz:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-1 . chauffage . gaz . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-1 . chauffage . réseau de chaleur:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-1 . chauffage . réseau de chaleur . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-1 . chauffage . bouteille gaz:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-1 . chauffage . bouteille gaz . présent:
+  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-1 . chauffage . citerne propane:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-1 . chauffage . citerne propane . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-1 . chauffage . fioul:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-1 . chauffage . fioul . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-1 . chauffage . bois:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-1 . chauffage . bois . présent:
+  question: Votre logement en location est-il chauffé au bois ?

@@ -18,60 +18,8 @@ logement:
       - piscine
       - extérieur
       - vacances
-      - quantité . dynamic
+      - location
   unité: kgCO2e
-
-logement . quantité:
-  titre: Quantité de résidences secondaires
-  question: Combien de résidences secondaires possèdez-vous ?
-  icônes: ☕️🫖
-  plancher: 0
-  par défaut: 1
-  suggestions:
-    Un: 1
-    Deux: 2
-    Trois: 3
-    Quatre: 4
-
-logement . quantité . dynamic:
-  titre: Liste des questions dynamiques
-  formule:
-      somme:
-        - logement . quantité . electricité-1
-        - logement . quantité . electricité-2
-        - logement . quantité . electricité-3
-        - logement . quantité . electricité-4
-        - logement . quantité . electricité-5
-
-logement . quantité . electricité-1:
-  titre: Consommation éléctricité logement 1
-  question: Combien d'éléctricité consommez-vous par an dans votre première résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 1
-
-logement . quantité . electricité-2:
-  titre: Consommation éléctricité logement 2
-  question: Combien d'éléctricité consommez-vous par an dans votre seconde résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 2
-
-logement . quantité . electricité-3:
-  titre: Consommation éléctricité logement 3
-  question: Combien d'éléctricité consommez-vous par an dans votre troisième résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 3
-
-logement . quantité . electricité-4:
-  titre: Consommation éléctricité logement 4
-  question: Combien d'éléctricité consommez-vous par an dans votre quatrième résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 4
-
-logement . quantité . electricité-5:
-  titre: Consommation éléctricité logement 5
-  question: Combien d'éléctricité consommez-vous par an dans votre cinquième résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 5
 
 logement . habitants:
   titre: Nombre de personnes dans le logement
@@ -166,3 +114,66 @@ logement . notif amortissement:
   description: |
     Si votre logement a moins de **50 ans**, nous vous attribuons un cinquantième de l'empreinte de sa construction. **Sinon, zéro : le logement est amorti.**
     Les questions sur les caractéristiques de votre logement ne vous seront pas posées ; car l'empreinte annuelle de sa contruction est considérée comme nulle.
+
+logement . propriétaire:
+  question: Etes-vous propriétaire de votre logement ?
+  par défaut: oui
+
+logement . DPE:
+  question: Quel est le DPE de votre logement ?
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique. Il renseigne sur la performance énergétique et climatique d’un
+    logement ou d’un bâtiment en le classant sur une échelle allant de A à G.
+  mosaique:
+    type: selection
+    options:
+      - A . présent
+      - B . présent
+      - C . présent
+      - D . présent
+      - E . présent
+      - F . présent
+      - G . présent
+  par défaut: DPE . D 
+
+logement . DPE . A:
+  titre: DPE A
+
+logement . DPE . B:
+  titre: DPE B
+
+logement . DPE . C:
+  titre: DPE C
+
+logement . DPE . D:
+  titre: DPE D
+
+logement . DPE . E:
+  titre: DPE E
+
+logement . DPE . F:
+  titre: DPE G
+
+logement . DPE . G:
+  titre: DPE F
+
+logement . DPE . A . présent:
+  question: Votre logement est-il un DPE A ?
+
+logement . DPE . B . présent:
+  question: Votre logement est-il un DPE B ?
+
+logement . DPE . C . présent:
+  question: Votre logement est-il un DPE C ?
+
+logement . DPE . D . présent:
+  question: Votre logement est-il un DPE D ?
+
+logement . DPE . E . présent:
+  question: Votre logement est-il un DPE E ?
+
+logement . DPE . F . présent:
+  question: Votre logement est-il un DPE F ?
+
+logement . DPE . G . présent:
+  question: Votre logement est-il un DPE G ?

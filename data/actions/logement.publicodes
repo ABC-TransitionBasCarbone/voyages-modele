@@ -332,14 +332,6 @@ logement . gain rénovation:
     Gain énergétique moyen après rénovation sur un programme de l'ANAH de 13 000 logements ciblant les "passoires thermiques".
     Plus d'informations dans le programme [MaPrimeRénov’ Sérénité](https://france-renov.gouv.fr/aides/mpr/serenite) (ex Habiter Mieux de L’Anah).
 
-logement . propriétaire:
-  question: Etes-vous propriétaire de votre logement ?
-  description: |
-    En tant que locataire, il est évidemment délicat de faire les investissements qui améliorent l'empreinte du logement : isolation, changement de source d'énergie sont impossibles sauf à tomber sur un propriétaire particulièrement conciliant. 
-
-    Pourtant, la loi pourrait dès 2023 être un soutien de poids : les passoires thermiques [seront interdites à la location](https://www.gouvernement.fr/interdiction-a-la-location-des-logements-avec-une-forte-consommation-d-energie-des-2023), forçant les propriétaires à lancer des travaux substentiels.
-  par défaut: oui
-
 logement . rénovation énergétique BBC:
   action:
     dépasse:
