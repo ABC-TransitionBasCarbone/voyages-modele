@@ -19,6 +19,7 @@ logement:
       - extérieur
       - vacances
       - location
+      - jardin
   unité: kgCO2e
 
 logement . habitants:
@@ -95,6 +96,14 @@ logement . âge:
   plancher: 0
   par défaut: 45
   unité: an
+  description: |
+    Si votre logement est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite. 
+    Pour les constructions plus anciennes essayer de vous renseigner un âge cohérent avec la réalité. Si vous ne 
+    connaissez pas l'âge exacte ce n'est pas grave
   note: |
     En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
 
