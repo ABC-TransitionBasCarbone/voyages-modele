@@ -1,0 +1,6 @@
+transport . croisière:
+  titre: Croisière
+  icônes: 🚢
+  description: |
+    XXX
+  formule: km * impact par km
