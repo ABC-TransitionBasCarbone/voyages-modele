@@ -91,4 +91,11 @@ transport . train . km:
     💳 grand voyageur plus ultra: 25000
   unité: km
   plancher: 0
-  par défaut: 1000
+  par défaut: distance moyenne annuelle
+
+transport . train . distance moyenne annuelle:
+  formule: 83500000000 km / population
+  unité: km
+  note: |
+    D'après l'[autorité de régulation des transports](https://www.autorite-transports.fr/wp-content/uploads/2023/06/bilan-ferroviaire-2022-a-mi-2023.pdf)., les français parcourent en moyenne 83.5 milliards de km en train par an.
+    Sont comptabilisés tout les types de train (TGV, TER, Intercités).

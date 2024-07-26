@@ -30,5 +30,5 @@ transport . car longue distance . distance moyenne annuelle:
   formule: 9600000000 km / population
   unité: km
   note: |
-    D'après [l'étude "Chiffres clef du transport 2021" (données de 2019)](https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-transport-2021/13-transport-routier-de-voyageurs), les français parcourent en moyenne 45 milliards de km en car par an.
+    D'après [l'étude "Chiffres clef du transport 2021" (données de 2019)](https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-transport-2021/13-transport-routier-de-voyageurs), les français parcourent en moyenne 9.6 milliards de km par an en car sur des trajets longue distance
     Sont comptabilisés les km réalisés en autocars « Macron » et en transport occasionnel en autocars étrangers.
