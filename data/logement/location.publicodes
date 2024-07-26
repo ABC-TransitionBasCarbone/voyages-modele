@@ -24,7 +24,7 @@ logement . location . empreinte:
 logement . location . logement-1:
   applicable si: location . nombre >= 1
   formule: 0
-  unité: kgCO2
+  unité: kgCO2e
 
 logement . location . logement-1 . surface:
   titre: Surface location logement 1
