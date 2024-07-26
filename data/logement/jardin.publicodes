@@ -9,7 +9,7 @@ logement . jardin:
       - jardin . bois . présent
     suggestions:
       aucun:
-        jardin . privatif . présent: non
+        jardin . privatif . présent: nonaj
         jardin . partagé . présent: non
         jardin . bois . présent: non
   question: Quel type de jardin ou surface boisée possédez-vous ?

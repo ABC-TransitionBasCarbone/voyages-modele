@@ -64,12 +64,11 @@ transport . ferry . usager:
   description: |
     Répondez oui si vous prenez le ferry par exemple pour vous rendre sur les îles ou continents voisins (Corse, Royaume-Uni, Maghreb...).
 
-    Si vous faites des croisières (de longs voyages où vous habitez sur le bateau), répondez également oui : dans un premier temps, nous comptabilisons de la même façon les heures de ferry et de croisière.
-
     Si vous ne prenez pas le ferry tous les ans, mais que vous comptez continuer à le prendre, répondez "oui" et estimez grossièrement le nombre d'heures ramené à l'année.
-
     Par exemple pour une traversée de 9h (une nuit) tous les 3 ans, répondez `3`.
 
+    Si vous faites des croisières (de longs voyages où vous habitez sur le bateau), répondez non : c'est l'objet de la question suivante.
+    
 transport . ferry . empreinte moyenne:
   valeur: ferry . empreinte
   contexte:
