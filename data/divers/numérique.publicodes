@@ -786,7 +786,7 @@ divers . numérique . appareils . mosaic:
       - console portable
 
 divers . numérique . appareils . mosaic . téléphone:
-  formule: divers . numérique . appareils . téléphone . empreinte * divers . numérique . appareils . mosaic . téléphone . choix . nombre  
+  formule: téléphone . empreinte * mosaic . téléphone . choix . nombre  
   unité: kgCO2e
 
 # Initialisation de l'option
@@ -802,57 +802,193 @@ divers . numérique . appareils . mosaic . téléphone . choix . nombre:
   par défaut: 1
 
 divers . numérique . appareils . mosaic . TV:
-  formule: divers . numérique . appareils . TV . empreinte * divers . numérique . appareils . mosaic . TV . choix . nombre  
+  formule: TV . empreinte * mosaic . TV . choix . nombre  
   unité: kgCO2e
 
 # Initialisation de l'option
-divers . numérique . appareils . mosaic . TV . choix:  
+divers . numérique . appareils . mosaic . TV . choix:
+  titre: TV
+  icônes: 📺
 
 divers . numérique . appareils . mosaic . TV . choix . nombre:
-  titre: Nombre de TV achetés en 2023 
-  question: Nombre de TV achetés en 2023 ?  
+  titre: Nombre de TV achetées en 2023 
+  question: Nombre de TV achetées en 2023 ?  
   type: nombre  
   plancher: 0  
   par défaut: 1
 
 divers . numérique . appareils . mosaic . ordinateur portable:
-  formule: divers . numérique . appareils . ordinateur portable . empreinte * divers . numérique . appareils . mosaic . ordinateur portable . choix . nombre  
+  formule: ordinateur portable . empreinte * mosaic . ordinateur portable . choix . nombre  
   unité: kgCO2e
 
 # Initialisation de l'option
-divers . numérique . appareils . mosaic . ordinateur portable . choix:  
+divers . numérique . appareils . mosaic . ordinateur portable . choix:
+  titre: Ordinateur portable
+  icônes: 💻
 
 divers . numérique . appareils . mosaic . ordinateur portable . choix . nombre:
   titre: Nombre de ordinateurs portables achetés en 2023 
-  question: Nombre de ordinateurs portables achetés en 2023 ?  
+  question: Nombre d'ordinateurs portables achetés en 2023 ?  
   type: nombre  
   plancher: 0  
   par défaut: 1
 
 divers . numérique . appareils . mosaic . ordinateur fixe:
-  formule: divers . numérique . appareils . ordinateur fixe . empreinte * divers . numérique . appareils . mosaic . ordinateur fixe . choix . nombre  
+  formule: ordinateur fixe . empreinte * mosaic . ordinateur fixe . choix . nombre  
   unité: kgCO2e
 
 # Initialisation de l'option
-divers . numérique . appareils . mosaic . ordinateur fixe . choix:  
+divers . numérique . appareils . mosaic . ordinateur fixe . choix:
+  titre: Ordinateur fixe
+  icônes: 🖥
 
 divers . numérique . appareils . mosaic . ordinateur fixe . choix . nombre:
   titre: Nombre de ordinateurs fixes achetés en 2023 
-  question: Nombre de ordinateur fixes achetés en 2023 ?  
+  question: Nombre d'ordinateur fixes achetés en 2023 ?  
   type: nombre  
   plancher: 0  
   par défaut: 1
 
 divers . numérique . appareils . mosaic . tablette:
-  formule: divers . numérique . appareils . tablette . empreinte * divers . numérique . appareils . mosaic . tablette . choix . nombre  
+  formule: tablette . empreinte * mosaic . tablette . choix . nombre  
   unité: kgCO2e
 
 # Initialisation de l'option
-divers . numérique . appareils . mosaic . tablette . choix:  
+divers . numérique . appareils . mosaic . tablette . choix:
+  titre: Tablette
+  icônes: ⬛
 
 divers . numérique . appareils . mosaic . tablette . choix . nombre:
-  titre: Nombre de tablettes achetés en 2023 
-  question: Nombre de tablettes achetés en 2023 ?  
+  titre: Nombre de tablettes achetées en 2023 
+  question: Nombre de tablettes achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . vidéoprojecteur:
+  formule: vidéoprojecteur . empreinte * mosaic . vidéoprojecteur . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . vidéoprojecteur . choix:
+  titre: Vidéoprojecteur
+  icônes: 📽️
+
+divers . numérique . appareils . mosaic . vidéoprojecteur . choix . nombre:
+  titre: Nombre de vidéoprojecteurs achetés en 2023 
+  question: Nombre de vidéoprojecteurs achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . appareil photo:
+  formule: appareil photo . empreinte * mosaic . appareil photo . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . appareil photo . choix:
+  titre: Appareil photo
+  icônes: 📷
+
+divers . numérique . appareils . mosaic . appareil photo . choix . nombre:
+  titre: Nombre d'appareils photo achetés en 2023 
+  question: Nombre d'appareils photo achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . home cinéma:
+  formule: home cinéma . empreinte * mosaic . home cinéma . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . home cinéma . choix:
+  titre: Home cinéma
+  icônes: 🔊🎬
+
+divers . numérique . appareils . mosaic . home cinéma . choix . nombre:
+  titre: Nombre de home cinéma achetés en 2023 
+  question: Nombre de home cinéma achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . enceinte bluetooth:
+  formule: enceinte bluetooth . empreinte * mosaic . enceinte bluetooth . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . enceinte bluetooth . choix:
+  titre: Enceinte bluetooth
+  icônes: 🎵
+
+divers . numérique . appareils . mosaic . enceinte bluetooth . choix . nombre:
+  titre: Nombre d'enceintes bluetooth achetées en 2023 
+  question: Nombre d'enceintes bluetooth achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . enceinte vocale:
+  formule: enceinte vocale . empreinte * mosaic . enceinte vocale . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . enceinte vocale . choix:
+  titre: Enceinte vocale
+  icônes: 🔊
+
+divers . numérique . appareils . mosaic . enceinte vocale . choix . nombre:
+  titre: Nombre d'enceintes vocales achetées en 2023 
+  question: Nombre d'enceintes vocales achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . montre connectée:
+  formule: montre connectée . empreinte * mosaic . montre connectée . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . montre connectée . choix:
+  titre: Montre connectée
+  icônes: ⌚️
+
+divers . numérique . appareils . mosaic . montre connectée . choix . nombre:
+  titre: Nombre de montres connectées achetées en 2023 
+  question: Nombre de montres connectées achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . console de salon:
+  formule: console de salon . empreinte * mosaic . console de salon . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . console de salon . choix:
+  titre: Console de salon
+  icônes: 🕹
+
+divers . numérique . appareils . mosaic . console de salon . choix . nombre:
+  titre: Nombre de consoles de salon achetées en 2023 
+  question: Nombre de consoles de salon achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . numérique . appareils . mosaic . console portable:
+  formule: console portable . empreinte * mosaic . console portable . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . numérique . appareils . mosaic . console portable . choix:
+  titre: Console portable
+  icônes: 🎮
+
+divers . numérique . appareils . mosaic . console portable . choix . nombre:
+  titre: Nombre de consoles portables achetées en 2023 
+  question: Nombre de consoles portables achetées en 2023 ?  
   type: nombre  
   plancher: 0  
   par défaut: 1

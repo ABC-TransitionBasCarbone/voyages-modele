@@ -11,6 +11,7 @@ divers . ameublement:
   formule: 
     somme:
       - meubles / logement . habitants
+      - meubles . mosaic
       - déforestation / logement . habitants
   unité: kgCO2e
 
@@ -478,3 +479,168 @@ divers . ameublement . déforestation:
 divers . ameublement . déforestation . facteur meubles:
   formule: 81
   unité: kgCO2e
+
+### Calcul d'empreinte basé sur l'achat en 2023
+divers . ameublement . meubles . mosaic:  
+  applicable si: divers . ameublement . meubles . nombre total > 0  
+  mosaique:  
+    type: nombre  
+    optionsConditionnelles:
+      - armoire . choix . nombre
+      - canapé . choix . nombre
+      - matelas . choix . nombre
+      - lit . choix . nombre
+      - table . choix . nombre
+      - chaise . choix . nombre
+      - petit meuble . choix . nombre
+      - grand meuble . choix . nombre
+    suggestions:  
+      aucun:
+        armoire . choix . nombre: 0
+        canapé . choix . nombre: 0
+        matelas . choix . nombre: 0
+        lit . choix . nombre: 0
+        table . choix . nombre: 0
+        chaise . choix . nombre: 0
+        petit meuble . choix . nombre: 0
+        grand meuble . choix . nombre: 0
+  question: Parmi les biens d'ameublement de moins de 10 ans que vous possédez, lesquels avez-vous acheté en 2023 ?  
+  titre: Meubles achetés en 2023
+  formule:  
+    somme:  
+      - armoire
+      - canapé
+      - matelas
+      - lit
+      - table
+      - chaise
+      - petit meuble
+      - grand meuble
+
+divers . ameublement . meubles . mosaic . armoire:
+  formule: armoire . empreinte * mosaic . armoire . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . armoire . choix:
+  titre: Armoire, dressing
+  icônes: 🗄️
+
+divers . ameublement . meubles . mosaic . armoire . choix . nombre:
+  titre: Nombre d'armoires achetées en 2023 
+  question: Nombre d'armoires achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . ameublement . meubles . mosaic . canapé:
+  formule: canapé . empreinte * mosaic . canapé . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . canapé . choix:
+  titre: Canapé
+  icônes: 🛋️
+
+divers . ameublement . meubles . mosaic . canapé . choix . nombre:
+  titre: Nombre de canapés achetés en 2023 
+  question: Nombre de canapés achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . ameublement . meubles . mosaic . matelas:
+  formule: matelas . empreinte * mosaic . matelas . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . matelas . choix:
+  titre: Matelas
+  icônes: 🛏️
+
+divers . ameublement . meubles . mosaic . matelas . choix . nombre:
+  titre: Nombre de matelas achetés en 2023 
+  question: Nombre de matelas achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . ameublement . meubles . mosaic . lit:
+  formule: lit . empreinte * mosaic . lit . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . lit . choix:
+  titre: Lit (sommier, cadre)
+  icônes: 🛏️
+
+divers . ameublement . meubles . mosaic . lit . choix . nombre:
+  titre: Nombre de lits achetés en 2023 
+  question: Nombre de lits achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . ameublement . meubles . mosaic . table:
+  formule: table . empreinte * mosaic . table . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . table . choix:
+  titre: Table, bureau
+  icônes: 🍽️✏️
+
+divers . ameublement . meubles . mosaic . table . choix . nombre:
+  titre: Nombre de tables achetées en 2023 
+  question: Nombre de tables achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . ameublement . meubles . mosaic . chaise:
+  formule: chaise . empreinte * mosaic . chaise . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . chaise . choix:
+  titre: Chaise, tabouret
+  icônes: 🪑
+
+divers . ameublement . meubles . mosaic . chaise . choix . nombre:
+  titre: Nombre de chaises achetées en 2023 
+  question: Nombre de chaises achetées en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . ameublement . meubles . mosaic . petit meuble:
+  formule: petit meuble . empreinte * mosaic . petit meuble . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . petit meuble . choix:
+  titre: Petit meuble
+  icônes: 🗄️
+
+divers . ameublement . meubles . mosaic . petit meuble . choix . nombre:
+  titre: Nombre de petits meubles achetés en 2023 
+  question: Nombre de petits meubles achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
+
+divers . ameublement . meubles . mosaic . grand meuble:
+  formule: grand meuble . empreinte * mosaic . grand meuble . choix . nombre  
+  unité: kgCO2e
+
+# Initialisation de l'option
+divers . ameublement . meubles . mosaic . grand meuble . choix:
+  titre: Grand meuble
+  icônes: 🗄️
+
+divers . ameublement . meubles . mosaic . grand meuble . choix . nombre:
+  titre: Nombre de grands meubles achetés en 2023 
+  question: Nombre de grands meubles achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 1
