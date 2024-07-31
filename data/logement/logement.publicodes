@@ -129,10 +129,11 @@ logement . propriétaire:
   par défaut: oui
 
 logement . DPE:
-  question: Quel est le DPE de votre logement ?
+  question: Quel est le DPE de votre logement principal ?
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Il renseigne sur la performance énergétique et climatique d’un
-    logement ou d’un bâtiment en le classant sur une échelle allant de A à G.
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
   mosaique:
     type: selection
     options:
