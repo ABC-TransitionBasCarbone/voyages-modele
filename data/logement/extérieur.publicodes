@@ -1,10 +1,6 @@
 logement . extérieur:
   icônes: ☘️
   titre: Extérieur (jardin, terrasse)
-  non applicable si:
-    toutes ces conditions:
-      - est défini: logement . appartement
-      - appartement
   mosaique:
     type: selection
     options:
@@ -22,7 +18,7 @@ logement . extérieur:
         tondeuse thermique . présent: non
         barbecue électrique ou gaz . présent: non
         barbecue charbon . présent: non
-  question: Que possédez-vous dans votre extérieur (jardin, balcon) ?
+  question: Que possédez-vous dans votre extérieur (jardin, terrasse, balcon) ?
   description: |
     Nous essayons ici de couvrir les éléments principaux d'un jardin individuel type. Il manque encore des éléments, qui seront ajoutés progressivement.
   formule:
