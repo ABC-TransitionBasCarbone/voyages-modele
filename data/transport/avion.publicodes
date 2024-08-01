@@ -48,7 +48,7 @@ transport . avion . empreinte:
       - long courrier
 
 transport . avion . usager:
-  question: Avez-vous pris l'avion en 2023 ?
+  question: Avez-vous pris l'avion en 2023 à titre personnel ?
 
 transport . avion . court courrier:
   formule: heures de vol * vitesse moyenne * empreinte par km
