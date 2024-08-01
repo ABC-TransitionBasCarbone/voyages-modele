@@ -153,7 +153,8 @@ logement . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule à une possibilité ou si je reste sur une mosaique
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
 #  formule:
 #    une possibilité:
 #      choix obligatoire: oui
@@ -170,7 +171,8 @@ logement . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . DPE . A:
   titre: DPE A
@@ -193,6 +195,9 @@ logement . DPE . F:
 logement . DPE . G:
   titre: DPE F
 
+logement . DPE . non renseigné:
+  titre: DPE non renseigné
+
 logement . DPE . A . présent:
   question: Votre logement est-il un DPE A ?
 
@@ -213,3 +218,8 @@ logement . DPE . F . présent:
 
 logement . DPE . G . présent:
   question: Votre logement est-il un DPE G ?
+
+logement . DPE . non renseigné . présent:
+  question: Votre logement est-il un DPE non renseigné ?
+
+

@@ -97,8 +97,17 @@ logement . location . logement-1 . DPE:
   question: Quel est le DPE de votre premier logement en location ?
   applicable si: location . nombre >= 1
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -109,7 +118,8 @@ logement . location . logement-1 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-1 . DPE . A:
   titre: DPE A
@@ -127,10 +137,13 @@ logement . location . logement-1 . DPE . E:
   titre: DPE E
 
 logement . location . logement-1 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-1 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-1 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-1 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -152,6 +165,9 @@ logement . location . logement-1 . DPE . F . présent:
 
 logement . location . logement-1 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-1 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-1 . chauffage:
   titre: Energie location logement 1
@@ -302,8 +318,17 @@ logement . location . logement-2 . DPE:
   question: Quel est le DPE de votre deuxième logement en location ?
   applicable si: location . nombre >= 2
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -314,7 +339,8 @@ logement . location . logement-2 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-2 . DPE . A:
   titre: DPE A
@@ -332,10 +358,13 @@ logement . location . logement-2 . DPE . E:
   titre: DPE E
 
 logement . location . logement-2 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-2 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-2 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-2 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -357,6 +386,9 @@ logement . location . logement-2 . DPE . F . présent:
 
 logement . location . logement-2 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-2 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-2 . chauffage:
   titre: Energie location logement 1
@@ -507,8 +539,17 @@ logement . location . logement-3 . DPE:
   question: Quel est le DPE de votre troisième logement en location ?
   applicable si: location . nombre >= 3
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -519,7 +560,8 @@ logement . location . logement-3 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-3 . DPE . A:
   titre: DPE A
@@ -537,10 +579,13 @@ logement . location . logement-3 . DPE . E:
   titre: DPE E
 
 logement . location . logement-3 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-3 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-3 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-3 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -562,6 +607,9 @@ logement . location . logement-3 . DPE . F . présent:
 
 logement . location . logement-3 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-3 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-3 . chauffage:
   titre: Energie location logement 1
@@ -712,8 +760,17 @@ logement . location . logement-4 . DPE:
   question: Quel est le DPE de votre quatrième logement en location ?
   applicable si: location . nombre >= 4
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -724,7 +781,8 @@ logement . location . logement-4 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-4 . DPE . A:
   titre: DPE A
@@ -742,10 +800,13 @@ logement . location . logement-4 . DPE . E:
   titre: DPE E
 
 logement . location . logement-4 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-4 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-4 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-4 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -767,6 +828,9 @@ logement . location . logement-4 . DPE . F . présent:
 
 logement . location . logement-4 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-4 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-4 . chauffage:
   titre: Energie location logement 1
@@ -917,8 +981,17 @@ logement . location . logement-5 . DPE:
   question: Quel est le DPE de votre cinquième logement en location ?
   applicable si: location . nombre >= 5
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -929,7 +1002,8 @@ logement . location . logement-5 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-5 . DPE . A:
   titre: DPE A
@@ -947,10 +1021,13 @@ logement . location . logement-5 . DPE . E:
   titre: DPE E
 
 logement . location . logement-5 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-5 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-5 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-5 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -972,6 +1049,9 @@ logement . location . logement-5 . DPE . F . présent:
 
 logement . location . logement-5 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-5 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-5 . chauffage:
   titre: Energie location logement 1
@@ -1122,8 +1202,17 @@ logement . location . logement-6 . DPE:
   question: Quel est le DPE de votre sixième logement en location ?
   applicable si: location . nombre >= 6
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1134,7 +1223,8 @@ logement . location . logement-6 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-6 . DPE . A:
   titre: DPE A
@@ -1152,10 +1242,13 @@ logement . location . logement-6 . DPE . E:
   titre: DPE E
 
 logement . location . logement-6 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-6 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-6 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-6 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1177,6 +1270,9 @@ logement . location . logement-6 . DPE . F . présent:
 
 logement . location . logement-6 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-6 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-6 . chauffage:
   titre: Energie location logement 1
@@ -1327,8 +1423,17 @@ logement . location . logement-7 . DPE:
   question: Quel est le DPE de votre septième logement en location ?
   applicable si: location . nombre >= 7
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1339,7 +1444,8 @@ logement . location . logement-7 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-7 . DPE . A:
   titre: DPE A
@@ -1357,10 +1463,13 @@ logement . location . logement-7 . DPE . E:
   titre: DPE E
 
 logement . location . logement-7 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-7 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-7 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-7 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1382,6 +1491,9 @@ logement . location . logement-7 . DPE . F . présent:
 
 logement . location . logement-7 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-7 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-7 . chauffage:
   titre: Energie location logement 1
@@ -1532,8 +1644,17 @@ logement . location . logement-8 . DPE:
   question: Quel est le DPE de votre huitième logement en location ?
   applicable si: location . nombre >= 8
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1544,7 +1665,8 @@ logement . location . logement-8 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-8 . DPE . A:
   titre: DPE A
@@ -1562,10 +1684,13 @@ logement . location . logement-8 . DPE . E:
   titre: DPE E
 
 logement . location . logement-8 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-8 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-8 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-8 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1587,6 +1712,9 @@ logement . location . logement-8 . DPE . F . présent:
 
 logement . location . logement-8 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-8 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-8 . chauffage:
   titre: Energie location logement 1
@@ -1737,8 +1865,17 @@ logement . location . logement-9 . DPE:
   question: Quel est le DPE de votre neuvième logement en location ?
   applicable si: location . nombre >= 9
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1749,7 +1886,8 @@ logement . location . logement-9 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-9 . DPE . A:
   titre: DPE A
@@ -1767,10 +1905,13 @@ logement . location . logement-9 . DPE . E:
   titre: DPE E
 
 logement . location . logement-9 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-9 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-9 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-9 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1792,6 +1933,9 @@ logement . location . logement-9 . DPE . F . présent:
 
 logement . location . logement-9 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-9 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-9 . chauffage:
   titre: Energie location logement 1
@@ -1942,8 +2086,17 @@ logement . location . logement-10 . DPE:
   question: Quel est le DPE de votre dixième logement en location ?
   applicable si: location . nombre >= 10
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1954,7 +2107,8 @@ logement . location . logement-10 . DPE:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . location . logement-10 . DPE . A:
   titre: DPE A
@@ -1972,10 +2126,13 @@ logement . location . logement-10 . DPE . E:
   titre: DPE E
 
 logement . location . logement-10 . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . location . logement-10 . DPE . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . location . logement-10 . DPE . non renseigné:
+  titre: DPE non renseigné
 
 logement . location . logement-10 . DPE . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1997,6 +2154,9 @@ logement . location . logement-10 . DPE . F . présent:
 
 logement . location . logement-10 . DPE . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . location . logement-10 . DPE . non renseigné . présent:
+  question: Votre logement en location est-il un DPE non renseigné ?
 
 logement . location . logement-10 . chauffage:
   titre: Energie location logement 1

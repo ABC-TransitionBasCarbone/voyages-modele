@@ -821,8 +821,17 @@ logement . vacances . résidence secondaire . DPE-1:
   question: Quel est le DPE de votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 1 
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -833,7 +842,8 @@ logement . vacances . résidence secondaire . DPE-1:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE-1 . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . vacances . résidence secondaire . DPE-1 . A:
   titre: DPE A
@@ -851,10 +861,13 @@ logement . vacances . résidence secondaire . DPE-1 . E:
   titre: DPE E
 
 logement . vacances . résidence secondaire . DPE-1 . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . vacances . résidence secondaire . DPE-1 . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-1 . non renseigné:
+  titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . DPE-1 . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -876,6 +889,9 @@ logement . vacances . résidence secondaire . DPE-1 . F . présent:
 
 logement . vacances . résidence secondaire . DPE-1 . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . vacances . résidence secondaire . DPE-1 . non renseigné . présent:
+  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une deuxième résidence
 
@@ -1031,8 +1047,17 @@ logement . vacances . résidence secondaire . DPE-2:
   question: Quel est le DPE de votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 2 
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1043,7 +1068,8 @@ logement . vacances . résidence secondaire . DPE-2:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE-2 . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . vacances . résidence secondaire . DPE-2 . A:
   titre: DPE A
@@ -1061,10 +1087,13 @@ logement . vacances . résidence secondaire . DPE-2 . E:
   titre: DPE E
 
 logement . vacances . résidence secondaire . DPE-2 . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . vacances . résidence secondaire . DPE-2 . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-2 . non renseigné:
+  titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . DPE-2 . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1086,6 +1115,9 @@ logement . vacances . résidence secondaire . DPE-2 . F . présent:
 
 logement . vacances . résidence secondaire . DPE-2 . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . vacances . résidence secondaire . DPE-2 . non renseigné . présent:
+  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une troisième résidence
 
@@ -1241,8 +1273,17 @@ logement . vacances . résidence secondaire . DPE-3:
   question: Quel est le DPE de votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 3 
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1253,7 +1294,8 @@ logement . vacances . résidence secondaire . DPE-3:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE-3 . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . vacances . résidence secondaire . DPE-3 . A:
   titre: DPE A
@@ -1271,10 +1313,13 @@ logement . vacances . résidence secondaire . DPE-3 . E:
   titre: DPE E
 
 logement . vacances . résidence secondaire . DPE-3 . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . vacances . résidence secondaire . DPE-3 . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-3 . non renseigné:
+  titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . DPE-3 . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1297,6 +1342,8 @@ logement . vacances . résidence secondaire . DPE-3 . F . présent:
 logement . vacances . résidence secondaire . DPE-3 . G . présent:
   question: Votre logement en location est-il un DPE G ?
 
+logement . vacances . résidence secondaire . DPE-3 . non renseigné . présent:
+  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une quatrième résidence
 
@@ -1452,8 +1499,17 @@ logement . vacances . résidence secondaire . DPE-4:
   question: Quel est le DPE de votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 4 
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1464,7 +1520,8 @@ logement . vacances . résidence secondaire . DPE-4:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE-4 . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . vacances . résidence secondaire . DPE-4 . A:
   titre: DPE A
@@ -1482,10 +1539,13 @@ logement . vacances . résidence secondaire . DPE-4 . E:
   titre: DPE E
 
 logement . vacances . résidence secondaire . DPE-4 . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . vacances . résidence secondaire . DPE-4 . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-4 . non renseigné:
+  titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . DPE-4 . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1508,6 +1568,8 @@ logement . vacances . résidence secondaire . DPE-4 . F . présent:
 logement . vacances . résidence secondaire . DPE-4 . G . présent:
   question: Votre logement en location est-il un DPE G ?
 
+logement . vacances . résidence secondaire . DPE-4 . non renseigné . présent:
+  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une cinquième résidence
 
@@ -1663,8 +1725,17 @@ logement . vacances . résidence secondaire . DPE-5:
   question: Quel est le DPE de votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 5 
   description: |
-    Un DPE est un Diagnostic de Performance Energétique. Ils doivent être réalisés par des professionnels et sont classés
-    sur une échelle allant de G à A à laquelle est ajouté un code couleur allant de rouge (pour la classe G) à la vert (oour la classe A)
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
+### "par défaut" fonctionne correctement)
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
@@ -1675,7 +1746,8 @@ logement . vacances . résidence secondaire . DPE-5:
       - E . présent
       - F . présent
       - G . présent
-  par défaut: DPE-5 . D 
+### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
+  par défaut: DPE . non renseigné
 
 logement . vacances . résidence secondaire . DPE-5 . A:
   titre: DPE A
@@ -1693,10 +1765,13 @@ logement . vacances . résidence secondaire . DPE-5 . E:
   titre: DPE E
 
 logement . vacances . résidence secondaire . DPE-5 . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . vacances . résidence secondaire . DPE-5 . G:
-  titre: DPE F
+  titre: DPE G
+
+logement . vacances . résidence secondaire . DPE-5 . non renseigné:
+  titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . DPE-5 . A . présent:
   question: Votre logement en location est-il un DPE A ?
@@ -1718,3 +1793,6 @@ logement . vacances . résidence secondaire . DPE-5 . F . présent:
 
 logement . vacances . résidence secondaire . DPE-5 . G . présent:
   question: Votre logement en location est-il un DPE G ?
+
+logement . vacances . résidence secondaire . DPE-5 . non renseigné . présent:
+  question: Votre logement est-il un DPE non renseigné ?
