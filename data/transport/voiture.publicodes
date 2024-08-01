@@ -28,19 +28,23 @@ transport . voiture:
 
 transport . voiture . km:
   titre: Km en voiture
-  question: Quelle distance parcourez-vous à l'année en voiture ?
+  question: Que vous soyez conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en 2023  ?
   #question: Renseignez les différents types et les kilométrages associés aux déplacements personnels que vous faites (domicile-travail, courses, loisirs, famille, etc.) ?
   description: |
-        Par exemple, si vous êtes en mission professionnelle dans un autre département ou un autre pays, cela n'est pas à prendre en compte ici.
+    Veuillez utiliser les catégories label, distance, fréquence et nombres de passagers pour spécifier vos différents trajets. 
+    Si vous ne vous souvenez pas de tous les trajets effectués en 2023, cherchez à renseigner avant tout les plus récurrents et les plus longs que vous avez effectué.
+    De la même manière, cherchez à renseigner un nombre d'occupants le plus représentatif des trajets effectués.
+    **Pour rappel, les déplacements  dans le cadre de missions professionnelles ne sont pas à prendre en compte ici.**  
   par défaut: km annuels moyen
   unité: km
   plancher: 0
-  suggestions:
-    zéro: 0
-    vacances: 2000
-    10km / jour: 3600
-    1000km / mois: 12000
-    20 000km / an: 20000
+# Je commente les suggestions car on rend obligatoire la saisie via le tableau de détail des trajets.  
+#  suggestions:
+#    zéro: 0
+#    vacances: 2000
+#    10km / jour: 3600
+#    1000km / mois: 12000
+#    20 000km / an: 20000
 
 transport . voiture . km annuels moyen:
   formule: 12200
@@ -48,7 +52,7 @@ transport . voiture . km annuels moyen:
   note: Chiffre issu de [datalab ministère écologie 2019](https://www.statistiques.developpement-durable.gouv.fr/bilan-annuel-des-transports-en-2019-0), page 3 G1.
 
 transport . voiture . utilisateur:
-  question: Utilisez-vous majoritairement la même voiture pour vous déplacer ?
+  question: Avez-vous majoritairement utilisé la même voiture pour les différents trajets que vous avez réalisé en 2023 ?
   formule:
     une possibilité:
       choix obligatoire: oui
@@ -56,25 +60,13 @@ transport . voiture . utilisateur:
         - propriétaire
         - régulier non propriétaire
         - non régulier
-  description: |
-    Deux données sont importantes dans le cadre du calcul de l'empreinte liée à la construction : 
-
-    - L'usage ou non d'un même véhicule pour tous les kilomètres parcourus (si non : on vous attribue un véhicule "moyen")
-    - La propriété ou non dudit véhicule s'il s'agit toujours du même
-
-    Nous avons fait le choix d'attribuer l'empreinte de construction au pro-rata des kilomètres parcourus. Mais cette approche avait deux défauts :
-
-    - Elle était extrêmement avantageuse pour les petits rouleurs, alors que leur véhicule qui roule moins peut s'user plus vite (un moteur a besoin de tourner régulièrement) et donc avoir une durée de vie inférieure.
-    - Elle ne permettait pas de valoriser l'engagement de ne pas disposer de son propre véhicule, et de pratiquer à la place l'autopartage, ou la location ponctuelle (car l'empreinte de construction était la même, que l'on soit propriétaire ou non).
-
-    > Pour pallier ces deux problèmes, et mieux représenter qu'un véhicule possédé mais sous-utilisé s'use plus vite et mérite une empreinte de construction plus importante, **nous appliquons un seuil pour la partie construction de l'empreinte, pour les propriétaires**.
 
 transport . voiture . utilisateur . propriétaire:
   titre: Oui et j'en suis propriétaire
   description: Vous faites la grande majorité de vos trajets avec un même véhicule que vous possédez.
 transport . voiture . utilisateur . régulier non propriétaire:
   titre: Oui mais ce n'est pas la mienne
-  description: Vous utilisez presque systématiquement la voiture d'un ami, de votre grand-mère, ou le même véhicule en autopartage.
+  description: Vous utilisez presque systématiquement la voiture d'un ami, d'un membre de votre famille ou le même véhicule en autopartage.
 transport . voiture . utilisateur . non régulier:
   titre: Non, je change souvent (autopartage, proches, taxi...)
   description: Vous ne disposez pas de votre propre véhicule et les usages sont tous différents.
@@ -110,21 +102,21 @@ transport . voiture . empreinte calculée:
 
 transport . voiture . voyageurs:
   titre: Nombre de voyageurs moyen dans la voiture
-  #question: Quel est le nombre moyen de voyageurs dans la voiture ?
-  question : Quel était le nombre moyen de voyageurs dans la voiture ?
-  description: |
-      Essayez d'estimer une moyenne représentative de vos usage. Si tous les jours vous prenez la voiture seul, mettez 1 ou 1,2, 
-      s'il vous arrive de faire du covoiturage. Si vous ne la prenez qu'en famille ou entre amis, le nombre de passsager moyen tend probablement plus vers 3 ou 4.
-
-      Bien sûr, si vous vous faites conduire (via un chauffeur) ou si vous prenez le taxi, le chauffeur ne compte pas, car il est au service de votre déplacement.
+# Question supprimée car on souhaite utiliser le tableau de saisie
+#  question: Quel est le nombre moyen de voyageurs dans la voiture ?
+#  description: |
+#      Essayez d'estimer une moyenne représentative de vos usage. Si tous les jours vous prenez la voiture seul, mettez 1 ou 1,2, 
+#      s'il vous arrive de faire du covoiturage. Si vous ne la prenez qu'en famille ou entre amis, le nombre de passsager moyen tend probablement plus vers 3 ou 4.
+#
+#      Bien sûr, si vous vous faites conduire (via un chauffeur) ou si vous prenez le taxi, le chauffeur ne compte pas, car il est au service de votre déplacement.
   plancher: 1
-  avertissement: |
-    Le nombre de voyageurs ne peut pas être nul. Au volant de votre voiture, vous en êtes le premier voyageur.
+#  avertissement: |
+#    Le nombre de voyageurs ne peut pas être nul. Au volant de votre voiture, vous en êtes le premier voyageur.
   par défaut: 1.2
-  suggestions:
-    je suis seul: 1
-    deux: 2
-    cinq: 5
+#  suggestions:
+#    je suis seul: 1
+#    deux: 2
+#    cinq: 5
 
 transport . voiture . usage:
   titre: Usage de la voiture
@@ -162,14 +154,14 @@ transport . voiture . empreinte au kilomètre:
     > Hybride : enlever 15% aux consommations ci-dessus (source ADEME: http://www2.ademe.fr/servlet/KBaseShow?catid=13655)
 
 transport . voiture . motorisation:
-  question: Quel type de voiture utilisez-vous ?
+  question: Quel type de voiture avez-vous utilisé ?
   applicable si:
     toutes ces conditions:
       - est défini: utilisateur
       - une de ces conditions:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
-  description: 💡 **Si vous utilisez plusieurs voitures (par exemple dans le cas où vous n'en possédez pas une), choisissez la réponse la plus représentative de votre usage.**
+  description: 💡 S'il vous est arrivé d'utiliser plusieurs voitures (notamment dans le cas où vous n'en possédez pas une), choisissez le gabarit le plus représentatif de votre usage.
   par défaut: "'thermique'"
   formule:
     une possibilité:
@@ -207,7 +199,7 @@ transport . voiture . thermique . consommation aux 100:
           - utilisateur = 'régulier non propriétaire'
       - motorisation = 'thermique'
   description: |
-    **💡 Si vous utilisez plusieurs voitures (par exemple dans le cas où vous n'en possédez pas une), choisissez la réponse la plus représentative de votre usage.**
+    S'il vous est arrivé d'utiliser plusieurs voitures (notamment dans le cas où vous n'en possédez pas une), choisissez la réponse la plus représentative de votre usage.
   suggestions:
     5 l/100km: 5
     7 l/100km: 7
@@ -382,7 +374,7 @@ transport . voiture . thermique . empreinte au litre:
   unité: kgCO2e/l
 
 transport . voiture . thermique . carburant:
-  question: Quel type de carburant votre voiture consomme-t-elle ?
+  question: Quel type de carburant votre voiture consommait-elle ?
   applicable si:
     toutes ces conditions:
       - est défini: utilisateur
@@ -484,7 +476,7 @@ transport . voiture . électrique . consommation estimée:
   note: Données moyennes fournies par le service Transport et Mobilité de l'ADEME.
 
 transport . voiture . gabarit:
-  question: Quel est le gabarit de la voiture ?
+  question: Quel était le gabarit de la voiture ?
   applicable si:
     toutes ces conditions:
       - est défini: utilisateur
@@ -492,9 +484,8 @@ transport . voiture . gabarit:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
   description: |
-    **💡 Si vous utilisez plusieurs voitures (par exemple dans le cas où vous n'en possédez pas une), choisissez la réponse la plus représentative de votre usage.**
-
-    Plus une voiture est lourde et haute donc avec une forte prise au vent, plus elle consomme donc plus elle pollue !
+    Si vous avez répondez oui à la question précédénte mais qu'il vous est arrivé d'utiliser plusieurs voitures (notamment dans le cas où vous n'en possédez pas une), 
+    choisissez le gabarit le plus représentatif de votre usage.
   par défaut: "'berline'"
   note: |
     Nous considérons que la voiture par défaut est une "Berline", en témoigne [une étude menée par AAA Data](https://www.alphabet.com/fr-fr/parc-automobile-roulant-les-donnees-cles)
@@ -813,3 +804,21 @@ transport . voiture . durée de vie en km:
 #     Page 80 de l'[Enquête Nationale Autopartage 2022](https://librairie.ademe.fr/cadic/7353/enquete-autopartage-2022-rapport.pdf):
 
 #     > "Les données communiquées par les opérateurs nous permettent de retenir l’hypothèse de 15130 kilomètres parcourus en moyenne par an par voiture en autopartage."
+
+transport . voiture . âge:
+  applicable si:
+    toutes ces conditions:
+      - km > 0
+      - utilisateur = 'propriétaire'
+  question: En 2023, quel était l'âge de votre voiture ?
+  description: |
+    Renseignez ici **l'âge réel** de la voiture et non pas le nombre d'années qu'elle a passé en votre possession (notamment si vous l'avez acheté d'occasion). 
+    Exemples : 
+      - pour une voiture d'occasion achetée il y a 2 ans (= en 2022) et ayant déjà 5 ans -> renseignez un âge de 6 ans.
+      - pour une voiture achetée neuve :
+        - en 2023 -> renseignez un âge de 1 an
+        - en 2022 -> renseignez un âge de 2 ans
+        - en 2021 -> renseignez un âge de 3 ans
+        - etc.
+  unité: années
+  par défaut: 9 années
