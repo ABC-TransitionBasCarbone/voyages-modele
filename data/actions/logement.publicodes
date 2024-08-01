@@ -162,7 +162,7 @@ logement . se chauffer au bois:
   titre: Se chauffer au bois
   applicable si:
     toutes ces conditions:
-      - propriétaire
+      - statut = 'propriétaire'
       - une de ces conditions:
           - toutes ces conditions:
               - est défini: chauffage . gaz . présent
@@ -209,7 +209,7 @@ logement . remplacer gaz par PAC:
       - logement . rénovation énergétique BBC
   applicable si:
     toutes ces conditions:
-      - propriétaire
+      - statut = 'propriétaire'
       - est défini: chauffage . gaz . présent
       - chauffage . gaz . présent
   icônes: 🔥🔄
@@ -247,7 +247,7 @@ logement . remplacer chauffage électrique par PAC:
       - logement . rénovation énergétique BBC
   applicable si:
     toutes ces conditions:
-      - propriétaire
+      - statut = 'propriétaire'
       - est défini: chauffage . électricité . présent
       - chauffage . électricité . présent
   icônes: 🔥🔄
@@ -316,7 +316,7 @@ logement . rénovation énergétique:
   icônes: 🏚️✨
   formule: (logement . empreinte chauffage air * gain rénovation) / habitants
   unité: kgCO2e
-  applicable si: propriétaire
+  applicable si: statut = 'propriétaire'
   description: |
     Mieux isoler, ventiler et équiper son logement permet de vivre dans un logement plus confortable et de diminuer ses factures d’énergie. Plus efficace, le logement sera moins gourmand en énergie.
 
@@ -340,7 +340,7 @@ logement . rénovation énergétique BBC:
   icônes: 🏠✨
   formule: (logement . empreinte chauffage air * gain rénovation) / habitants
   unité: kgCO2e
-  applicable si: propriétaire
+  applicable si: statut = 'propriétaire'
   description: |
     Une rénovation très performante peut mettre de diviser par 6 les besoins énergétiques de son logement. En consommant moins de 50 kWh par m² par an, le logement sera classé en A sur l’étiquette énergie du Diagnostic de Performance Energétique et atteindra le niveau exigé par la certification Bâtiment Basse Consommation (BBC).
 

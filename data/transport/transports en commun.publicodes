@@ -147,7 +147,7 @@ transport . transports commun . car . impact par km:
      - durée de vie en km = 361 884 km
      - nombre de passagers moyen = 30
     /!\ Bizarrement ce FE consolidé à partir des hypothèses diffère de ce qu'affiche la Base Empreinte - FE Autobus/Gazole : 113 gCO2eq/passager.km
-    /!\ Le 92 gCO2eq/passager.k de la documentation ne correspond pas à la somme amont + combustion du FE : 20.5 + 83.8 = 104,3 gCO2eq/passager.k
+    /!\ Le 92 gCO2eq/passager.km de la documentation ne correspond pas à la somme amont + combustion du FE : 20.5 + 83.8 = 104,3 gCO2eq/passager.k
 
 transport . transports commun . métro ou tram:
   titre: Métro, tramway, train de banlieue

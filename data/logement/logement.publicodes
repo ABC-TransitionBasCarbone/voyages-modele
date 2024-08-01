@@ -124,9 +124,28 @@ logement . notif amortissement:
     Si votre logement a moins de **50 ans**, nous vous attribuons un cinquantième de l'empreinte de sa construction. **Sinon, zéro : le logement est amorti.**
     Les questions sur les caractéristiques de votre logement ne vous seront pas posées ; car l'empreinte annuelle de sa contruction est considérée comme nulle.
 
-logement . propriétaire:
+logement . statut:
   question: Etes-vous propriétaire de votre logement ?
-  par défaut: oui
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - propriétaire
+        - locataire
+        - logé gratuit
+  par défaut: "'non renseigné'"
+
+logement . statut . propriétaire:
+  titre: propriétaire
+
+logement . statut . locataire:
+  titre: locataire
+
+logement . statut . logé gratuit:
+  titre: logé à titre gratuit
+
+logement . statut . non renseigné:
+  titre: statut non renseigné
 
 logement . DPE:
   question: Quel est le DPE de votre logement principal ?
@@ -134,6 +153,13 @@ logement . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
+### A voir si la question prend la forme d'une formule à une possibilité ou si je reste sur une mosaique
+#  formule:
+#    une possibilité:
+#      choix obligatoire: oui
+#      possibilités:
+#        - A 
+#        - B
   mosaique:
     type: selection
     options:
