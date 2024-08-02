@@ -133,7 +133,7 @@ logement . chauffage . gaz . consommation estimée via le coût:
   note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
 
 logement . chauffage . gaz . consommation estimée via le coût . saisie:
-  question: Pas de facture ? Entrez vos dépenses approximatives par mois
+  question: Pas de facture ? Entrez vos dépenses actuelles approximatives par mois
   plancher: 0
   unité: €/mois
 
