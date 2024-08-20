@@ -13,3 +13,4 @@ quick-doc/migration-report.md
 .vscode/*
 survey/*.xlsx
 .idea
+yarn-error.log
