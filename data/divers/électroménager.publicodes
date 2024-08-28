@@ -524,7 +524,7 @@ divers . électroménager . appareils . mosaic:
         cafetière . choix . nombre: 0   
         aspirateur . choix . nombre: 0   
         robot cuisine . choix . nombre: 0 
-  question: Parmi les appareils électroméangers de moins de 10 ans que vous possédez, lesquels avez-vous acheté en 2023 ?  
+  question: Parmi les appareils électroménagers de moins de 10 ans que vous possédez, lesquels avez-vous acheté en 2023 ?  
   titre: Electroménagers achetés en 2023
   formule:  
     somme:  
