@@ -1,3 +1,6 @@
+### /!\ On met l'empreinte à 0 car on va demander un détail des trajets en avion et on imputera une empreinte à posteriori
+### /!\ On laisse toutefois les règles nécessaires pour le calcul d'une empreinte moyenne
+### /!\ Cela influence les actions (cf. actions\transport\avion.publicodes)
 transport . avion:
   icônes: ✈️
   description: |
