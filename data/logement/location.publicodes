@@ -4,7 +4,7 @@ logement . location:
 
 logement . location . nombre:
   titre: Nombre de logements en location
-  question: Combien d'investissements locatifs (c.à.d de logements en location annuelle ou saisonnière) possédez-vous ?
+  question: En 2023, combien d'investissements locatifs (c.à.d de logements en location annuelle ou saisonnière) possédez-vous ?
   plancher: 0
   par défaut: 0
   description: |
