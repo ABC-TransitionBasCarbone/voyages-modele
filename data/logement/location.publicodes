@@ -20,7 +20,7 @@ logement . location . nombre:
   titre: Nombre de logements en location
   question: En 2023, combien d'investissements locatifs (c.à.d de logements en location annuelle ou saisonnière) possédiez-vous ?
   plancher: 0
-  par défaut: 3
+  par défaut: 0
   description: |
     Ne comptez pas ici votre logement principal et d'éventuelles résidences secondaires que vous pourriez louer de temps en temps.
     Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que 

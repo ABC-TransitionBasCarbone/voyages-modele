@@ -451,19 +451,27 @@ logement . vacances . famille ou amis . notif:
 
 logement . vacances . empreinte résidences secondaires:
   titre: Empreinte résidences secondaires
-  applicable si: résidences secondaires . nombre >= 1
+  applicable si:
+    toutes ces conditions:
+      - est défini: résidences secondaires . présent
+      - résidences secondaires . nombre >= 1
   formule:
     somme:
       - résidence secondaire . construction-1
       - résidence secondaire . énergie-1
+      - 0.000001 * résidence secondaire . DPE-1 en chiffre
       - résidence secondaire . construction-2
       - résidence secondaire . énergie-2
+      - 0.000001 * résidence secondaire . DPE-2 en chiffre
       - résidence secondaire . construction-3
       - résidence secondaire . énergie-3
+      - 0.000001 * résidence secondaire . DPE-3 en chiffre
       - résidence secondaire . construction-4
       - résidence secondaire . énergie-4
+      - 0.000001 * résidence secondaire . DPE-4 en chiffre
       - résidence secondaire . construction-5
       - résidence secondaire . énergie-5
+      - 0.000001 * résidence secondaire . DPE-5 en chiffre
   unité: kgCO2e
 
 logement . vacances . résidences secondaires:
@@ -472,14 +480,16 @@ logement . vacances . résidences secondaires:
 
 logement . vacances . résidences secondaires . présent:
   question: Possédez-vous une résidence secondaire ?
-  note: |
-    Pour le moment, nous n'attribuons l'empreinte de la maison secondaire qu'aux propriétaires,
-    et non "une partie" de l'empreinte à tous les français.
+  par défaut: "'oui'"
 
 logement . vacances . résidences secondaires . nombre:
   question: Combien de résidences secondaires possédez-vous ?
+  applicable si: 
+    toutes ces conditions:
+      - est défini: résidences secondaires . présent
+      - résidences secondaires . présent
   plancher: 0  
-  par défaut: 5  
+  par défaut: 0
   suggestions:  
     Un: 1  
     Deux: 2  
@@ -824,26 +834,40 @@ logement . vacances . résidence secondaire . DPE-1:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . vacances . résidence secondaire . DPE-1 en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE-1 = 'A'
+        alors: 1
+      - si: DPE-1 = 'B'
+        alors: 2
+      - si: DPE-1 = 'C'
+        alors: 3
+      - si: DPE-1 = 'D'
+        alors: 4
+      - si: DPE-1 = 'E'
+        alors: 5
+      - si: DPE-1 = 'F'
+        alors: 6
+      - si: DPE-1 = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . vacances . résidence secondaire . DPE-1 . A:
   titre: DPE A
@@ -868,30 +892,6 @@ logement . vacances . résidence secondaire . DPE-1 . G:
 
 logement . vacances . résidence secondaire . DPE-1 . non renseigné:
   titre: DPE non renseigné
-
-logement . vacances . résidence secondaire . DPE-1 . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . vacances . résidence secondaire . DPE-1 . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . vacances . résidence secondaire . DPE-1 . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . vacances . résidence secondaire . DPE-1 . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . vacances . résidence secondaire . DPE-1 . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . vacances . résidence secondaire . DPE-1 . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . vacances . résidence secondaire . DPE-1 . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . vacances . résidence secondaire . DPE-1 . non renseigné . présent:
-  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une deuxième résidence
 
@@ -972,41 +972,41 @@ logement . vacances . résidence secondaire . durée-2:
   mosaique:
     type: nombre
     options:
-      - nuitées week end . nombre
-      - nuitées semaine . nombre
+      - nuitées week end-2 . nombre
+      - nuitées semaine-2 . nombre
     suggestions:
       tout l'été:
-        nuitées week end . nombre: 0
-        nuitées semaine . nombre: 8
+        nuitées week end-2 . nombre: 0
+        nuitées semaine-2 . nombre: 8
   question: Combien de temps passez-vous dans votre deuxième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par d'autres (famille, amis), l'empreinte associée à cet usage leur est imputé.
   formule:
     somme:
-      - nuitées week end
-      - nuitées semaine
+      - nuitées week end-2
+      - nuitées semaine-2
   unité: nuit
   note: |
     D'après [cette source](https://www.lesechos.fr/2012/06/tres-chere-residence-secondaire-359079), le temps moyen passé dans une résidence secondaire est de 42 nuitées par an.
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
-logement . vacances . résidence secondaire . durée-2 . nuitées week end:
+logement . vacances . résidence secondaire . durée-2 . nuitées week end-2:
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
-logement . vacances . résidence secondaire . durée-2 . nuitées week end . nombre:
+logement . vacances . résidence secondaire . durée-2 . nuitées week end-2 . nombre:
   question: Combien de week-ends passez-vous dans votre deuxième maison secondaire ?
   par défaut: 3
   unité: nuit
 
-logement . vacances . résidence secondaire . durée-2 . nuitées semaine:
+logement . vacances . résidence secondaire . durée-2 . nuitées semaine-2:
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
-logement . vacances . résidence secondaire . durée-2 . nuitées semaine . nombre:
+logement . vacances . résidence secondaire . durée-2 . nuitées semaine-2 . nombre:
   question: Combien de semaines passez-vous dans votre deuxième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -1018,58 +1018,72 @@ logement . vacances . résidence secondaire . saison-2:
     une possibilité:
       choix obligatoire: oui
       possibilités:
-        - été
-        - surtout été
-        - surtout hiver
-        - hiver
-  par défaut: "'surtout été'"
+        - été-2
+        - surtout été-2
+        - surtout hiver-2
+        - hiver-2
+  par défaut: "'surtout été-2'"
   note: |
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
-logement . vacances . résidence secondaire . saison-2 . été:
+logement . vacances . résidence secondaire . saison-2 . été-2:
   titre: Seulement l'été
   icônes: ☀️
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en été.
-logement . vacances . résidence secondaire . saison-2 . surtout été:
+logement . vacances . résidence secondaire . saison-2 . surtout été-2:
   titre: Surtout l'été
   icônes: 🌤️
   description: Vous vous rendez dans votre deuxième résidence secondaire majoritairement en été.
-logement . vacances . résidence secondaire . saison-2 . surtout hiver:
+logement . vacances . résidence secondaire . saison-2 . surtout hiver-2:
   titre: Surtout l'hiver
   icônes: ⛈️
   description: Vous vous rendez dans votre deuxième résidence secondaire majoritairement en hiver.
-logement . vacances . résidence secondaire . saison-2 . hiver:
+logement . vacances . résidence secondaire . saison-2 . hiver-2:
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-2:
-  question: Quel est le DPE de votre première résidence secondaire ?
+  question: Quel est le DPE de votre deuxième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 2 
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . vacances . résidence secondaire . DPE-2 en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE-2 = 'A'
+        alors: 1
+      - si: DPE-2 = 'B'
+        alors: 2
+      - si: DPE-2 = 'C'
+        alors: 3
+      - si: DPE-2 = 'D'
+        alors: 4
+      - si: DPE-2 = 'E'
+        alors: 5
+      - si: DPE-2 = 'F'
+        alors: 6
+      - si: DPE-2 = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . vacances . résidence secondaire . DPE-2 . A:
   titre: DPE A
@@ -1094,30 +1108,6 @@ logement . vacances . résidence secondaire . DPE-2 . G:
 
 logement . vacances . résidence secondaire . DPE-2 . non renseigné:
   titre: DPE non renseigné
-
-logement . vacances . résidence secondaire . DPE-2 . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . vacances . résidence secondaire . DPE-2 . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . vacances . résidence secondaire . DPE-2 . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . vacances . résidence secondaire . DPE-2 . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . vacances . résidence secondaire . DPE-2 . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . vacances . résidence secondaire . DPE-2 . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . vacances . résidence secondaire . DPE-2 . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . vacances . résidence secondaire . DPE-2 . non renseigné . présent:
-  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une troisième résidence
 
@@ -1198,41 +1188,41 @@ logement . vacances . résidence secondaire . durée-3:
   mosaique:
     type: nombre
     options:
-      - nuitées week end . nombre
-      - nuitées semaine . nombre
+      - nuitées week end-3 . nombre
+      - nuitées semaine-3 . nombre
     suggestions:
       tout l'été:
-        nuitées week end . nombre: 0
-        nuitées semaine . nombre: 8
+        nuitées week end-3 . nombre: 0
+        nuitées semaine-3 . nombre: 8
   question: Combien de temps passez-vous dans votre troisième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par d'autres (famille, amis), l'empreinte associée à cet usage leur est imputé.
   formule:
     somme:
-      - nuitées week end
-      - nuitées semaine
+      - nuitées week end-3
+      - nuitées semaine-3
   unité: nuit
   note: |
     D'après [cette source](https://www.lesechos.fr/2012/06/tres-chere-residence-secondaire-359079), le temps moyen passé dans une résidence secondaire est de 42 nuitées par an.
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
-logement . vacances . résidence secondaire . durée-3 . nuitées week end:
+logement . vacances . résidence secondaire . durée-3 . nuitées week end-3:
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
-logement . vacances . résidence secondaire . durée-3 . nuitées week end . nombre:
+logement . vacances . résidence secondaire . durée-3 . nuitées week end-3 . nombre:
   question: Combien de week-ends passez-vous dans votre troisième maison secondaire ?
   par défaut: 3
   unité: nuit
 
-logement . vacances . résidence secondaire . durée-3 . nuitées semaine:
+logement . vacances . résidence secondaire . durée-3 . nuitées semaine-3:
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
-logement . vacances . résidence secondaire . durée-3 . nuitées semaine . nombre:
+logement . vacances . résidence secondaire . durée-3 . nuitées semaine-3 . nombre:
   question: Combien de semaines passez-vous dans votre troisième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -1270,32 +1260,46 @@ logement . vacances . résidence secondaire . saison-3 . hiver:
   description: Vous ne vous rendez dans votre troisième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-3:
-  question: Quel est le DPE de votre première résidence secondaire ?
+  question: Quel est le DPE de votre troisième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 3 
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . vacances . résidence secondaire . DPE-3 en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE-3 = 'A'
+        alors: 1
+      - si: DPE-3 = 'B'
+        alors: 2
+      - si: DPE-3 = 'C'
+        alors: 3
+      - si: DPE-3 = 'D'
+        alors: 4
+      - si: DPE-3 = 'E'
+        alors: 5
+      - si: DPE-3 = 'F'
+        alors: 6
+      - si: DPE-3 = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . vacances . résidence secondaire . DPE-3 . A:
   titre: DPE A
@@ -1320,30 +1324,6 @@ logement . vacances . résidence secondaire . DPE-3 . G:
 
 logement . vacances . résidence secondaire . DPE-3 . non renseigné:
   titre: DPE non renseigné
-
-logement . vacances . résidence secondaire . DPE-3 . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . vacances . résidence secondaire . DPE-3 . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . vacances . résidence secondaire . DPE-3 . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . vacances . résidence secondaire . DPE-3 . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . vacances . résidence secondaire . DPE-3 . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . vacances . résidence secondaire . DPE-3 . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . vacances . résidence secondaire . DPE-3 . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . vacances . résidence secondaire . DPE-3 . non renseigné . présent:
-  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une quatrième résidence
 
@@ -1424,41 +1404,41 @@ logement . vacances . résidence secondaire . durée-4:
   mosaique:
     type: nombre
     options:
-      - nuitées week end . nombre
-      - nuitées semaine . nombre
+      - nuitées week end-4 . nombre
+      - nuitées semaine-4 . nombre
     suggestions:
       tout l'été:
-        nuitées week end . nombre: 0
-        nuitées semaine . nombre: 8
+        nuitées week end-4 . nombre: 0
+        nuitées semaine-4 . nombre: 8
   question: Combien de temps passez-vous dans votre quatrième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par d'autres (famille, amis), l'empreinte associée à cet usage leur est imputé.
   formule:
     somme:
-      - nuitées week end
-      - nuitées semaine
+      - nuitées week end-4
+      - nuitées semaine-4
   unité: nuit
   note: |
     D'après [cette source](https://www.lesechos.fr/2012/06/tres-chere-residence-secondaire-359079), le temps moyen passé dans une résidence secondaire est de 42 nuitées par an.
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
-logement . vacances . résidence secondaire . durée-4 . nuitées week end:
+logement . vacances . résidence secondaire . durée-4 . nuitées week end-4:
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
-logement . vacances . résidence secondaire . durée-4 . nuitées week end . nombre:
+logement . vacances . résidence secondaire . durée-4 . nuitées week end-4 . nombre:
   question: Combien de week-ends passez-vous dans votre quatrième maison secondaire ?
   par défaut: 3
   unité: nuit
 
-logement . vacances . résidence secondaire . durée-4 . nuitées semaine:
+logement . vacances . résidence secondaire . durée-4 . nuitées semaine-4:
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
-logement . vacances . résidence secondaire . durée-4 . nuitées semaine . nombre:
+logement . vacances . résidence secondaire . durée-4 . nuitées semaine-4 . nombre:
   question: Combien de semaines passez-vous dans votre quatrième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -1496,32 +1476,47 @@ logement . vacances . résidence secondaire . saison-4 . hiver:
   description: Vous ne vous rendez dans votre quatrième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-4:
-  question: Quel est le DPE de votre première résidence secondaire ?
+  question: Quel est le DPE de votre quatrième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 4 
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . vacances . résidence secondaire . DPE-4 en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE-4 = 'A'
+        alors: 1
+      - si: DPE-4 = 'B'
+        alors: 2
+      - si: DPE-4 = 'C'
+        alors: 3
+      - si: DPE-4 = 'D'
+        alors: 4
+      - si: DPE-4 = 'E'
+        alors: 5
+      - si: DPE-4 = 'F'
+        alors: 6
+      - si: DPE-4 = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
 
 logement . vacances . résidence secondaire . DPE-4 . A:
   titre: DPE A
@@ -1546,30 +1541,6 @@ logement . vacances . résidence secondaire . DPE-4 . G:
 
 logement . vacances . résidence secondaire . DPE-4 . non renseigné:
   titre: DPE non renseigné
-
-logement . vacances . résidence secondaire . DPE-4 . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . vacances . résidence secondaire . DPE-4 . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . vacances . résidence secondaire . DPE-4 . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . vacances . résidence secondaire . DPE-4 . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . vacances . résidence secondaire . DPE-4 . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . vacances . résidence secondaire . DPE-4 . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . vacances . résidence secondaire . DPE-4 . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . vacances . résidence secondaire . DPE-4 . non renseigné . présent:
-  question: Votre logement est-il un DPE non renseigné ?
 
 #### Règles pour la possession d'une cinquième résidence
 
@@ -1650,41 +1621,41 @@ logement . vacances . résidence secondaire . durée-5:
   mosaique:
     type: nombre
     options:
-      - nuitées week end . nombre
-      - nuitées semaine . nombre
+      - nuitées week end-5 . nombre
+      - nuitées semaine-5 . nombre
     suggestions:
       tout l'été:
-        nuitées week end . nombre: 0
-        nuitées semaine . nombre: 8
+        nuitées week end-5 . nombre: 0
+        nuitées semaine-5 . nombre: 8
   question: Combien de temps passez-vous dans votre cinquième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par d'autres (famille, amis), l'empreinte associée à cet usage leur est imputé.
   formule:
     somme:
-      - nuitées week end
-      - nuitées semaine
+      - nuitées week end-5
+      - nuitées semaine-5
   unité: nuit
   note: |
     D'après [cette source](https://www.lesechos.fr/2012/06/tres-chere-residence-secondaire-359079), le temps moyen passé dans une résidence secondaire est de 42 nuitées par an.
     Nous attribuons donc par défaut 3 week-ends et 5 semaines passées en résidence secondaire.
 
-logement . vacances . résidence secondaire . durée-5 . nuitées week end:
+logement . vacances . résidence secondaire . durée-5 . nuitées week end-5:
   titre: Week-end(s)
   icônes: 📆
   formule: nombre * 2
   note: On considère qu'un week-end correspond à 2 nuitées.
 
-logement . vacances . résidence secondaire . durée-5 . nuitées week end . nombre:
+logement . vacances . résidence secondaire . durée-5 . nuitées week end-5 . nombre:
   question: Combien de week-ends passez-vous dans votre cinquième maison secondaire ?
   par défaut: 3
   unité: nuit
 
-logement . vacances . résidence secondaire . durée-5 . nuitées semaine:
+logement . vacances . résidence secondaire . durée-5 . nuitées semaine-5:
   titre: Semaine(s)
   icônes: 🗓️
   formule: nombre * 7
   note: On considère qu'une semaine correspond à 7 nuitées.
 
-logement . vacances . résidence secondaire . durée-5 . nuitées semaine . nombre:
+logement . vacances . résidence secondaire . durée-5 . nuitées semaine-5 . nombre:
   question: Combien de semaines passez-vous dans votre cinquième maison secondaire ?
   par défaut: 5
   unité: nuit
@@ -1722,32 +1693,46 @@ logement . vacances . résidence secondaire . saison-5 . hiver:
   description: Vous ne vous rendez dans votre cinquième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-5:
-  question: Quel est le DPE de votre première résidence secondaire ?
+  question: Quel est le DPE de votre cinquième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 5 
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . vacances . résidence secondaire . DPE-5 en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE-5 = 'A'
+        alors: 1
+      - si: DPE-5 = 'B'
+        alors: 2
+      - si: DPE-5 = 'C'
+        alors: 3
+      - si: DPE-5 = 'D'
+        alors: 4
+      - si: DPE-5 = 'E'
+        alors: 5
+      - si: DPE-5 = 'F'
+        alors: 6
+      - si: DPE-5 = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . vacances . résidence secondaire . DPE-5 . A:
   titre: DPE A
@@ -1772,27 +1757,3 @@ logement . vacances . résidence secondaire . DPE-5 . G:
 
 logement . vacances . résidence secondaire . DPE-5 . non renseigné:
   titre: DPE non renseigné
-
-logement . vacances . résidence secondaire . DPE-5 . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . vacances . résidence secondaire . DPE-5 . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . vacances . résidence secondaire . DPE-5 . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . vacances . résidence secondaire . DPE-5 . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . vacances . résidence secondaire . DPE-5 . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . vacances . résidence secondaire . DPE-5 . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . vacances . résidence secondaire . DPE-5 . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . vacances . résidence secondaire . DPE-5 . non renseigné . présent:
-  question: Votre logement est-il un DPE non renseigné ?
