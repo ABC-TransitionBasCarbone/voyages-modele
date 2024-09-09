@@ -1,22 +1,6 @@
 logement . location:
   titre: Location de logements
-  formule: location . empreinte
-
-logement . location . nombre:
-  titre: Nombre de logements en location
-  question: En 2023, combien d'investissements locatifs (c.à.d de logements en location annuelle ou saisonnière) possédez-vous ?
-  plancher: 0
-  par défaut: 0
-  description: |
-    Ne comptez pas ici votre logement principal et d'éventuelles résidences secondaires que vous pourriez louer de temps en temps.
-    Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que 
-    vous mettez en location longue durée et/ou saisonnière.
-  note: |
-    Le nombre max de logement est fixé à 10 car, selon les données de l'[INSEE](https://www.insee.fr/fr/statistiques/5432517?sommaire=5435421) (cf. Excel),
-    au sein du décile supérieur, 10% des individus possède 5 logements ou plus (33% pour le centile supérieur)
-
-logement . location . empreinte:
-  formule:
+  formule: 
     somme:
       - logement-1
       - logement-2
@@ -32,10 +16,25 @@ logement . location . empreinte:
     Cette empreinte est en réalité nulle car tous les éléments de la somme ont une empreinte nulle.
     L'objet de cette variable et des variables filles est de pouvoir récolter des données.
 
+logement . location . nombre:
+  titre: Nombre de logements en location
+  question: En 2023, combien d'investissements locatifs (c.à.d de logements en location annuelle ou saisonnière) possédiez-vous ?
+  plancher: 0
+  par défaut: 3
+  description: |
+    Ne comptez pas ici votre logement principal et d'éventuelles résidences secondaires que vous pourriez louer de temps en temps.
+    Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que 
+    vous dédiez à la location longue durée et/ou saisonnière.
+
+    **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas**
+  note: |
+    Le nombre max de logement est fixé à 10 car, selon les données de l'[INSEE](https://www.insee.fr/fr/statistiques/5432517?sommaire=5435421) (cf. Excel),
+    au sein du décile supérieur, 10% des individus possède 5 logements ou plus (33% pour le centile supérieur)
+
 ### Logement 1
 logement . location . logement-1:
   applicable si: location . nombre >= 1
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
   unité: kgCO2e
 
 logement . location . logement-1 . surface:
@@ -100,26 +99,40 @@ logement . location . logement-1 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-1 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-1 . DPE . A:
   titre: DPE A
@@ -145,122 +158,131 @@ logement . location . logement-1 . DPE . G:
 logement . location . logement-1 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-1 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-1 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-1 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-1 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-1 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-1 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-1 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-1 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-1 . chauffage:
   titre: Energie location logement 1
   applicable si: location . nombre >= 1
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-1 . présent
+      - électricité-1 . présent
+      - gaz-1 . présent
+      - réseau de chaleur-1 . présent
+      - bouteille gaz-1 . présent
+      - citerne propane-1 . présent
+      - fioul-1 . présent
+      - bois-1 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-1 . présent: non
+        électricité-1 . présent: non
+        gaz-1 . présent: non
+        réseau de chaleur-1 . présent: non
+        bouteille gaz-1 . présent: non
+        citerne propane-1 . présent: non
+        fioul-1 . présent: non
+        bois-1 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre premier logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du premier logement que vous louez.
 
-logement . location . logement-1 . chauffage . PAC:
+logement . location . logement-1 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-1 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-1 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-1 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-1 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-1 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-1 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-1 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-1 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-1 . chauffage . PAC-1:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-1 . chauffage . PAC . présent:
+logement . location . logement-1 . chauffage . PAC-1 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-1 . chauffage . électricité:
+logement . location . logement-1 . chauffage . électricité-1:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-1 . chauffage . électricité . présent:
+logement . location . logement-1 . chauffage . électricité-1 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-1 . chauffage . gaz:
+logement . location . logement-1 . chauffage . gaz-1:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-1 . chauffage . gaz . présent:
+logement . location . logement-1 . chauffage . gaz-1 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-1 . chauffage . réseau de chaleur:
+logement . location . logement-1 . chauffage . réseau de chaleur-1:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-1 . chauffage . réseau de chaleur . présent:
+logement . location . logement-1 . chauffage . réseau de chaleur-1 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-1 . chauffage . bouteille gaz:
+logement . location . logement-1 . chauffage . bouteille gaz-1:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-1 . chauffage . bouteille gaz . présent:
+logement . location . logement-1 . chauffage . bouteille gaz-1 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-1 . chauffage . citerne propane:
+logement . location . logement-1 . chauffage . citerne propane-1:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-1 . chauffage . citerne propane . présent:
+logement . location . logement-1 . chauffage . citerne propane-1 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-1 . chauffage . fioul:
+logement . location . logement-1 . chauffage . fioul-1:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-1 . chauffage . fioul . présent:
+logement . location . logement-1 . chauffage . fioul-1 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-1 . chauffage . bois:
+logement . location . logement-1 . chauffage . bois-1:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-1 . chauffage . bois . présent:
+logement . location . logement-1 . chauffage . bois-1 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 2
 logement . location . logement-2:
   applicable si: location . nombre >= 2
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
   unité: kgCO2e
 
 logement . location . logement-2 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 2
   question: Quelle est la surface de votre deuxième logement en location ?
   applicable si: location . nombre >= 2
   plancher: 1
@@ -288,7 +310,7 @@ logement . location . logement-2 . surface:
   unité: m2
 
 logement . location . logement-2 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 2
   question: Votre deuxième logement en location est-il un appartement ?
   applicable si: location . nombre >= 2
   description: |
@@ -321,26 +343,41 @@ logement . location . logement-2 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-2 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
 
 logement . location . logement-2 . DPE . A:
   titre: DPE A
@@ -366,122 +403,131 @@ logement . location . logement-2 . DPE . G:
 logement . location . logement-2 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-2 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-2 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-2 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-2 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-2 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-2 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-2 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-2 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-2 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 2
   applicable si: location . nombre >= 2
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-2 . présent
+      - électricité-2 . présent
+      - gaz-2 . présent
+      - réseau de chaleur-2 . présent
+      - bouteille gaz-2 . présent
+      - citerne propane-2 . présent
+      - fioul-2 . présent
+      - bois-2 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-2 . présent: non
+        électricité-2 . présent: non
+        gaz-2 . présent: non
+        réseau de chaleur-2 . présent: non
+        bouteille gaz-2 . présent: non
+        citerne propane-2 . présent: non
+        fioul-2 . présent: non
+        bois-2 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre deuxième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du deuxième logement que vous louez.
 
-logement . location . logement-2 . chauffage . PAC:
+logement . location . logement-2 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-2 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-2 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-2 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-2 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-2 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-2 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-2 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-2 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-2 . chauffage . PAC-2:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-2 . chauffage . PAC . présent:
+logement . location . logement-2 . chauffage . PAC-2 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-2 . chauffage . électricité:
+logement . location . logement-2 . chauffage . électricité-2:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-2 . chauffage . électricité . présent:
+logement . location . logement-2 . chauffage . électricité-2 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-2 . chauffage . gaz:
+logement . location . logement-2 . chauffage . gaz-2:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-2 . chauffage . gaz . présent:
+logement . location . logement-2 . chauffage . gaz-2 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-2 . chauffage . réseau de chaleur:
+logement . location . logement-2 . chauffage . réseau de chaleur-2:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-2 . chauffage . réseau de chaleur . présent:
+logement . location . logement-2 . chauffage . réseau de chaleur-2 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-2 . chauffage . bouteille gaz:
+logement . location . logement-2 . chauffage . bouteille gaz-2:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-2 . chauffage . bouteille gaz . présent:
+logement . location . logement-2 . chauffage . bouteille gaz-2 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-2 . chauffage . citerne propane:
+logement . location . logement-2 . chauffage . citerne propane-2:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-2 . chauffage . citerne propane . présent:
+logement . location . logement-2 . chauffage . citerne propane-2 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-2 . chauffage . fioul:
+logement . location . logement-2 . chauffage . fioul-2:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-2 . chauffage . fioul . présent:
+logement . location . logement-2 . chauffage . fioul-2 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-2 . chauffage . bois:
+logement . location . logement-2 . chauffage . bois-2:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-2 . chauffage . bois . présent:
+logement . location . logement-2 . chauffage . bois-2 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 3
 logement . location . logement-3:
   applicable si: location . nombre >= 3
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
   unité: kgCO2e
 
 logement . location . logement-3 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 3
   question: Quelle est la surface de votre troisième logement en location ?
   applicable si: location . nombre >= 3
   plancher: 1
@@ -509,7 +555,7 @@ logement . location . logement-3 . surface:
   unité: m2
 
 logement . location . logement-3 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 3
   question: Votre troisième logement en location est-il un appartement ?
   applicable si: location . nombre >= 3
   description: |
@@ -542,26 +588,40 @@ logement . location . logement-3 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-3 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-3 . DPE . A:
   titre: DPE A
@@ -584,125 +644,131 @@ logement . location . logement-3 . DPE . F:
 logement . location . logement-3 . DPE . G:
   titre: DPE G
 
-logement . location . logement-3 . DPE . non renseigné:
-  titre: DPE non renseigné
-
-logement . location . logement-3 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-3 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-3 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-3 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-3 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-3 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-3 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-3 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-3 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 3
   applicable si: location . nombre >= 3
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-3 . présent
+      - électricité-3 . présent
+      - gaz-3 . présent
+      - réseau de chaleur-3 . présent
+      - bouteille gaz-3 . présent
+      - citerne propane-3 . présent
+      - fioul-3 . présent
+      - bois-3 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-3 . présent: non
+        électricité-3 . présent: non
+        gaz-3 . présent: non
+        réseau de chaleur-3 . présent: non
+        bouteille gaz-3 . présent: non
+        citerne propane-3 . présent: non
+        fioul-3 . présent: non
+        bois-3 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre troisième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du troisième logement que vous louez.
 
-logement . location . logement-3 . chauffage . PAC:
+logement . location . logement-3 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-3 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-3 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-3 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-3 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-3 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-3 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-3 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-3 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-3 . chauffage . PAC-3:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-3 . chauffage . PAC . présent:
+logement . location . logement-3 . chauffage . PAC-3 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-3 . chauffage . électricité:
+logement . location . logement-3 . chauffage . électricité-3:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-3 . chauffage . électricité . présent:
+logement . location . logement-3 . chauffage . électricité-3 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-3 . chauffage . gaz:
+logement . location . logement-3 . chauffage . gaz-3:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-3 . chauffage . gaz . présent:
+logement . location . logement-3 . chauffage . gaz-3 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-3 . chauffage . réseau de chaleur:
+logement . location . logement-3 . chauffage . réseau de chaleur-3:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-3 . chauffage . réseau de chaleur . présent:
+logement . location . logement-3 . chauffage . réseau de chaleur-3 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-3 . chauffage . bouteille gaz:
+logement . location . logement-3 . chauffage . bouteille gaz-3:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-3 . chauffage . bouteille gaz . présent:
+logement . location . logement-3 . chauffage . bouteille gaz-3 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-3 . chauffage . citerne propane:
+logement . location . logement-3 . chauffage . citerne propane-3:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-3 . chauffage . citerne propane . présent:
+logement . location . logement-3 . chauffage . citerne propane-3 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-3 . chauffage . fioul:
+logement . location . logement-3 . chauffage . fioul-3:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-3 . chauffage . fioul . présent:
+logement . location . logement-3 . chauffage . fioul-3 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-3 . chauffage . bois:
+logement . location . logement-3 . chauffage . bois-3:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-3 . chauffage . bois . présent:
+logement . location . logement-3 . chauffage . bois-3 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 4
 logement . location . logement-4:
   applicable si: location . nombre >= 4
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
   unité: kgCO2e
 
 logement . location . logement-4 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 4
   question: Quelle est la surface de votre quatrième logement en location ?
   applicable si: location . nombre >= 4
   plancher: 1
@@ -730,7 +796,7 @@ logement . location . logement-4 . surface:
   unité: m2
 
 logement . location . logement-4 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 4
   question: Votre quatrième logement en location est-il un appartement ?
   applicable si: location . nombre >= 4
   description: |
@@ -763,26 +829,40 @@ logement . location . logement-4 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-4 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-4 . DPE . A:
   titre: DPE A
@@ -808,122 +888,131 @@ logement . location . logement-4 . DPE . G:
 logement . location . logement-4 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-4 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-4 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-4 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-4 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-4 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-4 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-4 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-4 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-4 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 4
   applicable si: location . nombre >= 4
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-4 . présent
+      - électricité-4 . présent
+      - gaz-4 . présent
+      - réseau de chaleur-4 . présent
+      - bouteille gaz-4 . présent
+      - citerne propane-4 . présent
+      - fioul-4 . présent
+      - bois-4 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-4 . présent: non
+        électricité-4 . présent: non
+        gaz-4 . présent: non
+        réseau de chaleur-4 . présent: non
+        bouteille gaz-4 . présent: non
+        citerne propane-4 . présent: non
+        fioul-4 . présent: non
+        bois-4 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre quatrième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du quatrième logement que vous louez.
 
-logement . location . logement-4 . chauffage . PAC:
+logement . location . logement-4 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-4 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-4 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-4 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-4 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-4 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-4 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-4 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-4 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-4 . chauffage . PAC-4:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-4 . chauffage . PAC . présent:
+logement . location . logement-4 . chauffage . PAC-4 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-4 . chauffage . électricité:
+logement . location . logement-4 . chauffage . électricité-4:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-4 . chauffage . électricité . présent:
+logement . location . logement-4 . chauffage . électricité-4 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-4 . chauffage . gaz:
+logement . location . logement-4 . chauffage . gaz-4:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-4 . chauffage . gaz . présent:
+logement . location . logement-4 . chauffage . gaz-4 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-4 . chauffage . réseau de chaleur:
+logement . location . logement-4 . chauffage . réseau de chaleur-4:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-4 . chauffage . réseau de chaleur . présent:
+logement . location . logement-4 . chauffage . réseau de chaleur-4 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-4 . chauffage . bouteille gaz:
+logement . location . logement-4 . chauffage . bouteille gaz-4:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-4 . chauffage . bouteille gaz . présent:
+logement . location . logement-4 . chauffage . bouteille gaz-4 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-4 . chauffage . citerne propane:
+logement . location . logement-4 . chauffage . citerne propane-4:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-4 . chauffage . citerne propane . présent:
+logement . location . logement-4 . chauffage . citerne propane-4 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-4 . chauffage . fioul:
+logement . location . logement-4 . chauffage . fioul-4:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-4 . chauffage . fioul . présent:
+logement . location . logement-4 . chauffage . fioul-4 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-4 . chauffage . bois:
+logement . location . logement-4 . chauffage . bois-4:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-4 . chauffage . bois . présent:
+logement . location . logement-4 . chauffage . bois-4 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 5
 logement . location . logement-5:
   applicable si: location . nombre >= 5
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
   unité: kgCO2e
 
 logement . location . logement-5 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 5
   question: Quelle est la surface de votre cinquième logement en location ?
   applicable si: location . nombre >= 5
   plancher: 1
@@ -951,7 +1040,7 @@ logement . location . logement-5 . surface:
   unité: m2
 
 logement . location . logement-5 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 5
   question: Votre cinquième logement en location est-il un appartement ?
   applicable si: location . nombre >= 5
   description: |
@@ -984,26 +1073,40 @@ logement . location . logement-5 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-5 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-5 . DPE . A:
   titre: DPE A
@@ -1029,122 +1132,131 @@ logement . location . logement-5 . DPE . G:
 logement . location . logement-5 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-5 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-5 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-5 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-5 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-5 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-5 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-5 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-5 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-5 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 5
   applicable si: location . nombre >= 5
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-5 . présent
+      - électricité-5 . présent
+      - gaz-5 . présent
+      - réseau de chaleur-5 . présent
+      - bouteille gaz-5 . présent
+      - citerne propane-5 . présent
+      - fioul-5 . présent
+      - bois-5 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-5 . présent: non
+        électricité-5 . présent: non
+        gaz-5 . présent: non
+        réseau de chaleur-5 . présent: non
+        bouteille gaz-5 . présent: non
+        citerne propane-5 . présent: non
+        fioul-5 . présent: non
+        bois-5 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre cinquième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du cinquième logement que vous louez.
 
-logement . location . logement-5 . chauffage . PAC:
+logement . location . logement-5 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-5 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-5 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-5 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-5 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-5 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-5 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-5 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-5 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-5 . chauffage . PAC-5:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-5 . chauffage . PAC . présent:
+logement . location . logement-5 . chauffage . PAC-5 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-5 . chauffage . électricité:
+logement . location . logement-5 . chauffage . électricité-5:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-5 . chauffage . électricité . présent:
+logement . location . logement-5 . chauffage . électricité-5 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-5 . chauffage . gaz:
+logement . location . logement-5 . chauffage . gaz-5:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-5 . chauffage . gaz . présent:
+logement . location . logement-5 . chauffage . gaz-5 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-5 . chauffage . réseau de chaleur:
+logement . location . logement-5 . chauffage . réseau de chaleur-5:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-5 . chauffage . réseau de chaleur . présent:
+logement . location . logement-5 . chauffage . réseau de chaleur-5 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-5 . chauffage . bouteille gaz:
+logement . location . logement-5 . chauffage . bouteille gaz-5:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-5 . chauffage . bouteille gaz . présent:
+logement . location . logement-5 . chauffage . bouteille gaz-5 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-5 . chauffage . citerne propane:
+logement . location . logement-5 . chauffage . citerne propane-5:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-5 . chauffage . citerne propane . présent:
+logement . location . logement-5 . chauffage . citerne propane-5 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-5 . chauffage . fioul:
+logement . location . logement-5 . chauffage . fioul-5:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-5 . chauffage . fioul . présent:
+logement . location . logement-5 . chauffage . fioul-5 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-5 . chauffage . bois:
+logement . location . logement-5 . chauffage . bois-5:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-5 . chauffage . bois . présent:
+logement . location . logement-5 . chauffage . bois-5 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 6
 logement . location . logement-6:
   applicable si: location . nombre >= 6
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
   unité: kgCO2e
 
 logement . location . logement-6 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 6
   question: Quelle est la surface de votre sixième logement en location ?
   applicable si: location . nombre >= 6
   plancher: 1
@@ -1172,7 +1284,7 @@ logement . location . logement-6 . surface:
   unité: m2
 
 logement . location . logement-6 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 6
   question: Votre sixième logement en location est-il un appartement ?
   applicable si: location . nombre >= 6
   description: |
@@ -1205,26 +1317,40 @@ logement . location . logement-6 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-6 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-6 . DPE . A:
   titre: DPE A
@@ -1250,122 +1376,131 @@ logement . location . logement-6 . DPE . G:
 logement . location . logement-6 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-6 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-6 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-6 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-6 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-6 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-6 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-6 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-6 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-6 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 6
   applicable si: location . nombre >= 6
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-6 . présent
+      - électricité-6 . présent
+      - gaz-6 . présent
+      - réseau de chaleur-6 . présent
+      - bouteille gaz-6 . présent
+      - citerne propane-6 . présent
+      - fioul-6 . présent
+      - bois-6 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-6 . présent: non
+        électricité-6 . présent: non
+        gaz-6 . présent: non
+        réseau de chaleur-6 . présent: non
+        bouteille gaz-6 . présent: non
+        citerne propane-6 . présent: non
+        fioul-6 . présent: non
+        bois-6 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre sixième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du sixième logement que vous louez.
 
-logement . location . logement-6 . chauffage . PAC:
+logement . location . logement-6 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-6 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-6 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-6 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-6 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-6 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-6 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-6 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-6 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-6 . chauffage . PAC-6:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-6 . chauffage . PAC . présent:
+logement . location . logement-6 . chauffage . PAC-6 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-6 . chauffage . électricité:
+logement . location . logement-6 . chauffage . électricité-6:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-6 . chauffage . électricité . présent:
+logement . location . logement-6 . chauffage . électricité-6 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-6 . chauffage . gaz:
+logement . location . logement-6 . chauffage . gaz-6:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-6 . chauffage . gaz . présent:
+logement . location . logement-6 . chauffage . gaz-6 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-6 . chauffage . réseau de chaleur:
+logement . location . logement-6 . chauffage . réseau de chaleur-6:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-6 . chauffage . réseau de chaleur . présent:
+logement . location . logement-6 . chauffage . réseau de chaleur-6 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-6 . chauffage . bouteille gaz:
+logement . location . logement-6 . chauffage . bouteille gaz-6:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-6 . chauffage . bouteille gaz . présent:
+logement . location . logement-6 . chauffage . bouteille gaz-6 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-6 . chauffage . citerne propane:
+logement . location . logement-6 . chauffage . citerne propane-6:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-6 . chauffage . citerne propane . présent:
+logement . location . logement-6 . chauffage . citerne propane-6 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-6 . chauffage . fioul:
+logement . location . logement-6 . chauffage . fioul-6:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-6 . chauffage . fioul . présent:
+logement . location . logement-6 . chauffage . fioul-6 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-6 . chauffage . bois:
+logement . location . logement-6 . chauffage . bois-6:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-6 . chauffage . bois . présent:
+logement . location . logement-6 . chauffage . bois-6 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 7
 logement . location . logement-7:
   applicable si: location . nombre >= 7
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
   unité: kgCO2e
 
 logement . location . logement-7 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 7
   question: Quelle est la surface de votre septième logement en location ?
   applicable si: location . nombre >= 7
   plancher: 1
@@ -1393,7 +1528,7 @@ logement . location . logement-7 . surface:
   unité: m2
 
 logement . location . logement-7 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 7
   question: Votre septième logement en location est-il un appartement ?
   applicable si: location . nombre >= 7
   description: |
@@ -1426,26 +1561,40 @@ logement . location . logement-7 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-7 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-7 . DPE . A:
   titre: DPE A
@@ -1471,122 +1620,131 @@ logement . location . logement-7 . DPE . G:
 logement . location . logement-7 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-7 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-7 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-7 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-7 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-7 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-7 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-7 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-7 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-7 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 7
   applicable si: location . nombre >= 7
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-7 . présent
+      - électricité-7 . présent
+      - gaz-7 . présent
+      - réseau de chaleur-7 . présent
+      - bouteille gaz-7 . présent
+      - citerne propane-7 . présent
+      - fioul-7 . présent
+      - bois-7 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-7 . présent: non
+        électricité-7 . présent: non
+        gaz-7 . présent: non
+        réseau de chaleur-7 . présent: non
+        bouteille gaz-7 . présent: non
+        citerne propane-7 . présent: non
+        fioul-7 . présent: non
+        bois-7 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre septième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du septième logement que vous louez.
 
-logement . location . logement-7 . chauffage . PAC:
+logement . location . logement-7 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-7 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-7 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-7 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-7 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-7 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-7 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-7 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-7 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-7 . chauffage . PAC-7:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-7 . chauffage . PAC . présent:
+logement . location . logement-7 . chauffage . PAC-7 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-7 . chauffage . électricité:
+logement . location . logement-7 . chauffage . électricité-7:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-7 . chauffage . électricité . présent:
+logement . location . logement-7 . chauffage . électricité-7 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-7 . chauffage . gaz:
+logement . location . logement-7 . chauffage . gaz-7:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-7 . chauffage . gaz . présent:
+logement . location . logement-7 . chauffage . gaz-7 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-7 . chauffage . réseau de chaleur:
+logement . location . logement-7 . chauffage . réseau de chaleur-7:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-7 . chauffage . réseau de chaleur . présent:
+logement . location . logement-7 . chauffage . réseau de chaleur-7 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-7 . chauffage . bouteille gaz:
+logement . location . logement-7 . chauffage . bouteille gaz-7:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-7 . chauffage . bouteille gaz . présent:
+logement . location . logement-7 . chauffage . bouteille gaz-7 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-7 . chauffage . citerne propane:
+logement . location . logement-7 . chauffage . citerne propane-7:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-7 . chauffage . citerne propane . présent:
+logement . location . logement-7 . chauffage . citerne propane-7 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-7 . chauffage . fioul:
+logement . location . logement-7 . chauffage . fioul-7:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-7 . chauffage . fioul . présent:
+logement . location . logement-7 . chauffage . fioul-7 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-7 . chauffage . bois:
+logement . location . logement-7 . chauffage . bois-7:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-7 . chauffage . bois . présent:
+logement . location . logement-7 . chauffage . bois-7 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 8
 logement . location . logement-8:
   applicable si: location . nombre >= 8
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
   unité: kgCO2e
 
 logement . location . logement-8 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 8
   question: Quelle est la surface de votre huitième logement en location ?
   applicable si: location . nombre >= 8
   plancher: 1
@@ -1614,7 +1772,7 @@ logement . location . logement-8 . surface:
   unité: m2
 
 logement . location . logement-8 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 8
   question: Votre huitième logement en location est-il un appartement ?
   applicable si: location . nombre >= 8
   description: |
@@ -1647,26 +1805,40 @@ logement . location . logement-8 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-8 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-8 . DPE . A:
   titre: DPE A
@@ -1692,122 +1864,131 @@ logement . location . logement-8 . DPE . G:
 logement . location . logement-8 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-8 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-8 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-8 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-8 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-8 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-8 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-8 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-8 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-8 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 8
   applicable si: location . nombre >= 8
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-8 . présent
+      - électricité-8 . présent
+      - gaz-8 . présent
+      - réseau de chaleur-8 . présent
+      - bouteille gaz-8 . présent
+      - citerne propane-8 . présent
+      - fioul-8 . présent
+      - bois-8 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-8 . présent: non
+        électricité-8 . présent: non
+        gaz-8 . présent: non
+        réseau de chaleur-8 . présent: non
+        bouteille gaz-8 . présent: non
+        citerne propane-8 . présent: non
+        fioul-8 . présent: non
+        bois-8 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre huitième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du huitième logement que vous louez.
 
-logement . location . logement-8 . chauffage . PAC:
+logement . location . logement-8 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-8 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-8 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-8 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-8 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-8 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-8 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-8 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-8 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-8 . chauffage . PAC-8:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-8 . chauffage . PAC . présent:
+logement . location . logement-8 . chauffage . PAC-8 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-8 . chauffage . électricité:
+logement . location . logement-8 . chauffage . électricité-8:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-8 . chauffage . électricité . présent:
+logement . location . logement-8 . chauffage . électricité-8 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-8 . chauffage . gaz:
+logement . location . logement-8 . chauffage . gaz-8:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-8 . chauffage . gaz . présent:
+logement . location . logement-8 . chauffage . gaz-8 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-8 . chauffage . réseau de chaleur:
+logement . location . logement-8 . chauffage . réseau de chaleur-8:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-8 . chauffage . réseau de chaleur . présent:
+logement . location . logement-8 . chauffage . réseau de chaleur-8 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-8 . chauffage . bouteille gaz:
+logement . location . logement-8 . chauffage . bouteille gaz-8:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-8 . chauffage . bouteille gaz . présent:
+logement . location . logement-8 . chauffage . bouteille gaz-8 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-8 . chauffage . citerne propane:
+logement . location . logement-8 . chauffage . citerne propane-8:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-8 . chauffage . citerne propane . présent:
+logement . location . logement-8 . chauffage . citerne propane-8 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-8 . chauffage . fioul:
+logement . location . logement-8 . chauffage . fioul-8:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-8 . chauffage . fioul . présent:
+logement . location . logement-8 . chauffage . fioul-8 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-8 . chauffage . bois:
+logement . location . logement-8 . chauffage . bois-8:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-8 . chauffage . bois . présent:
+logement . location . logement-8 . chauffage . bois-8 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 9
 logement . location . logement-9:
   applicable si: location . nombre >= 9
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
   unité: kgCO2e
 
 logement . location . logement-9 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 9
   question: Quelle est la surface de votre neuvième logement en location ?
   applicable si: location . nombre >= 9
   plancher: 1
@@ -1835,7 +2016,7 @@ logement . location . logement-9 . surface:
   unité: m2
 
 logement . location . logement-9 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 9
   question: Votre neuvième logement en location est-il un appartement ?
   applicable si: location . nombre >= 9
   description: |
@@ -1868,26 +2049,40 @@ logement . location . logement-9 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-9 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-9 . DPE . A:
   titre: DPE A
@@ -1913,122 +2108,131 @@ logement . location . logement-9 . DPE . G:
 logement . location . logement-9 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-9 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-9 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-9 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-9 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-9 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-9 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-9 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-9 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-9 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 9
   applicable si: location . nombre >= 9
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-9 . présent
+      - électricité-9 . présent
+      - gaz-9 . présent
+      - réseau de chaleur-9 . présent
+      - bouteille gaz-9 . présent
+      - citerne propane-9 . présent
+      - fioul-9 . présent
+      - bois-9 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-9 . présent: non
+        électricité-9 . présent: non
+        gaz-9 . présent: non
+        réseau de chaleur-9 . présent: non
+        bouteille gaz-9 . présent: non
+        citerne propane-9 . présent: non
+        fioul-9 . présent: non
+        bois-9 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre neuvième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du neuvième logement que vous louez.
 
-logement . location . logement-9 . chauffage . PAC:
+logement . location . logement-9 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-9 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-9 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-9 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-9 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-9 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-9 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-9 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-9 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-9 . chauffage . PAC-9:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-9 . chauffage . PAC . présent:
+logement . location . logement-9 . chauffage . PAC-9 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-9 . chauffage . électricité:
+logement . location . logement-9 . chauffage . électricité-9:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-9 . chauffage . électricité . présent:
+logement . location . logement-9 . chauffage . électricité-9 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-9 . chauffage . gaz:
+logement . location . logement-9 . chauffage . gaz-9:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-9 . chauffage . gaz . présent:
+logement . location . logement-9 . chauffage . gaz-9 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-9 . chauffage . réseau de chaleur:
+logement . location . logement-9 . chauffage . réseau de chaleur-9:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-9 . chauffage . réseau de chaleur . présent:
+logement . location . logement-9 . chauffage . réseau de chaleur-9 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-9 . chauffage . bouteille gaz:
+logement . location . logement-9 . chauffage . bouteille gaz-9:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-9 . chauffage . bouteille gaz . présent:
+logement . location . logement-9 . chauffage . bouteille gaz-9 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-9 . chauffage . citerne propane:
+logement . location . logement-9 . chauffage . citerne propane-9:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-9 . chauffage . citerne propane . présent:
+logement . location . logement-9 . chauffage . citerne propane-9 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-9 . chauffage . fioul:
+logement . location . logement-9 . chauffage . fioul-9:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-9 . chauffage . fioul . présent:
+logement . location . logement-9 . chauffage . fioul-9 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-9 . chauffage . bois:
+logement . location . logement-9 . chauffage . bois-9:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-9 . chauffage . bois . présent:
+logement . location . logement-9 . chauffage . bois-9 . présent:
   question: Votre logement en location est-il chauffé au bois ?
 
 ### Logement 10
 logement . location . logement-10:
   applicable si: location . nombre >= 10
-  formule: 0
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
   unité: kgCO2e
 
 logement . location . logement-10 . surface:
-  titre: Surface location logement 1
+  titre: Surface location logement 10
   question: Quelle est la surface de votre dixième logement en location ?
   applicable si: location . nombre >= 10
   plancher: 1
@@ -2056,7 +2260,7 @@ logement . location . logement-10 . surface:
   unité: m2
 
 logement . location . logement-10 . appartement:
-  titre: Appartement location logement 1
+  titre: Appartement location logement 10
   question: Votre dixième logement en location est-il un appartement ?
   applicable si: location . nombre >= 10
   description: |
@@ -2089,26 +2293,40 @@ logement . location . logement-10 . DPE:
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
     Les DPE sont classés d'une échelle allant de A à G.
-### A voir si la question prend la forme d'une formule "une possibilité" ou si je reste sur une mosaique (car pas sûr que la fonction
-### "par défaut" fonctionne correctement)
-#  formule:
-#    une possibilité:
-#      choix obligatoire: oui
-#      possibilités:
-#        - A 
-#        - B
-  mosaique:
-    type: selection
-    options:
-      - A . présent
-      - B . présent
-      - C . présent
-      - D . présent
-      - E . présent
-      - F . présent
-      - G . présent
-### S'assurer que le fonctionnement de la fonction "par défaut" marche correctement
-  par défaut: DPE . non renseigné
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-10 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . location . logement-10 . DPE . A:
   titre: DPE A
@@ -2134,110 +2352,119 @@ logement . location . logement-10 . DPE . G:
 logement . location . logement-10 . DPE . non renseigné:
   titre: DPE non renseigné
 
-logement . location . logement-10 . DPE . A . présent:
-  question: Votre logement en location est-il un DPE A ?
-
-logement . location . logement-10 . DPE . B . présent:
-  question: Votre logement en location est-il un DPE B ?
-
-logement . location . logement-10 . DPE . C . présent:
-  question: Votre logement en location est-il un DPE C ?
-
-logement . location . logement-10 . DPE . D . présent:
-  question: Votre logement en location est-il un DPE D ?
-
-logement . location . logement-10 . DPE . E . présent:
-  question: Votre logement en location est-il un DPE E ?
-
-logement . location . logement-10 . DPE . F . présent:
-  question: Votre logement en location est-il un DPE F ?
-
-logement . location . logement-10 . DPE . G . présent:
-  question: Votre logement en location est-il un DPE G ?
-
-logement . location . logement-10 . DPE . non renseigné . présent:
-  question: Votre logement en location est-il un DPE non renseigné ?
-
 logement . location . logement-10 . chauffage:
-  titre: Energie location logement 1
+  titre: Energie location logement 10
   applicable si: location . nombre >= 10
   mosaique:
     type: selection
     options:
-      - PAC . présent
-      - électricité . présent
-      - gaz . présent
-      - réseau de chaleur . présent
-      - bouteille gaz . présent
-      - citerne propane . présent
-      - fioul . présent
-      - bois . présent
+      - PAC-10 . présent
+      - électricité-10 . présent
+      - gaz-10 . présent
+      - réseau de chaleur-10 . présent
+      - bouteille gaz-10 . présent
+      - citerne propane-10 . présent
+      - fioul-10 . présent
+      - bois-10 . présent
     suggestions:
       pas de chauffage:
-        PAC . présent: non
-        électricité . présent: non
-        gaz . présent: non
-        réseau de chaleur . présent: non
-        bouteille gaz . présent: non
-        citerne propane . présent: non
-        fioul . présent: non
-        bois . présent: non
+        PAC-10 . présent: non
+        électricité-10 . présent: non
+        gaz-10 . présent: non
+        réseau de chaleur-10 . présent: non
+        bouteille gaz-10 . présent: non
+        citerne propane-10 . présent: non
+        fioul-10 . présent: non
+        bois-10 . présent: non
   icônes: 🌡️
   question: Quel type d'énergie votre dixième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du logement que vous louez.
+    > Cochez ici toutes les sources d'énergie présentes au sein du dixième logement que vous louez.
 
-logement . location . logement-10 . chauffage . PAC:
+logement . location . logement-10 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-10 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-10 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-10 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-10 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-10 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-10 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-10 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-10 . présent
+        alors: 8
+        sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-10 . chauffage . PAC-10:
   titre: Pompe à chaleur
   icônes: 🌡️
 
-logement . location . logement-10 . chauffage . PAC . présent:
+logement . location . logement-10 . chauffage . PAC-10 . présent:
   question: Votre logement en location est-il chauffé via une pompe à chaleur ?
 
-logement . location . logement-10 . chauffage . électricité:
+logement . location . logement-10 . chauffage . électricité-10:
+  titre: Electricité
   icônes: ⚡️
 
-logement . location . logement-10 . chauffage . électricité . présent:
+logement . location . logement-10 . chauffage . électricité-10 . présent:
   question: Votre logement en location est-il chauffé à l'électricité ?
 
-logement . location . logement-10 . chauffage . gaz:
+logement . location . logement-10 . chauffage . gaz-10:
   titre: Réseau de gaz
   icônes: 🔥
 
-logement . location . logement-10 . chauffage . gaz . présent:
+logement . location . logement-10 . chauffage . gaz-10 . présent:
   question: Votre logement en location est-il chauffé au gaz ?
 
-logement . location . logement-10 . chauffage . réseau de chaleur:
+logement . location . logement-10 . chauffage . réseau de chaleur-10:
   icônes: 🏭
   titre: Réseau de chaleur
 
-logement . location . logement-10 . chauffage . réseau de chaleur . présent:
+logement . location . logement-10 . chauffage . réseau de chaleur-10 . présent:
   question: Votre logement en location est-il chauffé via un réseau de chaleur ?
 
-logement . location . logement-10 . chauffage . bouteille gaz:
+logement . location . logement-10 . chauffage . bouteille gaz-10:
   icônes: 🛢️🔥
   titre: Bouteille de gaz
 
-logement . location . logement-10 . chauffage . bouteille gaz . présent:
+logement . location . logement-10 . chauffage . bouteille gaz-10 . présent:
   question: Votre logement en location utilise-t'il des bouteille de gaz ?
 
-logement . location . logement-10 . chauffage . citerne propane:
+logement . location . logement-10 . chauffage . citerne propane-10:
   icônes: 🛢️🔥
   titre: Gaz propane en citerne
 
-logement . location . logement-10 . chauffage . citerne propane . présent:
+logement . location . logement-10 . chauffage . citerne propane-10 . présent:
   question: Votre logement en location est-il chauffé via une citerne de propane ?
 
-logement . location . logement-10 . chauffage . fioul:
+logement . location . logement-10 . chauffage . fioul-10:
   icônes: 🛢
   titre: Fioul domestique
 
-logement . location . logement-10 . chauffage . fioul . présent:
+logement . location . logement-10 . chauffage . fioul-10 . présent:
   question: Votre logement en location est-il chauffé au fioul ?
 
-logement . location . logement-10 . chauffage . bois:
+logement . location . logement-10 . chauffage . bois-10:
   titre: Bois ou granulés
   icônes: 🪵
 
-logement . location . logement-10 . chauffage . bois . présent:
+logement . location . logement-10 . chauffage . bois-10 . présent:
   question: Votre logement en location est-il chauffé au bois ?
