@@ -459,19 +459,19 @@ logement . vacances . empreinte résidences secondaires:
     somme:
       - résidence secondaire . construction-1
       - résidence secondaire . énergie-1
-      - 0.000001 * résidence secondaire . DPE-1 en chiffre
+      - 0.0000001 * résidence secondaire . âge-1 * résidence secondaire . DPE-1 en chiffre
       - résidence secondaire . construction-2
       - résidence secondaire . énergie-2
-      - 0.000001 * résidence secondaire . DPE-2 en chiffre
+      - 0.0000001 * résidence secondaire . âge-2 * résidence secondaire . DPE-2 en chiffre
       - résidence secondaire . construction-3
       - résidence secondaire . énergie-3
-      - 0.000001 * résidence secondaire . DPE-3 en chiffre
+      - 0.0000001 * résidence secondaire . âge-3 * résidence secondaire . DPE-3 en chiffre
       - résidence secondaire . construction-4
       - résidence secondaire . énergie-4
-      - 0.000001 * résidence secondaire . DPE-4 en chiffre
+      - 0.0000001 * résidence secondaire . âge-4 * résidence secondaire . DPE-4 en chiffre
       - résidence secondaire . construction-5
       - résidence secondaire . énergie-5
-      - 0.000001 * résidence secondaire . DPE-5 en chiffre
+      - 0.0000001 * résidence secondaire . âge-5 * résidence secondaire . DPE-5 en chiffre
   unité: kgCO2e
 
 logement . vacances . résidences secondaires:
@@ -865,7 +865,7 @@ logement . vacances . résidence secondaire . DPE-1 en chiffre:
         alors: 6
       - si: DPE-1 = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -892,6 +892,29 @@ logement . vacances . résidence secondaire . DPE-1 . G:
 
 logement . vacances . résidence secondaire . DPE-1 . non renseigné:
   titre: DPE non renseigné
+
+logement . vacances . résidence secondaire . âge-1:
+  question: Quel est l'âge de votre première résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 1
+  plancher: 0
+  par défaut: 45
+  unité: an
+  description: |
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre résidence secondaire est neuve et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+  suggestions:
+    neuf: 0
+    récent: 10
+    années 70: 50
+    années 50: 70
+    un siècle: 100
 
 #### Règles pour la possession d'une deuxième résidence
 
@@ -1018,27 +1041,27 @@ logement . vacances . résidence secondaire . saison-2:
     une possibilité:
       choix obligatoire: oui
       possibilités:
-        - été-2
-        - surtout été-2
-        - surtout hiver-2
-        - hiver-2
-  par défaut: "'surtout été-2'"
+        - été
+        - surtout été
+        - surtout hiver
+        - hiver
+  par défaut: "'surtout été'"
   note: |
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
-logement . vacances . résidence secondaire . saison-2 . été-2:
+logement . vacances . résidence secondaire . saison-2 . été:
   titre: Seulement l'été
   icônes: ☀️
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en été.
-logement . vacances . résidence secondaire . saison-2 . surtout été-2:
+logement . vacances . résidence secondaire . saison-2 . surtout été:
   titre: Surtout l'été
   icônes: 🌤️
   description: Vous vous rendez dans votre deuxième résidence secondaire majoritairement en été.
-logement . vacances . résidence secondaire . saison-2 . surtout hiver-2:
+logement . vacances . résidence secondaire . saison-2 . surtout hiver:
   titre: Surtout l'hiver
   icônes: ⛈️
   description: Vous vous rendez dans votre deuxième résidence secondaire majoritairement en hiver.
-logement . vacances . résidence secondaire . saison-2 . hiver-2:
+logement . vacances . résidence secondaire . saison-2 . hiver:
   titre: Seulement l'hiver
   icônes: ❄️
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en hiver.
@@ -1081,7 +1104,7 @@ logement . vacances . résidence secondaire . DPE-2 en chiffre:
         alors: 6
       - si: DPE-2 = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1108,6 +1131,29 @@ logement . vacances . résidence secondaire . DPE-2 . G:
 
 logement . vacances . résidence secondaire . DPE-2 . non renseigné:
   titre: DPE non renseigné
+
+logement . vacances . résidence secondaire . âge-2:
+  question: Quel est l'âge de votre deuxième résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 2
+  plancher: 0
+  par défaut: 45
+  unité: an
+  description: |
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre résidence secondaire est neuve et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+  suggestions:
+    neuf: 0
+    récent: 10
+    années 70: 50
+    années 50: 70
+    un siècle: 100
 
 #### Règles pour la possession d'une troisième résidence
 
@@ -1297,7 +1343,7 @@ logement . vacances . résidence secondaire . DPE-3 en chiffre:
         alors: 6
       - si: DPE-3 = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1324,6 +1370,29 @@ logement . vacances . résidence secondaire . DPE-3 . G:
 
 logement . vacances . résidence secondaire . DPE-3 . non renseigné:
   titre: DPE non renseigné
+
+logement . vacances . résidence secondaire . âge-3:
+  question: Quel est l'âge de votre troisième résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 3
+  plancher: 0
+  par défaut: 45
+  unité: an
+  description: |
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre résidence secondaire est neuve et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+  suggestions:
+    neuf: 0
+    récent: 10
+    années 70: 50
+    années 50: 70
+    un siècle: 100
 
 #### Règles pour la possession d'une quatrième résidence
 
@@ -1513,7 +1582,7 @@ logement . vacances . résidence secondaire . DPE-4 en chiffre:
         alors: 6
       - si: DPE-4 = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1541,6 +1610,29 @@ logement . vacances . résidence secondaire . DPE-4 . G:
 
 logement . vacances . résidence secondaire . DPE-4 . non renseigné:
   titre: DPE non renseigné
+
+logement . vacances . résidence secondaire . âge-4:
+  question: Quel est l'âge de votre quatrième résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 4
+  plancher: 0
+  par défaut: 45
+  unité: an
+  description: |
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre résidence secondaire est neuve et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+  suggestions:
+    neuf: 0
+    récent: 10
+    années 70: 50
+    années 50: 70
+    un siècle: 100
 
 #### Règles pour la possession d'une cinquième résidence
 
@@ -1757,3 +1849,26 @@ logement . vacances . résidence secondaire . DPE-5 . G:
 
 logement . vacances . résidence secondaire . DPE-5 . non renseigné:
   titre: DPE non renseigné
+
+logement . vacances . résidence secondaire . âge-5:
+  question: Quel est l'âge de votre cinquième résidence secondaire ?
+  applicable si: résidences secondaires . nombre >= 5
+  plancher: 0
+  par défaut: 45
+  unité: an
+  description: |
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre résidence secondaire est neuve et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+  suggestions:
+    neuf: 0
+    récent: 10
+    années 70: 50
+    années 50: 70
+    un siècle: 100

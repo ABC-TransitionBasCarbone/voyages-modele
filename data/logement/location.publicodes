@@ -130,7 +130,7 @@ logement . location . logement-1 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -215,7 +215,7 @@ logement . location . logement-1 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-1 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -374,7 +374,7 @@ logement . location . logement-2 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -460,7 +460,7 @@ logement . location . logement-2 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-2 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -619,7 +619,7 @@ logement . location . logement-3 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -701,7 +701,7 @@ logement . location . logement-3 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-3 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -860,7 +860,7 @@ logement . location . logement-4 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -945,7 +945,7 @@ logement . location . logement-4 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-4 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1104,7 +1104,7 @@ logement . location . logement-5 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1189,7 +1189,7 @@ logement . location . logement-5 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-5 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1348,7 +1348,7 @@ logement . location . logement-6 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1433,7 +1433,7 @@ logement . location . logement-6 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-6 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1592,7 +1592,7 @@ logement . location . logement-7 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1677,7 +1677,7 @@ logement . location . logement-7 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-7 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1836,7 +1836,7 @@ logement . location . logement-8 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -1921,7 +1921,7 @@ logement . location . logement-8 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-8 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -2080,7 +2080,7 @@ logement . location . logement-9 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -2165,7 +2165,7 @@ logement . location . logement-9 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-9 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -2324,7 +2324,7 @@ logement . location . logement-10 . DPE en chiffre:
         alors: 6
       - si: DPE = 'G'
         alors: 7
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
@@ -2409,7 +2409,7 @@ logement . location . logement-10 . chauffage en chiffre:
       - si:
           est défini: chauffage . bois-10 . présent
         alors: 8
-        sinon: 99
+      - sinon: 99
   note:  |
     L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
 
