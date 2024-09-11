@@ -21,5 +21,4 @@ const models = {
     'co2-model.FR-lang.fr.json': FR_fr,
 }
 
-export * from './index.d.ts';
 export { supportedRegions, personas, migration, models }
