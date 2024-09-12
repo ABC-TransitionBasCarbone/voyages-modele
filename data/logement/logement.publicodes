@@ -20,7 +20,7 @@ logement:
       - vacances
       - location
       - jardin
-#      - 0.0000001 * statut en chiffre * DPE en chiffre
+      - 0.0000001 * statut en chiffre * DPE en chiffre
   unité: kgCO2e
 
 logement . habitants:
