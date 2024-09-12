@@ -20,20 +20,16 @@ logement:
       - vacances
       - location
       - jardin
-      - 0.0000001 * statut en chiffre * DPE en chiffre
+#      - 0.0000001 * statut en chiffre * DPE en chiffre
   unité: kgCO2e
 
 logement . habitants:
   titre: Nombre de personnes dans le logement
-  question: Combien de personnes vivent chez vous ?
+  question: Combien de personnes vivent chez vous, au sein de votre logement principal ?
   description: |
-    Il s'agit de savoir combien de personnes partagent votre logement et toutes les consommations qu'il entraîne (construction, chauffage, etc).
-
-    > Si vous vivez seul, répondez `1`.
-
-    > Si vous vivez avec votre conjoint et un enfant, répondez `3`.
-
-    > Si vous êtes séparé avec un enfant qui alterne entre votre logement et un autre, vous pouvez saisir `1,5`.
+    Si vous vivez seul, répondez 1.
+    Si vous vivez avec votre conjoint et un enfant, répondez 3.
+    Si vous êtes séparé avec un enfant qui alterne entre votre logement et un autre, vous pouvez saisir 1,5.
 
   par défaut: 2.2
   plancher: 1
@@ -50,7 +46,7 @@ logement . habitants:
 
 logement . surface:
   titre: Surface
-  question: Quelle est la surface de votre logement ?
+  question: Quelle est la surface de votre logement principal?
   plancher: 1
   avertissement: |
     La surface de votre logement ne peut-être nulle.
@@ -79,21 +75,15 @@ logement . surface:
 
 logement . appartement:
   titre: Appartement
-  question: Votre logement est-il un appartement ?
+  question: Votre logement principal est-il un appartement (par opposition à une maison individuelle) ?
   description: |
-    Par opposition à une maison individuelle.
-
-    L'augmentation de l'habitat en appartements peut nous faire oublier que la maison reste le logement majoritaire des foyers français en 2018.
-
-    Cette information influence notamment l'empreinte de construction, mais aussi les possibilités de travaux d'isolation par exemple.
-
-    > Si vous vivez dans un habitat original, par exemple un camping-car / un camion / une péniche, pas de problème : choisissez "appartement" et saisissez les m² de ce qui constitue quand même votre logement.
+    Si vous vivez dans un habitat original, par exemple un camping-car, un camion, une péniche, etc., répondez "oui" et répondez ensuite aux différentes questions en considérant les caractéristiques de ce qui constitue quand même votre logement.
   note: |
     En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . âge:
-  question: Quel est l'âge de votre logement ?
+  question: Quel est l'âge de votre logement principal ?
   plancher: 0
   par défaut: 45
   unité: an
@@ -146,7 +136,7 @@ logement . statut en chiffre:
         alors: 3
       - sinon: 99
   note:  |
-    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+    L'objet de cette variable est de convertir le statut en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . statut . propriétaire:
   titre: propriétaire

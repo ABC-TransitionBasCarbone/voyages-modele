@@ -11,7 +11,8 @@ importer!:
         applicable si: piscine . présent
         question: Quelle est la taille de votre piscine ?
         description: |
-          💡 Pensez à prendre en compte **les consommations d'énergie de la piscine dans celles de votre logement**. Votre facture devrait d'ailleurs être fortement impactée si votre piscine est chauffée !
+          La consommation d'énergie renseignée précédement inclut-elle bien la consommation de la piscine (notamment si cette dernière est chauffée). Si vous avez un contrat unique 
+          pour l'ensemble de votre logement principal c'est probablement le cas. Si ça ne l'est pas revenez en arrière et ajoutez là.
         unité: m2
         suggestions:
           3 x 5 mètres: 15
@@ -44,9 +45,9 @@ logement . piscine:
     Ce sont les travaux de construction, d'entretien, d'achat du matériel divers nécessaire (sureté, gestion de l'eau, produits chimiques sanitaires), et de chauffage qui sont les plus impactants pour le climat.
 
 logement . piscine . présent:
-  question: Votre logement dispose-t-il d'une piscine privée (enterrée/creusée) ?
+  question: En 2023, votre logement principal disposait-il d'une piscine privée (enterrée/creusée) ?
   description: |
-    Il est question ici de piscine privées **enterrées**, et non de piscines hors-sol, dont l'empreinte carbone est bien inférieure. Cette option sera néanmoins disponible prochainement !
+    Il est question ici de piscines privées **enterrées**, et non de piscines hors-sol (gonflabes, en bois...).
   note: |
     Aujourd'hui, nous posons la question à toutes les personnes qui possèdent une maison.
     Afin de limiter l'apparition de cette question pour les utilisateurs qui ne possèdent pas de terrain, ou qui ne sont absoluement pas concernés par la piscine, 

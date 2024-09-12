@@ -42,16 +42,17 @@ logement . électricité . réseau:
   icônes: ⚡
 
 logement . électricité . réseau . consommation:
-  question: Quelle est la consommation annuelle d'électricité (réseau) de votre foyer ?
+  question: En 2023, quelle a été la consommation annuelle d'électricité (de réseau) de votre logement principal ?
   aide: logement . électricité . réseau . consommation estimée via le coût . saisie
   plancher: 0
   unité: kWh
   par défaut: consommation par défaut
   note: on considère que seule la consommation d'électricité liée au chauffage est dépendante de la surface du logement
   description: |
-    Astuce : vous trouverez la consommation annuelle d'électricité sur vos factures ou sur votre compte en ligne sur le site de votre fournisseur.
-
-    Pour rappel, si vous vivez dans plusieurs logements (par exemple, si vous avez une résidence secondaire), essayez de "ramener" ces consommations dans celles du logement principal afin d'avoir l'estimation la plus juste possible.
+    Nous nous intéressons ici à la seule consommation d'électricité issue d'un contrat passé avec un fournisseur d'éléctricité. Les cas de production
+    d'électricité et d'autoconsommation (pour des panneaux photovoltaiques en maison individuelle notamment) sont questionnés après.
+        
+    > Astuce : vous trouverez la consommation annuelle 2023 d'électricité sur vos factures ou sur votre compte en ligne sur le site de votre fournisseur.
 
 logement . électricité . réseau . consommation par défaut:
   titre: Consommation par défaut électricité
@@ -131,7 +132,7 @@ logement . électricité . photovoltaique . présent:
     toutes ces conditions:
       - est défini: logement . appartement
       - appartement = oui
-  question: Votre logement dispose-t-il de panneaux photovoltaïques ?
+  question: Votre logement principal dispose-t-il de panneaux photovoltaïques ?
   par défaut: non
 
 logement . électricité . photovoltaique . production:

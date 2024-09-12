@@ -18,15 +18,15 @@ logement . location:
 
 logement . location . nombre:
   titre: Nombre de logements en location
-  question: En 2023, combien d'investissements locatifs (c.à.d de logements en location annuelle ou saisonnière) possédiez-vous ?
+  question: Combien d'investissements locatifs possedez-vous (c.à.d des logements que vous n'habitez pas et que vous mettez en location annuelle et/ou saisonnière) ?
   plancher: 0
   par défaut: 0
   description: |
     Ne comptez pas ici votre logement principal et d'éventuelles résidences secondaires que vous pourriez louer de temps en temps.
-    Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que 
-    vous dédiez à la location longue durée et/ou saisonnière.
+    Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que vous n'habitez pas mais que 
+    vous dédiez à la location longue durée (annuelle et/ou saisonnière).
 
-    **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas**
+ #   **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas**
   note: |
     Le nombre max de logement est fixé à 10 car, selon les données de l'[INSEE](https://www.insee.fr/fr/statistiques/5432517?sommaire=5435421) (cf. Excel),
     au sein du décile supérieur, 10% des individus possède 5 logements ou plus (33% pour le centile supérieur)
@@ -76,8 +76,18 @@ logement . location . logement-1 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-1 . âge:
-  question: Quel est l'âge de votre premier logement en location ?
+  question: Quel est l'âge de votre premier investissement locatif ?
   applicable si: location . nombre >= 1
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -172,20 +182,10 @@ logement . location . logement-1 . chauffage:
       - citerne propane-1 . présent
       - fioul-1 . présent
       - bois-1 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-1 . présent: non
-        électricité-1 . présent: non
-        gaz-1 . présent: non
-        réseau de chaleur-1 . présent: non
-        bouteille gaz-1 . présent: non
-        citerne propane-1 . présent: non
-        fioul-1 . présent: non
-        bois-1 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre premier logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre premier investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du premier logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-1 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -252,7 +252,7 @@ logement . location . logement-1 . chauffage . bouteille gaz-1:
   titre: Bouteille de gaz
 
 logement . location . logement-1 . chauffage . bouteille gaz-1 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-1 . chauffage . citerne propane-1:
   icônes: 🛢️🔥
@@ -320,8 +320,18 @@ logement . location . logement-2 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-2 . âge:
-  question: Quel est l'âge de votre deuxième logement en location ?
+  question: Quel est l'âge de votre deuxième investissement locatif ?
   applicable si: location . nombre >= 2
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -417,20 +427,10 @@ logement . location . logement-2 . chauffage:
       - citerne propane-2 . présent
       - fioul-2 . présent
       - bois-2 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-2 . présent: non
-        électricité-2 . présent: non
-        gaz-2 . présent: non
-        réseau de chaleur-2 . présent: non
-        bouteille gaz-2 . présent: non
-        citerne propane-2 . présent: non
-        fioul-2 . présent: non
-        bois-2 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre deuxième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre deuxième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du deuxième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-2 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -497,7 +497,7 @@ logement . location . logement-2 . chauffage . bouteille gaz-2:
   titre: Bouteille de gaz
 
 logement . location . logement-2 . chauffage . bouteille gaz-2 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-2 . chauffage . citerne propane-2:
   icônes: 🛢️🔥
@@ -565,8 +565,18 @@ logement . location . logement-3 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-3 . âge:
-  question: Quel est l'âge de votre troisième logement en location ?
+  question: Quel est l'âge de votre troisième investissement locatif ?
   applicable si: location . nombre >= 3
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -658,20 +668,10 @@ logement . location . logement-3 . chauffage:
       - citerne propane-3 . présent
       - fioul-3 . présent
       - bois-3 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-3 . présent: non
-        électricité-3 . présent: non
-        gaz-3 . présent: non
-        réseau de chaleur-3 . présent: non
-        bouteille gaz-3 . présent: non
-        citerne propane-3 . présent: non
-        fioul-3 . présent: non
-        bois-3 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre troisième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre troisième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du troisième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-3 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -738,7 +738,7 @@ logement . location . logement-3 . chauffage . bouteille gaz-3:
   titre: Bouteille de gaz
 
 logement . location . logement-3 . chauffage . bouteille gaz-3 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-3 . chauffage . citerne propane-3:
   icônes: 🛢️🔥
@@ -806,8 +806,18 @@ logement . location . logement-4 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-4 . âge:
-  question: Quel est l'âge de votre quatrième logement en location ?
+  question: Quel est l'âge de votre quatrième investissement locatif ?
   applicable si: location . nombre >= 4
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -902,20 +912,10 @@ logement . location . logement-4 . chauffage:
       - citerne propane-4 . présent
       - fioul-4 . présent
       - bois-4 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-4 . présent: non
-        électricité-4 . présent: non
-        gaz-4 . présent: non
-        réseau de chaleur-4 . présent: non
-        bouteille gaz-4 . présent: non
-        citerne propane-4 . présent: non
-        fioul-4 . présent: non
-        bois-4 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre quatrième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre quatrième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du quatrième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-4 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -982,7 +982,7 @@ logement . location . logement-4 . chauffage . bouteille gaz-4:
   titre: Bouteille de gaz
 
 logement . location . logement-4 . chauffage . bouteille gaz-4 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-4 . chauffage . citerne propane-4:
   icônes: 🛢️🔥
@@ -1050,8 +1050,18 @@ logement . location . logement-5 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-5 . âge:
-  question: Quel est l'âge de votre cinquième logement en location ?
+  question: Quel est l'âge de votre cinquième investissement locatif ?
   applicable si: location . nombre >= 5
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -1146,20 +1156,10 @@ logement . location . logement-5 . chauffage:
       - citerne propane-5 . présent
       - fioul-5 . présent
       - bois-5 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-5 . présent: non
-        électricité-5 . présent: non
-        gaz-5 . présent: non
-        réseau de chaleur-5 . présent: non
-        bouteille gaz-5 . présent: non
-        citerne propane-5 . présent: non
-        fioul-5 . présent: non
-        bois-5 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre cinquième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre cinquième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du cinquième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-5 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1226,7 +1226,7 @@ logement . location . logement-5 . chauffage . bouteille gaz-5:
   titre: Bouteille de gaz
 
 logement . location . logement-5 . chauffage . bouteille gaz-5 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-5 . chauffage . citerne propane-5:
   icônes: 🛢️🔥
@@ -1294,8 +1294,18 @@ logement . location . logement-6 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-6 . âge:
-  question: Quel est l'âge de votre sixième logement en location ?
+  question: Quel est l'âge de votre sixième investissement locatif ?
   applicable si: location . nombre >= 6
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -1390,20 +1400,10 @@ logement . location . logement-6 . chauffage:
       - citerne propane-6 . présent
       - fioul-6 . présent
       - bois-6 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-6 . présent: non
-        électricité-6 . présent: non
-        gaz-6 . présent: non
-        réseau de chaleur-6 . présent: non
-        bouteille gaz-6 . présent: non
-        citerne propane-6 . présent: non
-        fioul-6 . présent: non
-        bois-6 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre sixième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre sixième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du sixième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-6 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1470,7 +1470,7 @@ logement . location . logement-6 . chauffage . bouteille gaz-6:
   titre: Bouteille de gaz
 
 logement . location . logement-6 . chauffage . bouteille gaz-6 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-6 . chauffage . citerne propane-6:
   icônes: 🛢️🔥
@@ -1538,8 +1538,18 @@ logement . location . logement-7 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-7 . âge:
-  question: Quel est l'âge de votre septième logement en location ?
+  question: Quel est l'âge de votre septième investissement locatif ?
   applicable si: location . nombre >= 7
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -1634,20 +1644,10 @@ logement . location . logement-7 . chauffage:
       - citerne propane-7 . présent
       - fioul-7 . présent
       - bois-7 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-7 . présent: non
-        électricité-7 . présent: non
-        gaz-7 . présent: non
-        réseau de chaleur-7 . présent: non
-        bouteille gaz-7 . présent: non
-        citerne propane-7 . présent: non
-        fioul-7 . présent: non
-        bois-7 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre septième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre septième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du septième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-7 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1714,7 +1714,7 @@ logement . location . logement-7 . chauffage . bouteille gaz-7:
   titre: Bouteille de gaz
 
 logement . location . logement-7 . chauffage . bouteille gaz-7 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-7 . chauffage . citerne propane-7:
   icônes: 🛢️🔥
@@ -1782,8 +1782,18 @@ logement . location . logement-8 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-8 . âge:
-  question: Quel est l'âge de votre huitième logement en location ?
+  question: Quel est l'âge de votre huitième investissement locatif ?
   applicable si: location . nombre >= 8
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -1878,20 +1888,10 @@ logement . location . logement-8 . chauffage:
       - citerne propane-8 . présent
       - fioul-8 . présent
       - bois-8 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-8 . présent: non
-        électricité-8 . présent: non
-        gaz-8 . présent: non
-        réseau de chaleur-8 . présent: non
-        bouteille gaz-8 . présent: non
-        citerne propane-8 . présent: non
-        fioul-8 . présent: non
-        bois-8 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre huitième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre huitième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du huitième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-8 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1958,7 +1958,7 @@ logement . location . logement-8 . chauffage . bouteille gaz-8:
   titre: Bouteille de gaz
 
 logement . location . logement-8 . chauffage . bouteille gaz-8 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-8 . chauffage . citerne propane-8:
   icônes: 🛢️🔥
@@ -2026,8 +2026,18 @@ logement . location . logement-9 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-9 . âge:
-  question: Quel est l'âge de votre neuvième logement en location ?
+  question: Quel est l'âge de votre neuvième investissement locatif ?
   applicable si: location . nombre >= 9
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -2122,20 +2132,10 @@ logement . location . logement-9 . chauffage:
       - citerne propane-9 . présent
       - fioul-9 . présent
       - bois-9 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-9 . présent: non
-        électricité-9 . présent: non
-        gaz-9 . présent: non
-        réseau de chaleur-9 . présent: non
-        bouteille gaz-9 . présent: non
-        citerne propane-9 . présent: non
-        fioul-9 . présent: non
-        bois-9 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre neuvième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre neuvième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du neuvième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-9 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -2202,7 +2202,7 @@ logement . location . logement-9 . chauffage . bouteille gaz-9:
   titre: Bouteille de gaz
 
 logement . location . logement-9 . chauffage . bouteille gaz-9 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-9 . chauffage . citerne propane-9:
   icônes: 🛢️🔥
@@ -2270,8 +2270,18 @@ logement . location . logement-10 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-10 . âge:
-  question: Quel est l'âge de votre dixième logement en location ?
+  question: Quel est l'âge de votre dixième investissement locatif ?
   applicable si: location . nombre >= 10
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   plancher: 0
   par défaut: 45
   unité: an
@@ -2366,20 +2376,10 @@ logement . location . logement-10 . chauffage:
       - citerne propane-10 . présent
       - fioul-10 . présent
       - bois-10 . présent
-    suggestions:
-      pas de chauffage:
-        PAC-10 . présent: non
-        électricité-10 . présent: non
-        gaz-10 . présent: non
-        réseau de chaleur-10 . présent: non
-        bouteille gaz-10 . présent: non
-        citerne propane-10 . présent: non
-        fioul-10 . présent: non
-        bois-10 . présent: non
   icônes: 🌡️
-  question: Quel type d'énergie votre dixième logement en location utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  question: Quel type d'énergie votre dixième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
-    > Cochez ici toutes les sources d'énergie présentes au sein du dixième logement que vous louez.
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
 
 logement . location . logement-10 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -2446,7 +2446,7 @@ logement . location . logement-10 . chauffage . bouteille gaz-10:
   titre: Bouteille de gaz
 
 logement . location . logement-10 . chauffage . bouteille gaz-10 . présent:
-  question: Votre logement en location utilise-t'il des bouteille de gaz ?
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
 
 logement . location . logement-10 . chauffage . citerne propane-10:
   icônes: 🛢️🔥
