@@ -618,9 +618,6 @@ logement . vacances . résidence secondaire . pro-rata présence annuelle-1:
   applicable si: résidences secondaires . nombre >= 1 
   formule: durée-1 / commun . jours par an * 1 jour/nuit
 
-logement . vacances . résidence secondaire . nombre de nuitées-1:
-  applicable si: résidences secondaires . nombre >= 1 
-
 logement . vacances . résidence secondaire . nombre de nuitées:
 
 logement . vacances . résidence secondaire . nombre de nuitées . moyenne:
