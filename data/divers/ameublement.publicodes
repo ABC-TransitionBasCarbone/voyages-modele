@@ -51,15 +51,10 @@ divers . ameublement . meubles:
       - grand meuble
   unité: kgCO2e
   description: |
-    Renseignez ici les biens d'ameublement de moins de 10 ans qui composent l'intérieur de votre ; et seulement les produits achetés neufs, 
-    nous excluons ici l'achat d'occasion et en dépôt vente.
+    Renseignez ici les biens d'ameublement de moins de 10 ans et **achetés neufs** qui composent l'intérieur de votre logement.
 
-    N'oubliez pas vos meubles de cuisine !  
-
-    Nous considérons que tous les meubles sont utilisés par l'ensemble du foyer, même si potentiellement, certains ne le sont qu'à titre individuel (les lits par exemple), c'est une limitation du test.
-
-    N'hésitez pas à utiliser les catégories petit meuble (inférieur à 10 kg comme un petit buffet ou une table basse par 
-    exemple) ou grand meuble (supérieur à 10 kg comme un grand bureau par exemple) dans le cas où vous ne parvenez pas à catégoriser ce que vous possédez dans le reste des propositions.
+    N'oubliez pas de prendre en compte vos meubles de cuisine et utilisez les catégories "petit meuble" (inférieur à 10 kg comme un petit buffet ou une table basse par 
+    exemple) ou "grand meuble" (supérieur à 10 kg comme un grand bureau par exemple) dans le cas où certains de vos biens d'ameublement ne rentrent pas dans les catégories proposées.
   note: |
     Les données sont toutes issues de la Base Carbone (achats de biens). Voir https://bilans-ges.ademe.fr/fr/accueil/documentation-gene/index/page/Mobilier.
 
@@ -505,6 +500,7 @@ divers . ameublement . meubles . mosaic:
         petit meuble . choix . nombre: 0
         grand meuble . choix . nombre: 0
   question: Parmi les biens d'ameublement de moins de 10 ans que vous possédez, lesquels avez-vous acheté en 2023 ?  
+  description: Pour rappel, nous nous intéressons qu'aux **biens achetés neufs.**
   titre: Meubles achetés en 2023
   formule:  
     somme:  

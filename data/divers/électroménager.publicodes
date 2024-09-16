@@ -52,11 +52,9 @@ divers . électroménager . appareils:
         robot cuisine . nombre: 0
   question: Quels appareils électroménagers de moins de 10 ans possédez-vous ?
   description: |
-    L'essentiel de l'empreinte de l'électroménager réside dans les appareils que nous achetons.
+    Renseignez ici l'électroménager de moins de 10 ans que vous possédez **et que vous avez acheté neufs.**
 
-    > ✨️ Par simplicité, ne renseignez que les appareils récents : un réfrigérateur âgé de 10 ans a déjà été bien amorti.
-
-    Si tous vos appareils ne sont pas proposés dans cette liste, ce n'est pas grave, ce test ne se veut pas exhaustif.
+    Ne renseignez donc pas un équipement que vous auriez acheté d'occasion (même s'il a moins de 10 ans).
   formule:
     somme:
       - réfrigérateur
@@ -400,16 +398,18 @@ divers . électroménager . appareils . robot cuisine . empreinte amortie:
   titre: Empreinte robot cuisine amortie
   formule: robot cuisine . empreinte / (durée * coefficient préservation)
   unité: kgCO2e
+
 divers . électroménager . appareils . robot cuisine . empreinte:
   titre: Empreinte robot cuisine
   formule: 41.3
   unité: kgCO2e
   note: Facteur d'émissions robot cuisine de la Base Carbone (On considère un aspirateur sans sac)
+
 divers . électroménager . appareils . robot cuisine . durée:
   titre: Durée de vie robot cuisine
   formule: 8
-
   note: aucune durée de vie n'est donnée dans les sources ADEME, nous considérons donc une durée de vie totale de 8 ans
+
 divers . électroménager . appareils . robot cuisine . nombre:
   titre: Nombre de robot cuisine
   question: Combien de robot cuisine possédez-vous ?
@@ -525,6 +525,7 @@ divers . électroménager . appareils . mosaic:
         aspirateur . choix . nombre: 0   
         robot cuisine . choix . nombre: 0 
   question: Parmi les appareils électroménagers de moins de 10 ans que vous possédez, lesquels avez-vous acheté en 2023 ?  
+  description: Pour rappel, nous nous intéressons qu'aux **appareils achetés neufs.**
   titre: Electroménagers achetés en 2023
   formule:  
     somme:  
