@@ -399,11 +399,11 @@ logement . chauffage . citerne propane . consommation estimée via le coût . sa
   unité: €/mois
 
 logement . chauffage . citerne propane . consommation estimée via le coût . facteur:
-  formule: 1.8
+  formule: 2.176
   unité: €/kg
   note: |
-    Selon les informations agrégées par le site [HelloWatt](https://www.hellowatt.fr/gaz-propane-citerne/comparatif-prix), 
-    le prix du propane en citerne oscille autour de 1800€ par tonne (selon le fournisseur).
+    Source : données issue de l'Excel `1.1.-Prix-menages-Petrole.2024-09` (variable PX_PETRO_PROPANE_TONNE), moyenne S1 2024.
+    Accessible sur le site du [SDES](https://www.statistiques.developpement-durable.gouv.fr/catalogue?page=dataset&datasetId=631b03afb61e5c6479370169)
 
     Cette aide à l'estimation est désignée pour recevoir une consommation mensuelle (cf InputEstimation.tsx côté site)
 
@@ -463,12 +463,12 @@ logement . chauffage . fioul . consommation estimée via le coût . saisie:
   unité: €/mois
 
 logement . chauffage . fioul . consommation estimée via le coût . facteur:
-  formule: 1.2869
+  formule: 1.2415
   unité: €/l
   note: |
     Cette formule nous permet de passer des €/mois aux litres/an.
 
-    Source : Fioul domestique 2000 à 4999 litres, 2ème semestre 2023.
+    Source : Fioul domestique 2000 à 4999 litres, moyenne réalisée sur le 1er semestre 2024.
     Donnée issue de l'excel `Prix HTT et TTC depuis janvier 2020.xlsx` téléchargeable sur la page 
     [Prix des produits pétroliers](https://www.ecologie.gouv.fr/prix-des-produits-petroliers#scroll-nav__4) du ministère de la Transition Écologique.
 
@@ -653,23 +653,18 @@ logement . chauffage . réseau de chaleur . consommation estimée via le coût .
   unité: €/mois
 
 logement . chauffage . réseau de chaleur . consommation estimée via le coût . facteur:
-  formule: 0.085
+  formule: 0.0851
   unité: €/kWh
   note: |
     Cette formule nous permet de passer des €/mois aux kWh/an : le kWh coût x centimes par mois sur 12 mois.
 
-    Ce chiffre est tiré de l'[Enquête des réseaux de chaleur et de froid](https://amorce.asso.fr/actualite/les-reseaux-de-chaleur-la-bonne-solution-de-chauffage-pour-le-pouvoir-d-achat-et-le-climat) 
-    basé sur les données 2021 qui donne un chiffre de 80€HT/MWh.
+    Ce chiffre est tiré de la **dernière édition en accès libre** de l'[Enquête des réseaux de chaleur et de froid - RCE 39](https://amorce.asso.fr/actualite/les-reseaux-de-chaleur-la-bonne-solution-de-chauffage-pour-le-pouvoir-d-achat-et-le-climat) 
+    basé sur les données 2021 qui donne un chiffre de 85,1€HT/MWh. L'enquête en données 2022 (RCE 40) n'est accessible qu'aux adhérents du réseau AMORCE.
 
-    L'[Enquête sur le prix de vente de la chaleur et de froid de 2019](https://amorce.asso.fr/publications/enquete-sur-le-prix-de-vente-de-la-chaleur-et-de-froid-en-2019-rce36)
-    donnait un chiffre de 74,6€HT/MWh et 79,3€TTC/MWh, avec une médiane à 82,3€TTC/MWh.
+    Il faut savoir que l'écart-type TTC est important car la TVA appliquée varie avec la proportion d'énergie verte dans le mix du réseau de chaleur (5,5% pour les réseaux contenant plus de 50 % d'énergie renouvelable et de récupération).
 
-    Nous avons donc choisi dans une première approximation de nous baser sur la moyenne 2021 en conservant le ratio 2019 pour passer en TTC ce qui donne une valeur de 85€TTC/MWh
-    (ce n'est pas seulement un 5,5% ou 20%, car l'application de ces taux varie selon la proportion d'énergie verte dans le mix du réseau de chaleur, 
-    une TVA à 5,5% étant appliquée aux réseaux contenant plus de 50 % d'énergie renouvelable et de récupération).
-
-    C'est une valeur moyenne dont l'écart-type est relativement important.
-    Néanmoins, on peut lire dans l'enquête que "les prix de vente moyens des réseaux de chaleur affichent une très grande disparité, 89% de la chaleur livrée est vendue à un prix compris entre -30 et +30% de la moyenne nationale".
+    Néanmoins, on peut lire p17 "Bien que les prix de vente moyens des réseaux de chaleur affichent une très grande disparité, 88% 
+    de la chaleur livrée est vendue à un prix compris entre -30 et +30% de la moyenne nationale."
 
 logement . chauffage . réseau de chaleur . intensité carbone:
   titre: Empreinte carbone réseau de chaleur
