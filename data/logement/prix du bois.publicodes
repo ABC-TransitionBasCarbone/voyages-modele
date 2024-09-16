@@ -9,7 +9,7 @@ logement . chauffage . bois . type . bûches . prix stère 2024:
   description: Il n'existe pas de prix récent pour la stère de bois. L'idée est de prendre en compte la hausse des tarifs via l'indice d'inflation.
 
 logement . chauffage . bois . indice prix bois:
-  formule: 131,2
+  formule: 131.2
   note: |
     Moyenne des "Indice prix" (Base 2021) sur le premier semestre 2024. On fait donc l'hypothèse d'un prix inchangé entre 2017 (notre année de référence) et 2021.
     Chiffre issu de l'INSEE, [Indice de prix de production de l'industrie française pour le marché français - Bois d'énergie - Prix de marché - Base 2021](https://www.insee.fr/fr/statistiques/serie/010763786)
