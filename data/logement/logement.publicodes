@@ -215,3 +215,14 @@ logement . DPE . G:
 logement . DPE . non renseigné:
   titre: DPE non renseigné
 
+logement . facteur notif conso supérieur:
+  formule: 1.33
+  note: |
+    Coefficient de majoration fixé à 133 % de la consommation moyenne par type d'énergie établie à partir des données moyennes du parc de logements français.
+    Ce coefficient sert à avertir l'utilisateur d'une éventuelle erreur de saisie à la hausse.
+
+logement . facteur notif conso inférieur:
+  formule: 0.66
+  note: |
+    Coefficient de minoration fixé à 66 % de la consommation moyenne par type d'énergie établie à partir des données moyennes du parc de logements français.
+    Ce coefficient sert à avertir l'utilisateur d'une éventuelle erreur de saisie à la baisse.

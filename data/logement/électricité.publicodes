@@ -88,6 +88,14 @@ logement . électricité . réseau . consommation par défaut:
         alors: surface * (parc français . consommation électricité autre par m2 + parc français . chauffage . consommation électricité PAC par m2)
       - sinon: surface * parc français . consommation électricité autre par m2
 
+logement . électricité . réseau . notif électricité valeur supérieure:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - consommation > (parc français . consommation électricité autre par m2 + parc français . chauffage . consommation électricité par m2) * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+  description: |
+    Vous avez renseigné une consommation d'électricité relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 logement . électricité . réseau . consommation estimée via le coût:
   titre: Consommation estimée via le coût
   formule: saisie * commun . mois par an / facteur

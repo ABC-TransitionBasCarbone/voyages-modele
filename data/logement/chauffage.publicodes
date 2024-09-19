@@ -127,6 +127,16 @@ logement . chauffage . gaz . consommation:
 
     > Astuce : Vous trouverez votre consommation annuelle 2023 sur vos factures de gaz ou sur votre compte en ligne sur le site de votre fournisseur.
 
+logement . chauffage . notif gaz valeur supérieure:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: gaz . présent
+      - gaz . présent = oui
+      - gaz . consommation > parc français . chauffage . consommation gaz par m2 * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+  description: |
+    Vous avez renseigné une consommation de gaz relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 logement . chauffage . gaz . consommation estimée via le coût:
   titre: Consommation estimée via le coût
   formule: saisie * commun . mois par an / facteur
@@ -301,6 +311,18 @@ logement . chauffage . bouteille gaz . consommation:
 
     Étant donné que les bouteilles elles-mêmes sont consignées, nous prenons en compte uniquement les émissions liées au gaz seul.
 
+### Je commente la notif car je pense que les chiffres de conso de GPL du parc français ne sont pas adaptés pour les bouteilles de gaz (qui sont avant tout des appoints) car
+### j'obtiens une limite supérieure d'environ 120 bouteilles (soit une tous les 3 jours). En revanche les chiffres semblent adaptés aux citernes de propane
+#logement . chauffage . notif bouteille gaz valeur supérieure:
+#  type: notification
+#  formule:
+#    toutes ces conditions:
+#      - est défini: bouteille gaz . présent
+#      - bouteille gaz . présent = oui
+#      - bouteille gaz . consommation * bouteille gaz . énergie par bouteille > parc français . chauffage . consommation GPL par m2 * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+#  description: |
+#    Vous avez renseigné une consommation de bouteille de gaz relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 logement . chauffage . bouteille gaz . consommation estimée via le poids:
   titre: Consommation estimée via le poids
   formule: saisie / facteur
@@ -386,6 +408,16 @@ logement . chauffage . citerne propane . consommation:
   note: |
     Certains logements ne peuvent être raccordés au réseau de gaz et disposent d'une citerne propane, à l'image d'une citerne fioul.
 
+logement . chauffage . notif citerne propane valeur supérieure:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: citerne propane . présent
+      - citerne propane . présent = oui
+      - citerne propane . consommation * citerne propane . énergie par kg > parc français . chauffage . consommation GPL par m2 * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+  description: |
+    Vous avez renseigné une consommation de propane relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 logement . chauffage . citerne propane . consommation estimée via le coût:
   titre: Consommation estimée via le coût
   formule: saisie * commun . mois par an / facteur
@@ -449,6 +481,16 @@ logement . chauffage . fioul . consommation:
   description: |
     > Astuce : Vous trouverez votre consommations annuelles sur votre facture de fioul ou sur votre compte en ligne sur le site de votre fournisseur.
   par défaut: parc français . chauffage . consommation fioul par m2 * fioul kWh au litre * surface
+
+logement . chauffage . notif fioul valeur supérieure:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: fioul . présent
+      - fioul . présent = oui
+      - fioul . consommation * (1 / fioul kWh au litre) > parc français . chauffage . consommation fioul par m2 * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+  description: |
+    Vous avez renseigné une consommation de fioul relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
 
 logement . chauffage . fioul . consommation estimée via le coût:
   titre: Consommation estimée via le coût
@@ -538,6 +580,16 @@ logement . chauffage . bois . type . granulés . consommation:
 
     Et donc probablement que si la discrimination par type de bois de chauffe était faite dans les données du CEREN (pour les kWh consommés et les surface chauffées) on aboutirait à une valeur en kWh/m2 beaucoup plus faible pour les granulés que pour le bois bûches.
 
+logement . chauffage . notif bois granulés valeur supérieure:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: bois . présent
+      - bois . présent = oui
+      - bois . type . granulés . consommation > parc français . chauffage . consommation bois par m2 * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+  description: |
+    Vous avez renseigné une consommation de granulés relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 logement . chauffage . bois . type . granulés . consommation estimée via le coût:
   titre: Consommation estimée via le coût
   formule: saisie * commun . mois par an / facteur
@@ -571,6 +623,16 @@ logement . chauffage . bois . type . bûches . consommation:
     ![](https://upload.wikimedia.org/wikipedia/commons/7/7c/Raummeter_hg.jpg)
   unité: stère
   par défaut: parc français . chauffage . consommation bois par m2 * surface / intensité énergétique
+
+logement . chauffage . notif bois bûches valeur supérieure:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: bois . présent
+      - bois . présent = oui
+      - bois . type . bûches . consommation * bois . type . bûches . intensité énergétique > parc français . chauffage . consommation bois par m2 * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+  description: |
+    Vous avez renseigné une consommation de bûches relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
 
 logement . chauffage . bois . type . bûches . consommation estimée via le coût:
   titre: Consommation estimée via le coût
@@ -640,6 +702,16 @@ logement . chauffage . réseau de chaleur . consommation:
     Si vous vivez en copropriété il se peut que cette dernière ne vous communique pas la consommation de chaleur de votre logement (en kWh). Cela dit, elle doit vous fournir le montant en €, que vous pourrez saisir ci-dessous pour estimer vos kWh.
     
     >  Astuce : Vous trouverez votre consommations annuelle 2023 sur vos factures ou sur votre compte en ligne sur le site de votre fournisseur de chaleur.
+
+logement . chauffage . notif réseau de chaleur valeur supérieure:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: réseau de chaleur . présent
+      - réseau de chaleur . présent = oui
+      - réseau de chaleur . consommation > parc français . chauffage . consommation réseau de chaleur par m2 * surface * (habitants / 2.2) * logement . facteur notif conso supérieur
+  description: |
+    Vous avez renseigné une consommation de chaleur relativement haute au regard des caractéristiques de votre logement. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
 
 logement . chauffage . réseau de chaleur . consommation estimée via le coût:
   titre: Consommation estimée via le coût
