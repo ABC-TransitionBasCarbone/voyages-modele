@@ -18,72 +18,18 @@ logement:
       - piscine
       - extérieur
       - vacances
-      - quantité . dynamic
+      - location
+      - jardin
+  #    - 0.0000001 * statut en chiffre * DPE en chiffre
   unité: kgCO2e
-
-logement . quantité:
-  titre: Quantité de résidences secondaires
-  question: Combien de résidences secondaires possèdez-vous ?
-  icônes: ☕️🫖
-  plancher: 0
-  par défaut: 1
-  suggestions:
-    Un: 1
-    Deux: 2
-    Trois: 3
-    Quatre: 4
-
-logement . quantité . dynamic:
-  titre: Liste des questions dynamiques
-  formule:
-      somme:
-        - logement . quantité . electricité-1
-        - logement . quantité . electricité-2
-        - logement . quantité . electricité-3
-        - logement . quantité . electricité-4
-        - logement . quantité . electricité-5
-
-logement . quantité . electricité-1:
-  titre: Consommation éléctricité logement 1
-  question: Combien d'éléctricité consommez-vous par an dans votre première résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 1
-
-logement . quantité . electricité-2:
-  titre: Consommation éléctricité logement 2
-  question: Combien d'éléctricité consommez-vous par an dans votre seconde résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 2
-
-logement . quantité . electricité-3:
-  titre: Consommation éléctricité logement 3
-  question: Combien d'éléctricité consommez-vous par an dans votre troisième résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 3
-
-logement . quantité . electricité-4:
-  titre: Consommation éléctricité logement 4
-  question: Combien d'éléctricité consommez-vous par an dans votre quatrième résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 4
-
-logement . quantité . electricité-5:
-  titre: Consommation éléctricité logement 5
-  question: Combien d'éléctricité consommez-vous par an dans votre cinquième résidence secondaire ?
-  unité: kWh
-  applicable si: logement . quantité >= 5
 
 logement . habitants:
   titre: Nombre de personnes dans le logement
-  question: Combien de personnes vivent chez vous ?
+  question: Combien de personnes vivent chez vous, au sein de votre logement principal ?
   description: |
-    Il s'agit de savoir combien de personnes partagent votre logement et toutes les consommations qu'il entraîne (construction, chauffage, etc).
-
-    > Si vous vivez seul, répondez `1`.
-
-    > Si vous vivez avec votre conjoint et un enfant, répondez `3`.
-
-    > Si vous êtes séparé avec un enfant qui alterne entre votre logement et un autre, vous pouvez saisir `1,5`.
+    Si vous vivez seul, répondez 1.
+    Si vous vivez avec votre conjoint et un enfant, répondez 3.
+    Si vous êtes séparé avec un enfant qui alterne entre votre logement et un autre, vous pouvez saisir 1,5.
 
   par défaut: 2.2
   plancher: 1
@@ -100,7 +46,7 @@ logement . habitants:
 
 logement . surface:
   titre: Surface
-  question: Quelle est la surface de votre logement ?
+  question: Quelle est la surface de votre logement principal?
   plancher: 1
   avertissement: |
     La surface de votre logement ne peut-être nulle.
@@ -129,24 +75,26 @@ logement . surface:
 
 logement . appartement:
   titre: Appartement
-  question: Votre logement est-il un appartement ?
+  question: Votre logement principal est-il un appartement (par opposition à une maison individuelle) ?
   description: |
-    Par opposition à une maison individuelle.
-
-    L'augmentation de l'habitat en appartements peut nous faire oublier que la maison reste le logement majoritaire des foyers français en 2018.
-
-    Cette information influence notamment l'empreinte de construction, mais aussi les possibilités de travaux d'isolation par exemple.
-
-    > Si vous vivez dans un habitat original, par exemple un camping-car / un camion / une péniche, pas de problème : choisissez "appartement" et saisissez les m² de ce qui constitue quand même votre logement.
+    Si vous vivez dans un habitat original, par exemple un camping-car, un camion, une péniche, etc., répondez "oui" et répondez ensuite aux différentes questions en considérant les caractéristiques de ce qui constitue quand même votre logement.
   note: |
     En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . âge:
-  question: Quel est l'âge de votre logement ?
+  question: Quel est l'âge de votre logement principal ?
   plancher: 0
   par défaut: 45
   unité: an
+  description: |
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre logement est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
   note: |
     En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
 
@@ -158,11 +106,123 @@ logement . âge:
     années 50: 70
     un siècle: 100
 
+#logement . notif amortissement:
+#  type: notification
+#  formule: âge > construction . durée d'amortissement
+#  description: |
+#    Si votre logement a moins de **50 ans**, nous vous attribuons un cinquantième de l'empreinte de sa construction. **Sinon, zéro : le logement est amorti.**
+#    Les questions sur les caractéristiques de votre logement ne vous seront pas posées ; car l'empreinte annuelle de sa contruction est considérée comme nulle.
 
+logement . statut:
+  question: Etes-vous propriétaire de votre logement ?
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - propriétaire
+        - locataire
+        - logé gratuit
+  par défaut: "'non renseigné'"
 
-logement . notif amortissement:
-  type: notification
-  formule: âge > construction . durée d'amortissement
+logement . statut en chiffre:
+  titre: numéro du statut
+  formule:
+    variations:
+      - si: statut = 'propriétaire'
+        alors: 1
+      - si: statut = 'locataire'
+        alors: 2
+      - si: statut = 'logé gratuit'
+        alors: 3
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le statut en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . statut . propriétaire:
+  titre: propriétaire
+
+logement . statut . locataire:
+  titre: locataire
+
+logement . statut . logé gratuit:
+  titre: logé à titre gratuit
+
+logement . statut . non renseigné:
+  titre: statut non renseigné
+
+logement . DPE:
+  question: Quel est le DPE de votre logement principal ?
   description: |
-    Si votre logement a moins de **50 ans**, nous vous attribuons un cinquantième de l'empreinte de sa construction. **Sinon, zéro : le logement est amorti.**
-    Les questions sur les caractéristiques de votre logement ne vous seront pas posées ; car l'empreinte annuelle de sa contruction est considérée comme nulle.
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . DPE . A:
+  titre: DPE A
+
+logement . DPE . B:
+  titre: DPE B
+
+logement . DPE . C:
+  titre: DPE C
+
+logement . DPE . D:
+  titre: DPE D
+
+logement . DPE . E:
+  titre: DPE E
+
+logement . DPE . F:
+  titre: DPE G
+
+logement . DPE . G:
+  titre: DPE F
+
+logement . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . facteur notif conso supérieur:
+  formule: 1.33
+  note: |
+    Coefficient de majoration fixé à 133 % de la consommation moyenne par type d'énergie établie à partir des données moyennes du parc de logements français.
+    Ce coefficient sert à avertir l'utilisateur d'une éventuelle erreur de saisie à la hausse.
+
+logement . facteur notif conso inférieur:
+  formule: 0.66
+  note: |
+    Coefficient de minoration fixé à 66 % de la consommation moyenne par type d'énergie établie à partir des données moyennes du parc de logements français.
+    Ce coefficient sert à avertir l'utilisateur d'une éventuelle erreur de saisie à la baisse.
