@@ -52,9 +52,9 @@ divers . électroménager . appareils:
         robot cuisine . nombre: 0
   question: Quels appareils électroménagers de moins de 10 ans possédez-vous ?
   description: |
-    Renseignez ici l'électroménager de moins de 10 ans que vous possédez **et que vous avez acheté neufs.**
+    Renseignez ici l'électroménager de moins de 10 ans **que vous possédez et que vous avez acheté neufs.**
 
-    Ne renseignez donc pas un équipement que vous auriez acheté d'occasion (même s'il a moins de 10 ans).
+    Ne renseignez donc pas un équipement que vous auriez acheté d'occasion ou reconditionné (même s'il a moins de 10 ans).
   formule:
     somme:
       - réfrigérateur

@@ -51,7 +51,7 @@ divers . ameublement . meubles:
       - grand meuble
   unité: kgCO2e
   description: |
-    Renseignez ici les biens d'ameublement de moins de 10 ans et **achetés neufs** qui composent l'intérieur de votre logement.
+    Renseignez ici les biens d'ameublement de moins de 10 ans et **achetés neufs qui composent l'intérieur** de votre logement.
 
     N'oubliez pas de prendre en compte vos meubles de cuisine et utilisez les catégories "petit meuble" (inférieur à 10 kg comme un petit buffet ou une table basse par 
     exemple) ou "grand meuble" (supérieur à 10 kg comme un grand bureau par exemple) dans le cas où certains de vos biens d'ameublement ne rentrent pas dans les catégories proposées.

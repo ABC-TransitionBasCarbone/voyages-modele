@@ -725,13 +725,14 @@ logement . chauffage . réseau de chaleur . consommation estimée via le coût .
   unité: €/mois
 
 logement . chauffage . réseau de chaleur . consommation estimée via le coût . facteur:
-  formule: 0.0851
+  formule: 0.1126
   unité: €/kWh
   note: |
-    Cette formule nous permet de passer des €/mois aux kWh/an : le kWh coût x centimes par mois sur 12 mois.
+    Cette formule nous permet de passer des €/mois aux kWh/an : le kWh coût x centimes par mois sur 12 mois. Attention, ces données de prix sont issues 
+    des recettes des exploitants facturées aux abonnés (et non pas aux usagers finaux) et ne tiennent pas comptent des aides telles que le bouclier tarifaire (cf. mail AMORCE).
 
-    Ce chiffre est tiré de la **dernière édition en accès libre** de l'[Enquête des réseaux de chaleur et de froid - RCE 39](https://amorce.asso.fr/actualite/les-reseaux-de-chaleur-la-bonne-solution-de-chauffage-pour-le-pouvoir-d-achat-et-le-climat) 
-    basé sur les données 2021 qui donne un chiffre de 85,1€HT/MWh. L'enquête en données 2022 (RCE 40) n'est accessible qu'aux adhérents du réseau AMORCE.
+    Ce chiffre est tiré de l'[Enquête des réseaux de chaleur et de froid - RCE 40](https://amorce.asso.fr/publications/enquete-sur-le-prix-de-vente-de-la-chaleur-et-du-froid-en-2022-rce40) 
+    non encore publiée mais transmise par le réseau AMORCE. L'enquête se base sur les données 2022 qui donne un chiffre de 112.6 €HT/MWh 119.8 €TTC/MWh.
 
     Il faut savoir que l'écart-type TTC est important car la TVA appliquée varie avec la proportion d'énergie verte dans le mix du réseau de chaleur (5,5% pour les réseaux contenant plus de 50 % d'énergie renouvelable et de récupération).
 

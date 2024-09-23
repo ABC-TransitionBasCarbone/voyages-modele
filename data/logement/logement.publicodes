@@ -28,7 +28,7 @@ logement . habitants:
   question: Combien de personnes vivent chez vous, au sein de votre logement principal ?
   description: |
     Si vous vivez seul, répondez 1.
-    Si vous vivez avec votre conjoint et un enfant, répondez 3.
+    Si vous vivez avec votre conjoint et un enfant, ou bien deux colocataires, répondez 3.
     Si vous êtes séparé avec un enfant qui alterne entre votre logement et un autre, vous pouvez saisir 1,5.
 
   par défaut: 2.2
@@ -70,8 +70,15 @@ logement . surface:
     studio: 25
     3 pièces: 70
     maison: 120
-    château 🏰: 1000
   unité: m2
+
+logement . surface . notif superficie:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - surface > 500
+  description: |
+    Vous avez renseigné une très grande surface. Etes vous certains d'avoir renseigné la surface intérieure de votre logement et non la superficie du terrain ? Si c'est le cas, passez à la questions suivante.
 
 logement . appartement:
   titre: Appartement

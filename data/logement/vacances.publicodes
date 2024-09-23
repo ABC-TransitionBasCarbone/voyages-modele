@@ -24,9 +24,6 @@ logement . vacances:
   description: |
     **Rappel** : renseignez ici les types d'hébergements utilisés en 2023 pour vos voyages pour des **seuls motifs personnels**. Ne prenez 
     pas en compte les hébergements utilisés dans le cadre de déplacements professionnels.
-    
-    Pour information, cochez "Auberge de jeunesse" uniquement si vous avez dormi dans des dortoirs. Une chambre privative en auberge est à inclure
-    dans hôtel ou chambre d'hôtes.
 
     Si en 2023 vous n'êtes pas parti en week-end ou en vacances, cliquez sur "Aucun" puis passez à la question suivante.
   note: |
@@ -284,7 +281,7 @@ logement . vacances . empreinte auberge de jeunesse:
   formule: auberge de jeunesse . empreinte par nuit * auberge de jeunesse . nombre de nuitées
 
 logement . vacances . auberge de jeunesse:
-  titre: Auberge de jeunesse
+  titre: Chambre en dortoir
   icônes: 🛏️
 
 logement . vacances . auberge de jeunesse . présent:
