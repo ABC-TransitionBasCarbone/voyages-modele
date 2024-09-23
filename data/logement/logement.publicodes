@@ -30,8 +30,7 @@ logement . habitants:
     Si vous vivez seul, répondez 1.
     Si vous vivez avec votre conjoint et un enfant, ou bien deux colocataires, répondez 3.
     Si vous êtes séparé avec un enfant qui alterne entre votre logement et un autre, vous pouvez saisir 1,5.
-
-  par défaut: 2.2
+  par défaut: habitants . moyen
   plancher: 1
   avertissement: |
     Le nombre d'habitants ne peut pas être nul ni inférieur à 1. Vous êtes le premier habitant de votre logement.
@@ -43,6 +42,10 @@ logement . habitants:
   suggestions:
     j'habite seul: 1
     deux personnes: 2
+
+logement . habitants . moyen:
+  formule: 2.2
+  note: D'après les chiffres [INSEE](https://www.insee.fr/fr/statistiques/2381486)
 
 logement . surface:
   titre: Surface
