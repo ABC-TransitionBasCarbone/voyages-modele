@@ -52,13 +52,10 @@ logement . surface:
     La surface de votre logement ne peut-être nulle.
   par défaut:
     variations:
-      - si:
-          est défini: appartement
-        alors:
-          variations:
-            - si: appartement
-              alors: parc français . surface moyenne appartement
-            - sinon: parc français . surface moyenne maison
+      - si: logement . type = 'appartement'
+        alors: parc français . surface moyenne appartement
+      - si: logement . type = 'maison'
+        alors: parc français . surface moyenne maison
       - sinon: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
@@ -80,14 +77,25 @@ logement . surface . notif superficie:
   description: |
     Vous avez renseigné une très grande surface. Etes vous certains d'avoir renseigné la surface intérieure de votre logement et non la superficie du terrain ? Si c'est le cas, passez à la questions suivante.
 
-logement . appartement:
+logement . type:
   titre: Appartement
-  question: Votre logement principal est-il un appartement (par opposition à une maison individuelle) ?
+  question: Dans quel type de logement vivez-vous ?
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - maison
+        - appartement
+  par défaut: "'moyen'"
   description: |
-    Si vous vivez dans un habitat original, par exemple un camping-car, un camion, une péniche, etc., répondez "oui" et répondez ensuite aux différentes questions en considérant les caractéristiques de ce qui constitue quand même votre logement.
+    Si vous vivez dans un habitat original, par exemple un camping-car, un camion, une péniche, etc., répondez "appartement" et répondez ensuite aux différentes questions en considérant les caractéristiques de ce qui constitue quand même votre logement.
   note: |
     En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . type . maison:
+logement . type . appartement:
+logement . type . moyen:
 
 logement . âge:
   question: Quel est l'âge de votre logement principal ?

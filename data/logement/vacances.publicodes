@@ -507,7 +507,7 @@ logement . vacances . résidence secondaire . empreinte moyenne:
   formule: empreinte moyenne construction + empreinte moyenne énergie
 
 logement . vacances . résidence secondaire . empreinte moyenne construction:
-  formule: parc français . surface moyenne * résidence secondaire . annuelle et par surface * pourcentage population propriétaire résidence secondaire
+  formule: parc français . surface moyenne * résidence secondaire . empreinte construction amortie * pourcentage population propriétaire résidence secondaire
 
 logement . vacances . résidence secondaire . pourcentage population propriétaire résidence secondaire:
   formule: 0.13
@@ -524,7 +524,8 @@ logement . vacances . résidence secondaire . empreinte moyenne énergie:
   unité: kgCO2e
 
 logement . vacances . résidence secondaire . construction-1:
-  formule: surface-1 * annuelle et par surface
+  #formule: surface-1 * annuelle et par surface
+  formule: surface-1 * empreinte construction amortie
   unité: kgCO2e
   applicable si: résidences secondaires . nombre >= 1  
 
@@ -542,16 +543,23 @@ logement . vacances . résidence secondaire . surface-1:
     château 🏰: 1000
   unité: m2
 
-logement . vacances . résidence secondaire . annuelle et par surface:
-  formule: par surface / logement . construction . durée d'amortissement
+logement . vacances . résidence secondaire . empreinte construction amortie:
+  valeur: logement . construction . empreinte amortie
+  contexte:
+    résidences secondaires . présent: oui
+    logement . type: "'moyen'"
   unité: kgCO2e/m2
 
-logement . vacances . résidence secondaire . par surface:
-  formule:
-    moyenne:
-      - logement . construction . par surface . appartement
-      - logement . construction . par surface . maison
-  unité: kgCO2e/m2
+#logement . vacances . résidence secondaire . annuelle et par surface:
+#  formule: par surface / logement . construction . durée d'amortissement
+#  unité: kgCO2e/m2
+#
+#logement . vacances . résidence secondaire . par surface:
+#  formule:
+#    moyenne:
+#      - logement . construction . par surface . appartement
+#      - logement . construction . par surface . maison
+#  unité: kgCO2e/m2
 
 logement . vacances . résidence secondaire . localisation-1:
   titre: Localisation résidence 1
