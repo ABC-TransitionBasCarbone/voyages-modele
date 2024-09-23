@@ -66,17 +66,13 @@ logement . surface:
     > Les logements ont une surface moyenne d’environ 91 m2.
 
     > Si vous vivez dans un logement original, par exemple un camping-car / un camion / une péniche, renseignez simplement les m² de ce logement.
-  suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
   unité: m2
 
 logement . surface . notif superficie:
   type: notification
   formule:
     toutes ces conditions:
-      - surface > 500
+      - surface > 400
   description: |
     Vous avez renseigné une très grande surface. Etes vous certains d'avoir renseigné la surface intérieure de votre logement et non la superficie du terrain ? Si c'est le cas, passez à la questions suivante.
 
