@@ -30,20 +30,21 @@ transport . mobilité douce:
       - vae
       - autres véhicules à moteur
 
-transport . mobilité douce . notif marche ou vélo:
-  type: notification
-  formule:
-    une de ces conditions:
-      - marche . présent = oui
-      - vélo . présent = oui
-  description: |
-    **Vous avez renseigné marcher ou faire du vélo ?**
-    Félicitations ! 👏
-
-    Le vélo est un mode de transport super sobre : on utilise 15 kilos de matériel pour déplacer un corps de ~70 kilos.
-    Quant à vos chaussures, elles sont un véhicule ultra léger !
-
-    💡 A noter que l'empreinte de la marche et de **l'usage** du vélo classique (et non la fabrication) est considérée comme nulle.
+### On commente car on ne veut pas voir poper la notif
+#transport . mobilité douce . notif marche ou vélo:
+#  type: notification
+#  formule:
+#    une de ces conditions:
+#      - marche . présent = oui
+#      - vélo . présent = oui
+#  description: |
+#    **Vous avez renseigné marcher ou faire du vélo ?**
+#    Félicitations ! 👏
+#
+#    Le vélo est un mode de transport super sobre : on utilise 15 kilos de matériel pour déplacer un corps de ~70 kilos.
+#    Quant à vos chaussures, elles sont un véhicule ultra léger !
+#
+#    💡 A noter que l'empreinte de la marche et de **l'usage** du vélo classique (et non la fabrication) est considérée comme nulle.
 
 transport . mobilité douce . marche:
   titre: Marche
@@ -115,7 +116,7 @@ transport . mobilité douce . vae . empreinte:
   note: FE issu de la base empreinte (Vélo/à assistance électrique)
 
 transport . mobilité douce . vae . km:
-  question: Combien de kilomètres faites-vous à l'année avec votre Vélo à Assistance Électrique (VAE) ?
+  question: Combien de kilomètres avez-vous fait en 2023 avec votre Vélo à Assistance Électrique (VAE) ?
   par défaut: 1000
   unité: km
   suggestions:
@@ -123,9 +124,6 @@ transport . mobilité douce . vae . km:
     je l'utilise pour aller au travail: 1500
     10km / jour: 3600
     100km / semaine: 5000
-  description: |
-    Astuce : sur un VAE, le nombre total de kilomètres effectué est affiché sur le moniteur de bord.
-
 transport . mobilité douce . vae . construction amortie:
   titre: Construction amortie
   formule: construction / durée de vie
@@ -166,7 +164,7 @@ transport . mobilité douce . autres véhicules à moteur . empreinte:
   note: FE issu de la base empreinte (Trotinette)
 
 transport . mobilité douce . autres véhicules à moteur . km:
-  question: Combien de kilomètres faites-vous à l'année avec votre trottinette électrique, gyropode, monocycle électrique, hoverboard...?
+  question: Combien de kilomètres avez-vous fait en 2023 avec votre trottinette électrique, gyropode, monocycle électrique, hoverboard...?
   par défaut: 1000
   unité: km
   suggestions:

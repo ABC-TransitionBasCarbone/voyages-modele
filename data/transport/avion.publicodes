@@ -52,9 +52,9 @@ transport . avion . empreinte:
 #      - long courrier
 
 transport . avion . usager:
-  question: Avez-vous pris l'avion en 2023 à titre personnel ?
+  question: En 2023, avez-vous pris l'avion à titre personnel ?
   description: |
-    **Les déplacements dans le cadre de missions professionnelles ne sont pas à prendre en compte ici.**
+    **Pour rappel, les déplacements dans le cadre de missions professionnelles ne sont pas à prendre en compte ici.**
 
 transport . avion . court courrier:
 #  formule: heures de vol * vitesse moyenne * empreinte par km

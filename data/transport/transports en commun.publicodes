@@ -16,7 +16,8 @@ transport . transports commun:
   question: Quels transports en commun utilisez-vous régulièrement (au moins une fois par mois) ?
   icônes: 🚋
   description: |
-    S'il vous est arrivé de prendre certains de ces transports de manière épisodique (vacances par exemple) ne les comptez pas. Nous nous intéressons ici à une utilisation récurrente au quotidien
+    S'il vous est arrivé de prendre certains de ces transports de manière épisodique (en vacances par exemple) ne les comptez pas. Nous nous intéressons ici à une utilisation récurrente au quotidien.
+    
     Si vous avez pris des autocars "Macron" pour des trajets de longue distance ne les comptez pas ici, c'est l'objet de la question suivante.
   formule:
     somme:
