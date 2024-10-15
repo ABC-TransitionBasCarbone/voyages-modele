@@ -359,8 +359,7 @@ logement . raccordement réseau de chaleur:
   icônes: 👥🏭
   applicable si:
     toutes ces conditions:
-      - est défini: appartement
-      - appartement
+      - type = 'appartement'
       - chauffage collectif = 'collectif'
       - est défini: chauffage . gaz . présent
       - est défini: chauffage . fioul . présent
@@ -512,3 +511,90 @@ logement . mutualiser son logement . empreinte partagée . divers . ameublement:
     logement . habitants: logement . habitants + nombre colocataires
     divers . ameublement . meubles . matelas: 0
     divers . ameublement . meubles . lit: 0
+
+logement . installer photovoltaique:
+  titre: Installer des panneaux photovoltaïques
+  icônes: 🌞⚡️
+  description: |
+    Installer des panneaux solaires photovoltaïques permet de réduire son empreinte carbone.
+
+    En effet, **l'empreinte carbone d'un kilowattheure d'électricité photovoltaïque est presque inférieure de moitié** à celle d'un kilowattheure d'électricité du réseau.
+
+    Mais ce n'est pas tout ! **L'ajout de capacités de production renouvelables en France a des co-bénéfices importants**, que nous ne pouvons pas valoriser dans le calcul. Vous les retrouverez dans l'action "Devenir producteur d'électricité photovoltaïque".
+  non applicable si: électricité . photovoltaique . présent
+  applicable si: logement . type = 'maison'
+  formule:
+    variations:
+      - si: énergie produite < logement . électricité . consommation totale
+        alors: énergie produite * (commun . intensité électricité - facteur émission)
+      - sinon: logement . électricité . consommation totale * (commun . intensité électricité - facteur émission)
+
+logement . installer photovoltaique . énergie produite:
+  formule: puissance installée * productible
+
+logement . installer photovoltaique . puissance installée:
+  formule: nombre panneaux * puissance moyenne panneau
+
+logement . installer photovoltaique . nombre panneaux:
+  question: Combien de panneaux pourriez-vous installer ?
+  par défaut: 4
+
+logement . installer photovoltaique . puissance moyenne panneau:
+  formule: 0.4
+  unité: kWc
+
+logement . installer photovoltaique . productible:
+  formule:
+    variations:
+      - si: zone climatique = 'bretagne et nord de la france'
+        alors: 1200
+      - si: zone climatique = 'centre et littoral atlantique'
+        alors: 1300
+      - si: zone climatique = 'littoral méditerranéen'
+        alors: 1500
+  unité: kWh/kWc
+
+logement . installer photovoltaique . zone climatique:
+  question: Où se situe votre logement en France ?
+  formule:
+    une possibilité:
+      possibilités:
+        - bretagne et nord de la france
+        - centre et littoral atlantique
+        - littoral méditerranéen
+  par défaut: "'centre et littoral atlantique'"
+
+logement . installer photovoltaique . zone climatique . bretagne et nord de la france:
+  titre: Bretagne et Nord de la France
+logement . installer photovoltaique . zone climatique . centre et littoral atlantique:
+  titre: Centre et littoral atlantique
+logement . installer photovoltaique . zone climatique . littoral méditerranéen:
+  titre: Littoral méditerranéen et Corse
+
+logement . installer photovoltaique . facteur émission:
+  formule:
+    variations:
+      - si: zone climatique = 'bretagne et nord de la france'
+        alors: 0.0315
+      - si: zone climatique = 'centre et littoral atlantique'
+        alors: 0.0291
+      - si: zone climatique = 'littoral méditerranéen'
+        alors: 0.0252
+  unité: kgCO2e/kWh
+
+logement . électricité verte:
+  titre: Choisir une offre d'électricité engagée
+  icônes: 🌬️☀️⚡️
+  description: |
+    Sans qu'il soit réellement possible d'estimer l'impact en termes d'empreinte carbone de la souscription à une offre d'électricité verte, il est tout à fait légitime d'affirmer que certaines offres contribuent à réduire l'empreinte carbone du mix électrique français, en favorisant l'émergence et la croissance d'offres d'énergies renouvelables sur notre territoire.
+
+    ### Quelques explications pour y voir plus clair
+
+    Toutes les offres d'électricité ne se valent pas. Face au changement climatique, nombreux sont les fournisseurs d'électricité à avoir développé une offre d'électricité dite "verte". Mais ce terme recouvre des réalités très différentes...
+
+    > **Comment ça marche ?**
+    > Les producteurs d'électricité renouvelable émettent des certificats, appelés "Garanties d'origine", permettant d’attester que l’électricité a été produite par des moyens de production renouvelables. Les fournisseurs d'énergie achètent aux producteurs soit uniquement les certificats, soit les certificats et l'électricité ensemble. Dans les deux cas, ils ont tendance à appeler "verte" l'électricité qui vous est ensuite revendue. Or, dans le cas où seul le certificat a été acheté, rien ne garantit que l’offre verte contribue au développement et à la rémunération d’énergies renouvelables.
+
+    Pour apporter davantage de transparence sur les offres dites "vertes", l'ADEME a créé le label **VertVolt**. Ce label récompense les offres de fournisseurs qui achètent au moins autant d'électricité renouvelable à des producteurs, que ce qu'ils vendent à leurs clients ayant souscrit une offre "verte". Ces offres sont qualifiées d' "engagées". Si, en plus, au moins 25% de cette électricité provient d'installations sans soutien de l'État ou avec une gouvernance partagée (c’est-à-dire que des citoyens sont impliqués dans la gestion ou le financement des centrales), l'offre est qualifiée de "très engagée", car elle permet d’encourager le financement de nouvelles installations d’énergie renouvelable.
+
+    [Toutes les infos sur le label VertVolt et les offres d'énergie engagées ou très engagées sont à retrouver ici](https://agirpourlatransition.ademe.fr/particuliers/vertvolt).

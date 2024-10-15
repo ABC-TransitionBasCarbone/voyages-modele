@@ -28,13 +28,19 @@ transport . voiture:
 
 transport . voiture . km:
   titre: Km en voiture
-  question: Que vous soyez conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en 2023  ?
+  question: Que vous soyez conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en voiture en 2023  ?
   #question: Renseignez les différents types et les kilométrages associés aux déplacements personnels que vous faites (domicile-travail, courses, loisirs, famille, etc.) ?
   description: |
-    Veuillez utiliser les catégories label, distance, fréquence et nombres de passagers pour spécifier vos différents trajets. 
+    Veuillez utiliser autant de fois que nécessaire les catégories label, distance, fréquence et nombres d'occupants pour spécifier vos différents trajets en 2023. Sachez que vous pouvez renseigner plusieurs fois le même label (si par exemple vous avez plusieurs lieux de travail).
+    
+    Si jamais vous n'avez réalisé aucun trajet en voiture en 2023, renseignez un seul trajet de 1 km (peu importe le label, la fréquence et le nombre d'occupants)
+
     Si vous ne vous souvenez pas de tous les trajets effectués en 2023, cherchez à renseigner avant tout les plus récurrents et les plus longs que vous avez effectué.
-    De la même manière, cherchez à renseigner un nombre d'occupants le plus représentatif des trajets effectués.
-    **Pour rappel, les déplacements  dans le cadre de missions professionnelles ne sont pas à prendre en compte ici.**  
+    De la même manière, cherchez à renseigner un nombre d'occupants (en vous incluant) le plus représentatif des trajets effectués.
+
+    Si votre moyen de transport principal n'est pas une simple voiture mais un van aménagé, renseignez tout de même les km parcourus ici. Les questions suivantes vous permettront de renseigner la typologie de votre véhicule.
+    
+    **Enfin, pour rappel, les déplacements  dans le cadre de missions professionnelles ne sont pas à prendre en compte ici.**  
   par défaut: km annuels moyen
   unité: km
   plancher: 0
@@ -63,23 +69,24 @@ transport . voiture . utilisateur:
 
 transport . voiture . utilisateur . propriétaire:
   titre: Oui et j'en suis propriétaire
-  description: Vous faites la grande majorité de vos trajets avec un même véhicule que vous possédez.
+  description: Vous avez fait la grande majorité de vos trajets avec un même véhicule que vous possédez.
 transport . voiture . utilisateur . régulier non propriétaire:
   titre: Oui mais ce n'est pas la mienne
-  description: Vous utilisez presque systématiquement la voiture d'un ami, d'un membre de votre famille ou le même véhicule en autopartage.
+  description: Vous avez utilisé presque systématiquement la voiture d'un ami, d'un membre de votre famille ou le même véhicule en autopartage.
 transport . voiture . utilisateur . non régulier:
   titre: Non, je change souvent (autopartage, proches, taxi...)
-  description: Vous ne disposez pas de votre propre véhicule et les usages sont tous différents.
+  description: Vous ne disposiez pas de votre propre véhicule et les usages étaient tous différents.
 
-transport . voiture . notif utilsateur irrégulier:
-  type: notification
-  formule:
-    toutes ces conditions:
-      - est défini: voiture . utilisateur
-      - utilisateur = 'non régulier'
-      - km > 0
-  description: |
-    Vous roulez avec des véhicules différents : nous vous avons donc attribué les caractéristiques d'une voiture "moyenne".
+### On commente car on ne veut pas voir poper la notif
+#transport . voiture . notif utilsateur irrégulier:
+#  type: notification
+#  formule:
+#    toutes ces conditions:
+#      - est défini: voiture . utilisateur
+#      - utilisateur = 'non régulier'
+#      - km > 0
+#  description: |
+#    Vous roulez avec des véhicules différents : nous vous avons donc attribué les caractéristiques d'une voiture "moyenne".
 
 transport . voiture . empreinte moyenne:
   valeur: voiture . empreinte calculée
@@ -154,14 +161,17 @@ transport . voiture . empreinte au kilomètre:
     > Hybride : enlever 15% aux consommations ci-dessus (source ADEME: http://www2.ademe.fr/servlet/KBaseShow?catid=13655)
 
 transport . voiture . motorisation:
-  question: Quel type de voiture avez-vous utilisé ?
+  question: Quel était le type de voiture que vous avez utilisé en 2023 ?
   applicable si:
     toutes ces conditions:
       - est défini: utilisateur
       - une de ces conditions:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
-  description: 💡 S'il vous est arrivé d'utiliser plusieurs voitures (notamment dans le cas où vous n'en possédez pas une), choisissez le gabarit le plus représentatif de votre usage.
+  description: |
+    Si vous avez répondu "Oui et j'en suis propriétaire" précédemment, choississez le type de voiture que vous possédez.
+
+    Si vous avez répondu "Oui mais ce n'est pas la mienne" précédemment mais qu'il vous est arrivé d'utiliser plusieurs voitures (car vous n'en possédez pas une), choisissez le type de voiture le plus représentatif de vos usages passés.
   par défaut: "'thermique'"
   formule:
     une possibilité:
@@ -190,7 +200,7 @@ transport . voiture . thermique . consommation au kilomètre:
   unité: l/km
 
 transport . voiture . thermique . consommation aux 100:
-  question: Connaissez-vous la consommation moyenne de la voiture ?
+  question: Quelle était la consommation moyenne de la voiture que vous avez utilisé en 2023 ?
   applicable si:
     toutes ces conditions:
       - est défini: utilisateur
@@ -199,7 +209,9 @@ transport . voiture . thermique . consommation aux 100:
           - utilisateur = 'régulier non propriétaire'
       - motorisation = 'thermique'
   description: |
-    S'il vous est arrivé d'utiliser plusieurs voitures (notamment dans le cas où vous n'en possédez pas une), choisissez la réponse la plus représentative de votre usage.
+    Si vous avez répondu "Oui et j'en suis propriétaire" précédemment, renseignez la consommation de votre véhicule.
+
+    Si vous avez répondu "Oui mais ce n'est pas la mienne" précédemment mais qu'il vous est arrivé d'utiliser plusieurs voitures (car vous n'en possédez pas une), renseignez une consommation la représentative des véhicules utilisés.
   suggestions:
     5 l/100km: 5
     7 l/100km: 7
@@ -382,13 +394,6 @@ transport . voiture . thermique . carburant:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
       - motorisation = 'thermique'
-  description: |
-    Pour comprendre les différents types de carburants, [cet article pédagogique](https://www.francetvinfo.fr/economie/automobile/essence/les-carburants-changent-de-nom-a-la-pompe-voici-comment-vous-y-retrouver_2967013.html) est très utile.
-
-    [Cet article](https://www.ecologie.gouv.fr/carburants-et-combustibles-autorises-en-france) du ministère de l'Écologie explique plus en détail les carburants légaux en France.
-
-    > Attention, si le type de carburant fait varier de façon significative l'empreinte climat au litre, la consommation en litre par 100km elle aussi varie. Veillez à saisir une consommation au litre basée sur votre moyenne réelle.
-
   par défaut: "'essence E5 ou E10'"
   formule:
     une possibilité:
@@ -420,14 +425,15 @@ transport . voiture . thermique . carburant . essence E85:
 transport . voiture . thermique . carburant . GPL:
   titre: GPL (Gaz de Pétrole Liquéfiés)
 
-transport . voiture . notif carburant:
-  type: notification
-  formule: thermique . carburant = 'essence E85'
-  description: |
-    Votre véhicule roule au biocarburant : au-delà de l'empreinte carbone des biocarburants, il faut bien avoir conscience qu'ils ont une empreinte au sol : ce sol pourrait être utilisé pour faire pousser des céréales pour nous nourrir ou servir de refuges de biodiversité.
-    C'est ce qu'on appelle le "changement d'affectation des sols" ici à des fins de production de biocarburants. Malheureusement, l'impact sur le climat de ce changement d'affectation est difficile à quantifier et particulièrement incertain.
-
-    Nous avons fait le choix d'ajouter cette option dans le test, mais il faut savoir que ce résultat **n'est pas représentatif des conséquences environnementales probables liées à l'utilisation de biocarburants.**
+### On commente car on ne veut pas voir poper la notif
+#transport . voiture . notif carburant:
+#  type: notification
+#  formule: thermique . carburant = 'essence E85'
+#  description: |
+#    Votre véhicule roule au biocarburant : au-delà de l'empreinte carbone des biocarburants, il faut bien avoir conscience qu'ils ont une empreinte au sol : ce sol pourrait être utilisé pour faire pousser des céréales pour nous nourrir ou servir de refuges de biodiversité.
+#    C'est ce qu'on appelle le "changement d'affectation des sols" ici à des fins de production de biocarburants. Malheureusement, l'impact sur le climat de ce changement d'affectation est difficile à quantifier et particulièrement incertain.
+#
+#    Nous avons fait le choix d'ajouter cette option dans le test, mais il faut savoir que ce résultat **n'est pas représentatif des conséquences environnementales probables liées à l'utilisation de biocarburants.**
 
 transport . voiture . électrique:
   titre: Voiture électrique
@@ -452,7 +458,7 @@ transport . voiture . électrique . consommation aux 100:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
       - motorisation = 'électrique'
-  question: Connaissez-vous la consommation moyenne de la voiture ?
+  question: Quelle était la consommation moyenne de la voiture ?
   suggestions:
     15 kWh/100km: 15
     20 kWh/100km: 20
@@ -476,7 +482,7 @@ transport . voiture . électrique . consommation estimée:
   note: Données moyennes fournies par le service Transport et Mobilité de l'ADEME.
 
 transport . voiture . gabarit:
-  question: Quel était le gabarit de la voiture ?
+  question: Quel était le gabarit de la voiture que vous avez utilisé en 2023 ?
   applicable si:
     toutes ces conditions:
       - est défini: utilisateur
@@ -484,8 +490,9 @@ transport . voiture . gabarit:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
   description: |
-    Si vous avez répondez oui à la question précédénte mais qu'il vous est arrivé d'utiliser plusieurs voitures (notamment dans le cas où vous n'en possédez pas une), 
-    choisissez le gabarit le plus représentatif de votre usage.
+    Si vous avez répondu "Oui et j'en suis propriétaire" à la question précédénte, choississez le gabarit correspond à la voiture que vous possédez.
+
+    Si vous avez répondu "Oui mais ce n'est pas la mienne" à la question précédénte mais qu'il vous est arrivé d'utiliser plusieurs voitures (car vous n'en possédez pas une), choisissez le gabarit le plus représentatif de vos usages passés.
   par défaut: "'berline'"
   note: |
     Nous considérons que la voiture par défaut est une "Berline", en témoigne [une étude menée par AAA Data](https://www.alphabet.com/fr-fr/parc-automobile-roulant-les-donnees-cles)
@@ -810,15 +817,17 @@ transport . voiture . âge:
     toutes ces conditions:
       - km > 0
       - utilisateur = 'propriétaire'
-  question: Quel est l'âge de votre voiture ?
+  question: Quel était l'âge de votre voiture en 2023?
   description: |
-    Renseignez ici **l'âge réel** de la voiture et non pas le nombre d'années qu'elle a passé en votre possession (notamment si vous l'avez acheté d'occasion). 
+    **En considérant l'année 2023 comme référence**, renseignez ici **l'âge réel** de la voiture et non pas le nombre d'années qu'elle a passé en votre possession (notamment si vous l'avez acheté d'occasion). 
     Exemples : 
-      - pour une voiture d'occasion achetée il y a 2 ans (= en 2022) et ayant déjà 5 ans -> renseignez un âge de 7 ans.
-      - pour une voiture achetée neuve :
-        - en 2024 -> renseignez un âge de 0 an
-        - en 2023 -> renseignez un âge de 1 ans
-        - en 2022 -> renseignez un âge de 2 ans
-        - etc.
+    
+    Pour une voiture d'occasion achetée il y a 2 ans (soit en 2022) et ayant déjà 3 ans -> renseignez un âge de 4 ans (1 an en votre possesssion + 3 ans avant).
+    
+    Pour une voiture achetée neuve :
+      - en 2023 -> renseignez un âge de 0 ans
+      - en 2022 -> renseignez un âge de 1 ans
+      - en 2021 -> renseignez un âge de 2 ans
+      - etc.
   unité: années
   par défaut: 9 années

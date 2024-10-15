@@ -104,7 +104,7 @@ logement . électricité . réseau . consommation estimée via le coût:
   note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
 
 logement . électricité . réseau . consommation estimée via le coût . saisie:
-  question: Pas de facture ? Entrez vos dépenses approximatives par mois
+  question: Pas de facture ? Entrez vos dépenses actuelles approximatives par mois
   unité: €/mois
 
 logement . électricité . réseau . consommation estimée via le coût . facteur:
@@ -136,10 +136,7 @@ logement . électricité . photovoltaique:
   icônes: 🌞⚡️
 
 logement . électricité . photovoltaique . présent:
-  non applicable si:
-    toutes ces conditions:
-      - est défini: logement . appartement
-      - appartement = oui
+  non applicable si: logement . type = 'appartement'
   question: Votre logement principal dispose-t-il de panneaux photovoltaïques ?
   par défaut: non
 

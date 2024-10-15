@@ -9,9 +9,9 @@ transport . deux roues:
   unité: kgCO2e
 
 transport . deux roues . usager:
-  question: Utilisez-vous un deux-roues motorisé ?
+  question: En 2023, utilisiez-vous un deux-roues motorisé ?
   description: |
-    Les scooters et motos sont aujourd'hui très majoritairement des engins qui fonctionnent au pétrole. Les scooters électriques ayant fait une réelle percée, ils sont ajoutés au modèle.
+    Le terme deux-roues inclut les scooters (possédés comme en autopartage) et les motos.
 
 transport . deux roues . empreinte:
   icônes: 🛵
@@ -27,7 +27,7 @@ transport . deux roues . empreinte moyenne:
 
 transport . deux roues . km:
   applicable si: usager
-  question: Combien de km faites-vous à l'année avec votre scooter ou moto ?
+  question: Combien de km avez-vous fait en 2023 avec votre scooter ou moto ?
   par défaut: km annuels moyen
   plancher: 0
   unité: km
@@ -46,7 +46,7 @@ transport . deux roues . km annuels moyen:
 
 transport . deux roues . type:
   applicable si: usager
-  question: Quel type de deux-roues utilisez-vous ?
+  question: Quel type de deux-roues utilisiez-vous en 2023 ?
   par défaut: "'moto sup 250'"
   formule:
     une possibilité:
@@ -136,6 +136,6 @@ transport . deux roues . type . scooter électrique . propriétaire:
     toutes ces conditions:
       - est défini: usager
       - type = 'scooter électrique'
-  question: Etes-vous propriétaire du scooter électrique que vous utilisez ?
-  description: Répondez non si vous faites de "l'autopartage"
+  question: Etiez-vous propriétaire du scooter électrique que vous utilisiez en 2023 ?
+  description: Répondez oui si le scooter vous appartenait et non si vous faisiez de "l'autopartage"
 

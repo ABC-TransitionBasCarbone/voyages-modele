@@ -5,8 +5,8 @@ transport . car longue distance:
   unité: kgCO2e
 
 transport . car longue distance . km:
-  question: Combien de kilomètres parcourez-vous en car pour des trajets longue distance ?
-  description: Nous parlons ici de trajets fait en autocar "Macron" (comme les compagnies Ouibus, Flixbus, etc.).
+  question: Combien de kilomètres avez-vous parcouru en car pour des trajets longue distance en 2023 ?
+  description: Nous nous intéressons ici aux trajets faits en autocar dits "Macron" (Ouibus, Flixbus, etc.).
   suggestions:
     aucun: 0
     traversée d'une région: 300
