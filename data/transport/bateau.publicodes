@@ -21,11 +21,11 @@ transport . bateau:
         location bateau . propriétaire: non
   question: Quel(s) type(s) de bateau(x) possédiez-vous en 2023 ?
   description: |
+    La catégorie "Zodiac ou équivalent" représente les petites embarcations à moteur.
+
+    La catégorie "Bateau moteur" inclut tous les autres bateaux  à moteur tel que les runabouts, les day-cruisers, les vedettes, les yachts...
+
     La catégorie "Voilier" inclut les monocoques, les catamarans, les trimarans et les multicoques. 
-
-    La catégorie "Bateau moteur" inclut tous les autres bateaux particuliers hors annexes tel que les runabouts, les day-cruisers, les vedettes, les yachts...
-
-    La catégorie "Annexe" représente les petites embarcations à moteur (type zodiac)  utilisées comme servitude à partir d'un navire porteur.
 
     **Les activités nautiques de loisir tel que jet-ski ne sont pas à prendre en compte ici.**
   formule:
@@ -413,9 +413,9 @@ transport . bateau . location bateau . type:
   question: Quel(s) type(s) de bateau(x) avez vous loué en 2023?
   description: |
     Renseignez ici le(s) bateau(x) que vous avez loué en 2023. Pour rappel :
+      - La catégorie "Zodiac ou équivalent" représente les petites embarcations à moteur.
+      - La catégorie "Bateau moteur" inclut tous les autres bateaux  à moteur tel que les runabouts, les day-cruisers, les vedettes, les yachts...
       - La catégorie "Voilier" inclut les monocoques, les catamarans, les trimarans et les multicoques.
-      - La catégorie "Bateau moteur" inclut tous les autres bateaux particuliers hors annexes tel que les runabouts, les day-cruisers, les vedettes, les yachts...
-      - La catégorie "Annexe" représente les petites embarcations à moteur (type zodiac) utilisées comme servitude à partir d'un navire porteur.
   formule: 
     somme:
       - annexe . empreinte * (annexe . jours / commun . jours par an)

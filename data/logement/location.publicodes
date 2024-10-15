@@ -18,15 +18,15 @@ logement . location:
 
 logement . location . nombre:
   titre: Nombre de logements en location
-  question: Combien d'investissements locatifs possedez-vous (c.à.d des logements que vous n'habitez pas et que vous mettez en location annuelle et/ou saisonnière) ?
+  question: Combien d'investissements locatifs possediez-vous en 2023 (c.à.d des logements que vous n'habitez pas et que vous mettez en location annuelle et/ou saisonnière) ?
   plancher: 0
   par défaut: 0
   description: |
-    Ne comptez pas ici votre logement principal et d'éventuelles résidences secondaires que vous pourriez louer de temps en temps.
+    Ne comptez pas ici votre logement principal et d'éventuelle(s) résidence(s) secondaire(s) que vous pourriez louer de temps en temps.
     Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que vous n'habitez pas mais que 
     vous dédiez à la location longue durée (annuelle et/ou saisonnière).
-
- #   **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas**
+    
+    **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas**
   note: |
     Le nombre max de logement est fixé à 10 car, selon les données de l'[INSEE](https://www.insee.fr/fr/statistiques/5432517?sommaire=5435421) (cf. Excel),
     au sein du décile supérieur, 10% des individus possède 5 logements ou plus (33% pour le centile supérieur)

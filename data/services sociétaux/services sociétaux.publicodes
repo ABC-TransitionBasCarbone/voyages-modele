@@ -26,6 +26,7 @@ services sociétaux:
     somme:
       - services publics
       - services marchands
+      - sven
   unité: kgCO2e
 
 ### On commente la question pour ne pas la voir s'afficher lors du test
@@ -45,3 +46,584 @@ services sociétaux:
 #
 #services sociétaux . question rhétorique . ok:
 #  titre: OK
+
+services sociétaux . sven:
+  titre: Questions SVEN
+  abréviation: sv.
+  icônes: ❓
+  description: |
+    Les questions SVEN sont un ensemble de question dont le but est de situer la relation d'un individu à l'environnement. Ces questions 
+    ont été utilisées dans d'autres travaux de recherche et sont donc reprises à l'identique.
+  formule:
+    somme:
+      - 0.0001 * question 1 . conversion
+      - 0.0001 * question 2 . conversion
+      - 0.0001 * question 3 . conversion
+      - 0.0001 * question 4 . conversion
+      - 0.0001 * question 5 . conversion
+      - 0.0001 * question 6 . conversion
+      - 0.0001 * question 7 . conversion
+      - 0.0001 * question 8 . conversion
+      - 0.0001 * question 9 . conversion
+      - 0.0001 * question 10 . conversion
+      - 0.0001 * question 11 . conversion
+      - 0.0001 * question 12 . conversion
+      - 0.0001 * question 13 . conversion
+      - 0.0001 * question 14 . conversion
+      - 0.0001 * question 15 . conversion
+  unité: kgCO2e
+
+services sociétaux . sven . question 1:
+  question: Nous nous approchons du nombre limite de personnes que la Terre peut nourrir.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 1 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 1 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 1 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 1 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 1 . je ne sais pas:
+
+services sociétaux . sven . question 1 . conversion:
+  formule:
+    variations:
+      - si: question 1 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 1 = 'plutôt d'accord'
+        alors: 2
+      - si: question 1 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 1 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 2:
+  question: Les êtres humains ont le droit de modifier l'environnement naturel selon leurs besoins.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 2 . conversion:
+  formule:
+    variations:
+      - si: question 2 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 2 = 'plutôt d'accord'
+        alors: 2
+      - si: question 2 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 2 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 2 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 2 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 2 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 2 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 2 . je ne sais pas:
+
+services sociétaux . sven . question 3:
+  question: Quand les êtres humains essaient de changer le cours de la nature, cela produit souvent des conséquences désastreuses.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 3 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 3 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 3 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 3 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 3 . je ne sais pas:
+
+services sociétaux . sven . question 3 . conversion:
+  formule:
+    variations:
+      - si: question 3 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 3 = 'plutôt d'accord'
+        alors: 2
+      - si: question 3 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 3 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 4:
+  question: L'ingéniosité humaine fera en sorte que nous ne rendrons pas la Terre invivable.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 4 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 4 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 4 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 4 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 4 . je ne sais pas:
+
+services sociétaux . sven . question 4 . conversion:
+  formule:
+    variations:
+      - si: question 4 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 4 = 'plutôt d'accord'
+        alors: 2
+      - si: question 4 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 4 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 5:
+  question: Les êtres humains sont en train de sérieusement malmener l'environnement.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 5 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 5 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 5 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 5 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 5 . je ne sais pas:
+
+services sociétaux . sven . question 5 . conversion:
+  formule:
+    variations:
+      - si: question 5 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 5 = 'plutôt d'accord'
+        alors: 2
+      - si: question 5 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 5 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 6:
+  question: La Terre posséderait une infinité de ressources naturelles si seulement nous savions comment en tirer mieux parti.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 6 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 6 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 6 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 6 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 6 . je ne sais pas:
+
+services sociétaux . sven . question 6 . conversion:
+  formule:
+    variations:
+      - si: question 6 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 6 = 'plutôt d'accord'
+        alors: 2
+      - si: question 6 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 6 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 7:
+  question: Les plantes et les animaux ont autant le droit que les êtres humains d'exister.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 7 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 7 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 7 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 7 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 7 . je ne sais pas:
+
+services sociétaux . sven . question 7 . conversion:
+  formule:
+    variations:
+      - si: question 7 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 7 = 'plutôt d'accord'
+        alors: 2
+      - si: question 7 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 7 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 8:
+  question: L'équilibre de la nature est assez fort pour faire face aux effets des nations industrielles modernes.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 8 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 8 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 8 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 8 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 8 . je ne sais pas:
+
+services sociétaux . sven . question 8 . conversion:
+  formule:
+    variations:
+      - si: question 8 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 8 = 'plutôt d'accord'
+        alors: 2
+      - si: question 8 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 8 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 9:
+  question: Malgré des aptitudes particulières, les êtres humains sont toujours soumis aux lois de la nature.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 9 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 9 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 9 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 9 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 9 . je ne sais pas:
+
+services sociétaux . sven . question 9 . conversion:
+  formule:
+    variations:
+      - si: question 9 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 9 = 'plutôt d'accord'
+        alors: 2
+      - si: question 9 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 9 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 10:
+  question: La prétendue 'crise écologique' qui guette le genre humain a été largement exagérée.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 10 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 10 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 10 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 10 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 10 . je ne sais pas:
+
+services sociétaux . sven . question 10 . conversion:
+  formule:
+    variations:
+      - si: question 10 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 10 = 'plutôt d'accord'
+        alors: 2
+      - si: question 10 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 10 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 11:
+  question: La Terre est comme un vaisseau spatial avec un espace et des ressources très limités.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 11 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 11 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 11 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 11 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 11 . je ne sais pas:
+
+services sociétaux . sven . question 11 . conversion:
+  formule:
+    variations:
+      - si: question 11 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 11 = 'plutôt d'accord'
+        alors: 2
+      - si: question 11 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 11 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 12:
+  question: Les êtres humains ont été créés pour gouverner le reste de la nature.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 12 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 12 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 12 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 12 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 12 . je ne sais pas:
+
+services sociétaux . sven . question 12 . conversion:
+  formule:
+    variations:
+      - si: question 12 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 12 = 'plutôt d'accord'
+        alors: 2
+      - si: question 12 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 12 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 13:
+  question: L'équilibre de la nature est très fragile et facilement perturbé.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 13 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 13 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 13 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 13 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 13 . je ne sais pas:
+
+services sociétaux . sven . question 13 . conversion:
+  formule:
+    variations:
+      - si: question 13 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 13 = 'plutôt d'accord'
+        alors: 2
+      - si: question 13 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 13 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 14:
+  question: Les êtres humains vont un jour apprendre suffisamment sur le fonctionnement de la nature pour pouvoir le contrôler.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 14 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 14 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 14 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 14 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 14 . je ne sais pas:
+
+services sociétaux . sven . question 14 . conversion:
+  formule:
+    variations:
+      - si: question 14 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 14 = 'plutôt d'accord'
+        alors: 2
+      - si: question 14 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 14 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.
+
+services sociétaux . sven . question 15:
+  question: Si les choses continuent au rythme actuel nous allons bientôt vivre une catastrophe écologique majeure.
+  par défaut: "'je ne sais pas'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - tout à fait d'accord
+        - plutôt d'accord
+        - plutôt pas d'accord
+        - pas du tout d'accord
+
+services sociétaux . sven . question 15 . tout à fait d'accord:
+  titre: Tout à fait d'accord
+services sociétaux . sven . question 15 . plutôt d'accord:
+  titre: Plutôt d'accord
+services sociétaux . sven . question 15 . plutôt pas d'accord:
+  titre: Plutôt pas d'accord
+services sociétaux . sven . question 15 . pas du tout d'accord:
+  titre: Pas du tout d'accord
+services sociétaux . sven . question 15 . je ne sais pas:
+
+services sociétaux . sven . question 15 . conversion:
+  formule:
+    variations:
+      - si: question 15 = 'tout à fait d'accord'
+        alors: 1
+      - si: question 15 = 'plutôt d'accord'
+        alors: 2
+      - si: question 15 = 'plutôt pas d'accord'
+        alors: 3
+      - si: question 15 = 'pas du tout d'accord'
+        alors: 4
+      - sinon: 9
+  description: |
+    On convertit les réponses textuelles en valeur pour pouvoir les sommer et ainsi conserver la réponse utilisateur.

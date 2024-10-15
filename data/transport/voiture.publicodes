@@ -33,6 +33,8 @@ transport . voiture . km:
   description: |
     Veuillez utiliser autant de fois que nécessaire les catégories label, distance, fréquence et nombres d'occupants pour spécifier vos différents trajets en 2023. Sachez que vous pouvez renseigner plusieurs fois le même label (si par exemple vous avez plusieurs lieux de travail).
     
+    Si jamais vous n'avez réalisé aucun trajet en voiture en 2023, renseignez un seul trajet de 1 km (peu importe le label, la fréquence et le nombre d'occupants)
+
     Si vous ne vous souvenez pas de tous les trajets effectués en 2023, cherchez à renseigner avant tout les plus récurrents et les plus longs que vous avez effectué.
     De la même manière, cherchez à renseigner un nombre d'occupants (en vous incluant) le plus représentatif des trajets effectués.
 
