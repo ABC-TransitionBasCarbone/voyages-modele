@@ -132,10 +132,6 @@ transport . deux roues . pourcentage motards:
   formule: nombre deux roues circulation / population
 
 transport . deux roues . type . scooter électrique . propriétaire:
-  applicable si:
-    toutes ces conditions:
-      - est défini: usager
-      - type = 'scooter électrique'
   question: Etiez-vous propriétaire du scooter électrique que vous utilisiez en 2023 ?
   description: Répondez oui si le scooter vous appartenait et non si vous faisiez de "l'autopartage"
 
