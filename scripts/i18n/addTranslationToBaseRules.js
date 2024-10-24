@@ -1,16 +1,16 @@
 /*
-	Function used to combine translated attributes (e.g. questions, titles, notes) with
-	the base rules.
+  Function used to combine translated attributes (e.g. questions, titles, notes) with
+  the base rules.
 
-	NOTE: this function is used by the RulesProvider.js file of the website.
+  NOTE: this function is used by the RulesProvider.js file of the website.
 */
 
-const utils = require('@incubateur-ademe/nosgestesclimat-scripts/utils')
-const cli = require('@incubateur-ademe/nosgestesclimat-scripts/cli')
+import utils from '@incubateur-ademe/nosgestesclimat-scripts/utils'
+import cli from '@incubateur-ademe/nosgestesclimat-scripts/cli'
 
 const attrSuffixesToIgnore = ['.lock', '.auto', '.previous_review']
 
-const addTranslationToBaseRules = (baseRules, translatedRules) => {
+export const addTranslationToBaseRules = (baseRules, translatedRules) => {
   const updateBaseRules = (ruleName, attributes, val) => {
     let baseRule = baseRules[ruleName]
     if (typeof baseRule !== 'object') {
@@ -84,8 +84,4 @@ const addTranslationToBaseRules = (baseRules, translatedRules) => {
     }
   })
   return baseRules
-}
-
-module.exports = {
-  addTranslationToBaseRules
 }
