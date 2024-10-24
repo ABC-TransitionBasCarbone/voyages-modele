@@ -5,13 +5,11 @@ transport . transports commun:
     options:
       - bus . présent
       - car . présent
-      - car longue distance . présent
       - métro ou tram . présent
     suggestions:
       aucun:
         bus . présent: non
         car . présent: non
-        car longue distance . présent: non
         métro ou tram . présent: non
   question: Quels transports en commun utilisez-vous régulièrement (au moins une fois par mois) ?
   icônes: 🚋
@@ -23,7 +21,6 @@ transport . transports commun:
     somme:
       - bus
       - car
-      - car longue distance
       - métro ou tram
 
 transport . transports commun . bus:
@@ -35,7 +32,10 @@ transport . transports commun . bus:
     variations:
       - si:
           est défini: bus . présent
-        alors: empreinte
+        alors:
+          # This is a hack to make sure all branch is not desactivated: we need to have the value in a `somme`, if not, the value applicability is spread to the parent and all branch is desactivated.
+          somme:
+            - empreinte
       - sinon: empreinte par défaut
 
 transport . transports commun . bus . empreinte:
@@ -70,8 +70,9 @@ transport . transports commun . bus . vitesse:
 transport . transports commun . bus . heures par semaine:
   question: Combien d'heures passez-vous dans un bus par semaine ?
   suggestions:
-    zéro: 0
+    30 mn / jour: 3.5
     1h / jour: 7
+    1h30 / jour: 10.5
     2h / jour: 14
   unité: h/semaine
   par défaut: 2
@@ -118,9 +119,9 @@ transport . transports commun . car . présent:
 transport . transports commun . car . km par semaine:
   question: Combien de kilomètres parcourez-vous en car par semaine ?
   suggestions:
-    zéro: 0
     10 km / jour: 70
-    50 km / jour: 140
+    25 km / jour: 175
+    50 km / jour: 350
   unité: km/semaine
   par défaut: 50
 
@@ -175,7 +176,6 @@ transport . transports commun . métro ou tram . empreinte par défaut:
 
 transport . transports commun . métro ou tram . présent:
   question: Vous arrive t-il de prendre le métro ou tram ?
-  par défaut: oui
 
 transport . transports commun . métro ou tram . impact par heure:
   formule: impact par km * vitesse
@@ -208,8 +208,9 @@ transport . transports commun . métro ou tram . vitesse:
 transport . transports commun . métro ou tram . heures par semaine:
   question: Combien d'heures passez-vous par semaine en métro, tram, RER ?
   suggestions:
-    zéro: 0
+    30 mn / jour: 3.5
     1h / jour: 7
+    1h30 / jour: 10.5
     2h / jour: 14
   unité: h/semaine
   par défaut: 2

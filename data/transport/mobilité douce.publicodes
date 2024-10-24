@@ -117,19 +117,18 @@ transport . mobilité douce . trottinette . construction amortie:
   unité: kgCO2e
 
 transport . mobilité douce . trottinette . construction:
-  formule: 116
+  forule: 62.5  #Trottinette électrique moins composants électroniques, cuivre, LED et batteries (= -32%)
   unité: kgCO2e
   note: |
-    La base empreinte ne propose pas de FE pour la trottinette conventionnel.
-
-    Nous nous basons sur un ratio de poids entre trottinette et vélo pour estimer l'empreinte. Nous repartons de l'[étude](https://view.publitas.com/trek-bicycle/trek-bicycle-2021-sustainability-report/page/6) du fabricant de vélo Trek et
-    considérons un poids de Xkg pour une trottinette contre X kg pour un vélo (cf. étude)
+    La base empreinte ne propose pas de FE pour la trottinette conventionnel. On repart de l'empreinte d'une trottinette électrique 
+    à laquelle on ôte les impacts liés aux composants électroniques, cuivre, LED et batteries (-32%). Pour cela on s'appuie sur
+    l'analyse détaillée des procédés contributeurs (page 50 de l'[étude source](https://librairie.ademe.fr/consommer-autrement/127-modelisation-et-evaluation-environnementale-de-produits-de-consommation-et-biens-d-equipement.html))
 
 transport . mobilité douce . trottinette . durée de vie:
-  formule: 12
+  formule: 6
   note: |
-    On considère la même durée de vie qu'un vélo conventionnel elle même identique à celle d'un VAE (ce qui est une hypothèse forte, car il semble qu'un VAE emporte davatange de composants qui peuvent s'user davantage)
-    Hypothèse issue du HBEFA (Manuel des facteurs d'émission pour le transport routier), d'après la documentation de la base empreinte.
+    On majore de 50 % la durée de vie d'une trottinette non électrique. La durée de vie d'une trottinette électrique est issue des
+    hypothèses HBEFA (Manuel des facteurs d'émission pour le transport routier), d'après la documentation de la base empreinte.
     Chiffres tirés de l'étude ADEME de 2019 ["Modélisation et évaluation environnementale de produits de consommation et biens d'équipement"](https://librairie.ademe.fr/dechets-economie-circulaire/127-modelisation-et-evaluation-environnementale-de-produits-de-consommation-et-biens-d-equipement.html)
 
 transport . mobilité douce . vae:

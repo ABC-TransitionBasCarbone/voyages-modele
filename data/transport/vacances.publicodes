@@ -302,10 +302,10 @@ transport . vacances . location véhicule . km:
   description: |
     **Attention !** Assurez vous de ne pas avoir renseigné ces km lors de la première question portant sur les trajets réalisés en voiture. Si c'est ce que vous avez fait, 
     revenez en arrière pour modifier vos réponses et renseignez ici les km effectués en 2023 avec un van/camping-car de location.
-  par défaut: 2000 
+  par défaut: 2000
   unité: km
   plancher: 0
-  note: Valeur par défaut à sourcer
+  note: Valeur par défaut estimée à partir d'offres de location intégrant un [forfait de 200 km/jour](https://www.reve-en-van.fr/location-de-van-amenage/tarifs/) et en considérant 10 jours de location.
 
 transport . vacances . location véhicule . empreinte au kilomètre:
   titre: empreinte au km camping-car
@@ -357,4 +357,6 @@ transport . vacances . location véhicule . amortissement:
 transport . vacances . location véhicule . durée de vie en km:
   formule: 400000
   unité: km
-  note: A sourcer !!!! Durée de vie moyenne en km d'un van/camping-car
+  note: |
+    A la lecture de forums de van-lifer/camping-caristes les durées de vie semblent aller de 250 000 km à 500 000 km voire plus parfois. Il est raisonnable
+    de penser que les vans de location sont bien entretenus et nous fixons donc la durée de vie à 400 000 km.

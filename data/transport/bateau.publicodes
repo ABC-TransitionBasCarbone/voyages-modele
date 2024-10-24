@@ -44,11 +44,11 @@ transport . bateau . annexe:
   unité: kgCO2e
 
 transport . bateau . annexe . propriétaire:
-  question: Possédez-vous une annexe ?
+  question: Possédez-vous une petite embarcation à moteur ?
   par défaut: non
   
 transport . bateau . annexe . taille: 
-  question: Quel est le gabarit de l'annexe ?
+  question: Quel est le gabarit de votre petite embarcation à moteur ?
   ordre: 3
   formule: 
     une possibilité:
@@ -58,16 +58,16 @@ transport . bateau . annexe . taille:
         - moyen
   par défaut: "'moyen'"
   description: |
-    Le gabarit moyen correpond à une annexe de 5 mètres et les gabarits plus petits se trouvent donc en dessous de cette taille
+    Cliquez sur les points d'interrogation à droite des réponses pour une description des gabarits.
 
-    **💡 Si vous utilisez plusieures annnexes (par exemple dans le cas où vous en possédez plusieurs), choisissez la plus représentative de votre usage.
+    **💡 Si vous utilisez plusieures petites embarcations à moteur (par exemple dans le cas où vous en possédez plusieurs), choisissez la plus représentative de votre usage.
 
 transport . bateau . annexe . taille . petit:
   titre: petit
   description: De longueur inférieure à 5 mètres
 transport . bateau . annexe . taille . moyen:
   titre: moyen
-  description: De longueur égale à 5 mètres
+  description: De longueur égale à 5 mètres ou plus
 
 transport . bateau . annexe . facteur taille:
   titre: Taille de l'annexe
@@ -79,7 +79,7 @@ transport . bateau . annexe . facteur taille:
         alors: 1
 
 transport . bateau . annexe . âge:
-  question: Quel est l'âge de votre annexe ?
+  question: Quel est l'âge de votre petite embarcation à moteur ?
   ordre: 3
   description: Renseignez ici l'âge réel de votre annexe et non la durée depuis laquelle vous le possédez.
   par défaut: 15
@@ -93,6 +93,7 @@ transport . bateau . annexe . voyageurs:
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
   plancher: 1
   par défaut: 4
+  note: la valeur n'est pas sourcée faute de données sur ce sujet.
 
 transport . bateau . annexe . construction amortie:
   titre: Empreinte amortie construction annexe
@@ -137,14 +138,33 @@ transport . bateau . annexe . durée:
 transport . bateau . annexe . consommation annuelle:
   titre: Consommation annuelle annexe
   ordre: 3
-  question: En moyenne, combien de litres de carburant par an consommez-vous avec votre annexe ?
+  question: En moyenne, combien de litres de carburant par an consommez-vous avec votre petite embarcation à moteur ?
+  aide: transport . bateau . annexe . consommation annuelle estimée via le coût . saisie
   description: |
-    Si vous possédez plusieurs annexes faites une moyenne de leur consommation
-
-    💡 Vous pouvez aussi estimer votre consommation annuelle à partir de vos factures sur l'année.
+    Si vous possédez plusieurs petites embarcations à moteur, faites une moyenne de leur consommation.
   par défaut: 500
   unité: l
+  plancher: 0
+  note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
+transport . bateau . annexe . consommation annuelle estimée via le coût:
+  titre: Consommation estimée via le coût
+  formule: saisie / facteur
+  arrondi: oui
+  unité: l
+  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
+
+transport . bateau . annexe . consommation annuelle estimée via le coût . saisie:
+  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
+  plancher: 0
+  unité: €/an
+
+transport . bateau . annexe . consommation annuelle estimée via le coût . facteur:
+  formule: carburant . prix
+  unité: €/l
+  note: |
+    Cette formule nous permet de passer des €/an aux l/an.
+  
 ################
 
 transport . bateau . bateau moteur:
@@ -170,21 +190,19 @@ transport . bateau . bateau moteur . taille:
         - grand
   par défaut: "'moyen'"
   description: |
-     Les petits bateaux à moteurs sont par exemple les semi-rigides, les runabouts et les petits day-cruisers. 
-     Dans les bateaux à moteurs de moyen gabarit, nous retrouvons plutôt les cabin-cruisers et les day-cruisers de grande taille. 
-     Enfin les bateaux à moteurs de grande taille sont les yachts. 
-     
-     **💡 Si vous utilisez plusieurs bateaux à moteurs (par exemple dans le cas où vous en possédez plusieurs), choisissez le plus représentatif de votre usage.
+    Cliquez sur les points d'interrogation à droite des réponses pour une description des gabarits.
+    
+    **💡 Si vous utilisez plusieurs bateaux à moteurs (par exemple dans le cas où vous en possédez plusieurs), choisissez le plus représentatif de votre usage.
 
 transport . bateau . bateau moteur . taille . petit:
   titre: petit
-  description: Semi-rigides, runabouts, petits day-cruisers...
+  description: Semi-rigides, runabouts, petits day-cruisers
 transport . bateau . bateau moteur . taille . moyen:
   titre: moyen
-  description: Cabin-cruisers et Day-cruisers de grande taille...
+  description: Cabin-cruisers et day-cruisers de grande taille
 transport . bateau . bateau moteur . taille . grand:
   titre: grand
-  description: Yachts...
+  description: Yachts
 
 transport . bateau . bateau moteur . facteur taille:
   titre: Taille du bateau moteur
@@ -211,6 +229,7 @@ transport . bateau . bateau moteur . voyageurs:
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
   plancher: 1
   par défaut: 4
+  note: la valeur n'est pas sourcée faute de données sur ce sujet.
 
 transport . bateau . bateau moteur . construction amortie:
   titre: Empreinte amortie construction bateau moteur
@@ -257,12 +276,32 @@ transport . bateau . bateau moteur . consommation annuelle:
   ordre: 2
   titre: Consommation annuelle bateau moteur
   question: En moyenne, combien de litres de carburant par an consommez-vous avec votre bateau à moteur ?
+  aide: transport . bateau . bateau moteur . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs bâteaux à moteur faites une moyenne de leur consommation
 
     💡 Vous pouvez aussi estimer votre consommation annuelle à partir de vos factures sur l'année.
   par défaut: 1000
   unité: l
+  note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
+
+transport . bateau . bateau moteur . consommation annuelle estimée via le coût:
+  titre: Consommation estimée via le coût
+  formule: saisie / facteur
+  arrondi: oui
+  unité: l
+  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
+
+transport . bateau . bateau moteur . consommation annuelle estimée via le coût . saisie:
+  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
+  plancher: 0
+  unité: €/an
+
+transport . bateau . bateau moteur . consommation annuelle estimée via le coût . facteur:
+  formule: carburant . prix
+  unité: €/l
+  note: |
+    Cette formule nous permet de passer des €/an aux l/an.
 
 ############################
 
@@ -289,7 +328,7 @@ transport . bateau . voilier . taille:
         - grand
   par défaut: "'moyen'"
   description: |
-    Les petits voiliers sont ceux inférieurs à 8 mètres de long. Les gabarits moyens sont ceux allant de 8 à 13 mètres. Et les grands gabarits sont les voiliers dépassant 13 mètres de long. 
+    Cliquez sur les points d'interrogation à droite des réponses pour une description des gabarits.
 
     **💡 Si vous utilisez plusieurs voiliers (par exemple dans le cas où vous en possédez plusieurs), choisissez le plus représentatif de votre usage.
 
@@ -328,6 +367,7 @@ transport . bateau . voilier . voyageurs:
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
   plancher: 1
   par défaut: 4
+  note: la valeur n'est pas sourcée faute de données sur ce sujet.
 
 transport . bateau . voilier . construction amortie:
   titre: Empreinte amortie construction voilier
@@ -373,12 +413,44 @@ transport . bateau . voilier . consommation annuelle:
   ordre: 1
   titre: Consommation annuelle voilier
   question: En moyenne, combien de litres de carburant par an consommez-vous avec votre voilier ?
+  aide: transport . bateau . voilier . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs voiliers faites une moyenne de leur consommation
 
     💡 Vous pouvez aussi estimer votre consommation annuelle à partir de vos factures sur l'année.
-  par défaut: 100
+  par défaut: 250
   unité: l
+  note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
+
+transport . bateau . voilier . consommation annuelle estimée via le coût:
+  titre: Consommation estimée via le coût
+  formule: saisie / facteur
+  arrondi: oui
+  unité: l
+  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
+
+transport . bateau . voilier . consommation annuelle estimée via le coût . saisie:
+  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
+  plancher: 0
+  unité: €/an
+
+transport . bateau . voilier . consommation annuelle estimée via le coût . facteur:
+  formule: carburant . prix
+  unité: €/l
+  note: |
+    Cette formule nous permet de passer des €/an aux l/an.
+
+transport . bateau . carburant:
+
+transport . bateau . carburant . prix:
+  titre: Coût du litre de carburant marin
+  formule: 1.6044
+  unité: €/l
+  note: |
+    Il semble exister [4 types de carburants marins](https://www.filovent.com/magazine/consommation-carburant-bateau). Parmi eux, seuls le Diesel Marine Leger (DML) et 
+    l'Essence bleue SP98 (SP98b) semblent destinés aux particuliers (le Gazole Pêche et le Fuel soute étant respectivement destinés aux bâteaux de pêche et aux tankers).
+    Les carburants marins destinés aux bateaux de plaisance ne semblent pas éxonérés de taxes. Nous moyennons donc les [prix 2023 TTC destinés aux ménages](https://www.ecologie.gouv.fr/politiques-publiques/prix-produits-petroliers#base-de-donnees-des-prix-des-carburants-et-combustibles-en-france-4) et 
+    approximons le DML au gazole non routier et le SP98b au SP98. 
 
 transport . bateau . empreinte au litre:
   formule: 
@@ -423,7 +495,7 @@ transport . bateau . location bateau . type:
       - type . bateau moteur . empreinte * (voilier . jours / commun . jours par an)
       
 transport . bateau . location bateau . type . annexe:
-  titre: Annexe
+  titre: Zodiac ou équivalent
   icônes: 🚣‍♂️🔥🤝
 
 transport . bateau . location bateau . type . annexe . empreinte:
@@ -434,30 +506,33 @@ transport . bateau . location bateau . type . annexe . empreinte:
     transport . bateau . annexe . taille: "'moyen'"
     transport . bateau . annexe . propriétaire: oui
     transport . bateau . annexe . âge: 10
-  unité: kgCO2e  
+  unité: kgCO2e
+  note: les valeur utilisées sont celles par défaut et ne sont pas sourcées faute de données sur ce sujet. A corriger éventuellement post-enquête.
+
 
 transport . bateau . location bateau . type . annexe . présent:
-  question: Avez-vous loué une annexe en 2023 ?
+  question: Avez-vous loué une petite embarcation à moteur en 2023 ?
   par défaut: non
 
 transport . bateau . location bateau . type . annexe . jours:
   titre: Durée location
   applicable si: annexe . présent
-  question: Combien de jours, au total, avez-vous loué une annexe ?
+  question: Combien de jours, au total, avez-vous loué une petite embarcation à moteur ?
   description: |
-    Si vous avez loué une annexe pour moins d'une journée, renseignez une valeur décimale : 0,5 pour une demie journée et 0,25 pour deux heures de location
+    Si vous avez loué une petite embarcation à moteur pour moins d'une journée, renseignez une valeur décimale : 0,5 pour une demie journée et 0,25 pour deux heures de location
   par défaut: 1
   unité: jour
 
 transport . bateau . location bateau . type . annexe . voyageurs:
   titre: Nombre voyageurs
   applicable si: annexe . présent
-  question: Quel était le nombre moyen de personnes avec vous lors de vo(s) sortie(s) avec une annexe louée ?
+  question: Quel était le nombre moyen de personnes avec vous lors de vo(s) sortie(s) avec une petite embarcation à moteur louée ?
   description: |
     Essayez d'estimer une moyenne approximative en vous incluant. Si vous faites des sorties toujours entre amis ou en famile, le nombre moyen se situe probablement autour de 4.
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
   plancher: 1
   par défaut: 4
+  note: la valeur n'est pas sourcée faute de données sur ce sujet.
 
 transport . bateau . location bateau . type . bateau moteur:
   titre: Bateau à moteur
@@ -472,6 +547,7 @@ transport . bateau . location bateau . type . bateau moteur . empreinte:
     transport . bateau . bateau moteur . propriétaire: oui
     transport . bateau . bateau moteur . âge: 10
   unité: kgCO2e  
+  note: les valeur utilisées sont celles par défaut et ne sont pas sourcées faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
 transport . bateau . location bateau . type . bateau moteur . présent:
   question: Avez-vous loué un bateau moteur en 2023 ?
@@ -495,6 +571,7 @@ transport . bateau . location bateau . type . bateau moteur . voyageurs:
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
   plancher: 1
   par défaut: 4
+  note: la valeur n'est pas sourcée faute de données sur ce sujet.
 
 transport . bateau . location bateau . type . voilier:
   titre: Voilier
@@ -508,7 +585,8 @@ transport . bateau . location bateau . type . voilier . empreinte:
     transport . bateau . voilier . taille: "'moyen'"
     transport . bateau . voilier . propriétaire: oui
     transport . bateau . voilier . âge: 10
-  unité: kgCO2e  
+  unité: kgCO2e
+  note: les valeur utilisées sont celles par défaut et ne sont pas sourcées faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
 transport . bateau . location bateau . type . voilier . présent:
   question: Avez-vous loué un voilier en 2023 ?
@@ -532,3 +610,4 @@ transport . bateau . location bateau . type . voilier . voyageurs:
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
   plancher: 1
   par défaut: 4
+  note: la valeur n'est pas sourcée faute de données sur ce sujet.
