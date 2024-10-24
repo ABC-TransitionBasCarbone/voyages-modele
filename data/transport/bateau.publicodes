@@ -139,7 +139,7 @@ transport . bateau . annexe . consommation annuelle:
   titre: Consommation annuelle annexe
   ordre: 3
   question: En moyenne, combien de litres de carburant par an consommez-vous avec votre petite embarcation à moteur ?
-  aide: transport . bateau . annexe . consommation annuelle estimée via le coût . saisie
+#  aide: transport . bateau . annexe . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs petites embarcations à moteur, faites une moyenne de leur consommation.
   par défaut: 500
@@ -147,23 +147,23 @@ transport . bateau . annexe . consommation annuelle:
   plancher: 0
   note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
-transport . bateau . annexe . consommation annuelle estimée via le coût:
-  titre: Consommation estimée via le coût
-  formule: saisie / facteur
-  arrondi: oui
-  unité: l
-  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
+#transport . bateau . annexe . consommation annuelle estimée via le coût:
+#  titre: Consommation estimée via le coût
+#  formule: saisie / facteur
+#  arrondi: oui
+#  unité: l
+#  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
 
-transport . bateau . annexe . consommation annuelle estimée via le coût . saisie:
-  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
-  plancher: 0
-  unité: €/an
+#transport . bateau . annexe . consommation annuelle estimée via le coût . saisie:
+#  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
+#  plancher: 0
+#  unité: €/an
 
-transport . bateau . annexe . consommation annuelle estimée via le coût . facteur:
-  formule: carburant . prix
-  unité: €/l
-  note: |
-    Cette formule nous permet de passer des €/an aux l/an.
+#transport . bateau . annexe . consommation annuelle estimée via le coût . facteur:
+#  formule: carburant . prix
+#  unité: €/l
+#  note: |
+#    Cette formule nous permet de passer des €/an aux l/an.
   
 ################
 
@@ -276,7 +276,7 @@ transport . bateau . bateau moteur . consommation annuelle:
   ordre: 2
   titre: Consommation annuelle bateau moteur
   question: En moyenne, combien de litres de carburant par an consommez-vous avec votre bateau à moteur ?
-  aide: transport . bateau . bateau moteur . consommation annuelle estimée via le coût . saisie
+#  aide: transport . bateau . bateau moteur . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs bâteaux à moteur faites une moyenne de leur consommation
 
@@ -285,23 +285,23 @@ transport . bateau . bateau moteur . consommation annuelle:
   unité: l
   note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
-transport . bateau . bateau moteur . consommation annuelle estimée via le coût:
-  titre: Consommation estimée via le coût
-  formule: saisie / facteur
-  arrondi: oui
-  unité: l
-  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
+#transport . bateau . bateau moteur . consommation annuelle estimée via le coût:
+#  titre: Consommation estimée via le coût
+#  formule: saisie / facteur
+#  arrondi: oui
+#  unité: l
+#  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
 
-transport . bateau . bateau moteur . consommation annuelle estimée via le coût . saisie:
-  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
-  plancher: 0
-  unité: €/an
+#transport . bateau . bateau moteur . consommation annuelle estimée via le coût . saisie:
+#  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
+#  plancher: 0
+#  unité: €/an
 
-transport . bateau . bateau moteur . consommation annuelle estimée via le coût . facteur:
-  formule: carburant . prix
-  unité: €/l
-  note: |
-    Cette formule nous permet de passer des €/an aux l/an.
+#transport . bateau . bateau moteur . consommation annuelle estimée via le coût . facteur:
+#  formule: carburant . prix
+#  unité: €/l
+#  note: |
+#    Cette formule nous permet de passer des €/an aux l/an.
 
 ############################
 
@@ -413,7 +413,7 @@ transport . bateau . voilier . consommation annuelle:
   ordre: 1
   titre: Consommation annuelle voilier
   question: En moyenne, combien de litres de carburant par an consommez-vous avec votre voilier ?
-  aide: transport . bateau . voilier . consommation annuelle estimée via le coût . saisie
+#  aide: transport . bateau . voilier . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs voiliers faites une moyenne de leur consommation
 
@@ -422,23 +422,23 @@ transport . bateau . voilier . consommation annuelle:
   unité: l
   note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
-transport . bateau . voilier . consommation annuelle estimée via le coût:
-  titre: Consommation estimée via le coût
-  formule: saisie / facteur
-  arrondi: oui
-  unité: l
-  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
+#transport . bateau . voilier . consommation annuelle estimée via le coût:
+#  titre: Consommation estimée via le coût
+#  formule: saisie / facteur
+#  arrondi: oui
+#  unité: l
+#  note: Cette règle est utilisée dans le cadre de l'aide à la saisie pour la question mentionnée dans l'attribut `aide`. L'attribution de la valeur finale est géré côté site.
 
-transport . bateau . voilier . consommation annuelle estimée via le coût . saisie:
-  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
-  plancher: 0
-  unité: €/an
+#transport . bateau . voilier . consommation annuelle estimée via le coût . saisie:
+#  question: Vous ne connaissez pas les litres de carburant que vous avez consommés en 2023 ? Entrez vos dépenses annuelles approximatives en carburant.
+#  plancher: 0
+#  unité: €/an
 
-transport . bateau . voilier . consommation annuelle estimée via le coût . facteur:
-  formule: carburant . prix
-  unité: €/l
-  note: |
-    Cette formule nous permet de passer des €/an aux l/an.
+#transport . bateau . voilier . consommation annuelle estimée via le coût . facteur:
+#  formule: carburant . prix
+#  unité: €/l
+#  note: |
+#    Cette formule nous permet de passer des €/an aux l/an.
 
 transport . bateau . carburant:
 
