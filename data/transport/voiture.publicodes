@@ -817,12 +817,12 @@ transport . voiture . âge:
     toutes ces conditions:
       - km > 0
       - utilisateur = 'propriétaire'
-  question: Quel était l'âge de votre voiture en 2023?
+  question: Quel était l'âge de votre voiture en 2023 ?
   description: |
     **En considérant l'année 2023 comme référence**, renseignez ici **l'âge réel** de la voiture et non pas le nombre d'années qu'elle a passé en votre possession (notamment si vous l'avez acheté d'occasion). 
     Exemples : 
     
-    Pour une voiture d'occasion achetée il y a 2 ans (soit en 2022) et ayant déjà 3 ans -> renseignez un âge de 4 ans (1 an en votre possesssion + 3 ans avant).
+    Pour une voiture d'occasion achetée il y a 2 ans (soit en 2022) et ayant déjà 3 ans de vie au moment de l'achat -> renseignez un âge de 4 ans (1 an en votre possesssion de 2022 à 2023 + 3 ans avant).
     
     Pour une voiture achetée neuve :
       - en 2023 -> renseignez un âge de 0 ans

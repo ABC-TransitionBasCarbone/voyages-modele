@@ -32,7 +32,6 @@ transport . deux roues . km:
   plancher: 0
   unité: km
   suggestions:
-    zéro: 0
     vacances: 2000
     10km / jour: 3600
     1000km / mois: 12000
@@ -132,10 +131,6 @@ transport . deux roues . pourcentage motards:
   formule: nombre deux roues circulation / population
 
 transport . deux roues . type . scooter électrique . propriétaire:
-  applicable si:
-    toutes ces conditions:
-      - est défini: usager
-      - type = 'scooter électrique'
   question: Etiez-vous propriétaire du scooter électrique que vous utilisiez en 2023 ?
   description: Répondez oui si le scooter vous appartenait et non si vous faisiez de "l'autopartage"
 
