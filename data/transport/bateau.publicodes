@@ -86,7 +86,7 @@ transport . bateau . annexe . âge:
   unité: an
 
 transport . bateau . annexe . voyageurs: 
-  question: Quel est le nombre moyen de personnes avec vous sur l'annexe lors de vos sorties ?
+  question: Quel est le nombre moyen de personnes avec vous sur votre petite embarcation à moteur lors de vos sorties ?
   ordre: 3
   description: |
     Essayez d'estimer une moyenne approximative en vous incluant. Si vous faites des sorties toujours entre amis ou en famile, le nombre moyen se situe probablement autour de 4.
@@ -474,6 +474,7 @@ transport . bateau . location bateau . propriétaire:
   par défaut: non
 
 transport . bateau . location bateau . type:
+  ordre: 4
   applicable si: propriétaire
   titre: Bateau(x) loué(s)
   mosaique:
@@ -515,6 +516,7 @@ transport . bateau . location bateau . type . annexe . présent:
   par défaut: non
 
 transport . bateau . location bateau . type . annexe . jours:
+  ordre: 5
   titre: Durée location
   applicable si: annexe . présent
   question: Combien de jours, au total, avez-vous loué une petite embarcation à moteur ?
@@ -524,6 +526,7 @@ transport . bateau . location bateau . type . annexe . jours:
   unité: jour
 
 transport . bateau . location bateau . type . annexe . voyageurs:
+  ordre: 5
   titre: Nombre voyageurs
   applicable si: annexe . présent
   question: Quel était le nombre moyen de personnes avec vous lors de vo(s) sortie(s) avec une petite embarcation à moteur louée ?
@@ -554,6 +557,7 @@ transport . bateau . location bateau . type . bateau moteur . présent:
   par défaut: non
 
 transport . bateau . location bateau . type . bateau moteur . jours:
+  ordre: 6
   titre: Durée location
   applicable si: bateau moteur . présent
   question: Combien de jours, au total, avez-vous loué un bateau à moteur ?
@@ -563,6 +567,7 @@ transport . bateau . location bateau . type . bateau moteur . jours:
   unité: jour
 
 transport . bateau . location bateau . type . bateau moteur . voyageurs:
+  ordre: 6
   titre: Nombre voyageurs
   applicable si: bateau moteur . présent
   question: Quel était le nombre moyen de personnes avec vous lors de vo(s) sortie(s) avec un bateau à moteur loué ?
@@ -593,6 +598,7 @@ transport . bateau . location bateau . type . voilier . présent:
   par défaut: non
 
 transport . bateau . location bateau . type . voilier . jours:
+  ordre: 7
   titre: Durée location
   applicable si: voilier . présent
   question: Combien de jours, au total, avez-vous loué un voilier ?
@@ -602,6 +608,7 @@ transport . bateau . location bateau . type . voilier . jours:
   unité: jour
 
 transport . bateau . location bateau . type . voilier . voyageurs:
+  ordre: 7
   titre: Nombre voyageurs
   applicable si: voilier . présent
   question: Quel était le nombre moyen de personnes avec vous lors de vo(s) sortie(s) avec un voilier loué ?

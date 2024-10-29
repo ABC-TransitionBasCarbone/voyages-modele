@@ -38,6 +38,7 @@ logement . location . logement-1:
   unité: kgCO2e
 
 logement . location . logement-1 . surface:
+  ordre: 2
   titre: Surface location logement 1
   question: Quelle est la surface de votre premier logement en location ?
   applicable si: location . nombre >= 1
@@ -66,6 +67,7 @@ logement . location . logement-1 . surface:
   unité: m2
 
 logement . location . logement-1 . appartement:
+  ordre: 1
   titre: Appartement location logement 1
   question: Votre premier logement en location est-il un appartement ?
   applicable si: location . nombre >= 1
@@ -76,6 +78,7 @@ logement . location . logement-1 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-1 . âge:
+  ordre: 3
   question: Quel est l'âge de votre premier investissement locatif ?
   applicable si: location . nombre >= 1
   description: |
@@ -103,6 +106,7 @@ logement . location . logement-1 . âge:
     un siècle: 100
 
 logement . location . logement-1 . DPE:
+  ordre: 4
   question: Quel est le DPE de votre premier logement en location ?
   applicable si: location . nombre >= 1
   description: |
@@ -169,6 +173,7 @@ logement . location . logement-1 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-1 . chauffage:
+  ordre: 5
   titre: Energie location logement 1
   applicable si: location . nombre >= 1
   mosaique:
@@ -282,6 +287,7 @@ logement . location . logement-2:
   unité: kgCO2e
 
 logement . location . logement-2 . surface:
+  ordre: 7
   titre: Surface location logement 2
   question: Quelle est la surface de votre deuxième logement en location ?
   applicable si: location . nombre >= 2
@@ -310,6 +316,7 @@ logement . location . logement-2 . surface:
   unité: m2
 
 logement . location . logement-2 . appartement:
+  ordre: 6
   titre: Appartement location logement 2
   question: Votre deuxième logement en location est-il un appartement ?
   applicable si: location . nombre >= 2
@@ -320,6 +327,7 @@ logement . location . logement-2 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-2 . âge:
+  ordre: 8
   question: Quel est l'âge de votre deuxième investissement locatif ?
   applicable si: location . nombre >= 2
   description: |
@@ -347,6 +355,7 @@ logement . location . logement-2 . âge:
     un siècle: 100
 
 logement . location . logement-2 . DPE:
+  ordre: 9
   question: Quel est le DPE de votre deuxième logement en location ?
   applicable si: location . nombre >= 2
   description: |
@@ -414,6 +423,7 @@ logement . location . logement-2 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-2 . chauffage:
+  ordre: 10
   titre: Energie location logement 2
   applicable si: location . nombre >= 2
   mosaique:
@@ -527,6 +537,7 @@ logement . location . logement-3:
   unité: kgCO2e
 
 logement . location . logement-3 . surface:
+  ordre: 12
   titre: Surface location logement 3
   question: Quelle est la surface de votre troisième logement en location ?
   applicable si: location . nombre >= 3
@@ -555,6 +566,7 @@ logement . location . logement-3 . surface:
   unité: m2
 
 logement . location . logement-3 . appartement:
+  ordre: 11
   titre: Appartement location logement 3
   question: Votre troisième logement en location est-il un appartement ?
   applicable si: location . nombre >= 3
@@ -565,6 +577,7 @@ logement . location . logement-3 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-3 . âge:
+  ordre: 13
   question: Quel est l'âge de votre troisième investissement locatif ?
   applicable si: location . nombre >= 3
   description: |
@@ -592,6 +605,7 @@ logement . location . logement-3 . âge:
     un siècle: 100
 
 logement . location . logement-3 . DPE:
+  ordre: 14
   question: Quel est le DPE de votre troisième logement en location ?
   applicable si: location . nombre >= 3
   description: |
@@ -655,6 +669,7 @@ logement . location . logement-3 . DPE . G:
   titre: DPE G
 
 logement . location . logement-3 . chauffage:
+  ordre: 15
   titre: Energie location logement 3
   applicable si: location . nombre >= 3
   mosaique:
@@ -768,6 +783,7 @@ logement . location . logement-4:
   unité: kgCO2e
 
 logement . location . logement-4 . surface:
+  ordre: 17
   titre: Surface location logement 4
   question: Quelle est la surface de votre quatrième logement en location ?
   applicable si: location . nombre >= 4
@@ -796,6 +812,7 @@ logement . location . logement-4 . surface:
   unité: m2
 
 logement . location . logement-4 . appartement:
+  ordre: 16
   titre: Appartement location logement 4
   question: Votre quatrième logement en location est-il un appartement ?
   applicable si: location . nombre >= 4
@@ -806,6 +823,7 @@ logement . location . logement-4 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-4 . âge:
+  ordre: 18
   question: Quel est l'âge de votre quatrième investissement locatif ?
   applicable si: location . nombre >= 4
   description: |
@@ -833,6 +851,7 @@ logement . location . logement-4 . âge:
     un siècle: 100
 
 logement . location . logement-4 . DPE:
+  ordre: 19
   question: Quel est le DPE de votre quatrième logement en location ?
   applicable si: location . nombre >= 4
   description: |
@@ -899,6 +918,7 @@ logement . location . logement-4 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-4 . chauffage:
+  ordre: 20
   titre: Energie location logement 4
   applicable si: location . nombre >= 4
   mosaique:
@@ -1012,6 +1032,7 @@ logement . location . logement-5:
   unité: kgCO2e
 
 logement . location . logement-5 . surface:
+  ordre: 22
   titre: Surface location logement 5
   question: Quelle est la surface de votre cinquième logement en location ?
   applicable si: location . nombre >= 5
@@ -1040,6 +1061,7 @@ logement . location . logement-5 . surface:
   unité: m2
 
 logement . location . logement-5 . appartement:
+  ordre: 21
   titre: Appartement location logement 5
   question: Votre cinquième logement en location est-il un appartement ?
   applicable si: location . nombre >= 5
@@ -1050,6 +1072,7 @@ logement . location . logement-5 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-5 . âge:
+  ordre: 23
   question: Quel est l'âge de votre cinquième investissement locatif ?
   applicable si: location . nombre >= 5
   description: |
@@ -1077,6 +1100,7 @@ logement . location . logement-5 . âge:
     un siècle: 100
 
 logement . location . logement-5 . DPE:
+  ordre: 24
   question: Quel est le DPE de votre cinquième logement en location ?
   applicable si: location . nombre >= 5
   description: |
@@ -1143,6 +1167,7 @@ logement . location . logement-5 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-5 . chauffage:
+  ordre: 25
   titre: Energie location logement 5
   applicable si: location . nombre >= 5
   mosaique:
@@ -1256,6 +1281,7 @@ logement . location . logement-6:
   unité: kgCO2e
 
 logement . location . logement-6 . surface:
+  ordre: 27
   titre: Surface location logement 6
   question: Quelle est la surface de votre sixième logement en location ?
   applicable si: location . nombre >= 6
@@ -1284,6 +1310,7 @@ logement . location . logement-6 . surface:
   unité: m2
 
 logement . location . logement-6 . appartement:
+  ordre: 26
   titre: Appartement location logement 6
   question: Votre sixième logement en location est-il un appartement ?
   applicable si: location . nombre >= 6
@@ -1294,6 +1321,7 @@ logement . location . logement-6 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-6 . âge:
+  ordre: 28
   question: Quel est l'âge de votre sixième investissement locatif ?
   applicable si: location . nombre >= 6
   description: |
@@ -1321,6 +1349,7 @@ logement . location . logement-6 . âge:
     un siècle: 100
 
 logement . location . logement-6 . DPE:
+  ordre: 29
   question: Quel est le DPE de votre sixième logement en location ?
   applicable si: location . nombre >= 6
   description: |
@@ -1387,6 +1416,7 @@ logement . location . logement-6 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-6 . chauffage:
+  ordre: 30
   titre: Energie location logement 6
   applicable si: location . nombre >= 6
   mosaique:
@@ -1500,6 +1530,7 @@ logement . location . logement-7:
   unité: kgCO2e
 
 logement . location . logement-7 . surface:
+  ordre: 32
   titre: Surface location logement 7
   question: Quelle est la surface de votre septième logement en location ?
   applicable si: location . nombre >= 7
@@ -1528,6 +1559,7 @@ logement . location . logement-7 . surface:
   unité: m2
 
 logement . location . logement-7 . appartement:
+  ordre: 31
   titre: Appartement location logement 7
   question: Votre septième logement en location est-il un appartement ?
   applicable si: location . nombre >= 7
@@ -1538,6 +1570,7 @@ logement . location . logement-7 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-7 . âge:
+  ordre: 33
   question: Quel est l'âge de votre septième investissement locatif ?
   applicable si: location . nombre >= 7
   description: |
@@ -1565,6 +1598,7 @@ logement . location . logement-7 . âge:
     un siècle: 100
 
 logement . location . logement-7 . DPE:
+  ordre: 34
   question: Quel est le DPE de votre septième logement en location ?
   applicable si: location . nombre >= 7
   description: |
@@ -1631,6 +1665,7 @@ logement . location . logement-7 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-7 . chauffage:
+  ordre: 35
   titre: Energie location logement 7
   applicable si: location . nombre >= 7
   mosaique:
@@ -1744,6 +1779,7 @@ logement . location . logement-8:
   unité: kgCO2e
 
 logement . location . logement-8 . surface:
+  ordre: 37
   titre: Surface location logement 8
   question: Quelle est la surface de votre huitième logement en location ?
   applicable si: location . nombre >= 8
@@ -1772,6 +1808,7 @@ logement . location . logement-8 . surface:
   unité: m2
 
 logement . location . logement-8 . appartement:
+  ordre: 36
   titre: Appartement location logement 8
   question: Votre huitième logement en location est-il un appartement ?
   applicable si: location . nombre >= 8
@@ -1782,6 +1819,7 @@ logement . location . logement-8 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-8 . âge:
+  ordre: 38
   question: Quel est l'âge de votre huitième investissement locatif ?
   applicable si: location . nombre >= 8
   description: |
@@ -1809,6 +1847,7 @@ logement . location . logement-8 . âge:
     un siècle: 100
 
 logement . location . logement-8 . DPE:
+  ordre: 39
   question: Quel est le DPE de votre huitième logement en location ?
   applicable si: location . nombre >= 8
   description: |
@@ -1875,6 +1914,7 @@ logement . location . logement-8 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-8 . chauffage:
+  ordre: 40
   titre: Energie location logement 8
   applicable si: location . nombre >= 8
   mosaique:
@@ -1988,6 +2028,7 @@ logement . location . logement-9:
   unité: kgCO2e
 
 logement . location . logement-9 . surface:
+  ordre: 42
   titre: Surface location logement 9
   question: Quelle est la surface de votre neuvième logement en location ?
   applicable si: location . nombre >= 9
@@ -2016,6 +2057,7 @@ logement . location . logement-9 . surface:
   unité: m2
 
 logement . location . logement-9 . appartement:
+  ordre: 41
   titre: Appartement location logement 9
   question: Votre neuvième logement en location est-il un appartement ?
   applicable si: location . nombre >= 9
@@ -2026,6 +2068,7 @@ logement . location . logement-9 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-9 . âge:
+  ordre: 43
   question: Quel est l'âge de votre neuvième investissement locatif ?
   applicable si: location . nombre >= 9
   description: |
@@ -2053,6 +2096,7 @@ logement . location . logement-9 . âge:
     un siècle: 100
 
 logement . location . logement-9 . DPE:
+  ordre: 44
   question: Quel est le DPE de votre neuvième logement en location ?
   applicable si: location . nombre >= 9
   description: |
@@ -2119,6 +2163,7 @@ logement . location . logement-9 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-9 . chauffage:
+  ordre: 45
   titre: Energie location logement 9
   applicable si: location . nombre >= 9
   mosaique:
@@ -2232,6 +2277,7 @@ logement . location . logement-10:
   unité: kgCO2e
 
 logement . location . logement-10 . surface:
+  ordre: 47
   titre: Surface location logement 10
   question: Quelle est la surface de votre dixième logement en location ?
   applicable si: location . nombre >= 10
@@ -2260,6 +2306,7 @@ logement . location . logement-10 . surface:
   unité: m2
 
 logement . location . logement-10 . appartement:
+  ordre: 46
   titre: Appartement location logement 10
   question: Votre dixième logement en location est-il un appartement ?
   applicable si: location . nombre >= 10
@@ -2270,6 +2317,7 @@ logement . location . logement-10 . appartement:
     Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
 
 logement . location . logement-10 . âge:
+  ordre: 48
   question: Quel est l'âge de votre dixième investissement locatif ?
   applicable si: location . nombre >= 10
   description: |
@@ -2297,6 +2345,7 @@ logement . location . logement-10 . âge:
     un siècle: 100
 
 logement . location . logement-10 . DPE:
+  ordre: 49
   question: Quel est le DPE de votre dixième logement en location ?
   applicable si: location . nombre >= 10
   description: |
@@ -2363,6 +2412,7 @@ logement . location . logement-10 . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . location . logement-10 . chauffage:
+  ordre: 50
   titre: Energie location logement 10
   applicable si: location . nombre >= 10
   mosaique:

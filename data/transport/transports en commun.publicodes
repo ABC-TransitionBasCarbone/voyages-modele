@@ -117,7 +117,7 @@ transport . transports commun . car . présent:
   question: Vous arrive t-il de prendre le car ?
 
 transport . transports commun . car . km par semaine:
-  question: Combien de kilomètres parcourez-vous en car par semaine ?
+  question: Combien de kilomètres parcourez-vous en autocar par semaine ?
   suggestions:
     10 km / jour: 70
     25 km / jour: 175

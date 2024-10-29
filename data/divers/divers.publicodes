@@ -13,13 +13,13 @@ divers:
   formule:
     somme:
       - animaux domestiques
-      - textile
       - électroménager
-      - ameublement
       - numérique
+      - textile
+      - ameublement
       - produits consommables
-      - loisirs
       - autres produits
+      - loisirs
       - tabac
   unité: kgCO2e
 

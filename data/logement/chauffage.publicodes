@@ -32,7 +32,7 @@ logement . chauffage:
 
     **Cochez tous les modes que vous utilisez.**
 
-    PS : si vous possédez un van oun camping-car, intégrez ici vos consommations de gaz.
+    PS : si vous possédez un barbecue au gaz, un van ou un camping-car, intégrez ici vos consommations de gaz.
   formule:
     variations:
       - si: choix utilisateur

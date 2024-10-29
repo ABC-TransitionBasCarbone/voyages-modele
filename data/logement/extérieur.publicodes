@@ -1,6 +1,6 @@
 logement . extérieur:
   icônes: ☘️
-  titre: Extérieur (jardin, terrasse)
+  titre: Equipements extérieurs (jardin, terrasse)
   mosaique:
     type: nombre
     options:
@@ -27,6 +27,7 @@ logement . extérieur:
             - empreinte totale / habitants
             - mosaic
       - sinon: empreinte par défaut / habitants
+  description: Si vous ne possédez aucun équipement extérieur, cliquez sur "Aucun", puis passez à la question suivante.
 
 logement . extérieur . choix utilisateur:
   titre: Choix utilisateur pour le jardin
@@ -73,7 +74,7 @@ logement . extérieur . salon de jardin bois . nombre:
 
 logement . extérieur . empreinte calculée salon de jardin bois:
   applicable si: salon de jardin bois . nombre > 0
-  formule: empreinte salon de jardin bois amortie
+  formule: empreinte salon de jardin bois amortie * salon de jardin bois . nombre
 
 logement . extérieur . empreinte moyenne salon de jardin bois:
   formule: empreinte salon de jardin bois amortie * part propriétaires salon jardin bois
@@ -107,7 +108,7 @@ logement . extérieur . salon de jardin résine ou métal . nombre:
 
 logement . extérieur . empreinte calculée salon de jardin résine ou métal:
   applicable si: salon de jardin résine ou métal . nombre > 0
-  formule: empreinte salon de jardin résine ou métal amortie
+  formule: empreinte salon de jardin résine ou métal amortie * salon de jardin résine ou métal . nombre
 
 logement . extérieur . empreinte moyenne salon de jardin résine ou métal:
   formule: empreinte salon de jardin résine ou métal amortie * part propriétaires salon jardin résine ou métal
@@ -153,7 +154,7 @@ logement . extérieur . tondeuse électrique ou robot . nombre:
 
 logement . extérieur . empreinte calculée tondeuse électrique ou robot:
   applicable si: tondeuse électrique ou robot . nombre > 0
-  formule: empreinte tondeuse électrique ou robot amortie
+  formule: empreinte tondeuse électrique ou robot amortie * tondeuse électrique ou robot . nombre
 
 logement . extérieur . empreinte moyenne tondeuse électrique ou robot:
   formule: empreinte tondeuse électrique ou robot amortie * part propriétaires tondeuse électrique ou robot
@@ -208,7 +209,8 @@ logement . extérieur . empreinte moyenne tondeuse thermique:
   formule: empreinte tondeuse thermique amortie * part propriétaires tondeuse thermique
 
 logement . extérieur . empreinte tondeuse thermique amortie:
-  formule: (empreinte tondeuse thermique / durée de vie tondeuse) + tondeuse thermique . usage
+# On multiplie par le nombre de tondeuses possédées uniquement l'empreinte de construction amortie
+  formule: ((empreinte tondeuse thermique / durée de vie tondeuse) * tondeuse thermique . nombre) + tondeuse thermique . usage
   unité: kgCO2e
 
 logement . extérieur . tondeuse thermique . usage:
@@ -260,8 +262,9 @@ logement . extérieur . barbecue électrique ou gaz . nombre:
   par défaut: 0
 
 logement . extérieur . empreinte calculée barbecue électrique ou gaz:
+# Nous ne considérons pas d'empreinte d'utilisation car que ce soit pour le gaz ou l'élec on demande à l'utilisateur de renseigner ses consommation dans la partie énergie
   applicable si: barbecue électrique ou gaz . nombre > 0
-  formule: empreinte barbecue électrique ou gaz amortie
+  formule: empreinte barbecue électrique ou gaz amortie * barbecue électrique ou gaz . nombre
 
 logement . extérieur . empreinte moyenne barbecue électrique ou gaz:
   formule: empreinte barbecue électrique ou gaz amortie * part propriétaires barbecue électrique ou gaz
@@ -282,7 +285,7 @@ logement . extérieur . empreinte barbecue électrique ou gaz:
 
 logement . extérieur . durée de vie barbecue:
   formule: 10
-  note: Nous supposons qu'une tondeuse a une durée de vie de 10 ans en moyenne.
+  note: Nous supposons qu'un barbecue (électrique, gaz ou charbon) a une durée de vie de 10 ans en moyenne.
 
 logement . extérieur . part propriétaires barbecue électrique ou gaz:
   formule: 0.85 * (1 - 0.37)
@@ -309,7 +312,8 @@ logement . extérieur . empreinte moyenne barbecue charbon:
   formule: empreinte barbecue charbon * part propriétaires barbecue charbon
 
 logement . extérieur . empreinte barbecue charbon:
-  formule: empreinte usage barbecue charbon * nombre moyen barbecues par an + empreinte construction barbecue charbon / durée de vie barbecue
+# On multiplie par le nombre de barbecues possédés uniquement l'empreinte de construction amortie
+  formule: empreinte usage barbecue charbon * nombre moyen barbecues par an + ((empreinte construction barbecue charbon / durée de vie barbecue) * barbecue charbon . nombre)
   note: |
     À la différence des barbecues électrique et au gaz, le barbecue au charbon a une empreinte importante liée à l'usage : brûler du charbon pour cuire des aliments rejette une quantité importante de gaz à effet de serre. 
     Nous comptabilisons donc les deux empreintes, de constrution et d'usage.

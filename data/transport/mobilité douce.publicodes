@@ -96,7 +96,7 @@ transport . mobilité douce . vélo . durée de vie:
     Chiffres tirés de l'étude ADEME de 2019 ["Modélisation et évaluation environnementale de produits de consommation et biens d'équipement"](https://librairie.ademe.fr/dechets-economie-circulaire/127-modelisation-et-evaluation-environnementale-de-produits-de-consommation-et-biens-d-equipement.html)
 
 transport . mobilité douce . trottinette:
-  titre: Trotinette classique
+  titre: Trottinette classique
   applicable si: présent
   icônes: 🛴🦵
   formule: construction amortie
@@ -195,7 +195,7 @@ transport . mobilité douce . autres véhicules à moteur . présent:
 transport . mobilité douce . autres véhicules à moteur . empreinte:
   formule: 0.002
   unité: kgCO2e/km
-  note: FE issu de la base empreinte (Trotinette)
+  note: FE issu de la base empreinte (Trottinette)
 
 transport . mobilité douce . autres véhicules à moteur . km:
   question: Combien de kilomètres avez-vous fait en 2023 avec votre petit véhicule électrique (trottinette électrique, gyropode, monocycle électrique, hoverboard) ?
@@ -215,7 +215,7 @@ transport . mobilité douce . autres véhicules à moteur . construction amortie
 transport . mobilité douce . autres véhicules à moteur . construction:
   formule: 91.9
   unité: kgCO2e
-  note: FE issu de la base empreinte (Trotinette)
+  note: FE issu de la base empreinte (Trottinette)
 
 transport . mobilité douce . autres véhicules à moteur . durée de vie:
   formule: 4
