@@ -15,11 +15,11 @@ logement:
       - électricité
       - chauffage
       - climatisation
+      - jardin
       - piscine
       - extérieur
       - vacances
       - location
-      - jardin
   #    - 0.0000001 * statut en chiffre * DPE en chiffre
   unité: kgCO2e
 

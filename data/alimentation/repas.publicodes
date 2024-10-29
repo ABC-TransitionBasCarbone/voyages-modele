@@ -66,6 +66,7 @@ alimentation . déjeuner et dîner . par semaine:
   unité: kgCO2e/semaine
 
 alimentation . plats:
+  ordre: 1
   icônes: 🍽️
   mosaique:
     type: nombre
@@ -82,8 +83,6 @@ alimentation . plats:
     Choisissez les plats qui représentent votre semaine type. 
 
     A priori, vous en aurez 14 : 7 déjeuners et 7 dîners. Mais vous pouvez aussi manger moins, ou plus, c'est tout à fait possible !
-
-    > Aujourd'hui nous travaillons pour que les menus associés à vos repas soient les plus représentatifs de vos habitudes, n'hésitez pas à aller plus loin en parcourant la documentation.
   formule:
     somme:
       - végétalien
@@ -365,6 +364,7 @@ alimentation . petit déjeuner:
   unité: kgCO2e/repas
 
 alimentation . petit déjeuner . type:
+  ordre: 4
   question: Quel petit déjeuner vous correspond le plus ?
   description: |
     Il existe une variété infinie de petits déjeuners. Nous en avons sélectionné quelques-uns pour que vous obteniez une réponse facilement.
@@ -564,6 +564,7 @@ alimentation . local . empreinte:
   unité: kgCO2e
 
 alimentation . local . consommation:
+  ordre: 2
   question: Consommez-vous des produits locaux ?
   description: |
     Cette question nous permet de corriger l'empreinte de votre régime alimentaire en fonction de votre habitude sur le caractère local de vos achats.
@@ -647,6 +648,7 @@ alimentation . de saison . facteur de saison:
   formule: (-1) * niveau / ratio
 
 alimentation . de saison . consommation:
+  ordre: 3
   question: Consommez-vous des produits de saison ?
   description: |
     Cette question nous permet de corriger l'empreinte de votre régime alimentaire en fonction de votre habitude sur le caractère de saison de vos achats.

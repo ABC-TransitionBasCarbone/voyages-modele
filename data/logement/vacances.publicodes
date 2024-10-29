@@ -198,6 +198,7 @@ logement . vacances . empreinte hotel par nuit:
       > Point publicodes : Cette règle étant utilisée dans d'autres espaces nom que `logement . vacances . hotel` c'est important ici de ne pas l'inclure dans cet espace non qui rendrait l'empreinte de la nuitée non applicable si la règle hotel est elle aussi non applicable.
 
 logement . vacances . hotel . nombre de nuitées:
+  ordre: 1
   question: Combien de nuits avez-vous passées à l'hôtel ou en chambre d'hôtes en 2023 ?
   unité: nuit
   description: |
@@ -247,6 +248,7 @@ logement . vacances . camping . empreinte par nuit:
     Le référentiel ADEME est présent dans la base Impacts depuis mai 2023.
 
 logement . vacances . camping . nombre de nuitées:
+  ordre: 2
   question: Combien de nuits avez-vous passées en camping (tente, hamac, bungalow, etc.) en 2023 ?
   unité: nuit
   description: |
@@ -299,6 +301,7 @@ logement . vacances . auberge de jeunesse . nombre de personnes dans le dortoir:
   note: On considère ici qu'un dortoir "classique" comprend 6 personnes.
 
 logement . vacances . auberge de jeunesse . nombre de nuitées:
+  ordre: 3
   question: Combien de nuits avez-vous passées en auberge de jeunesse (dortoir) en 2023 ?
   unité: nuit
   description: |
@@ -353,6 +356,7 @@ logement . vacances . locations . empreinte par nuit:
     Le chiffre obtenu par l'approche top-down, 5,8 kg éqCO2, est tout à fait cohérent avec le reste des données disponibles sur les autres types de logement touristiques, et nous paraît un bon début pour approximer cette donnée complexe.
 
 logement . vacances . locations . nombre de nuitées:
+  ordre: 4
   question: Combien de nuits avez-vous passées en locations meublées (Airbnbn, Abritel) en 2023?
   unité: nuit
   description: |
@@ -403,6 +407,7 @@ logement . vacances . échange . empreinte par nuit:
     Ces données sont issues de l'[étude d'impact réalisée par l'entreprise HomeExchange avec l'ADEME et rendue publique en 2023](https://www.homeexchange.fr/p/homeexchange-etude-impact-carbone?ref=homeexchange.fr)
 
 logement . vacances . échange . nombre de nuitées:
+  ordre: 5
   question: Combien de nuits avez-vous passées en échange de maison (HomeExchange, SwitchHome...) en 2023 ?
   unité: nuit
   description: |
@@ -485,6 +490,7 @@ logement . vacances . résidences secondaires . présent:
   par défaut: "'oui'"
 
 logement . vacances . résidences secondaires . nombre:
+  ordre: 6
   question: Combien de résidences secondaires possédez-vous ?
   applicable si: 
     toutes ces conditions:
@@ -530,6 +536,7 @@ logement . vacances . résidence secondaire . construction-1:
   applicable si: résidences secondaires . nombre >= 1  
 
 logement . vacances . résidence secondaire . surface-1:
+  ordre: 10
   titre: Surface résidence 1
   applicable si: résidences secondaires . nombre >= 1  
   question: Quelle est la surface de votre première résidence secondaire ?
@@ -562,6 +569,7 @@ logement . vacances . résidence secondaire . empreinte construction amortie:
 #  unité: kgCO2e/m2
 
 logement . vacances . résidence secondaire . localisation-1:
+  ordre: 7
   titre: Localisation résidence 1
   applicable si: résidences secondaires . nombre >= 1  
   question: Où se situe votre première résidence secondaire ?
@@ -638,6 +646,7 @@ logement . vacances . résidence secondaire . nombre de nuitées . moyenne . par
     On considère ici les hébergements "résidence secondaire".
 
 logement . vacances . résidence secondaire . durée-1:
+  ordre: 9
   applicable si: résidences secondaires . nombre >= 1 
   mosaique:
     type: nombre
@@ -806,6 +815,7 @@ logement . vacances . résidence secondaire . localisation-1 . montagne . facteu
         alors: facteur surtout été
 
 logement . vacances . résidence secondaire . saison-1:
+  ordre: 8
   question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 1 
   formule:
@@ -838,6 +848,7 @@ logement . vacances . résidence secondaire . saison-1 . hiver:
   description: Vous ne vous rendez dans votre première résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-1:
+  ordre: 12
   question: Quel est le DPE de votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 1 
   description: |
@@ -904,6 +915,7 @@ logement . vacances . résidence secondaire . DPE-1 . non renseigné:
   titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . âge-1:
+  ordre: 11
   question: Quel est l'âge de votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 1
   plancher: 0
@@ -934,6 +946,7 @@ logement . vacances . résidence secondaire . construction-2:
     résidence secondaire . surface-1: résidence secondaire . surface-2
 
 logement . vacances . résidence secondaire . surface-2:
+  ordre: 16
   titre: Surface résidence 2
   applicable si: résidences secondaires . nombre >= 2  
   question: Quelle est la surface de votre deuxième résidence secondaire ?
@@ -956,6 +969,7 @@ logement . vacances . résidence secondaire . énergie-2:
     résidence secondaire . saison-1: résidence secondaire . saison-2
   
 logement . vacances . résidence secondaire . localisation-2:
+  ordre: 13
   titre: Localisation résidence 2
   applicable si: résidences secondaires . nombre >= 2  
   question: Où se situe votre deuxième résidence secondaire ?
@@ -1001,6 +1015,7 @@ logement . vacances . résidence secondaire . localisation-2 . campagne:
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-2:
+  ordre: 15
   applicable si: résidences secondaires . nombre >= 2 
   mosaique:
     type: nombre
@@ -1045,6 +1060,7 @@ logement . vacances . résidence secondaire . durée-2 . nuitées semaine-2 . no
   unité: nuit
 
 logement . vacances . résidence secondaire . saison-2:
+  ordre: 14
   question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre deuxième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 2 
   formule:
@@ -1077,6 +1093,7 @@ logement . vacances . résidence secondaire . saison-2 . hiver:
   description: Vous ne vous rendez dans votre deuxième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-2:
+  ordre: 18
   question: Quel est le DPE de votre deuxième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 2 
   description: |
@@ -1143,6 +1160,7 @@ logement . vacances . résidence secondaire . DPE-2 . non renseigné:
   titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . âge-2:
+  ordre: 17
   question: Quel est l'âge de votre deuxième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 2
   plancher: 0
@@ -1173,6 +1191,7 @@ logement . vacances . résidence secondaire . construction-3:
     résidence secondaire . surface-1: résidence secondaire . surface-3
 
 logement . vacances . résidence secondaire . surface-3:
+  ordre: 22
   titre: Surface résidence 3
   applicable si: résidences secondaires . nombre >= 3  
   question: Quelle est la surface de votre troisième résidence secondaire ?
@@ -1195,6 +1214,7 @@ logement . vacances . résidence secondaire . énergie-3:
     résidence secondaire . saison-1: résidence secondaire . saison-3
   
 logement . vacances . résidence secondaire . localisation-3:
+  ordre: 19
   titre: Localisation résidence 3
   applicable si: résidences secondaires . nombre >= 3  
   question: Où se situe votre troisième résidence secondaire ?
@@ -1240,6 +1260,7 @@ logement . vacances . résidence secondaire . localisation-3 . campagne:
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-3:
+  ordre: 21
   applicable si: résidences secondaires . nombre >= 3 
   mosaique:
     type: nombre
@@ -1284,6 +1305,7 @@ logement . vacances . résidence secondaire . durée-3 . nuitées semaine-3 . no
   unité: nuit
 
 logement . vacances . résidence secondaire . saison-3:
+  ordre: 20
   question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre troisième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 3 
   formule:
@@ -1316,6 +1338,7 @@ logement . vacances . résidence secondaire . saison-3 . hiver:
   description: Vous ne vous rendez dans votre troisième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-3:
+  ordre: 24
   question: Quel est le DPE de votre troisième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 3 
   description: |
@@ -1382,6 +1405,7 @@ logement . vacances . résidence secondaire . DPE-3 . non renseigné:
   titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . âge-3:
+  ordre: 23
   question: Quel est l'âge de votre troisième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 3
   plancher: 0
@@ -1412,6 +1436,7 @@ logement . vacances . résidence secondaire . construction-4:
     résidence secondaire . surface-1: résidence secondaire . surface-4
 
 logement . vacances . résidence secondaire . surface-4:
+  ordre: 28
   titre: Surface résidence 4
   applicable si: résidences secondaires . nombre >= 4  
   question: Quelle est la surface de votre quatrième résidence secondaire ?
@@ -1434,6 +1459,7 @@ logement . vacances . résidence secondaire . énergie-4:
     résidence secondaire . saison-1: résidence secondaire . saison-4
   
 logement . vacances . résidence secondaire . localisation-4:
+  ordre: 25
   titre: Localisation résidence 4
   applicable si: résidences secondaires . nombre >= 4  
   question: Où se situe votre quatrième résidence secondaire ?
@@ -1479,6 +1505,7 @@ logement . vacances . résidence secondaire . localisation-4 . campagne:
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-4:
+  ordre: 27
   applicable si: résidences secondaires . nombre >= 4 
   mosaique:
     type: nombre
@@ -1523,6 +1550,7 @@ logement . vacances . résidence secondaire . durée-4 . nuitées semaine-4 . no
   unité: nuit
 
 logement . vacances . résidence secondaire . saison-4:
+  ordre: 26
   question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre quatrième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 4 
   formule:
@@ -1555,6 +1583,7 @@ logement . vacances . résidence secondaire . saison-4 . hiver:
   description: Vous ne vous rendez dans votre quatrième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-4:
+  ordre: 30
   question: Quel est le DPE de votre quatrième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 4 
   description: |
@@ -1622,6 +1651,7 @@ logement . vacances . résidence secondaire . DPE-4 . non renseigné:
   titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . âge-4:
+  ordre: 29
   question: Quel est l'âge de votre quatrième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 4
   plancher: 0
@@ -1652,6 +1682,7 @@ logement . vacances . résidence secondaire . construction-5:
     résidence secondaire . surface-1: résidence secondaire . surface-5
 
 logement . vacances . résidence secondaire . surface-5:
+  ordre: 34
   titre: Surface résidence 5
   applicable si: résidences secondaires . nombre >= 5  
   question: Quelle est la surface de votre cinquième résidence secondaire ?
@@ -1674,6 +1705,7 @@ logement . vacances . résidence secondaire . énergie-5:
     résidence secondaire . saison-1: résidence secondaire . saison-5
   
 logement . vacances . résidence secondaire . localisation-5:
+  ordre: 31
   titre: Localisation résidence 5
   applicable si: résidences secondaires . nombre >= 5  
   question: Où se situe votre cinquième résidence secondaire ?
@@ -1719,6 +1751,7 @@ logement . vacances . résidence secondaire . localisation-5 . campagne:
   description: Résidence située à distance de la mer, de la montagne, ou d'une grande ville
 
 logement . vacances . résidence secondaire . durée-5:
+  ordre: 33
   applicable si: résidences secondaires . nombre >= 5 
   mosaique:
     type: nombre
@@ -1763,6 +1796,7 @@ logement . vacances . résidence secondaire . durée-5 . nuitées semaine-5 . no
   unité: nuit
 
 logement . vacances . résidence secondaire . saison-5:
+  ordre: 32
   question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre cinquième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 5 
   formule:
@@ -1795,6 +1829,7 @@ logement . vacances . résidence secondaire . saison-5 . hiver:
   description: Vous ne vous rendez dans votre cinquième résidence secondaire qu'en hiver.
 
 logement . vacances . résidence secondaire . DPE-5:
+  ordre: 36
   question: Quel est le DPE de votre cinquième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 5 
   description: |
@@ -1861,6 +1896,7 @@ logement . vacances . résidence secondaire . DPE-5 . non renseigné:
   titre: DPE non renseigné
 
 logement . vacances . résidence secondaire . âge-5:
+  ordre: 35
   question: Quel est l'âge de votre cinquième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 5
   plancher: 0

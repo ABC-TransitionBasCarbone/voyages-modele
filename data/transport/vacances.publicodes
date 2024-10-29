@@ -21,8 +21,6 @@ transport . vacances:
     Si vous possédez un van **et qu'il s'agit de votre moyen de transport principal**, vous avez donc normalement renseigné les km faits avec à la première question (si ce n'est pas le cas revenez en arrière et modifiez votre réponse). Vous pouvez donc ici cocher "Aucun".
 
     Si vous ne possédez ni camping car, ni caravane, ni van aménagé et que vous n'en avez pas loué un en 2023, cliquez sur "Aucun", puis passez à la question suivante.
- 
-
   formule:
     somme:
       - caravane
@@ -82,6 +80,7 @@ transport . vacances . caravane . ratio surconsommation:
     En première approximation, nous considérons donc une hypothèse de 25% de surconsommation
 
 transport . vacances . caravane . distance:
+  ordre: 1
   question: Quelle distance avez-vous parcouru en 2023 avec votre caravane ?
   par défaut: 6250
   description: |
@@ -157,6 +156,7 @@ transport . vacances . camping car . durée de vie:
     Cette hypothèse nécessite d'être mieux sourcée
 
 transport . vacances . camping car . km:
+  ordre: 2
   titre: km en camping car
   applicable si: propriétaire
   question: Quelle distance avez-vous parcouru en 2023 avec votre camping-car ?
@@ -170,6 +170,7 @@ transport . vacances . camping car . km:
   note: D'après la fédération des campeurs, caravaniers et camping-caristes, un camping-cariste fait en moyenne 8869 km par an ([source](https://ffcc.fr/actualite/qui-sont-les-camping-caristes-et-les-vanlifers-en-2021/))
 
 transport . vacances . camping car . consommation aux 100:
+  ordre: 2
   question: Quelle était la consommation moyenne de votre camping-car en 2023 ?
   par défaut: 15
   unité: l/centkm
@@ -219,6 +220,7 @@ transport . vacances . van . usage:
   unité: kgCO2e
 
 transport . vacances . van . km:
+  ordre: 3
   titre: km en van
   applicable si: propriétaire
   question: Quelle distance avez-vous parcouru en 2023 avec votre van ?
@@ -241,6 +243,7 @@ transport . vacances . van . consommation au kilomètre:
   unité: l/km
 
 transport . vacances . van . consommation aux 100:
+  ordre: 3
   question: Quelle était la consommation moyenne de votre van ?
   par défaut: 9
   unité: l/centkm
@@ -296,6 +299,7 @@ transport . vacances . location véhicule . usage:
   unité: kgCO2e
 
 transport . vacances . location véhicule . km:
+  ordre: 4
   titre: km en van loué
   applicable si: propriétaire
   question: En 2023, quelle distance avez-vous parcouru avec le van/camping-car que vous avez loué ?
@@ -335,6 +339,7 @@ transport . vacances . location véhicule . construction au km:
   unité: kgCO2e
 
 transport . vacances . location véhicule . passagers:
+  ordre: 4
   titre: Nombre de passagers
   applicable si: propriétaire
   question: Combien d'occupants (en vous incluant) étaient présents lors de vos trajets en van/camping-car de location en 2023 ?
