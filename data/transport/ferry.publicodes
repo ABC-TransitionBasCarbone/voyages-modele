@@ -98,9 +98,9 @@ transport . ferry . heures:
   plancher: 0
   unité: h
   suggestions:
-    Cherbourg ⇄ 🇬🇧 Poole: 8
-    Marseille ⇄ 🏝️ Ajaccio: 22
-    Marseille ⇄ 🇩🇿 Alger: 50
+    Cherbourg ⇄ 🇬🇧 Poole: 8.001
+    Marseille ⇄ 🏝️ Ajaccio: 22.001
+    Marseille ⇄ 🇩🇿 Alger: 50.001
   note: |
     Selon les chiffres du [SDES](https://www.statistiques.developpement-durable.gouv.fr/edition-numerique/chiffres-cles-transport-2021/17-transport-maritime-de-voyageurs),
     les trajets en ferry sont majoritairement effectués sur la Manche / mer du Nord, que l'on peut approximer à des voyages "Cherbourg-Poole" (8h aller-retour).

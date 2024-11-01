@@ -132,10 +132,10 @@ transport . avion . moyen courrier . heures de vol:
     Pour rappel, ne comptez que les heures de vol faites dans le cadre de déplacements personnels.
   suggestions:
     🚫✈️: 0
-    Paris ⇄ Copenhague: 4
-    Paris ⇄ Alger: 5
-    Paris ⇄ Athènes: 6
-    Paris ⇄ Liban: 8
+    Paris ⇄ Copenhague: 4.001
+    Paris ⇄ Alger: 5.001
+    Paris ⇄ Athènes: 6.001
+    Paris ⇄ Liban: 8.001
   unité: h
   par défaut: durée moyenne
   plancher: 0
@@ -195,11 +195,11 @@ transport . avion . long courrier . heures de vol:
     **A noter :** si vous avez voyagé vers une destination lointaine en plusieurs trajets "courts", ils sont à prendre en compte dans les questions précédentes.
   suggestions:
     🚫✈️: 0
-    Paris ⇄ Kinshasa: 16
-    Paris ⇄ New York: 17
-    Paris ⇄ Tokyo: 24
-    Paris ⇄ Lima: 36
-    Paris ⇄ Sydney: 40
+    Paris ⇄ Kinshasa: 16.001
+    Paris ⇄ New York: 17.001
+    Paris ⇄ Tokyo: 24.001
+    Paris ⇄ Lima: 36.001
+    Paris ⇄ Sydney: 40.001
   unité: h
   par défaut: durée moyenne
   plancher: 0

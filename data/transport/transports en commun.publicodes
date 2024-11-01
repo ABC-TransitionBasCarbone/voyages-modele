@@ -119,9 +119,9 @@ transport . transports commun . car . présent:
 transport . transports commun . car . km par semaine:
   question: Combien de kilomètres parcourez-vous en autocar par semaine ?
   suggestions:
-    10 km / jour: 70
-    25 km / jour: 175
-    50 km / jour: 350
+    10 km / jour: 70.001
+    25 km / jour: 175.001
+    50 km / jour: 350.001
   unité: km/semaine
   par défaut: 50
 
@@ -208,10 +208,10 @@ transport . transports commun . métro ou tram . vitesse:
 transport . transports commun . métro ou tram . heures par semaine:
   question: Combien d'heures passez-vous par semaine en métro, tram, RER ?
   suggestions:
-    30 mn / jour: 3.5
-    1h / jour: 7
-    1h30 / jour: 10.5
-    2h / jour: 14
+    30 mn / jour: 3.5001
+    1h / jour: 7.001
+    1h30 / jour: 10.5001
+    2h / jour: 14.001
   unité: h/semaine
   par défaut: 2
 

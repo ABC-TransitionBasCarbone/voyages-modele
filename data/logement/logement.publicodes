@@ -114,11 +114,11 @@ logement . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 #logement . notif amortissement:
 #  type: notification
