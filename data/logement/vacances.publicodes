@@ -199,6 +199,7 @@ logement . vacances . empreinte hotel par nuit:
 
 logement . vacances . hotel . nombre de nuitées:
   ordre: 1
+  applicable si: vacances . hotel . présent
   question: Combien de nuits avez-vous passées à l'hôtel ou en chambre d'hôtes en 2023 ?
   unité: nuit
   description: |
