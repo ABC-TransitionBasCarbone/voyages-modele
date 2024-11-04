@@ -16,9 +16,9 @@ importer!:
           Si vous avez un contrat unique pour l'ensemble de votre logement principal c'est probablement le cas. Si ça ne l'est pas revenez en arrière et ajoutez là.
         unité: m2
         suggestions:
-          3 x 5 mètres: 15
-          5 x 5 mètres: 20
-          5 x 8 mètres: 40
+          3 x 5 mètres: 15.001
+          5 x 5 mètres: 20.001
+          5 x 8 mètres: 40.001
     # Non nécessaire ici mais il faut y penser si on importe "chauffage" par exemple.
     # - piscine . empreinte électricité:
     #     formule: intensité électricité

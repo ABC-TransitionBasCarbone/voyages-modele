@@ -209,9 +209,9 @@ logement . vacances . hotel . nombre de nuitées:
     En combinant plusieurs données de [l'enquête mobilité des français de 2019](https://www.statistiques.developpement-durable.gouv.fr/resultats-detailles-de-lenquete-mobilite-des-personnes-de-2019?rubrique=60&dossier=1345),
     on peut retrouver une valeur moyenne en nuitées / pers / an dans les hébergements hôtel, pension de famille, village de vacances ou gîte.
   suggestions:
-    un week-end par an: 2
-    une semaine de vacances: 7
-    un week-end par mois: 24
+    un week-end par an: 2.001
+    une semaine de vacances: 7.001
+    un week-end par mois: 24.001
 
 logement . vacances . hotel . nombre de nuitées . moyenne:
   titre: Nombre de nuitées en moyenne par français
@@ -259,9 +259,9 @@ logement . vacances . camping . nombre de nuitées:
     En combinant plusieurs données de [l'enquête mobilité des français de 2019](https://www.statistiques.developpement-durable.gouv.fr/resultats-detailles-de-lenquete-mobilite-des-personnes-de-2019?rubrique=60&dossier=1345),
     on peut retrouver une valeur moyenne en nuitées / pers / an dans les hébergements camping.
   suggestions:
-    un week-end par an: 2
-    une semaine de vacances: 7
-    un week-end par mois: 24
+    un week-end par an: 2.001
+    une semaine de vacances: 7.001
+    un week-end par mois: 24.001
 
 logement . vacances . camping . nombre de nuitées . moyenne:
   titre: Nombre de nuitées en moyenne par français
@@ -312,9 +312,9 @@ logement . vacances . auberge de jeunesse . nombre de nuitées:
     En combinant plusieurs données de [l'enquête mobilité des français de 2019](https://www.statistiques.developpement-durable.gouv.fr/resultats-detailles-de-lenquete-mobilite-des-personnes-de-2019?rubrique=60&dossier=1345),
     on peut retrouver une valeur moyenne en nuitées / pers / an dans les hébergements auberge de jeunesse.
   suggestions:
-    un week-end par an: 2
-    une semaine de vacances: 7
-    un week-end par mois: 24
+    un week-end par an: 2.001
+    une semaine de vacances: 7.001
+    un week-end par mois: 24.001
 
 logement . vacances . auberge de jeunesse . nombre de nuitées . moyenne:
   titre: Nombre de nuitées en moyenne par français
@@ -367,9 +367,9 @@ logement . vacances . locations . nombre de nuitées:
     En combinant plusieurs données de [l'enquête mobilité des français de 2019](https://www.statistiques.developpement-durable.gouv.fr/resultats-detailles-de-lenquete-mobilite-des-personnes-de-2019?rubrique=60&dossier=1345),
     on peut retrouver une valeur moyenne en nuitées / pers / an dans les hébergements location.
   suggestions:
-    un week-end par an: 2
-    une semaine de vacances: 7
-    un week-end par mois: 24
+    un week-end par an: 2.001
+    une semaine de vacances: 7.001
+    un week-end par mois: 24.001
 
 logement . vacances . locations . nombre de nuitées . moyenne:
   titre: Nombre de nuitées en moyenne par français
@@ -418,9 +418,9 @@ logement . vacances . échange . nombre de nuitées:
     En combinant plusieurs données de [l'enquête mobilité des français de 2019](https://www.statistiques.developpement-durable.gouv.fr/resultats-detailles-de-lenquete-mobilite-des-personnes-de-2019?rubrique=60&dossier=1345),
     on peut retrouver une valeur moyenne en nuitées / pers / an dans les hébergements de tous types. Que répondent les échangeurs de maison ? Nous faisons le pari que cela rentre dans la catégorie "autre".
   suggestions:
-    un week-end par an: 2
-    une semaine de vacances: 7
-    un week-end par mois: 24
+    un week-end par an: 2.001
+    une semaine de vacances: 7.001
+    un week-end par mois: 24.001
 
 logement . vacances . échange . nombre de nuitées . moyenne:
   titre: Nombre de nuitées en moyenne par français
@@ -497,14 +497,14 @@ logement . vacances . résidences secondaires . nombre:
       - est défini: résidences secondaires . présent
       - résidences secondaires . présent
   plancher: 0  
-  par défaut: 0
+  par défaut: 1
   suggestions:  
     Un: 1  
     Deux: 2  
     Trois: 3  
     Quatre: 4
   note: |
-    Pour le moment, nous n'attribuons l'empreinte de la maison secondaire qu'aux propriétaires,
+    Pour le moment, nous n'attribuons l'empreinte de la résidence secondaire qu'aux propriétaires,
     et non "une partie" de l'empreinte à tous les français.
 
 logement . vacances . résidence secondaire:
@@ -544,17 +544,17 @@ logement . vacances . résidence secondaire . surface-1:
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . empreinte construction amortie:
   valeur: logement . construction . empreinte amortie
   contexte:
-    résidences secondaires . présent: oui
     logement . type: "'moyen'"
+    logement . âge: logement . vacances . résidence secondaire . âge-1
   unité: kgCO2e/m2
 
 #logement . vacances . résidence secondaire . annuelle et par surface:
@@ -655,8 +655,8 @@ logement . vacances . résidence secondaire . durée-1:
       - nuitées semaine . nombre
     suggestions:
       tout l'été:
-        nuitées week end . nombre: 0
-        nuitées semaine . nombre: 8
+        nuitées week end . nombre: 0.001
+        nuitées semaine . nombre: 8.001
   question: Combien de temps passez-vous dans votre première résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -675,7 +675,7 @@ logement . vacances . résidence secondaire . durée-1 . nuitées week end:
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-1 . nuitées week end . nombre:
-  question: Combien de week-ends passez-vous dans votre première maison secondaire ?
+  question: Combien de week-ends passez-vous dans votre première résidence secondaire ?
   par défaut: 3
   unité: nuit
 
@@ -686,7 +686,7 @@ logement . vacances . résidence secondaire . durée-1 . nuitées semaine:
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-1 . nuitées semaine . nombre:
-  question: Combien de semaines passez-vous dans votre première maison secondaire ?
+  question: Combien de semaines passez-vous dans votre première résidence secondaire ?
   par défaut: 5
   unité: nuit
 
@@ -932,11 +932,11 @@ logement . vacances . résidence secondaire . âge-1:
   note: |
     En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 #### Règles pour la possession d'une deuxième résidence
 
@@ -954,10 +954,10 @@ logement . vacances . résidence secondaire . surface-2:
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-2:
@@ -1024,8 +1024,8 @@ logement . vacances . résidence secondaire . durée-2:
       - nuitées semaine-2 . nombre
     suggestions:
       tout l'été:
-        nuitées week end-2 . nombre: 0
-        nuitées semaine-2 . nombre: 8
+        nuitées week end-2 . nombre: 0.001
+        nuitées semaine-2 . nombre: 8.001
   question: Combien de temps passez-vous dans votre deuxième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1044,7 +1044,7 @@ logement . vacances . résidence secondaire . durée-2 . nuitées week end-2:
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-2 . nuitées week end-2 . nombre:
-  question: Combien de week-ends passez-vous dans votre deuxième maison secondaire ?
+  question: Combien de week-ends passez-vous dans votre deuxième résidence secondaire ?
   par défaut: 3
   unité: nuit
 
@@ -1055,7 +1055,7 @@ logement . vacances . résidence secondaire . durée-2 . nuitées semaine-2:
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-2 . nuitées semaine-2 . nombre:
-  question: Combien de semaines passez-vous dans votre deuxième maison secondaire ?
+  question: Combien de semaines passez-vous dans votre deuxième résidence secondaire ?
   par défaut: 5
   unité: nuit
 
@@ -1177,11 +1177,11 @@ logement . vacances . résidence secondaire . âge-2:
   note: |
     En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 #### Règles pour la possession d'une troisième résidence
 
@@ -1199,10 +1199,10 @@ logement . vacances . résidence secondaire . surface-3:
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-3:
@@ -1269,8 +1269,8 @@ logement . vacances . résidence secondaire . durée-3:
       - nuitées semaine-3 . nombre
     suggestions:
       tout l'été:
-        nuitées week end-3 . nombre: 0
-        nuitées semaine-3 . nombre: 8
+        nuitées week end-3 . nombre: 0.001
+        nuitées semaine-3 . nombre: 8.001
   question: Combien de temps passez-vous dans votre troisième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1289,7 +1289,7 @@ logement . vacances . résidence secondaire . durée-3 . nuitées week end-3:
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-3 . nuitées week end-3 . nombre:
-  question: Combien de week-ends passez-vous dans votre troisième maison secondaire ?
+  question: Combien de week-ends passez-vous dans votre troisième résidence secondaire ?
   par défaut: 3
   unité: nuit
 
@@ -1300,7 +1300,7 @@ logement . vacances . résidence secondaire . durée-3 . nuitées semaine-3:
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-3 . nuitées semaine-3 . nombre:
-  question: Combien de semaines passez-vous dans votre troisième maison secondaire ?
+  question: Combien de semaines passez-vous dans votre troisième résidence secondaire ?
   par défaut: 5
   unité: nuit
 
@@ -1422,11 +1422,11 @@ logement . vacances . résidence secondaire . âge-3:
   note: |
     En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 #### Règles pour la possession d'une quatrième résidence
 
@@ -1444,10 +1444,10 @@ logement . vacances . résidence secondaire . surface-4:
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-4:
@@ -1514,8 +1514,8 @@ logement . vacances . résidence secondaire . durée-4:
       - nuitées semaine-4 . nombre
     suggestions:
       tout l'été:
-        nuitées week end-4 . nombre: 0
-        nuitées semaine-4 . nombre: 8
+        nuitées week end-4 . nombre: 0.001
+        nuitées semaine-4 . nombre: 8.001
   question: Combien de temps passez-vous dans votre quatrième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1534,7 +1534,7 @@ logement . vacances . résidence secondaire . durée-4 . nuitées week end-4:
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-4 . nuitées week end-4 . nombre:
-  question: Combien de week-ends passez-vous dans votre quatrième maison secondaire ?
+  question: Combien de week-ends passez-vous dans votre quatrième résidence secondaire ?
   par défaut: 3
   unité: nuit
 
@@ -1545,7 +1545,7 @@ logement . vacances . résidence secondaire . durée-4 . nuitées semaine-4:
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-4 . nuitées semaine-4 . nombre:
-  question: Combien de semaines passez-vous dans votre quatrième maison secondaire ?
+  question: Combien de semaines passez-vous dans votre quatrième résidence secondaire ?
   par défaut: 5
   unité: nuit
 
@@ -1668,11 +1668,11 @@ logement . vacances . résidence secondaire . âge-4:
   note: |
     En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 #### Règles pour la possession d'une cinquième résidence
 
@@ -1690,10 +1690,10 @@ logement . vacances . résidence secondaire . surface-5:
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-5:
@@ -1760,8 +1760,8 @@ logement . vacances . résidence secondaire . durée-5:
       - nuitées semaine-5 . nombre
     suggestions:
       tout l'été:
-        nuitées week end-5 . nombre: 0
-        nuitées semaine-5 . nombre: 8
+        nuitées week end-5 . nombre: 0.001
+        nuitées semaine-5 . nombre: 8.001
   question: Combien de temps passez-vous dans votre cinquième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1780,7 +1780,7 @@ logement . vacances . résidence secondaire . durée-5 . nuitées week end-5:
   note: On considère qu'un week-end correspond à 2 nuitées.
 
 logement . vacances . résidence secondaire . durée-5 . nuitées week end-5 . nombre:
-  question: Combien de week-ends passez-vous dans votre cinquième maison secondaire ?
+  question: Combien de week-ends passez-vous dans votre cinquième résidence secondaire ?
   par défaut: 3
   unité: nuit
 
@@ -1791,7 +1791,7 @@ logement . vacances . résidence secondaire . durée-5 . nuitées semaine-5:
   note: On considère qu'une semaine correspond à 7 nuitées.
 
 logement . vacances . résidence secondaire . durée-5 . nuitées semaine-5 . nombre:
-  question: Combien de semaines passez-vous dans votre cinquième maison secondaire ?
+  question: Combien de semaines passez-vous dans votre cinquième résidence secondaire ?
   par défaut: 5
   unité: nuit
 
@@ -1913,8 +1913,8 @@ logement . vacances . résidence secondaire . âge-5:
   note: |
     En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001

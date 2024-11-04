@@ -485,7 +485,7 @@ divers . ameublement . meubles . mosaic . armoire . choix . nombre:
   question: Nombre d'armoires achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . ameublement . meubles . mosaic . canapé:
   formule: canapé . empreinte * mosaic . canapé . choix . nombre  
@@ -501,7 +501,7 @@ divers . ameublement . meubles . mosaic . canapé . choix . nombre:
   question: Nombre de canapés achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . ameublement . meubles . mosaic . matelas:
   formule: matelas . empreinte * mosaic . matelas . choix . nombre  
@@ -517,7 +517,7 @@ divers . ameublement . meubles . mosaic . matelas . choix . nombre:
   question: Nombre de matelas achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . ameublement . meubles . mosaic . lit:
   formule: lit . empreinte * mosaic . lit . choix . nombre  
@@ -533,7 +533,7 @@ divers . ameublement . meubles . mosaic . lit . choix . nombre:
   question: Nombre de lits achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . ameublement . meubles . mosaic . table:
   formule: table . empreinte * mosaic . table . choix . nombre  
@@ -549,7 +549,7 @@ divers . ameublement . meubles . mosaic . table . choix . nombre:
   question: Nombre de tables achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . ameublement . meubles . mosaic . chaise:
   formule: chaise . empreinte * mosaic . chaise . choix . nombre  
@@ -565,7 +565,7 @@ divers . ameublement . meubles . mosaic . chaise . choix . nombre:
   question: Nombre de chaises achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . ameublement . meubles . mosaic . petit meuble:
   formule: petit meuble . empreinte * mosaic . petit meuble . choix . nombre  
@@ -581,7 +581,7 @@ divers . ameublement . meubles . mosaic . petit meuble . choix . nombre:
   question: Nombre de petits meubles achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . ameublement . meubles . mosaic . grand meuble:
   formule: grand meuble . empreinte * mosaic . grand meuble . choix . nombre  
@@ -597,4 +597,4 @@ divers . ameublement . meubles . mosaic . grand meuble . choix . nombre:
   question: Nombre de grands meubles achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0

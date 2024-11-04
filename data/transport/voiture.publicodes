@@ -28,7 +28,7 @@ transport . voiture:
 
 transport . voiture . km:
   titre: Km en voiture
-  question: Que vous soyez conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en voiture en 2023  ?
+  question: Que vous soyez ??? conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en voiture en 2023  ?
   #question: Renseignez les différents types et les kilométrages associés aux déplacements personnels que vous faites (domicile-travail, courses, loisirs, famille, etc.) ?
   description: |
     Veuillez utiliser autant de fois que nécessaire les catégories label, distance, fréquence et nombres d'occupants pour spécifier vos différents trajets en 2023. Sachez que vous pouvez renseigner plusieurs fois le même label (si par exemple vous avez plusieurs lieux de travail).
@@ -213,9 +213,9 @@ transport . voiture . thermique . consommation aux 100:
 
     Si vous avez répondu "Oui mais ce n'est pas la mienne" précédemment mais qu'il vous est arrivé d'utiliser plusieurs voitures (car vous n'en possédez pas une), renseignez une consommation la représentative des véhicules utilisés.
   suggestions:
-    5 l/100km: 5
-    7 l/100km: 7
-    9 l/100km: 9
+    5 l/100km: 5.001
+    7 l/100km: 7.001
+    9 l/100km: 9.001
   par défaut: consommation estimée
   unité: l/centkm
   note: Les suggestions de réponse sont à la louche, à préciser et sourcer.
@@ -460,9 +460,9 @@ transport . voiture . électrique . consommation aux 100:
       - motorisation = 'électrique'
   question: Quelle était la consommation moyenne de la voiture ?
   suggestions:
-    15 kWh/100km: 15
-    20 kWh/100km: 20
-    25 kWh/100km: 25
+    15 kWh/100km: 15.001
+    20 kWh/100km: 20.001
+    25 kWh/100km: 25.001
   par défaut: consommation estimée
   unité: kWh/centkm
 
@@ -746,9 +746,9 @@ transport . voiture . barème construction . barème électrique . batterie . ca
             - gabarit = 'VUL'
         alors: 65
   suggestions:
-    Petite autonomie: 40
-    Autonomie moyenne: 65
-    Grande autonomie: 100
+    Petite autonomie: 40.001
+    Autonomie moyenne: 65.001
+    Grande autonomie: 100.001
 
 transport . voiture . barème construction . barème hybride:
   valeur: barème électrique

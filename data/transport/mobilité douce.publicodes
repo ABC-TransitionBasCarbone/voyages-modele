@@ -117,7 +117,7 @@ transport . mobilité douce . trottinette . construction amortie:
   unité: kgCO2e
 
 transport . mobilité douce . trottinette . construction:
-  forule: 62.5  #Trottinette électrique moins composants électroniques, cuivre, LED et batteries (= -32%)
+  formule: 62.5
   unité: kgCO2e
   note: |
     La base empreinte ne propose pas de FE pour la trottinette conventionnel. On repart de l'empreinte d'une trottinette électrique 
@@ -154,10 +154,10 @@ transport . mobilité douce . vae . km:
   par défaut: 1000
   unité: km
   suggestions:
-    je l'utilise occasionnellement: 250
-    je l'utilise pour aller au travail: 1500
-    10km / jour: 3600
-    100km / semaine: 5000
+    je l'utilise occasionnellement: 250.001
+    je l'utilise pour aller au travail: 1500.001
+    10km / jour: 3600.001
+    100km / semaine: 5000.001
 transport . mobilité douce . vae . construction amortie:
   titre: Construction amortie
   formule: construction / durée de vie
@@ -202,10 +202,10 @@ transport . mobilité douce . autres véhicules à moteur . km:
   par défaut: 1000
   unité: km
   suggestions:
-    je l'utilise occasionnellement: 250
-    je l'utilise pour aller au travail: 1500
-    10km / jour: 3600
-    100km / semaine: 5000
+    je l'utilise occasionnellement: 250.001
+    je l'utilise pour aller au travail: 1500.001
+    10km / jour: 3600.001
+    100km / semaine: 5000.001
 
 transport . mobilité douce . autres véhicules à moteur . construction amortie:
   titre: Construction amortie

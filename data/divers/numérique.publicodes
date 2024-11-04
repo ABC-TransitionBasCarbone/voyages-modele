@@ -48,10 +48,10 @@ divers . numérique . internet . durée journalière:
   unité: h/jour
   plancher: 0
   par défaut: 2.3
-  suggestions:
-    zéro: 0
-    modérément: 2
-    je ne décroche pas: 8
+#  suggestions:
+#    zéro: 0.001
+#    modérément: 2.001
+#    je ne décroche pas: 8.001
   note: D'après Médiamétrie, les français ont passé en 2022, en moyenne, 2h18 sur Internet ([source](https://www.mediametrie.fr/fr/lannee-internet-2022))
 
 divers . numérique . appareils:
@@ -499,7 +499,7 @@ divers . numérique . appareils . mosaic . téléphone . choix . nombre:
   question: Nombre de téléphones achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . TV:
   formule: TV . empreinte * mosaic . TV . choix . nombre  
@@ -515,7 +515,7 @@ divers . numérique . appareils . mosaic . TV . choix . nombre:
   question: Nombre de TV achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . ordinateur portable:
   formule: ordinateur portable . empreinte * mosaic . ordinateur portable . choix . nombre  
@@ -531,7 +531,7 @@ divers . numérique . appareils . mosaic . ordinateur portable . choix . nombre:
   question: Nombre d'ordinateurs portables achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . ordinateur fixe:
   formule: ordinateur fixe . empreinte * mosaic . ordinateur fixe . choix . nombre  
@@ -547,7 +547,7 @@ divers . numérique . appareils . mosaic . ordinateur fixe . choix . nombre:
   question: Nombre d'ordinateur fixes achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . tablette:
   formule: tablette . empreinte * mosaic . tablette . choix . nombre  
@@ -563,7 +563,7 @@ divers . numérique . appareils . mosaic . tablette . choix . nombre:
   question: Nombre de tablettes achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . vidéoprojecteur:
   formule: vidéoprojecteur . empreinte * mosaic . vidéoprojecteur . choix . nombre  
@@ -579,7 +579,7 @@ divers . numérique . appareils . mosaic . vidéoprojecteur . choix . nombre:
   question: Nombre de vidéoprojecteurs achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . appareil photo:
   formule: appareil photo . empreinte * mosaic . appareil photo . choix . nombre  
@@ -595,7 +595,7 @@ divers . numérique . appareils . mosaic . appareil photo . choix . nombre:
   question: Nombre d'appareils photo achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . home cinéma:
   formule: home cinéma . empreinte * mosaic . home cinéma . choix . nombre  
@@ -611,7 +611,7 @@ divers . numérique . appareils . mosaic . home cinéma . choix . nombre:
   question: Nombre de home cinéma achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . enceinte bluetooth:
   formule: enceinte bluetooth . empreinte * mosaic . enceinte bluetooth . choix . nombre  
@@ -627,7 +627,7 @@ divers . numérique . appareils . mosaic . enceinte bluetooth . choix . nombre:
   question: Nombre d'enceintes bluetooth achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . enceinte vocale:
   formule: enceinte vocale . empreinte * mosaic . enceinte vocale . choix . nombre  
@@ -643,7 +643,7 @@ divers . numérique . appareils . mosaic . enceinte vocale . choix . nombre:
   question: Nombre d'enceintes vocales achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . montre connectée:
   formule: montre connectée . empreinte * mosaic . montre connectée . choix . nombre  
@@ -659,7 +659,7 @@ divers . numérique . appareils . mosaic . montre connectée . choix . nombre:
   question: Nombre de montres connectées achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . console de salon:
   formule: console de salon . empreinte * mosaic . console de salon . choix . nombre  
@@ -675,7 +675,7 @@ divers . numérique . appareils . mosaic . console de salon . choix . nombre:
   question: Nombre de consoles de salon achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . numérique . appareils . mosaic . console portable:
   formule: console portable . empreinte * mosaic . console portable . choix . nombre  
@@ -691,4 +691,4 @@ divers . numérique . appareils . mosaic . console portable . choix . nombre:
   question: Nombre de consoles portables achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0

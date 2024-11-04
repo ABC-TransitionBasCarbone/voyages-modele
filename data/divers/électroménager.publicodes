@@ -510,7 +510,7 @@ divers . électroménager . appareils . mosaic . réfrigérateur . choix . nombr
   question: Nombre de réfrigérateurs achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . petit réfrigérateur:
   formule: petit réfrigérateur . empreinte * mosaic . petit réfrigérateur . choix . nombre  
@@ -526,7 +526,7 @@ divers . électroménager . appareils . mosaic . petit réfrigérateur . choix .
   question: Nombre de petits réfrigérateurs achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . congélateur:
   formule: congélateur . empreinte * mosaic . congélateur . choix . nombre  
@@ -542,7 +542,7 @@ divers . électroménager . appareils . mosaic . congélateur . choix . nombre:
   question: Nombre de congélateurs achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . lave-linge:
   formule: lave-linge . empreinte * mosaic . lave-linge . choix . nombre  
@@ -558,7 +558,7 @@ divers . électroménager . appareils . mosaic . lave-linge . choix . nombre:
   question: Nombre de lave-linge achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . sèche-linge:
   formule: sèche-linge . empreinte * mosaic . sèche-linge . choix . nombre  
@@ -574,7 +574,7 @@ divers . électroménager . appareils . mosaic . sèche-linge . choix . nombre:
   question: Nombre de sèche-linge achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . lave-vaisselle:
   formule: lave-vaisselle . empreinte * mosaic . lave-vaisselle . choix . nombre  
@@ -590,7 +590,7 @@ divers . électroménager . appareils . mosaic . lave-vaisselle . choix . nombre
   question: Nombre de lave-vaisselle achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . four:
   formule: four . empreinte * mosaic . four . choix . nombre  
@@ -606,7 +606,7 @@ divers . électroménager . appareils . mosaic . four . choix . nombre:
   question: Nombre de fours achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . micro-onde:
   formule: micro-onde . empreinte * mosaic . micro-onde . choix . nombre  
@@ -622,7 +622,7 @@ divers . électroménager . appareils . mosaic . micro-onde . choix . nombre:
   question: Nombre de micro-onde achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . plaques:
   formule: plaques . empreinte * mosaic . plaques . choix . nombre  
@@ -638,7 +638,7 @@ divers . électroménager . appareils . mosaic . plaques . choix . nombre:
   question: Nombre de plaques achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . hotte:
   formule: hotte . empreinte * mosaic . hotte . choix . nombre  
@@ -654,7 +654,7 @@ divers . électroménager . appareils . mosaic . hotte . choix . nombre:
   question: Nombre de hottes achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . bouilloire:
   formule: bouilloire . empreinte * mosaic . bouilloire . choix . nombre  
@@ -670,7 +670,7 @@ divers . électroménager . appareils . mosaic . bouilloire . choix . nombre:
   question: Nombre de bouilloires achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . cafetière:
   formule: cafetière . empreinte * mosaic . cafetière . choix . nombre  
@@ -686,7 +686,7 @@ divers . électroménager . appareils . mosaic . cafetière . choix . nombre:
   question: Nombre de cafetières achetées en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . aspirateur:
   formule: aspirateur . empreinte * mosaic . aspirateur . choix . nombre  
@@ -702,7 +702,7 @@ divers . électroménager . appareils . mosaic . aspirateur . choix . nombre:
   question: Nombre de aspirateurs achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
 
 divers . électroménager . appareils . mosaic . robot cuisine:
   formule: robot cuisine . empreinte * mosaic . robot cuisine . choix . nombre  
@@ -718,4 +718,4 @@ divers . électroménager . appareils . mosaic . robot cuisine . choix . nombre:
   question: Nombre de robot cuisine achetés en 2023 ?  
   type: nombre  
   plancher: 0  
-  par défaut: 1
+  par défaut: 0

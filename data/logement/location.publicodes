@@ -60,10 +60,10 @@ logement . location . logement-1 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-1 . appartement:
@@ -99,11 +99,11 @@ logement . location . logement-1 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-1 . DPE:
   ordre: 4
@@ -309,10 +309,10 @@ logement . location . logement-2 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-2 . appartement:
@@ -348,11 +348,11 @@ logement . location . logement-2 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-2 . DPE:
   ordre: 9
@@ -559,10 +559,10 @@ logement . location . logement-3 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-3 . appartement:
@@ -598,11 +598,11 @@ logement . location . logement-3 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-3 . DPE:
   ordre: 14
@@ -805,10 +805,10 @@ logement . location . logement-4 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-4 . appartement:
@@ -844,11 +844,11 @@ logement . location . logement-4 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-4 . DPE:
   ordre: 19
@@ -1054,10 +1054,10 @@ logement . location . logement-5 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-5 . appartement:
@@ -1093,11 +1093,11 @@ logement . location . logement-5 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-5 . DPE:
   ordre: 24
@@ -1303,10 +1303,10 @@ logement . location . logement-6 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-6 . appartement:
@@ -1342,11 +1342,11 @@ logement . location . logement-6 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-6 . DPE:
   ordre: 29
@@ -1552,10 +1552,10 @@ logement . location . logement-7 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-7 . appartement:
@@ -1591,11 +1591,11 @@ logement . location . logement-7 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-7 . DPE:
   ordre: 34
@@ -1801,10 +1801,10 @@ logement . location . logement-8 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-8 . appartement:
@@ -1840,11 +1840,11 @@ logement . location . logement-8 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-8 . DPE:
   ordre: 39
@@ -2050,10 +2050,10 @@ logement . location . logement-9 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-9 . appartement:
@@ -2089,11 +2089,11 @@ logement . location . logement-9 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-9 . DPE:
   ordre: 44
@@ -2299,10 +2299,10 @@ logement . location . logement-10 . surface:
 
     > Les logements ont une surface moyenne d’environ 91 m2.
   suggestions:
-    studio: 25
-    3 pièces: 70
-    maison: 120
-    château 🏰: 1000
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-10 . appartement:
@@ -2338,11 +2338,11 @@ logement . location . logement-10 . âge:
 
     Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
   suggestions:
-    neuf: 0
-    récent: 10
-    années 70: 50
-    années 50: 70
-    un siècle: 100
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
 
 logement . location . logement-10 . DPE:
   ordre: 49
