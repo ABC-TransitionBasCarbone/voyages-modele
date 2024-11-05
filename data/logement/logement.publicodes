@@ -39,9 +39,9 @@ logement . habitants:
 
     Nous ne prenons donc pas aujourd'hui en compte les logements vides que vous possédez, ou un logement que vous louez dans lequel ni vous ni personne ne vivez.
   note: valeur par défaut d'après https://www.insee.fr/fr/statistiques/2381486.
-  suggestions:
-    j'habite seul: 1
-    deux personnes: 2
+#  suggestions:
+#    j'habite seul: 1
+#    deux personnes: 2
 
 logement . habitants . moyen:
   formule: 2.2

@@ -28,7 +28,7 @@ transport . voiture:
 
 transport . voiture . km:
   titre: Km en voiture
-  question: Que vous soyez ??? conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en voiture en 2023  ?
+  question: Que vous soyez conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en voiture en 2023  ?
   #question: Renseignez les différents types et les kilométrages associés aux déplacements personnels que vous faites (domicile-travail, courses, loisirs, famille, etc.) ?
   description: |
     Veuillez utiliser autant de fois que nécessaire les catégories label, distance, fréquence et nombres d'occupants pour spécifier vos différents trajets en 2023. Sachez que vous pouvez renseigner plusieurs fois le même label (si par exemple vous avez plusieurs lieux de travail).

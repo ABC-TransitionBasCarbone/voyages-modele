@@ -40,7 +40,7 @@ logement . location . logement-1:
 logement . location . logement-1 . surface:
   ordre: 2
   titre: Surface location logement 1
-  question: Quelle est la surface de votre premier logement en location ?
+  question: Quelle est la surface de votre premier investissement locatif ?
   applicable si: location . nombre >= 1
   plancher: 1
   avertissement: |
@@ -69,7 +69,7 @@ logement . location . logement-1 . surface:
 logement . location . logement-1 . appartement:
   ordre: 1
   titre: Appartement location logement 1
-  question: Votre premier logement en location est-il un appartement ?
+  question: Votre premier investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 1
   description: |
     Par opposition à une maison individuelle.
@@ -107,7 +107,7 @@ logement . location . logement-1 . âge:
 
 logement . location . logement-1 . DPE:
   ordre: 4
-  question: Quel est le DPE de votre premier logement en location ?
+  question: Quel est le DPE de votre premier investissement locatif ?
   applicable si: location . nombre >= 1
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -289,7 +289,7 @@ logement . location . logement-2:
 logement . location . logement-2 . surface:
   ordre: 7
   titre: Surface location logement 2
-  question: Quelle est la surface de votre deuxième logement en location ?
+  question: Quelle est la surface de votre deuxième investissement locatif ?
   applicable si: location . nombre >= 2
   plancher: 1
   avertissement: |
@@ -318,7 +318,7 @@ logement . location . logement-2 . surface:
 logement . location . logement-2 . appartement:
   ordre: 6
   titre: Appartement location logement 2
-  question: Votre deuxième logement en location est-il un appartement ?
+  question: Votre deuxième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 2
   description: |
     Par opposition à une maison individuelle.
@@ -356,7 +356,7 @@ logement . location . logement-2 . âge:
 
 logement . location . logement-2 . DPE:
   ordre: 9
-  question: Quel est le DPE de votre deuxième logement en location ?
+  question: Quel est le DPE de votre deuxième investissement locatif ?
   applicable si: location . nombre >= 2
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -539,7 +539,7 @@ logement . location . logement-3:
 logement . location . logement-3 . surface:
   ordre: 12
   titre: Surface location logement 3
-  question: Quelle est la surface de votre troisième logement en location ?
+  question: Quelle est la surface de votre troisième investissement locatif ?
   applicable si: location . nombre >= 3
   plancher: 1
   avertissement: |
@@ -568,7 +568,7 @@ logement . location . logement-3 . surface:
 logement . location . logement-3 . appartement:
   ordre: 11
   titre: Appartement location logement 3
-  question: Votre troisième logement en location est-il un appartement ?
+  question: Votre troisième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 3
   description: |
     Par opposition à une maison individuelle.
@@ -606,7 +606,7 @@ logement . location . logement-3 . âge:
 
 logement . location . logement-3 . DPE:
   ordre: 14
-  question: Quel est le DPE de votre troisième logement en location ?
+  question: Quel est le DPE de votre troisième investissement locatif ?
   applicable si: location . nombre >= 3
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -785,7 +785,7 @@ logement . location . logement-4:
 logement . location . logement-4 . surface:
   ordre: 17
   titre: Surface location logement 4
-  question: Quelle est la surface de votre quatrième logement en location ?
+  question: Quelle est la surface de votre quatrième investissement locatif ?
   applicable si: location . nombre >= 4
   plancher: 1
   avertissement: |
@@ -814,7 +814,7 @@ logement . location . logement-4 . surface:
 logement . location . logement-4 . appartement:
   ordre: 16
   titre: Appartement location logement 4
-  question: Votre quatrième logement en location est-il un appartement ?
+  question: Votre quatrième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 4
   description: |
     Par opposition à une maison individuelle.
@@ -852,7 +852,7 @@ logement . location . logement-4 . âge:
 
 logement . location . logement-4 . DPE:
   ordre: 19
-  question: Quel est le DPE de votre quatrième logement en location ?
+  question: Quel est le DPE de votre quatrième investissement locatif ?
   applicable si: location . nombre >= 4
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -1034,7 +1034,7 @@ logement . location . logement-5:
 logement . location . logement-5 . surface:
   ordre: 22
   titre: Surface location logement 5
-  question: Quelle est la surface de votre cinquième logement en location ?
+  question: Quelle est la surface de votre cinquième investissement locatif ?
   applicable si: location . nombre >= 5
   plancher: 1
   avertissement: |
@@ -1063,7 +1063,7 @@ logement . location . logement-5 . surface:
 logement . location . logement-5 . appartement:
   ordre: 21
   titre: Appartement location logement 5
-  question: Votre cinquième logement en location est-il un appartement ?
+  question: Votre cinquième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 5
   description: |
     Par opposition à une maison individuelle.
@@ -1101,7 +1101,7 @@ logement . location . logement-5 . âge:
 
 logement . location . logement-5 . DPE:
   ordre: 24
-  question: Quel est le DPE de votre cinquième logement en location ?
+  question: Quel est le DPE de votre cinquième investissement locatif ?
   applicable si: location . nombre >= 5
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -1283,7 +1283,7 @@ logement . location . logement-6:
 logement . location . logement-6 . surface:
   ordre: 27
   titre: Surface location logement 6
-  question: Quelle est la surface de votre sixième logement en location ?
+  question: Quelle est la surface de votre sixième investissement locatif ?
   applicable si: location . nombre >= 6
   plancher: 1
   avertissement: |
@@ -1312,7 +1312,7 @@ logement . location . logement-6 . surface:
 logement . location . logement-6 . appartement:
   ordre: 26
   titre: Appartement location logement 6
-  question: Votre sixième logement en location est-il un appartement ?
+  question: Votre sixième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 6
   description: |
     Par opposition à une maison individuelle.
@@ -1350,7 +1350,7 @@ logement . location . logement-6 . âge:
 
 logement . location . logement-6 . DPE:
   ordre: 29
-  question: Quel est le DPE de votre sixième logement en location ?
+  question: Quel est le DPE de votre sixième investissement locatif ?
   applicable si: location . nombre >= 6
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -1532,7 +1532,7 @@ logement . location . logement-7:
 logement . location . logement-7 . surface:
   ordre: 32
   titre: Surface location logement 7
-  question: Quelle est la surface de votre septième logement en location ?
+  question: Quelle est la surface de votre septième investissement locatif ?
   applicable si: location . nombre >= 7
   plancher: 1
   avertissement: |
@@ -1561,7 +1561,7 @@ logement . location . logement-7 . surface:
 logement . location . logement-7 . appartement:
   ordre: 31
   titre: Appartement location logement 7
-  question: Votre septième logement en location est-il un appartement ?
+  question: Votre septième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 7
   description: |
     Par opposition à une maison individuelle.
@@ -1599,7 +1599,7 @@ logement . location . logement-7 . âge:
 
 logement . location . logement-7 . DPE:
   ordre: 34
-  question: Quel est le DPE de votre septième logement en location ?
+  question: Quel est le DPE de votre septième investissement locatif ?
   applicable si: location . nombre >= 7
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -1781,7 +1781,7 @@ logement . location . logement-8:
 logement . location . logement-8 . surface:
   ordre: 37
   titre: Surface location logement 8
-  question: Quelle est la surface de votre huitième logement en location ?
+  question: Quelle est la surface de votre huitième investissement locatif ?
   applicable si: location . nombre >= 8
   plancher: 1
   avertissement: |
@@ -1810,7 +1810,7 @@ logement . location . logement-8 . surface:
 logement . location . logement-8 . appartement:
   ordre: 36
   titre: Appartement location logement 8
-  question: Votre huitième logement en location est-il un appartement ?
+  question: Votre huitième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 8
   description: |
     Par opposition à une maison individuelle.
@@ -1848,7 +1848,7 @@ logement . location . logement-8 . âge:
 
 logement . location . logement-8 . DPE:
   ordre: 39
-  question: Quel est le DPE de votre huitième logement en location ?
+  question: Quel est le DPE de votre huitième investissement locatif ?
   applicable si: location . nombre >= 8
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -2030,7 +2030,7 @@ logement . location . logement-9:
 logement . location . logement-9 . surface:
   ordre: 42
   titre: Surface location logement 9
-  question: Quelle est la surface de votre neuvième logement en location ?
+  question: Quelle est la surface de votre neuvième investissement locatif ?
   applicable si: location . nombre >= 9
   plancher: 1
   avertissement: |
@@ -2059,7 +2059,7 @@ logement . location . logement-9 . surface:
 logement . location . logement-9 . appartement:
   ordre: 41
   titre: Appartement location logement 9
-  question: Votre neuvième logement en location est-il un appartement ?
+  question: Votre neuvième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 9
   description: |
     Par opposition à une maison individuelle.
@@ -2097,7 +2097,7 @@ logement . location . logement-9 . âge:
 
 logement . location . logement-9 . DPE:
   ordre: 44
-  question: Quel est le DPE de votre neuvième logement en location ?
+  question: Quel est le DPE de votre neuvième investissement locatif ?
   applicable si: location . nombre >= 9
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
@@ -2279,7 +2279,7 @@ logement . location . logement-10:
 logement . location . logement-10 . surface:
   ordre: 47
   titre: Surface location logement 10
-  question: Quelle est la surface de votre dixième logement en location ?
+  question: Quelle est la surface de votre dixième investissement locatif ?
   applicable si: location . nombre >= 10
   plancher: 1
   avertissement: |
@@ -2308,7 +2308,7 @@ logement . location . logement-10 . surface:
 logement . location . logement-10 . appartement:
   ordre: 46
   titre: Appartement location logement 10
-  question: Votre dixième logement en location est-il un appartement ?
+  question: Votre dixième investissement locatif est-il un appartement ?
   applicable si: location . nombre >= 10
   description: |
     Par opposition à une maison individuelle.
@@ -2346,7 +2346,7 @@ logement . location . logement-10 . âge:
 
 logement . location . logement-10 . DPE:
   ordre: 49
-  question: Quel est le DPE de votre dixième logement en location ?
+  question: Quel est le DPE de votre dixième investissement locatif ?
   applicable si: location . nombre >= 10
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
