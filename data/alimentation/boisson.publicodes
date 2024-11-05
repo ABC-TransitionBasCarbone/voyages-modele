@@ -13,40 +13,10 @@ alimentation . boisson . chaude:
       - thé . nombre
       - chocolat chaud . nombre
       - chicorée . nombre
-    suggestions:
-      pas de boisson chaude:
-        café . nombre: 0
-        thé . nombre: 0
-        chocolat chaud . nombre: 0
-        chicorée . nombre: 0
-      un café par jour:
-        café . nombre: 7
-        thé . nombre: 0
-        chocolat chaud . nombre: 0
-        chicorée . nombre: 0
-      beaucoup de café:
-        café . nombre: 28
-        thé . nombre: 0
-        chocolat chaud . nombre: 0
-        chicorée . nombre: 0
-      un café et un thé par jour:
-        café . nombre: 7
-        thé . nombre: 7
-        chocolat chaud . nombre: 0
-        chicorée . nombre: 0
-      un chocolat chaud le matin:
-        café . nombre: 0
-        thé . nombre: 0
-        chocolat chaud . nombre: 7
-        chicorée . nombre: 0
   question: Quelle est votre consommation de boissons chaudes pour une semaine type (nombre de tasses par semaine) ?
   icônes: ☕️🫖
   description: |
-    Vos consommations de boissons chaudes pour une semaine type. Un café par jour ? Un thé tous les soirs ? Un chocolat chaud au petit déjeuner ?
-
-    A noter que vous pourrez sélectionner le type de lait que vous consommez dans une autre question !
-
-    > Le café ou thé que vous consommez au petit déjeuner est à prendre en compte ici !
+    Renseignez, **en nombre de tasses par semaine**, ce qui représente une consommation type de boissons chaude pour vous.
   formule: par semaine * commun . semaines par an
   unité: kgCO2e
 
@@ -205,7 +175,7 @@ alimentation . type de lait:
     une de ces conditions:
       - boisson . chaude . chocolat chaud . nombre > 0
       - petit déjeuner . type = 'lait céréales'
-  question: Le lait que vous consommez est-il d'origine animale ou végétale ?
+  question: Quel type de lait buvez-vous ?
   par défaut: "'lait de vache'"
   formule:
     une possibilité:
@@ -264,11 +234,9 @@ alimentation . boisson . eau en bouteille:
 alimentation . boisson . eau en bouteille . consommateur:
   question: Buvez-vous votre eau en bouteille ?
   description: |
-    Si vous buvez principalement de l'eau du robinet et que votre consommation d'eau en bouteille se réduit à de rares occasions (par exemple un repas sur le pouce en boulangerie par semaine, avec leur fameux menu "sandwich + dessert + boisson en bouteille plastique"), répondez non.
+    Si vous buvez principalement de l'eau du robinet et que votre consommation d'eau en bouteille se réduit à de rares occasions, répondez non.
 
-    Si vous achetez régulièrement des packs d'eau en bouteille au supermarché ou si vous achetez une petite bouteille chaque jour à la cantine du boulot, répondez oui.
-
-    > Sachez que la consommation d'eau du robinet a une empreinte climat si faible que nous ne vous poserons pas la question de votre consommation alimentaire d'eau.
+    Si vous achetez régulièrement des packs d'eau en bouteille au supermarché ou si vous achetez une petite bouteille chaque jour lors de vos repas, répondez oui.
   note: |
     Les français boivent en moyenne entre 100 et 150 litres d'eau en bouteille par an [source](https://www.planetoscope.com/consommation-eau/854-litres-d-eau-en-bouteille-vendus-en-france.html), soit environ un tiers de nos besoins de 1-1,5l par jour [source](https://www.mangerbouger.fr/Le-Mag/Bien-etre/L-eau-indispensable-a-notre-bonne-sante).
 
@@ -318,10 +286,6 @@ alimentation . boisson . sucrées . facteur jus de fruits:
 alimentation . boisson . sucrées . litres:
   titre: Consommation de boissons sucrées
   question: Quelle est votre consommation par semaine de sodas, jus de fruits, etc. ?
-  suggestions:
-    nulle: 0
-    modérée: 1
-    importante: 5
   par défaut: 1
   plancher: 0
   unité: l/semaine
@@ -365,10 +329,6 @@ alimentation . boisson . alcool . facteur cocktail:
 alimentation . boisson . alcool . litres:
   titre: Consommation d'alcool
   question: Quelle est votre consommation par semaine d'alcool (vin, bière, etc.) ?
-  suggestions:
-    nulle: 0
-    modérée: 1
-    importante: 3
   par défaut: 1.5
   plancher: 0
   unité: l/semaine

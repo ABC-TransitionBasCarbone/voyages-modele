@@ -9,9 +9,9 @@ transport . deux roues:
   unité: kgCO2e
 
 transport . deux roues . usager:
-  question: Utilisez-vous un deux-roues motorisé ?
+  question: En 2023, utilisiez-vous un deux-roues motorisé ?
   description: |
-    Les scooters et motos sont aujourd'hui très majoritairement des engins qui fonctionnent au pétrole. Les scooters électriques ayant fait une réelle percée, ils sont ajoutés au modèle.
+    Le terme deux-roues inclut les scooters (possédés comme en autopartage) et les motos.
 
 transport . deux roues . empreinte:
   icônes: 🛵
@@ -27,16 +27,15 @@ transport . deux roues . empreinte moyenne:
 
 transport . deux roues . km:
   applicable si: usager
-  question: Combien de km faites-vous à l'année avec votre scooter ou moto ?
+  question: Combien de km avez-vous fait en 2023 avec votre scooter ou moto ?
   par défaut: km annuels moyen
   plancher: 0
   unité: km
   suggestions:
-    zéro: 0
-    vacances: 2000
-    10km / jour: 3600
-    1000km / mois: 12000
-    20 000km / an: 20000
+    vacances: 2000.001
+    10km / jour: 3600.001
+    1000km / mois: 12000.001
+    20 000km / an: 20000.001
 
 transport . deux roues . km annuels moyen:
   formule: 3000
@@ -46,7 +45,7 @@ transport . deux roues . km annuels moyen:
 
 transport . deux roues . type:
   applicable si: usager
-  question: Quel type de deux-roues utilisez-vous ?
+  question: Quel type de deux-roues utilisiez-vous en 2023 ?
   par défaut: "'moto sup 250'"
   formule:
     une possibilité:
@@ -77,8 +76,13 @@ transport . deux roues . empreinte au km:
     variations:
       - si: type = 'scooter thermique'
         alors: 0.0763 kgCO2e/km
+      - si:
+          toutes ces conditions:
+            - type = 'scooter électrique'
+            - est défini: type . scooter électrique . propriétaire
+        alors: 0.01 kgCO2e/km
       - si: type = 'scooter électrique'
-        alors: 0.030 kgCO2e/km
+        alors: 0.091 kgCO2e/km
       - si: type = 'moto inf 250'
         alors: 0.0763 kgCO2e/km
       - si: type = 'moto sup 250'
@@ -87,7 +91,15 @@ transport . deux roues . empreinte au km:
   note: |
     Cyclomoteur - Mixte - 2018 ; 76,3 gCO2e/km/personne ; calculs ADEME à partir d'HBEFA (2020)
 
-    Scooter électrique : 30 gCO2e/km/personne ; étude "Assessing the Environmental Performance of New Mobility" de l'International Transport Forum. [Excel disponible ici](https://www.itf-oecd.org/good-to-go-environmental-performance-new-mobility)
+    Scooter électrique : FE retravaillé depuis l'étude "Assessing the Environmental Performance of New Mobility" de l'International Transport Forum. [Excel disponible ici](https://www.itf-oecd.org/good-to-go-environmental-performance-new-mobility):
+      - Modification du mix électrique considéré pour prendre en compte le mix français en compte du mix électrique  
+      - Si propriétaire : FE _Private e-scooter_ en considérant : 
+        - la même durée de vie en km que les deux roues thermiques 28 800 km de la Base Empreinte : 6 000 km -> 28 800 km
+        - en compensant par un quadruplement du renouvellement de la batterie : de 0 pour 6000 km -> 4 pour 28 800 km
+      - Si non propriétaire (= autopartage) : FE _Shared e-scooter (new generation)_. Ce FE est très émissif car :
+        - la fabrication de ces scooters est beaucoup plsu émissive car ils sont beaucoup plus lourd que leur équivalent non partagés (25 kg contre 11 kg)
+        - le nombre de km roulés sur l'ensemble du cycle de vie est très faible (5700 km)
+        - les services opérationnels des systèmes d'autopartage représentent plus du quart de l'empreinte du FE
 
     Moto =< 250 cm3 - Mixte - 2018 ; 76,3 gCO2e/km/personne ; calculs ADEME à partir d'HBEFA (2020)
 
@@ -117,3 +129,8 @@ transport . deux roues . nombre deux roues circulation:
 
 transport . deux roues . pourcentage motards:
   formule: nombre deux roues circulation / population
+
+transport . deux roues . type . scooter électrique . propriétaire:
+  question: Etiez-vous propriétaire du scooter électrique que vous utilisiez en 2023 ?
+  description: Répondez oui si le scooter vous appartenait et non si vous faisiez de "l'autopartage"
+

@@ -1,14 +1,14 @@
 /// ---------------------- Retrieving the regions models ----------------------
 
-const path = require('path')
-const fs = require('fs')
-const { exit } = require('process')
+import path from 'path'
+import fs from 'fs'
+import { exit } from 'process'
 
-const {
+import {
   customAssocPath,
   readYAML
-} = require('@incubateur-ademe/nosgestesclimat-scripts/utils')
-const regionModelsPath = path.resolve('data/i18n/models')
+} from '@incubateur-ademe/nosgestesclimat-scripts/utils'
+export const regionModelsPath = path.resolve('data/i18n/models')
 
 // TODO: use this type when we will be able to use typescript
 // export type RegionAuthor = {
@@ -22,15 +22,13 @@ const regionModelsPath = path.resolve('data/i18n/models')
 // 	authors?: RegionAuthor[],
 // }
 
-const defaultModelCode = 'FR'
-const defaultRegionModelParam = {
+export const defaultModelCode = 'FR'
+export const defaultRegionModelParam = {
   FR: {
     fr: { code: 'FR', nom: 'France métropolitaine', gentilé: 'française' },
-    en: { code: 'FR', nom: 'metropolitan France', gentilé: 'french' },
-    es: { code: 'FR', nom: 'Francia metropolitana', gentilé: 'francesa' }
   }
 }
-const supportedRegionPath = 'public/supportedRegions.json'
+export const supportedRegionPath = 'public/supportedRegions.json'
 
 //
 // Reads all regions models and create a json file containing params of each region.
@@ -40,7 +38,7 @@ const supportedRegionPath = 'public/supportedRegions.json'
 //
 // The default region and hardcoded one is FR.
 //
-const supportedRegions = fs
+export const supportedRegions = fs
   .readdirSync(regionModelsPath)
   .reduce((acc, filename) => {
     if (!filename.match(/[A-Z]{2}.*.publicodes/)) {
@@ -71,12 +69,4 @@ const supportedRegions = fs
     }
   }, defaultRegionModelParam)
 
-const supportedRegionCodes = Object.keys(supportedRegions)
-
-module.exports = {
-  supportedRegionPath,
-  supportedRegionCodes,
-  supportedRegions,
-  defaultModelCode,
-  regionModelsPath
-}
+export const supportedRegionCodes = Object.keys(supportedRegions)

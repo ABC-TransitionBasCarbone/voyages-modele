@@ -66,6 +66,7 @@ alimentation . déjeuner et dîner . par semaine:
   unité: kgCO2e/semaine
 
 alimentation . plats:
+  ordre: 1
   icônes: 🍽️
   mosaique:
     type: nombre
@@ -76,50 +77,11 @@ alimentation . plats:
       - viande rouge . nombre
       - poisson gras . nombre
       - poisson blanc . nombre
-    suggestions:
-      je suis végétalien:
-        végétalien . nombre: 14
-        végétarien . nombre: 0
-        viande blanche . nombre: 0
-        viande rouge . nombre: 0
-        poisson gras . nombre: 0
-        poisson blanc . nombre: 0
-      je suis végétarien:
-        végétalien . nombre: 3
-        végétarien . nombre: 11
-        viande blanche . nombre: 0
-        viande rouge . nombre: 0
-        poisson gras . nombre: 0
-        poisson blanc . nombre: 0
-      je mange peu de viande:
-        végétalien . nombre: 1
-        végétarien . nombre: 7
-        viande blanche . nombre: 4
-        viande rouge . nombre: 0
-        poisson gras . nombre: 1
-        poisson blanc . nombre: 1
-      je mange de la viande régulièrement:
-        végétarien . nombre: 4
-        végétalien . nombre: 0
-        viande blanche . nombre: 6
-        viande rouge . nombre: 2
-        poisson gras . nombre: 1
-        poisson blanc . nombre: 1
-      je mange beaucoup de viande:
-        végétalien . nombre: 0
-        végétarien . nombre: 0
-        viande blanche . nombre: 6
-        viande rouge . nombre: 6
-        poisson gras . nombre: 1
-        poisson blanc . nombre: 1
-  question: Choisissez les plats de vos déjeuners et dîners pour une semaine type
+  question: Parmi les propositions ci-dessous, choisissez les plats de vos déjeuners et dîners d'une semaine type pour vous
   titre: Empreinte de 14 repas
   description: |
-    Choisissez les plats qui représentent votre semaine type. 
-
-    A priori, vous en aurez 14 : 7 déjeuners et 7 dîners. Mais vous pouvez aussi manger moins, ou plus, c'est tout à fait possible !
-
-    > Aujourd'hui nous travaillons pour que les menus associés à vos repas soient les plus représentatifs de vos habitudes, n'hésitez pas à aller plus loin en parcourant la documentation.
+    A priori, vous en aurez 14 : 7 déjeuners et 7 dîners. Mais si vous mangez moins, ou plus, que ce nombre de repas, aucun soucis. Nous vous laissons renseigner
+    ce qui représente une semaine type pour vous.
   formule:
     somme:
       - végétalien
@@ -153,21 +115,10 @@ alimentation . plats . végétalien:
 
 alimentation . plats . végétalien . empreinte:
   titre: Empreinte d'un repas végétalien
-  formule: 0.630
+  formule: 0.66
   unité: kgCO2e/repas
   note: |
-    L'empreinte d'un repas végétalien est donné par le tableau suivant :
-
-    | Ingrédients                 | CIQUAL | Qte (g) | Kcal   | Protéines (g) | Lipides (g) | kgCO2e/kg |  kgCO2e  |
-    | --------------------------- | ------ | ------- | ------ | ------------- | ----------- | --------- | -------- |
-    | **Entrée + plat principal** |        |         |        |               |             |           |          |
-    | Tofu nature, préemballé     | 20904  | 100     | 143    | 13,4          | 8,5         | 0,66      |  0,07    |
-    | Accompagnement moyen        | AM     | 300     | 192,11 | 15,72         | 2,81        | 1,26      |  0,38    |
-    | Huile d'olive vierge extra  | 17270  | 7       | 63     | 0             | 6,99        | 0,98      |  0,01    |
-    |   **Dessert**               |        |         |        |               |             |           |          |
-    | Dessert vegan               | DV     | 200     | 118,7  | 1,42          | 0,29        | 0,73      |  0,15    |
-    | Pain                        | 7001   | 50      | 142    | 4,14          | 0,7         | 0,69      |  0,03    |
-    | Total                       |        | 657     | 658,81 | 34,68         | 19,3        |           | **0,63** |
+    Repas contenant du tofu, un accompagnement "moyen" (issu d'un travail de consolidation sur les moyennes de consommation des français tirées de l'étude INCA3 pour les légumes, légumineuses, riz, céréales et pâtes), huile.
 
     💡 Vous trouverez la documentation complète dans [notre wiki](https://accelerateur-transition-ecologique-ademe.notion.site/Empreinte-des-repas-NGC-377d2143f3a14b558ab2c8e0426d2e23).
 
@@ -189,21 +140,10 @@ alimentation . plats . végétarien:
 
 alimentation . plats . végétarien . empreinte:
   titre: Empreinte d'un repas végétarien
-  formule: 1.11
+  formule: 0.97
   unité: kgCO2e/repas
   note: |
-    L'empreinte d'un repas végétarien est donné par le tableau suivant :
-
-    | Ingrédients                 | CIQUAL | Qte (g) | Kcal   | Protéines (g) | Lipides (g) | kgCO2e/kg |  kgCO2e  |
-    | --------------------------- | ------ | ------- | ------ | ------------- | ----------- | --------- | -------- |
-    | **Entrée + plat principal** |       |         |        |               |             |           |          |
-    | 2 œufs                      | 22000  | 120     | 168    | 15,24         | 11,8        | 3,17      |  0,38    |
-    | Accompagnement moyen        | AM     | 300     | 192,11 | 15,72         | 2,81        | 1,26      |  0,38    |
-    | Huile d'olive vierge extra  | 17270  | 5       | 45     | 0             | 5           | 0,98      |  0       |
-    |   **Dessert**               |        |         |        |               |             |           |          |
-    | Dessert moyen               | DE     | 200     | 186,39 | 5,36          | 12,11       | 1,57      |  0,31    |
-    | Pain                        | 7001   | 50      | 142    | 4,14          | 0,7         | 0,69      |  0,03    |
-    | Total                       |        | 675     | 733,5  | 40,46         | 32,42       |           | **1,11** |
+    Repas contenant du tofu, un accompagnement "moyen" (issu d'un travail de consolidation sur les moyennes de consommation des français tirées de l'étude INCA3 pour les légumes, légumineuses, riz, céréales et pâtes), huile.
 
     💡 Vous trouverez la documentation complète dans [notre wiki](https://accelerateur-transition-ecologique-ademe.notion.site/Empreinte-des-repas-NGC-377d2143f3a14b558ab2c8e0426d2e23).
 
@@ -224,21 +164,10 @@ alimentation . plats . viande blanche:
 
 alimentation . plats . viande blanche . empreinte:
   titre: Empreinte d'un repas de type viande blanche (poulet, porc)
-  formule: 1.94
+  formule: 1.75
   unité: kgCO2e/repas
   note: |
-    L'empreinte d'un repas à dominate "viande blanche" (volaille, porc...) est donné par le tableau suivant :
-
-    | Ingrédients                 | CIQUAL | Qte (g) | Kcal   | Protéines (g) | Lipides (g) | kgCO2e/kg |  kgCO2e  |
-    | --------------------------- | ------ | ------- | ------ | ------------- | ----------- | --------- | -------- |
-    | **Entrée + plat principal** |        |         |        |               |             |           |          |
-    | Viande blanche              | VB     | 150     | 205,06 | 31,27         | 8,31        | 8,03      |  1,21    |
-    | Accompagnement moyen        | AM     | 300     | 192,11 | 15,72         | 2,81        | 1,26      |  0,38    |
-    | Huile d'olive vierge extra  | 17270  | 5       | 45     | 0             | 5           | 0,98      |  0       |
-    |   **Dessert**               |        |         |        |               |             |           |          |
-    | Dessert moyen               | DE     | 200     | 186,39 | 5,36          | 12,11       | 1,57      |  0,31    |
-    | Pain                        | 7001   | 50      | 142    | 4,14          | 0,7         | 0,69      |  0,03    |
-    | Total                       |        | 705     | 770,56 | 56,49         | 28,94       |           | **1,94** |
+    Repas contenant 150g d'une viande blanche moyenne (issue d'un travail de consolidation sur les consommations moyennes de viande blanche de l'étude INCA3), un accompagnement moyen (consolidation sur les moyennes de consommation pour les légumes, légumineuses, riz, céréales et pâtes), huile.
 
     💡 Vous trouverez la documentation complète dans [notre wiki](https://accelerateur-transition-ecologique-ademe.notion.site/Empreinte-des-repas-NGC-377d2143f3a14b558ab2c8e0426d2e23).
 
@@ -260,22 +189,11 @@ alimentation . plats . viande rouge . empreinte:
   titre: Empreinte d'un repas de type viande rouge (bœuf, veau, agneau)
   formule: 
     somme:
-      - 4.79
+      - 5.19
       - déforestation
   unité: kgCO2e/repas
   note: |
-    L'empreinte d'un repas à dominate "viande rouge" (boeuf, veau, agneau...) est donné par le tableau suivant :
-
-    | Ingrédients                 | CIQUAL | Qte (g) | Kcal   | Protéines (g) | Lipides (g) | kgCO2e/kg |  kgCO2e  |
-    | --------------------------- | ------ | ------- | ------ | ------------- | ----------- | --------- | -------- |
-    | **Entrée + plat principal** |        |         |        |               |             |           |          |
-    | Viande rouge                | VR     | 150     | 209,58 | 30,15         | 9,82        | 27,08     |  4,06    |
-    | Accompagnement moyen        | AM     | 300     | 192,11 | 15,72         | 2,81        | 1,26      |  0,38    |
-    | Huile d'olive vierge extra  | 17270  | 5       | 45     | 0             | 5           | 0,98      |  0       |
-    |   **Dessert**               |        |         |        |               |             |           |          |
-    | Dessert moyen               | DE     | 200     | 186,39 | 5,36          | 12,11       | 1,57      |  0,31    |
-    | Pain                        | 7001   | 50      | 142    | 4,14          | 0,7         | 0,69      |  0,03    |
-    | Total                       |        | 705     | 775,08 | 55,37         | 30,44       |           | **4,79** |
+    Repas contenant 150g d'une viande rouge moyenne (issue d'un travail de consolidation sur les consommations moyennes de viande rouge de l'étude INCA3), un accompagnement moyen (consolidation sur les moyennes de consommation pour les légumes, légumineuses, riz, céréales et pâtes), huile.
 
     💡 Vous trouverez la documentation complète dans [notre wiki](https://accelerateur-transition-ecologique-ademe.notion.site/Empreinte-des-repas-NGC-377d2143f3a14b558ab2c8e0426d2e23).
 
@@ -313,21 +231,10 @@ alimentation . plats . poisson gras:
 
 alimentation . plats . poisson gras . empreinte:
   titre: Empreinte d'un repas de type poisson gras (thon, saumon, sardine, maquereau)
-  formule: 1.31
+  formule: 1.21
   unité: kgCO2e/repas
   note: |
-    L'empreinte d'un repas à dominate "poisson gras" (thon, saumon, sardine, maquereau...) est donné par le tableau suivant :
-
-    | Ingrédients                 | CIQUAL | Qte (g) | Kcal   | Protéines (g) | Lipides (g) | kgCO2e/kg |  kgCO2e  |
-    | --------------------------- | ------ | ------- | ------ | ------------- | ----------- | --------- | -------- |
-    | **Entrée + plat principal** |        |         |        |               |             |           |          |
-    | Poisson gras                | PG     | 150     | 290,27 | 33,16         | 17,16       | 3,85      |  0,58    |
-    | Accompagnement moyen        | AM     | 300     | 192,11 | 15,72         | 2,81        | 1,26      |  0,38    |
-    | Huile d'olive vierge extra  | 17270  | 5       | 45     | 0             | 5           | 0,98      |  0       |
-    |   **Dessert**               |        |         |        |               |             |           |          |
-    | Dessert moyen               | DE     | 200     | 186,39 | 5,36          | 12,11       | 1,57      |  0,31    |
-    | Pain                        | 7001   | 50      | 142    | 4,14          | 0,7         | 0,69      |  0,03    |
-    | Total                       |        | 705     | 855,77 | 58,38         | 37,79       |           | **1,31** |
+    Repas contenant 150g d'un poisson gras moyen (issu d'un travail de consolidation sur les consommations moyennes de poissons gras de l'étude INCA3), un accompagnement moyen (consolidation sur les moyennes de consommation pour les légumes, légumineuses, riz, céréales et pâtes), huile.
 
     💡 Vous trouverez la documentation complète dans [notre wiki](https://accelerateur-transition-ecologique-ademe.notion.site/Empreinte-des-repas-NGC-377d2143f3a14b558ab2c8e0426d2e23).
 
@@ -347,21 +254,10 @@ alimentation . plats . poisson blanc:
 
 alimentation . plats . poisson blanc . empreinte:
   titre: Empreinte d'un repas de type poisson blanc
-  formule: 2.14
+  formule: 2.29
   unité: kgCO2e/repas
   note: |
-    L'empreinte d'un repas à dominate "poisson blanc" est donné par le tableau suivant :
-
-    | Ingrédients                 | CIQUAL | Qte (g) | Kcal   | Protéines (g) | Lipides (g) | kgCO2e/kg |  kgCO2e  |
-    | --------------------------- | ------ | ------- | ------ | ------------- | ----------- | --------- | -------- |
-    | **Entrée + plat principal** |        |         |        |               |             |           |          |
-    | Poisson blanc               | PB     | 150     | 127,71 | 27,81         | 1,82        | 9,36      |  1,4     |
-    | Accompagnement moyen        | AM     | 300     | 192,11 | 15,72         | 2,81        | 1,26      |  0,38    |
-    | Huile d'olive vierge extra  | 17270  | 5       | 45     | 0             | 5           | 0,98      |  0       |
-    |   **Dessert**               |        |         |        |               |             |           |          |
-    | Dessert moyen               | DE     | 200     | 186,39 | 5,36          | 12,11       | 1,57      |  0,31    |
-    | Pain                        | 7001   | 50      | 142    | 4,14          | 0,7         | 0,69      |  0,03    |
-    | Total                       |        | 705     | 693,21 | 53,03         | 22,44       |           | **2,14** |
+    Repas contenant 150g d'un poisson blanc moyen (issu d'un travail de consolidation sur les consommations moyennes de poissons blancs de l'étude INCA3), un accompagnement moyen (consolidation sur les moyennes de consommation pour les légumes, légumineuses, riz, céréales et pâtes), huile.
 
     💡 Vous trouverez la documentation complète dans [notre wiki](https://accelerateur-transition-ecologique-ademe.notion.site/Empreinte-des-repas-NGC-377d2143f3a14b558ab2c8e0426d2e23).
 
@@ -401,13 +297,12 @@ alimentation . petit déjeuner:
   unité: kgCO2e/repas
 
 alimentation . petit déjeuner . type:
+  ordre: 4
   question: Quel petit déjeuner vous correspond le plus ?
   description: |
-    Il existe une variété infinie de petits déjeuners. Nous en avons sélectionné quelques-uns pour que vous obteniez une réponse facilement.
+    Si vous ne retrouvez pas exactement votre petit déjeuner, choisissez celui qui s'en rapproche le plus.
 
-    Même si vous ne retrouvez pas exactement votre petit déjeuner, choisissez celui qui s'en rapproche !
-
-    > À noter que votre consommation de jus de fruits / café / thé / chocolat chaud est comptabilisée dans la question dédiée aux boissons chaudes.
+    _À noter_: nous interrogerons votre consommation de jus de fruits, café, thé et chocolat chaud dans les questions suivantes.
 
   par défaut: "'continental'"
   formule:
@@ -422,7 +317,7 @@ alimentation . petit déjeuner . type:
 
 alimentation . petit déjeuner . continental:
   titre: Continental
-  formule: 0.28
+  formule: 0.31
   unité: kgCO2e/repas
   description: |
     Petit déjeuner avec pain, viennoiserie, beurre, confiture et un fruit.
@@ -455,7 +350,7 @@ alimentation . petit déjeuner . lait céréales:
 
 alimentation . petit déjeuner . lait vache céréales:
   titre: Céréales avec lait de vache
-  formule: 0.460
+  formule: 0.45
   unité: kgCO2e/repas
   description: |
     Petit déjeuner avec un produit laitier (lait de vache) et une portion de céréales.
@@ -493,7 +388,7 @@ alimentation . petit déjeuner . lait soja céréales:
 
 alimentation . petit déjeuner . lait avoine céréales:
   titre: Céréales avec lait d'avoine
-  formule: 0.300
+  formule: 0.31
   unité: kgCO2e/repas
   description: |
     Petit déjeuner avec un produit laitier (lait d'avoine) et une portion de céréales.
@@ -512,7 +407,7 @@ alimentation . petit déjeuner . lait avoine céréales:
 
 alimentation . petit déjeuner . britannique:
   titre: Britannique
-  formule: 1.18
+  formule: 1.08
   unité: kgCO2e/repas
   description: |
     Petit déjeuner avec de la charcuterie, 2 œufs et des toasts.
@@ -533,7 +428,7 @@ alimentation . petit déjeuner . britannique:
 
 alimentation . petit déjeuner . végétalien:
   titre: Végétalien
-  formule: 0.380
+  formule: 0.4
   unité: kgCO2e/repas
   description: |
     Petit déjeuner avec une portion de muesli, un fruit
@@ -600,18 +495,10 @@ alimentation . local . empreinte:
   unité: kgCO2e
 
 alimentation . local . consommation:
+  ordre: 2
   question: Consommez-vous des produits locaux ?
   description: |
-    Cette question nous permet de corriger l'empreinte de votre régime alimentaire en fonction de votre habitude sur le caractère local de vos achats.
-
     Nous considérons "locaux" les aliments qui sont issus de la région où vous vivez ou de régions proches.
-
-    Ce critère a un impact relativement faible, car la part du transport dans l'empreinte carbone des produits que nous consommons est faible devant les émissions liées à la production, la transformation ou l'emballage, surtout quand votre régime est carné.
-
-    Mais c'est toujours ça de gagné, et les avantages d'une consommation locale ne s'arrêtent pas à l'empreinte climat.
-
-    > ⚠️ Attention, si vous faites vos courses en voiture à plusieurs km de chez vous chaque semaine, il est possible que l'empreinte du dernier km dépasse les gains d'une alimentation locale !
-
   note: Voir détail de l'approche de calcul [ici](http://nosgestesclimat/documentation/alimentation/local/part-locale)
   par défaut: "'jamais'"
   formule:
@@ -683,16 +570,8 @@ alimentation . de saison . facteur de saison:
   formule: (-1) * niveau / ratio
 
 alimentation . de saison . consommation:
+  ordre: 3
   question: Consommez-vous des produits de saison ?
-  description: |
-    Cette question nous permet de corriger l'empreinte de votre régime alimentaire en fonction de votre habitude sur le caractère de saison de vos achats.
-
-    Cet impact est relativement faible, car la part de produits de saison représente seulement 7% de l'alimentation moyenne d'un Français.
-
-    Mais c'est toujours ça de gagné, et les avantages d'une consommation de saison ne s'arrêtent pas à l'empreinte climat.
-
-    > Mais quelle est la saison d'une pomme, d'un chou-fleur ?
-    > Découvrez notre mini-site [Mes fruits et légumes de saison](https://mesfruitsetlegumesdesaison.fr).
   note: Voir détail de l'approche de calcul [ici](http://nosgestesclimat/documentation/alimentation/de-saison/pourcentage-saisonable)
   par défaut: "'jamais'"
   formule:

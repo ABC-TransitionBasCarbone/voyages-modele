@@ -1,0 +1,2520 @@
+logement . location:
+  titre: Location de logements
+  formule: 
+    somme:
+      - logement-1
+      - logement-2
+      - logement-3
+      - logement-4
+      - logement-5
+      - logement-6
+      - logement-7
+      - logement-8
+      - logement-9
+      - logement-10
+  note: |
+    Cette empreinte est en réalité nulle car tous les éléments de la somme ont une empreinte nulle.
+    L'objet de cette variable et des variables filles est de pouvoir récolter des données.
+
+logement . location . nombre:
+  titre: Nombre de logements en location
+  question: Combien d'investissements locatifs possediez-vous en 2023 (c.à.d des logements que vous n'habitez pas et que vous mettez en location annuelle et/ou saisonnière) ?
+  plancher: 0
+  par défaut: 0
+  description: |
+    Ne comptez pas ici votre logement principal et d'éventuelle(s) résidence(s) secondaire(s) que vous pourriez louer de temps en temps.
+    Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que vous n'habitez pas mais que 
+    vous dédiez à la location longue durée (annuelle et/ou saisonnière).
+    
+    **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas**
+  note: |
+    Le nombre max de logement est fixé à 10 car, selon les données de l'[INSEE](https://www.insee.fr/fr/statistiques/5432517?sommaire=5435421) (cf. Excel),
+    au sein du décile supérieur, 10% des individus possède 5 logements ou plus (33% pour le centile supérieur)
+
+### Logement 1
+logement . location . logement-1:
+  applicable si: location . nombre >= 1
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
+  unité: kgCO2e
+
+logement . location . logement-1 . surface:
+  ordre: 2
+  titre: Surface location logement 1
+  question: Quelle est la surface de votre premier investissement locatif ?
+  applicable si: location . nombre >= 1
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-1 . appartement
+        alors:
+          variations:
+            - si: logement-1 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-1 . appartement:
+  ordre: 1
+  titre: Appartement location logement 1
+  question: Votre premier investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 1
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-1 . âge:
+  ordre: 3
+  question: Quel est l'âge de votre premier investissement locatif ?
+  applicable si: location . nombre >= 1
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-1 . DPE:
+  ordre: 4
+  question: Quel est le DPE de votre premier investissement locatif ?
+  applicable si: location . nombre >= 1
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-1 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-1 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-1 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-1 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-1 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-1 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-1 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-1 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-1 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-1 . chauffage:
+  ordre: 5
+  titre: Energie location logement 1
+  applicable si: location . nombre >= 1
+  mosaique:
+    type: selection
+    options:
+      - PAC-1 . présent
+      - électricité-1 . présent
+      - gaz-1 . présent
+      - réseau de chaleur-1 . présent
+      - bouteille gaz-1 . présent
+      - citerne propane-1 . présent
+      - fioul-1 . présent
+      - bois-1 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre premier investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-1 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-1 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-1 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-1 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-1 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-1 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-1 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-1 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-1 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-1 . chauffage . PAC-1:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-1 . chauffage . PAC-1 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-1 . chauffage . électricité-1:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-1 . chauffage . électricité-1 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-1 . chauffage . gaz-1:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-1 . chauffage . gaz-1 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-1 . chauffage . réseau de chaleur-1:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-1 . chauffage . réseau de chaleur-1 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-1 . chauffage . bouteille gaz-1:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-1 . chauffage . bouteille gaz-1 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-1 . chauffage . citerne propane-1:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-1 . chauffage . citerne propane-1 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-1 . chauffage . fioul-1:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-1 . chauffage . fioul-1 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-1 . chauffage . bois-1:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-1 . chauffage . bois-1 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 2
+logement . location . logement-2:
+  applicable si: location . nombre >= 2
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  unité: kgCO2e
+
+logement . location . logement-2 . surface:
+  ordre: 7
+  titre: Surface location logement 2
+  question: Quelle est la surface de votre deuxième investissement locatif ?
+  applicable si: location . nombre >= 2
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-2 . appartement
+        alors:
+          variations:
+            - si: logement-2 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-2 . appartement:
+  ordre: 6
+  titre: Appartement location logement 2
+  question: Votre deuxième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 2
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-2 . âge:
+  ordre: 8
+  question: Quel est l'âge de votre deuxième investissement locatif ?
+  applicable si: location . nombre >= 2
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-2 . DPE:
+  ordre: 9
+  question: Quel est le DPE de votre deuxième investissement locatif ?
+  applicable si: location . nombre >= 2
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-2 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+
+logement . location . logement-2 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-2 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-2 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-2 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-2 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-2 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-2 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-2 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-2 . chauffage:
+  ordre: 10
+  titre: Energie location logement 2
+  applicable si: location . nombre >= 2
+  mosaique:
+    type: selection
+    options:
+      - PAC-2 . présent
+      - électricité-2 . présent
+      - gaz-2 . présent
+      - réseau de chaleur-2 . présent
+      - bouteille gaz-2 . présent
+      - citerne propane-2 . présent
+      - fioul-2 . présent
+      - bois-2 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre deuxième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-2 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-2 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-2 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-2 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-2 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-2 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-2 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-2 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-2 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-2 . chauffage . PAC-2:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-2 . chauffage . PAC-2 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-2 . chauffage . électricité-2:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-2 . chauffage . électricité-2 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-2 . chauffage . gaz-2:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-2 . chauffage . gaz-2 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-2 . chauffage . réseau de chaleur-2:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-2 . chauffage . réseau de chaleur-2 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-2 . chauffage . bouteille gaz-2:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-2 . chauffage . bouteille gaz-2 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-2 . chauffage . citerne propane-2:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-2 . chauffage . citerne propane-2 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-2 . chauffage . fioul-2:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-2 . chauffage . fioul-2 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-2 . chauffage . bois-2:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-2 . chauffage . bois-2 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 3
+logement . location . logement-3:
+  applicable si: location . nombre >= 3
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  unité: kgCO2e
+
+logement . location . logement-3 . surface:
+  ordre: 12
+  titre: Surface location logement 3
+  question: Quelle est la surface de votre troisième investissement locatif ?
+  applicable si: location . nombre >= 3
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-3 . appartement
+        alors:
+          variations:
+            - si: logement-3 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-3 . appartement:
+  ordre: 11
+  titre: Appartement location logement 3
+  question: Votre troisième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 3
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-3 . âge:
+  ordre: 13
+  question: Quel est l'âge de votre troisième investissement locatif ?
+  applicable si: location . nombre >= 3
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-3 . DPE:
+  ordre: 14
+  question: Quel est le DPE de votre troisième investissement locatif ?
+  applicable si: location . nombre >= 3
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-3 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-3 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-3 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-3 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-3 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-3 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-3 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-3 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-3 . chauffage:
+  ordre: 15
+  titre: Energie location logement 3
+  applicable si: location . nombre >= 3
+  mosaique:
+    type: selection
+    options:
+      - PAC-3 . présent
+      - électricité-3 . présent
+      - gaz-3 . présent
+      - réseau de chaleur-3 . présent
+      - bouteille gaz-3 . présent
+      - citerne propane-3 . présent
+      - fioul-3 . présent
+      - bois-3 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre troisième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-3 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-3 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-3 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-3 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-3 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-3 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-3 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-3 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-3 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-3 . chauffage . PAC-3:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-3 . chauffage . PAC-3 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-3 . chauffage . électricité-3:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-3 . chauffage . électricité-3 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-3 . chauffage . gaz-3:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-3 . chauffage . gaz-3 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-3 . chauffage . réseau de chaleur-3:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-3 . chauffage . réseau de chaleur-3 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-3 . chauffage . bouteille gaz-3:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-3 . chauffage . bouteille gaz-3 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-3 . chauffage . citerne propane-3:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-3 . chauffage . citerne propane-3 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-3 . chauffage . fioul-3:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-3 . chauffage . fioul-3 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-3 . chauffage . bois-3:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-3 . chauffage . bois-3 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 4
+logement . location . logement-4:
+  applicable si: location . nombre >= 4
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  unité: kgCO2e
+
+logement . location . logement-4 . surface:
+  ordre: 17
+  titre: Surface location logement 4
+  question: Quelle est la surface de votre quatrième investissement locatif ?
+  applicable si: location . nombre >= 4
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-4 . appartement
+        alors:
+          variations:
+            - si: logement-4 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-4 . appartement:
+  ordre: 16
+  titre: Appartement location logement 4
+  question: Votre quatrième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 4
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-4 . âge:
+  ordre: 18
+  question: Quel est l'âge de votre quatrième investissement locatif ?
+  applicable si: location . nombre >= 4
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-4 . DPE:
+  ordre: 19
+  question: Quel est le DPE de votre quatrième investissement locatif ?
+  applicable si: location . nombre >= 4
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-4 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-4 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-4 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-4 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-4 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-4 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-4 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-4 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-4 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-4 . chauffage:
+  ordre: 20
+  titre: Energie location logement 4
+  applicable si: location . nombre >= 4
+  mosaique:
+    type: selection
+    options:
+      - PAC-4 . présent
+      - électricité-4 . présent
+      - gaz-4 . présent
+      - réseau de chaleur-4 . présent
+      - bouteille gaz-4 . présent
+      - citerne propane-4 . présent
+      - fioul-4 . présent
+      - bois-4 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre quatrième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-4 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-4 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-4 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-4 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-4 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-4 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-4 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-4 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-4 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-4 . chauffage . PAC-4:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-4 . chauffage . PAC-4 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-4 . chauffage . électricité-4:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-4 . chauffage . électricité-4 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-4 . chauffage . gaz-4:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-4 . chauffage . gaz-4 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-4 . chauffage . réseau de chaleur-4:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-4 . chauffage . réseau de chaleur-4 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-4 . chauffage . bouteille gaz-4:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-4 . chauffage . bouteille gaz-4 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-4 . chauffage . citerne propane-4:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-4 . chauffage . citerne propane-4 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-4 . chauffage . fioul-4:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-4 . chauffage . fioul-4 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-4 . chauffage . bois-4:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-4 . chauffage . bois-4 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 5
+logement . location . logement-5:
+  applicable si: location . nombre >= 5
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  unité: kgCO2e
+
+logement . location . logement-5 . surface:
+  ordre: 22
+  titre: Surface location logement 5
+  question: Quelle est la surface de votre cinquième investissement locatif ?
+  applicable si: location . nombre >= 5
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-5 . appartement
+        alors:
+          variations:
+            - si: logement-5 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-5 . appartement:
+  ordre: 21
+  titre: Appartement location logement 5
+  question: Votre cinquième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 5
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-5 . âge:
+  ordre: 23
+  question: Quel est l'âge de votre cinquième investissement locatif ?
+  applicable si: location . nombre >= 5
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-5 . DPE:
+  ordre: 24
+  question: Quel est le DPE de votre cinquième investissement locatif ?
+  applicable si: location . nombre >= 5
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-5 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-5 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-5 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-5 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-5 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-5 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-5 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-5 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-5 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-5 . chauffage:
+  ordre: 25
+  titre: Energie location logement 5
+  applicable si: location . nombre >= 5
+  mosaique:
+    type: selection
+    options:
+      - PAC-5 . présent
+      - électricité-5 . présent
+      - gaz-5 . présent
+      - réseau de chaleur-5 . présent
+      - bouteille gaz-5 . présent
+      - citerne propane-5 . présent
+      - fioul-5 . présent
+      - bois-5 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre cinquième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-5 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-5 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-5 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-5 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-5 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-5 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-5 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-5 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-5 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-5 . chauffage . PAC-5:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-5 . chauffage . PAC-5 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-5 . chauffage . électricité-5:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-5 . chauffage . électricité-5 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-5 . chauffage . gaz-5:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-5 . chauffage . gaz-5 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-5 . chauffage . réseau de chaleur-5:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-5 . chauffage . réseau de chaleur-5 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-5 . chauffage . bouteille gaz-5:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-5 . chauffage . bouteille gaz-5 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-5 . chauffage . citerne propane-5:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-5 . chauffage . citerne propane-5 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-5 . chauffage . fioul-5:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-5 . chauffage . fioul-5 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-5 . chauffage . bois-5:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-5 . chauffage . bois-5 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 6
+logement . location . logement-6:
+  applicable si: location . nombre >= 6
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  unité: kgCO2e
+
+logement . location . logement-6 . surface:
+  ordre: 27
+  titre: Surface location logement 6
+  question: Quelle est la surface de votre sixième investissement locatif ?
+  applicable si: location . nombre >= 6
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-6 . appartement
+        alors:
+          variations:
+            - si: logement-6 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-6 . appartement:
+  ordre: 26
+  titre: Appartement location logement 6
+  question: Votre sixième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 6
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-6 . âge:
+  ordre: 28
+  question: Quel est l'âge de votre sixième investissement locatif ?
+  applicable si: location . nombre >= 6
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-6 . DPE:
+  ordre: 29
+  question: Quel est le DPE de votre sixième investissement locatif ?
+  applicable si: location . nombre >= 6
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-6 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-6 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-6 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-6 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-6 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-6 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-6 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-6 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-6 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-6 . chauffage:
+  ordre: 30
+  titre: Energie location logement 6
+  applicable si: location . nombre >= 6
+  mosaique:
+    type: selection
+    options:
+      - PAC-6 . présent
+      - électricité-6 . présent
+      - gaz-6 . présent
+      - réseau de chaleur-6 . présent
+      - bouteille gaz-6 . présent
+      - citerne propane-6 . présent
+      - fioul-6 . présent
+      - bois-6 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre sixième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-6 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-6 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-6 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-6 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-6 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-6 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-6 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-6 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-6 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-6 . chauffage . PAC-6:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-6 . chauffage . PAC-6 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-6 . chauffage . électricité-6:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-6 . chauffage . électricité-6 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-6 . chauffage . gaz-6:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-6 . chauffage . gaz-6 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-6 . chauffage . réseau de chaleur-6:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-6 . chauffage . réseau de chaleur-6 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-6 . chauffage . bouteille gaz-6:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-6 . chauffage . bouteille gaz-6 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-6 . chauffage . citerne propane-6:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-6 . chauffage . citerne propane-6 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-6 . chauffage . fioul-6:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-6 . chauffage . fioul-6 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-6 . chauffage . bois-6:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-6 . chauffage . bois-6 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 7
+logement . location . logement-7:
+  applicable si: location . nombre >= 7
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  unité: kgCO2e
+
+logement . location . logement-7 . surface:
+  ordre: 32
+  titre: Surface location logement 7
+  question: Quelle est la surface de votre septième investissement locatif ?
+  applicable si: location . nombre >= 7
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-7 . appartement
+        alors:
+          variations:
+            - si: logement-7 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-7 . appartement:
+  ordre: 31
+  titre: Appartement location logement 7
+  question: Votre septième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 7
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-7 . âge:
+  ordre: 33
+  question: Quel est l'âge de votre septième investissement locatif ?
+  applicable si: location . nombre >= 7
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-7 . DPE:
+  ordre: 34
+  question: Quel est le DPE de votre septième investissement locatif ?
+  applicable si: location . nombre >= 7
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-7 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-7 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-7 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-7 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-7 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-7 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-7 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-7 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-7 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-7 . chauffage:
+  ordre: 35
+  titre: Energie location logement 7
+  applicable si: location . nombre >= 7
+  mosaique:
+    type: selection
+    options:
+      - PAC-7 . présent
+      - électricité-7 . présent
+      - gaz-7 . présent
+      - réseau de chaleur-7 . présent
+      - bouteille gaz-7 . présent
+      - citerne propane-7 . présent
+      - fioul-7 . présent
+      - bois-7 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre septième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-7 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-7 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-7 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-7 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-7 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-7 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-7 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-7 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-7 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-7 . chauffage . PAC-7:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-7 . chauffage . PAC-7 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-7 . chauffage . électricité-7:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-7 . chauffage . électricité-7 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-7 . chauffage . gaz-7:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-7 . chauffage . gaz-7 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-7 . chauffage . réseau de chaleur-7:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-7 . chauffage . réseau de chaleur-7 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-7 . chauffage . bouteille gaz-7:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-7 . chauffage . bouteille gaz-7 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-7 . chauffage . citerne propane-7:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-7 . chauffage . citerne propane-7 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-7 . chauffage . fioul-7:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-7 . chauffage . fioul-7 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-7 . chauffage . bois-7:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-7 . chauffage . bois-7 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 8
+logement . location . logement-8:
+  applicable si: location . nombre >= 8
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  unité: kgCO2e
+
+logement . location . logement-8 . surface:
+  ordre: 37
+  titre: Surface location logement 8
+  question: Quelle est la surface de votre huitième investissement locatif ?
+  applicable si: location . nombre >= 8
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-8 . appartement
+        alors:
+          variations:
+            - si: logement-8 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-8 . appartement:
+  ordre: 36
+  titre: Appartement location logement 8
+  question: Votre huitième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 8
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-8 . âge:
+  ordre: 38
+  question: Quel est l'âge de votre huitième investissement locatif ?
+  applicable si: location . nombre >= 8
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-8 . DPE:
+  ordre: 39
+  question: Quel est le DPE de votre huitième investissement locatif ?
+  applicable si: location . nombre >= 8
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-8 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-8 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-8 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-8 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-8 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-8 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-8 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-8 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-8 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-8 . chauffage:
+  ordre: 40
+  titre: Energie location logement 8
+  applicable si: location . nombre >= 8
+  mosaique:
+    type: selection
+    options:
+      - PAC-8 . présent
+      - électricité-8 . présent
+      - gaz-8 . présent
+      - réseau de chaleur-8 . présent
+      - bouteille gaz-8 . présent
+      - citerne propane-8 . présent
+      - fioul-8 . présent
+      - bois-8 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre huitième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-8 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-8 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-8 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-8 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-8 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-8 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-8 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-8 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-8 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-8 . chauffage . PAC-8:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-8 . chauffage . PAC-8 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-8 . chauffage . électricité-8:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-8 . chauffage . électricité-8 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-8 . chauffage . gaz-8:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-8 . chauffage . gaz-8 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-8 . chauffage . réseau de chaleur-8:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-8 . chauffage . réseau de chaleur-8 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-8 . chauffage . bouteille gaz-8:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-8 . chauffage . bouteille gaz-8 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-8 . chauffage . citerne propane-8:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-8 . chauffage . citerne propane-8 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-8 . chauffage . fioul-8:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-8 . chauffage . fioul-8 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-8 . chauffage . bois-8:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-8 . chauffage . bois-8 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 9
+logement . location . logement-9:
+  applicable si: location . nombre >= 9
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
+  unité: kgCO2e
+
+logement . location . logement-9 . surface:
+  ordre: 42
+  titre: Surface location logement 9
+  question: Quelle est la surface de votre neuvième investissement locatif ?
+  applicable si: location . nombre >= 9
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-9 . appartement
+        alors:
+          variations:
+            - si: logement-9 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-9 . appartement:
+  ordre: 41
+  titre: Appartement location logement 9
+  question: Votre neuvième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 9
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-9 . âge:
+  ordre: 43
+  question: Quel est l'âge de votre neuvième investissement locatif ?
+  applicable si: location . nombre >= 9
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-9 . DPE:
+  ordre: 44
+  question: Quel est le DPE de votre neuvième investissement locatif ?
+  applicable si: location . nombre >= 9
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-9 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-9 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-9 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-9 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-9 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-9 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-9 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-9 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-9 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-9 . chauffage:
+  ordre: 45
+  titre: Energie location logement 9
+  applicable si: location . nombre >= 9
+  mosaique:
+    type: selection
+    options:
+      - PAC-9 . présent
+      - électricité-9 . présent
+      - gaz-9 . présent
+      - réseau de chaleur-9 . présent
+      - bouteille gaz-9 . présent
+      - citerne propane-9 . présent
+      - fioul-9 . présent
+      - bois-9 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre neuvième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-9 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-9 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-9 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-9 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-9 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-9 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-9 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-9 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-9 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-9 . chauffage . PAC-9:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-9 . chauffage . PAC-9 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-9 . chauffage . électricité-9:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-9 . chauffage . électricité-9 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-9 . chauffage . gaz-9:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-9 . chauffage . gaz-9 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-9 . chauffage . réseau de chaleur-9:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-9 . chauffage . réseau de chaleur-9 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-9 . chauffage . bouteille gaz-9:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-9 . chauffage . bouteille gaz-9 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-9 . chauffage . citerne propane-9:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-9 . chauffage . citerne propane-9 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-9 . chauffage . fioul-9:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-9 . chauffage . fioul-9 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-9 . chauffage . bois-9:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-9 . chauffage . bois-9 . présent:
+  question: Votre logement en location est-il chauffé au bois ?
+
+### Logement 10
+logement . location . logement-10:
+  applicable si: location . nombre >= 10
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
+  unité: kgCO2e
+
+logement . location . logement-10 . surface:
+  ordre: 47
+  titre: Surface location logement 10
+  question: Quelle est la surface de votre dixième investissement locatif ?
+  applicable si: location . nombre >= 10
+  plancher: 1
+  avertissement: |
+    La surface de votre logement ne peut-être nulle.
+  par défaut:
+    variations:
+      - si:
+          est défini: logement-10 . appartement
+        alors:
+          variations:
+            - si: logement-10 . appartement
+              alors: parc français . surface moyenne appartement
+            - sinon: parc français . surface moyenne maison
+      - sinon: parc français . surface moyenne
+  note: |
+    Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
+
+    > Les logements ont une surface moyenne d’environ 91 m2.
+  suggestions:
+    studio: 25.001
+    3 pièces: 70.001
+    maison: 120.001
+    château 🏰: 1000.001
+  unité: m2
+
+logement . location . logement-10 . appartement:
+  ordre: 46
+  titre: Appartement location logement 10
+  question: Votre dixième investissement locatif est-il un appartement ?
+  applicable si: location . nombre >= 10
+  description: |
+    Par opposition à une maison individuelle.
+  note: |
+    En 2018, l’habitat individuel représente 56 % des logements ([Source INSEE](https://www.insee.fr/fr/statistiques/3676693?sommaire=3696937)) : il est majoritaire parmi les résidences principales comme parmi les résidences secondaires et logements occasionnels. Après avoir progressé entre 1999 et 2008 sa part recule légèrement, car le nombre de logements collectifs augmente plus vite que celui des logements individuels du fait des évolutions récentes de la construction neuve.
+    Notons qu'il s'agit d'une proportion de logements ; or on peut s'attendre (à vérifier) à ce que les maisons contiennent davantage de gens en moyenne que les appartements, ce qui renforce le choix de la valeur par défaut.
+
+logement . location . logement-10 . âge:
+  ordre: 48
+  question: Quel est l'âge de votre dixième investissement locatif ?
+  applicable si: location . nombre >= 10
+  description: |
+    **Attention ! Nous parlons ici de l'âge du logement et non pas depuis combien de temps vous en êtes propriétaire.**
+
+    Pour les constructions anciennes essayer de renseigner un âge cohérent avec la réalité. Si vous ne connaissez pas l'âge exacte ce n'est pas grave.
+    
+    Si votre investissement locatif est neuf et : 
+     - a été livré en 2024 : répondez 0
+     - a été livré en 2023 : répondez 1
+     - a été livré en 2022 : répondez 2
+    et ainsi de suite.
+  plancher: 0
+  par défaut: 45
+  unité: an
+  note: |
+    En France, 24% du parc de logements date d'avant 1949 et 24% entre 1949 et 1974 selon l'[INSEE](https://www.insee.fr/fr/statistiques/fichier/2586377/LOGFRA17.pdf).
+
+    Pour Paris, [cette carte](https://www.comeetie.fr/galerie/BatiParis) interactive est fascinante si la question de l'âge de ses logements vous intéresse.
+  suggestions:
+    neuf: 0.001
+    récent: 10.001
+    années 70: 50.001
+    années 50: 70.001
+    un siècle: 100.001
+
+logement . location . logement-10 . DPE:
+  ordre: 49
+  question: Quel est le DPE de votre dixième investissement locatif ?
+  applicable si: location . nombre >= 10
+  description: |
+    Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
+    d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
+    Les DPE sont classés d'une échelle allant de A à G.
+  par défaut: "'non renseigné'"
+  formule:
+    une possibilité:
+      choix obligatoire: oui
+      possibilités:
+        - A 
+        - B
+        - C 
+        - D 
+        - E
+        - F
+        - G 
+
+logement . location . logement-10 . DPE en chiffre:
+  titre: numéro du DPE
+  formule:
+    variations:
+      - si: DPE = 'A'
+        alors: 1
+      - si: DPE = 'B'
+        alors: 2
+      - si: DPE = 'C'
+        alors: 3
+      - si: DPE = 'D'
+        alors: 4
+      - si: DPE = 'E'
+        alors: 5
+      - si: DPE = 'F'
+        alors: 6
+      - si: DPE = 'G'
+        alors: 7
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-10 . DPE . A:
+  titre: DPE A
+
+logement . location . logement-10 . DPE . B:
+  titre: DPE B
+
+logement . location . logement-10 . DPE . C:
+  titre: DPE C
+
+logement . location . logement-10 . DPE . D:
+  titre: DPE D
+
+logement . location . logement-10 . DPE . E:
+  titre: DPE E
+
+logement . location . logement-10 . DPE . F:
+  titre: DPE F
+
+logement . location . logement-10 . DPE . G:
+  titre: DPE G
+
+logement . location . logement-10 . DPE . non renseigné:
+  titre: DPE non renseigné
+
+logement . location . logement-10 . chauffage:
+  ordre: 50
+  titre: Energie location logement 10
+  applicable si: location . nombre >= 10
+  mosaique:
+    type: selection
+    options:
+      - PAC-10 . présent
+      - électricité-10 . présent
+      - gaz-10 . présent
+      - réseau de chaleur-10 . présent
+      - bouteille gaz-10 . présent
+      - citerne propane-10 . présent
+      - fioul-10 . présent
+      - bois-10 . présent
+  icônes: 🌡️
+  question: Quel type d'énergie votre dixième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
+  description: |
+    Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+
+logement . location . logement-10 . chauffage en chiffre:
+  titre: numéro du chauffage
+  formule:
+    variations:
+      - si:
+          est défini: chauffage . PAC-10 . présent
+        alors: 1
+      - si:
+          est défini: chauffage . électricité-10 . présent
+        alors: 2
+      - si:
+          est défini: chauffage . gaz-10 . présent
+        alors: 3
+      - si:
+          est défini: chauffage . réseau de chaleur-10 . présent
+        alors: 4
+      - si:
+          est défini: chauffage . bouteille gaz-10 . présent
+        alors: 5
+      - si:
+          est défini: chauffage . citerne propane-10 . présent
+        alors: 6
+      - si:
+          est défini: chauffage . fioul-10 . présent
+        alors: 7
+      - si:
+          est défini: chauffage . bois-10 . présent
+        alors: 8
+      - sinon: 99
+  note:  |
+    L'objet de cette variable est de convertir la sélection d'un chauffage en un chiffre afin que la formule plus haut ne bug pas.
+
+logement . location . logement-10 . chauffage . PAC-10:
+  titre: Pompe à chaleur
+  icônes: 🌡️
+
+logement . location . logement-10 . chauffage . PAC-10 . présent:
+  question: Votre logement en location est-il chauffé via une pompe à chaleur ?
+
+logement . location . logement-10 . chauffage . électricité-10:
+  titre: Electricité
+  icônes: ⚡️
+
+logement . location . logement-10 . chauffage . électricité-10 . présent:
+  question: Votre logement en location est-il chauffé à l'électricité ?
+
+logement . location . logement-10 . chauffage . gaz-10:
+  titre: Réseau de gaz
+  icônes: 🔥
+
+logement . location . logement-10 . chauffage . gaz-10 . présent:
+  question: Votre logement en location est-il chauffé au gaz ?
+
+logement . location . logement-10 . chauffage . réseau de chaleur-10:
+  icônes: 🏭
+  titre: Réseau de chaleur
+
+logement . location . logement-10 . chauffage . réseau de chaleur-10 . présent:
+  question: Votre logement en location est-il chauffé via un réseau de chaleur ?
+
+logement . location . logement-10 . chauffage . bouteille gaz-10:
+  icônes: 🛢️🔥
+  titre: Bouteille de gaz
+
+logement . location . logement-10 . chauffage . bouteille gaz-10 . présent:
+  question: Votre investissement locatif utilise-t'il des bouteille de gaz ?
+
+logement . location . logement-10 . chauffage . citerne propane-10:
+  icônes: 🛢️🔥
+  titre: Gaz propane en citerne
+
+logement . location . logement-10 . chauffage . citerne propane-10 . présent:
+  question: Votre logement en location est-il chauffé via une citerne de propane ?
+
+logement . location . logement-10 . chauffage . fioul-10:
+  icônes: 🛢
+  titre: Fioul domestique
+
+logement . location . logement-10 . chauffage . fioul-10 . présent:
+  question: Votre logement en location est-il chauffé au fioul ?
+
+logement . location . logement-10 . chauffage . bois-10:
+  titre: Bois ou granulés
+  icônes: 🪵
+
+logement . location . logement-10 . chauffage . bois-10 . présent:
+  question: Votre logement en location est-il chauffé au bois ?

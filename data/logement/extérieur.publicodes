@@ -1,46 +1,44 @@
 logement . extérieur:
   icônes: ☘️
-  titre: Extérieur (jardin, terrasse)
-  non applicable si:
-    toutes ces conditions:
-      - est défini: logement . appartement
-      - appartement
+  titre: Equipements extérieurs (jardin, terrasse)
   mosaique:
-    type: selection
+    type: nombre
     options:
-      - salon de jardin bois . présent
-      - salon de jardin résine ou métal . présent
-      - tondeuse électrique ou robot . présent
-      - tondeuse thermique . présent
-      - barbecue électrique ou gaz . présent
-      - barbecue charbon . présent
+      - salon de jardin bois . nombre
+      - salon de jardin résine ou métal . nombre
+      - tondeuse électrique ou robot . nombre
+      - tondeuse thermique . nombre
+      - barbecue électrique ou gaz . nombre
+      - barbecue charbon . nombre
     suggestions:
       aucun:
-        salon de jardin bois . présent: non
-        salon de jardin résine ou métal . présent: non
-        tondeuse électrique ou robot . présent: non
-        tondeuse thermique . présent: non
-        barbecue électrique ou gaz . présent: non
-        barbecue charbon . présent: non
-  question: Que possédez-vous dans votre extérieur (jardin, balcon) ?
-  description: |
-    Nous essayons ici de couvrir les éléments principaux d'un jardin individuel type. Il manque encore des éléments, qui seront ajoutés progressivement.
+        salon de jardin bois . nombre: 0
+        salon de jardin résine ou métal . nombre: 0
+        tondeuse électrique ou robot . nombre: 0
+        tondeuse thermique . nombre: 0
+        barbecue électrique ou gaz . nombre: 0
+        barbecue charbon . nombre: 0
+  question: Quels équipements de moins de 10 ans possédez-vous pour l'extérieur de votre logement principal (jardin, terrasse, balcon) ?
   formule:
     variations:
       - si: choix utilisateur
-        alors: empreinte totale / habitants
+        alors: 
+          somme:
+            - empreinte totale / habitants
+            - mosaic
       - sinon: empreinte par défaut / habitants
+  description: Si vous ne possédez aucun équipement extérieur, cliquez sur "Aucun", puis passez à la question suivante.
 
 logement . extérieur . choix utilisateur:
   titre: Choix utilisateur pour le jardin
   formule:
     une de ces conditions:
-      - est défini: salon de jardin bois . présent
-      - est défini: salon de jardin résine ou métal . présent
-      - est défini: tondeuse électrique ou robot . présent
-      - est défini: tondeuse thermique . présent
-      - est défini: barbecue électrique ou gaz . présent
-      - est défini: barbecue charbon . présent
+      - salon de jardin bois . nombre > 0
+      - salon de jardin résine ou métal . nombre > 0
+      - tondeuse électrique ou robot . nombre > 0
+      - tondeuse thermique . nombre > 0
+      - barbecue électrique ou gaz . nombre > 0
+      - barbecue charbon . nombre > 0
 
 logement . extérieur . empreinte totale:
   formule:
@@ -68,15 +66,15 @@ logement . extérieur . salon de jardin bois:
   titre: Salon de jardin en bois
   icônes: 🏡🪵
 
-logement . extérieur . salon de jardin bois . présent:
-  question: Possédez-vous un salon de jardin en bois ?
+logement . extérieur . salon de jardin bois . nombre:
+  titre: Nombre salon jardin bois
+  question: Combien de salon de jardin en bois possédez-vous ?
+  plancher: 0
+  par défaut: 0
 
 logement . extérieur . empreinte calculée salon de jardin bois:
-  applicable si:
-    toutes ces conditions:
-      - est défini: salon de jardin bois . présent
-      - salon de jardin bois . présent
-  formule: empreinte salon de jardin bois amortie
+  applicable si: salon de jardin bois . nombre > 0
+  formule: empreinte salon de jardin bois amortie * salon de jardin bois . nombre
 
 logement . extérieur . empreinte moyenne salon de jardin bois:
   formule: empreinte salon de jardin bois amortie * part propriétaires salon jardin bois
@@ -102,15 +100,15 @@ logement . extérieur . salon de jardin résine ou métal:
   titre: Salon de jardin en résine ou métal
   icônes: 🏡🪨
 
-logement . extérieur . salon de jardin résine ou métal . présent:
-  question: Possédez-vous un salon de jardin en résine ou métal ?
+logement . extérieur . salon de jardin résine ou métal . nombre:
+  titre: Nombre salon jardin résine ou métal
+  question: Combien de salon de jardin en résine ou métal possédez-vous ?
+  plancher: 0
+  par défaut: 0
 
 logement . extérieur . empreinte calculée salon de jardin résine ou métal:
-  applicable si:
-    toutes ces conditions:
-      - est défini: salon de jardin résine ou métal . présent
-      - salon de jardin résine ou métal . présent
-  formule: empreinte salon de jardin résine ou métal amortie
+  applicable si: salon de jardin résine ou métal . nombre > 0
+  formule: empreinte salon de jardin résine ou métal amortie * salon de jardin résine ou métal . nombre
 
 logement . extérieur . empreinte moyenne salon de jardin résine ou métal:
   formule: empreinte salon de jardin résine ou métal amortie * part propriétaires salon jardin résine ou métal
@@ -148,15 +146,15 @@ logement . extérieur . tondeuse électrique ou robot:
   titre: Tondeuse électrique ou robot
   icônes: 🌿🔌
 
-logement . extérieur . tondeuse électrique ou robot . présent:
-  question: Possédez-vous une tondeuse électrique ou robot ?
+logement . extérieur . tondeuse électrique ou robot . nombre:
+  titre: Nombre tondeuse électrique ou robot
+  question: Combien de tondeuse électrique ou robot possédez-vous ?
+  plancher: 0
+  par défaut: 0
 
 logement . extérieur . empreinte calculée tondeuse électrique ou robot:
-  applicable si:
-    toutes ces conditions:
-      - est défini: tondeuse électrique ou robot . présent
-      - tondeuse électrique ou robot . présent
-  formule: empreinte tondeuse électrique ou robot amortie
+  applicable si: tondeuse électrique ou robot . nombre > 0
+  formule: empreinte tondeuse électrique ou robot amortie * tondeuse électrique ou robot . nombre
 
 logement . extérieur . empreinte moyenne tondeuse électrique ou robot:
   formule: empreinte tondeuse électrique ou robot amortie * part propriétaires tondeuse électrique ou robot
@@ -197,21 +195,22 @@ logement . extérieur . tondeuse thermique:
   titre: Tondeuse thermique
   icônes: 🌿⛽️
 
-logement . extérieur . tondeuse thermique . présent:
-  question: Possédez-vous une tondeuse thermique ?
+logement . extérieur . tondeuse thermique . nombre:
+  titre: Nombre tondeuse thermique
+  question: Combien de tondeuse thermique possédez-vous ?
+  plancher: 0
+  par défaut: 0
 
 logement . extérieur . empreinte calculée tondeuse thermique:
-  applicable si:
-    toutes ces conditions:
-      - est défini: tondeuse thermique . présent
-      - tondeuse thermique . présent
+  applicable si: tondeuse thermique . nombre > 0
   formule: empreinte tondeuse thermique amortie
 
 logement . extérieur . empreinte moyenne tondeuse thermique:
   formule: empreinte tondeuse thermique amortie * part propriétaires tondeuse thermique
 
 logement . extérieur . empreinte tondeuse thermique amortie:
-  formule: (empreinte tondeuse thermique / durée de vie tondeuse) + tondeuse thermique . usage
+# On multiplie par le nombre de tondeuses possédées uniquement l'empreinte de construction amortie
+  formule: ((empreinte tondeuse thermique / durée de vie tondeuse) * tondeuse thermique . nombre) + tondeuse thermique . usage
   unité: kgCO2e
 
 logement . extérieur . tondeuse thermique . usage:
@@ -256,15 +255,16 @@ logement . extérieur . barbecue électrique ou gaz:
   titre: Barbecue électrique ou gaz
   icônes: ♨️🔌
 
-logement . extérieur . barbecue électrique ou gaz . présent:
-  question: Possédez-vous un barbecue électrique ou gaz ?
+logement . extérieur . barbecue électrique ou gaz . nombre:
+  titre: Nombre barbecue électrique ou gaz
+  question: Combien de barbecue électrique ou gaz possédez-vous ?
+  plancher: 0
+  par défaut: 0
 
 logement . extérieur . empreinte calculée barbecue électrique ou gaz:
-  applicable si:
-    toutes ces conditions:
-      - est défini: barbecue électrique ou gaz . présent
-      - barbecue électrique ou gaz . présent
-  formule: empreinte barbecue électrique ou gaz amortie
+# Nous ne considérons pas d'empreinte d'utilisation car que ce soit pour le gaz ou l'élec on demande à l'utilisateur de renseigner ses consommation dans la partie énergie
+  applicable si: barbecue électrique ou gaz . nombre > 0
+  formule: empreinte barbecue électrique ou gaz amortie * barbecue électrique ou gaz . nombre
 
 logement . extérieur . empreinte moyenne barbecue électrique ou gaz:
   formule: empreinte barbecue électrique ou gaz amortie * part propriétaires barbecue électrique ou gaz
@@ -285,7 +285,7 @@ logement . extérieur . empreinte barbecue électrique ou gaz:
 
 logement . extérieur . durée de vie barbecue:
   formule: 10
-  note: Nous supposons qu'une tondeuse a une durée de vie de 10 ans en moyenne.
+  note: Nous supposons qu'un barbecue (électrique, gaz ou charbon) a une durée de vie de 10 ans en moyenne.
 
 logement . extérieur . part propriétaires barbecue électrique ou gaz:
   formule: 0.85 * (1 - 0.37)
@@ -298,21 +298,22 @@ logement . extérieur . barbecue charbon:
   titre: Barbecue au charbon
   icônes: ♨️🔥
 
-logement . extérieur . barbecue charbon . présent:
-  question: Possédez-vous un barbecue au charbon ?
+logement . extérieur . barbecue charbon . nombre:
+  titre: Nombre barbecue charbon
+  question: Combien de barbecue charbon possédez-vous ?
+  plancher: 0
+  par défaut: 0
 
 logement . extérieur . empreinte calculée barbecue charbon:
-  applicable si:
-    toutes ces conditions:
-      - est défini: barbecue charbon . présent
-      - barbecue charbon . présent
+  applicable si: barbecue charbon . nombre > 0
   formule: empreinte barbecue charbon
 
 logement . extérieur . empreinte moyenne barbecue charbon:
   formule: empreinte barbecue charbon * part propriétaires barbecue charbon
 
 logement . extérieur . empreinte barbecue charbon:
-  formule: empreinte usage barbecue charbon * nombre moyen barbecues par an + empreinte construction barbecue charbon / durée de vie barbecue
+# On multiplie par le nombre de barbecues possédés uniquement l'empreinte de construction amortie
+  formule: empreinte usage barbecue charbon * nombre moyen barbecues par an + ((empreinte construction barbecue charbon / durée de vie barbecue) * barbecue charbon . nombre)
   note: |
     À la différence des barbecues électrique et au gaz, le barbecue au charbon a une empreinte importante liée à l'usage : brûler du charbon pour cuire des aliments rejette une quantité importante de gaz à effet de serre. 
     Nous comptabilisons donc les deux empreintes, de constrution et d'usage.
@@ -349,4 +350,139 @@ logement . extérieur . part propriétaires barbecue charbon:
   formule: 0.85 * 0.37
   note: |
     D'après [cette source](https://www.esprit-barbecue.fr/blog/des-chiffres-fous-pour-le-marche-du-barbecue/), nous savons que 85% des français possédant un jardin ont un barbecue.
-    Par ailleurs, [cette source[(http://www.bva-xsight.com/wp-content/uploads/2023/03/Weber_Les-Francais-et-le-barbecue_Infographie-2023.pdf)] nous donne la répartition des types de barbecue possédés. Nous comptons ici les barbecues au charbon.
+    Par ailleurs, cette source[(http://www.bva-xsight.com/wp-content/uploads/2023/03/Weber_Les-Francais-et-le-barbecue_Infographie-2023.pdf)] nous donne la répartition des types de barbecue possédés. Nous comptons ici les barbecues au charbon.
+
+logement . extérieur . nombre total équipements:
+  titre: Nombre d'équipements extérieurs possédés
+  formule:
+    somme:
+      - salon de jardin bois . nombre
+      - salon de jardin résine ou métal . nombre
+      - tondeuse électrique ou robot . nombre
+      - tondeuse thermique . nombre
+      - barbecue électrique ou gaz . nombre
+      - barbecue charbon . nombre
+
+### Calcul d'empreinte basé sur l'achat en 2023
+
+logement . extérieur . mosaic:
+  applicable si: logement . extérieur . nombre total équipements > 0  
+  mosaique:
+    type: nombre
+    optionsConditionnelles:
+      - salon de jardin bois . choix . nombre
+      - salon de jardin résine ou métal . choix . nombre
+      - tondeuse électrique ou robot . choix . nombre
+      - tondeuse thermique . choix . nombre
+      - barbecue électrique ou gaz . choix . nombre
+      - barbecue charbon . choix . nombre
+    suggestions:
+      aucun:
+        salon de jardin bois . choix . nombre: 0
+        salon de jardin résine ou métal . choix . nombre: 0
+        tondeuse électrique ou robot . choix . nombre: 0
+        tondeuse thermique . choix . nombre: 0
+        barbecue électrique ou gaz . choix . nombre: 0
+        barbecue charbon . choix . nombre: 0
+  question: Parmi les équipements extérieurs de moins de 10 ans que vous possédez, lesquels avez-vous achetés en 2023 ?  
+  titre: Extérieurs achetés en 2023
+  formule:
+    somme:
+      - salon de jardin bois
+      - salon de jardin résine ou métal
+      - tondeuse électrique ou robot
+      - tondeuse thermique
+      - barbecue électrique ou gaz
+      - barbecue charbon
+
+logement . extérieur . mosaic . salon de jardin bois:
+  formule: empreinte salon de jardin bois * mosaic . salon de jardin bois . choix . nombre
+  unité: kgCO2e
+
+# Initialisation de l'option
+logement . extérieur . mosaic . salon de jardin bois . choix:
+  titre: Salon de jardin en bois
+  icônes: 🏡🪵
+
+logement . extérieur . mosaic . salon de jardin bois . choix . nombre:
+  titre: Nombre salon jardin bois achetés en 2023 
+  question: Nombre de salon de jardin en bois achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 0
+
+logement . extérieur . mosaic . salon de jardin résine ou métal:
+  formule: empreinte salon de jardin résine ou métal * mosaic . salon de jardin résine ou métal . choix . nombre
+  unité: kgCO2e
+
+# Initialisation de l'option
+logement . extérieur . mosaic . salon de jardin résine ou métal . choix:
+  titre: Salon de jardin en résine ou métal
+  icônes: 🏡🪨
+
+logement . extérieur . mosaic . salon de jardin résine ou métal . choix . nombre:
+  titre: Nombre salon jardin résine ou métal achetés en 2023 
+  question: Nombre de salon de jardin en résine ou en métal achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 0
+
+logement . extérieur . mosaic . tondeuse électrique ou robot:
+  formule: empreinte tondeuse électrique ou robot * mosaic . tondeuse électrique ou robot . choix . nombre
+
+# Initialisation de l'option
+logement . extérieur . mosaic . tondeuse électrique ou robot . choix:
+  titre: Tondeuse électrique ou robot
+  icônes: 🌿🔌
+
+logement . extérieur . mosaic . tondeuse électrique ou robot . choix . nombre:
+  titre: Nombre tondeuse électrique ou robot achetés en 2023 
+  question: Nombre tondeuse électrique ou robot achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 0
+
+logement . extérieur . mosaic . tondeuse thermique:
+  formule: empreinte tondeuse thermique * mosaic . tondeuse thermique . choix . nombre
+
+# Initialisation de l'option
+logement . extérieur . mosaic . tondeuse thermique . choix:
+  titre: Tondeuse thermique
+  icônes: 🌿⛽️
+
+logement . extérieur . mosaic . tondeuse thermique . choix . nombre:
+  titre: Nombre tondeuse thermique achetés en 2023 
+  question: Nombre tondeuse thermique achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 0
+
+logement . extérieur . mosaic . barbecue électrique ou gaz:
+  formule: empreinte barbecue électrique ou gaz * mosaic . barbecue électrique ou gaz . choix . nombre
+
+# Initialisation de l'option
+logement . extérieur . mosaic . barbecue électrique ou gaz . choix:
+  titre: Barbecue électrique ou gaz
+  icônes: ♨️🔌
+
+logement . extérieur . mosaic . barbecue électrique ou gaz . choix . nombre:
+  titre: Nombre barbecue électrique ou gaz achetés en 2023 
+  question: Nombre de barbecue électrique ou gaz achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 0
+
+logement . extérieur . mosaic . barbecue charbon:
+  formule: empreinte construction barbecue charbon * mosaic . barbecue charbon . choix . nombre
+
+# Initialisation de l'option
+logement . extérieur . mosaic . barbecue charbon . choix:
+  titre: Barbecue au charbon
+  icônes: ♨️🔥
+
+logement . extérieur . mosaic . barbecue charbon . choix . nombre:
+  titre: Nombre barbecue charbon achetés en 2023 
+  question: Nombre de barbecue au charbon achetés en 2023 ?  
+  type: nombre  
+  plancher: 0  
+  par défaut: 0

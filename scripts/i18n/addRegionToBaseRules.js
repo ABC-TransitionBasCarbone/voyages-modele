@@ -1,10 +1,10 @@
 /*
-	Function used to combine region attributes (e.g. questions, titles, notes) with
-	the base rules.
+  Function used to combine region attributes (e.g. questions, titles, notes) with
+  the base rules.
 */
 
-const c = require('ansi-colors')
-const utils = require('@incubateur-ademe/nosgestesclimat-scripts/utils')
+import c from 'ansi-colors'
+import utils from '@incubateur-ademe/nosgestesclimat-scripts/utils'
 
 const mechanismsThatCanBeOverriden = [
   // Using the [avec] mechanism allows to use custom rules without having to add them to the base rules.
@@ -16,7 +16,7 @@ const ruleNamesToIgnore = [
   'params'
 ]
 
-const addRegionToBaseRules = (
+export const addRegionToBaseRules = (
   baseRules,
   newRegionalRules,
   regionCode = '',
@@ -46,8 +46,4 @@ ${c.italic('(it might be a typo error in the rule name or a renamed rule in the 
     })
   })
   return baseRules
-}
-
-module.exports = {
-  addRegionToBaseRules
 }
