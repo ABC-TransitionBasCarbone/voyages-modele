@@ -102,17 +102,17 @@ personas . yoram:
     divers . électroménager . appareils . aspirateur . nombre: 1
     divers . électroménager . appareils . robot cuisine . nombre: 0
     divers . autres produits . niveau de dépenses: "'faible'"
-    divers . textile . t-shirt . nombre: 0
-    divers . textile . pantalon . nombre: 0
-    divers . textile . short . nombre: 0
-    divers . textile . chemise . nombre: 0
-    divers . textile . robe . nombre: 0
-    divers . textile . sweat . nombre: 0
-    divers . textile . chaussure . nombre: 0
-    divers . textile . manteau . nombre: 0
-    divers . textile . pull . nombre: 0
-    divers . textile . petit article . nombre: 4
-    divers . textile . gros article . nombre: 0
+    divers . textile . habits . t-shirt . nombre: 0
+    divers . textile . habits . pantalon . nombre: 0
+    divers . textile . habits . short . nombre: 0
+    divers . textile . habits . chemise . nombre: 0
+    divers . textile . habits . robe . nombre: 0
+    divers . textile . habits . sweat . nombre: 0
+    divers . textile . habits . chaussure . nombre: 0
+    divers . textile . habits . manteau . nombre: 0
+    divers . textile . habits . pull . nombre: 0
+    divers . textile . habits . petit article . nombre: 4
+    divers . textile . habits . gros article . nombre: 0
     divers . numérique . internet . durée journalière: 2
     divers . numérique . appareils . préservation: "'maximum'"
     divers . numérique . appareils . téléphone . nombre: 1
