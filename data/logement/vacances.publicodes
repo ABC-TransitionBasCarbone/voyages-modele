@@ -487,7 +487,9 @@ logement . vacances . résidences secondaires:
 
 logement . vacances . résidences secondaires . présent:
   question: Possédez-vous une résidence secondaire ?
-  par défaut: "'oui'"
+  note: |
+    Pour le moment, nous n'attribuons l'empreinte de la maison secondaire qu'aux propriétaires,
+    et non "une partie" de l'empreinte à tous les français.
 
 logement . vacances . résidences secondaires . nombre:
   ordre: 6
@@ -497,7 +499,7 @@ logement . vacances . résidences secondaires . nombre:
       - est défini: résidences secondaires . présent
       - résidences secondaires . présent
   plancher: 0  
-  par défaut: 1
+  par défaut: 0
   suggestions:  
     Un: 1  
     Deux: 2  
@@ -655,7 +657,7 @@ logement . vacances . résidence secondaire . durée-1:
       - nuitées semaine . nombre
     suggestions:
       tout l'été:
-        nuitées week end . nombre: 0.001
+        nuitées week end . nombre: 0
         nuitées semaine . nombre: 8.001
   question: Combien de temps passez-vous dans votre première résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.

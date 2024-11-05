@@ -527,7 +527,7 @@ divers . numérique . appareils . mosaic . ordinateur portable . choix:
   icônes: 💻
 
 divers . numérique . appareils . mosaic . ordinateur portable . choix . nombre:
-  titre: Nombre de ordinateurs portables achetés en 2023 
+  titre: Nombre d'ordinateurs portables achetés en 2023 
   question: Nombre d'ordinateurs portables achetés en 2023 ?  
   type: nombre  
   plancher: 0  
