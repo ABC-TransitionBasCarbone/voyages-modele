@@ -250,6 +250,7 @@ logement . vacances . camping . empreinte par nuit:
 
 logement . vacances . camping . nombre de nuitées:
   ordre: 2
+  applicable si: vacances . camping . présent
   question: Combien de nuits avez-vous passées en camping (tente, hamac, bungalow, etc.) en 2023 ?
   unité: nuit
   description: |
@@ -303,6 +304,7 @@ logement . vacances . auberge de jeunesse . nombre de personnes dans le dortoir:
 
 logement . vacances . auberge de jeunesse . nombre de nuitées:
   ordre: 3
+  applicable si: vacances . auberge de jeunesse . présent
   question: Combien de nuits avez-vous passées en auberge de jeunesse (dortoir) en 2023 ?
   unité: nuit
   description: |
@@ -358,6 +360,7 @@ logement . vacances . locations . empreinte par nuit:
 
 logement . vacances . locations . nombre de nuitées:
   ordre: 4
+  applicable si: vacances . locations . présent
   question: Combien de nuits avez-vous passées en locations meublées (Airbnbn, Abritel) en 2023?
   unité: nuit
   description: |
@@ -409,6 +412,7 @@ logement . vacances . échange . empreinte par nuit:
 
 logement . vacances . échange . nombre de nuitées:
   ordre: 5
+  applicable si: vacances . échange . présent
   question: Combien de nuits avez-vous passées en échange de maison (HomeExchange, SwitchHome...) en 2023 ?
   unité: nuit
   description: |
