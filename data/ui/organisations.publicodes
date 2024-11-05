@@ -174,17 +174,17 @@ ui . organisations . divers . textile:
   icônes: 👕
   formule:
     somme:
-      - divers . textile . t-shirt . nombre
-      - divers . textile . pantalon . nombre
-      - divers . textile . short . nombre
-      - divers . textile . sweat . nombre
-      - divers . textile . robe . nombre
-      - divers . textile . chemise . nombre
-      - divers . textile . pull . nombre
-      - divers . textile . chaussure . nombre
-      - divers . textile . manteau . nombre
-      - divers . textile . petit article . nombre
-      - divers . textile . gros article . nombre
+      - divers . textile . habits . t-shirt . nombre
+      - divers . textile . habits . pantalon . nombre
+      - divers . textile . habits . short . nombre
+      - divers . textile . habits . sweat . nombre
+      - divers . textile . habits . robe . nombre
+      - divers . textile . habits . chemise . nombre
+      - divers . textile . habits . pull . nombre
+      - divers . textile . habits . chaussure . nombre
+      - divers . textile . habits . manteau . nombre
+      - divers . textile . habits . petit article . nombre
+      - divers . textile . habits . gros article . nombre
   unité: '%'
 
 ui . organisations . divers . internet:

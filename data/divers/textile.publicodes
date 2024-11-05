@@ -2,11 +2,11 @@ divers . textile:
   icônes: 👚
   formule:
     somme:
-      - empreinte
+      - habits
       - déforestation
   unité: kgCO2e
 
-divers . textile . empreinte:
+divers . textile . habits:
   titre: Empreinte de sa garde-robe
   mosaique:
     type: nombre
@@ -66,9 +66,9 @@ divers . textile . empreinte:
 
     A noter que les valeurs par défaut paraissent sous-évaluées, au regard de [ces statistiques](https://fr.fashionnetwork.com/news/Sur-dix-ans-le-nombre-de-vetements-achetes-dans-les-chaines-de-mode-a-bondi-de-33-,1406055.html) sur les habitudes d'achat des français.
 
-divers . textile . notif débarras surplus:
+divers . textile . habits . notif débarras surplus:
   type: notification
-  formule: textile . nombre total > 0
+  formule: textile . habits . nombre total > 0
   description: |
     > Le saviez-vous ? 
     
@@ -78,181 +78,181 @@ divers . textile . notif débarras surplus:
   note: |
     [Source](https://www.corsenetinfos.corsica/Halte-au-Gaspi-Les-Francais-ne-portent-pas-68-des-vetements-qu-ils-possedent-_a34819.html)
 
-divers . textile . t-shirt . empreinte:
+divers . textile . habits . t-shirt . empreinte:
   formule: 5.35
   unité: kgCO2e
   note: moyenne de l'empreinte des t-shirts en coton et en polyester de la Base Carbone
 
-divers . textile . t-shirt . nombre:
+divers . textile . habits . t-shirt . nombre:
   question: Nombre de t-shirt achetés sur une année
   plancher: 0
   par défaut: 4
 
-divers . textile . t-shirt:
+divers . textile . habits . t-shirt:
   icônes: 👕
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . pantalon . empreinte:
+divers . textile . habits . pantalon . empreinte:
   formule: 23.2
   unité: kgCO2e
   note: empreinte d'un jean en coton de la Base Carbone
 
-divers . textile . pantalon . nombre:
+divers . textile . habits . pantalon . nombre:
   question: Nombre de pantalons/jeans achetés sur une année
   plancher: 0
   par défaut: 2
 
-divers . textile . pantalon:
+divers . textile . habits . pantalon:
   icônes: 👖
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . short . empreinte:
+divers . textile . habits . short . empreinte:
   formule: 6.4
   unité: kgCO2e
   note: empreinte d'un short issu des données Base Impact (Textile, linge de maison, maroquinerie)
 
-divers . textile . short . nombre:
+divers . textile . habits . short . nombre:
   question: Nombre de shorts achetés sur une année
   plancher: 0
   par défaut: 1
 
-divers . textile . short:
+divers . textile . habits . short:
   titre: Shorts
   icônes: 🩳
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . sweat . empreinte:
+divers . textile . habits . sweat . empreinte:
   formule: 27.4
   unité: kgCO2e
   note: empreinte d'un sweat de la Base Carbone
 
-divers . textile . sweat . nombre:
+divers . textile . habits . sweat . nombre:
   question: Nombre de sweats achetés sur une année
   plancher: 0
   par défaut: 2
 
-divers . textile . sweat:
+divers . textile . habits . sweat:
   titre: Sweat (en coton)
   note: La base carbone parle d'un "Sweat - (CO)", et la [documentation](https://www.bilans-ges.ademe.fr/fr/accueil/documentation-gene/index/page/Coton_-synthetique_-autre) ne mentionne qu'un "sweat en coton" dont l'empreinte est proche.
   icônes: 🧵
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . robe . empreinte:
+divers . textile . habits . robe . empreinte:
   formule: 48.4
   unité: kgCO2e
   note: moyenne de l'empreinte entre une robe en polyester et une en viscose de la Base Carbone
 
-divers . textile . robe . nombre:
+divers . textile . habits . robe . nombre:
   question: Nombre de robes achetées sur une année
   plancher: 0
   par défaut: 2
 
-divers . textile . robe:
+divers . textile . habits . robe:
   icônes: 👗
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . chemise . empreinte:
+divers . textile . habits . chemise . empreinte:
   formule: 10.7
   unité: kgCO2e
   note: moyenne de l'empreinte entre une chemise coton et une en viscose de la Base Carbone
 
-divers . textile . chemise . nombre:
+divers . textile . habits . chemise . nombre:
   question: Nombre de chemises achetées sur une année
   plancher: 0
   par défaut: 2
 
-divers . textile . chemise:
+divers . textile . habits . chemise:
   icônes: 👔
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . pull . empreinte:
+divers . textile . habits . pull . empreinte:
   formule: 39.2
   unité: kgCO2e
   note: moyenne de l'empreinte entre un pull acrylique et un pull en laine de la Base Carbone (le pull recyclé n'est pas pris en compte)
 
-divers . textile . pull . nombre:
+divers . textile . habits . pull . nombre:
   question: Nombre de pulls achetés sur une année
   plancher: 0
   par défaut: 1
 
-divers . textile . pull:
+divers . textile . habits . pull:
   titre: Pull (laine ou acrylique)
   icônes: 🧶
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . chaussure . empreinte:
+divers . textile . habits . chaussure . empreinte:
   formule: 16.47
   unité: kgCO2e
   note: moyenne de l'empreinte entre des chaussures en cuir, en tissu et de sport de la Base Carbone
 
-divers . textile . chaussure . nombre:
+divers . textile . habits . chaussure . nombre:
   question: Nombre de chaussures achetées sur une année
   plancher: 0
   par défaut: 2
 
-divers . textile . chaussure:
+divers . textile . habits . chaussure:
   titre: Paire de chaussures
   icônes: 👟
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . manteau . empreinte:
+divers . textile . habits . manteau . empreinte:
   formule: 85.8
   unité: kgCO2e
   note: empreinte d'un manteau de la Base Carbone
 
-divers . textile . manteau . nombre:
+divers . textile . habits . manteau . nombre:
   question: Nombre de manteaux achetés sur une année
   plancher: 0
   par défaut: 1
 
-divers . textile . manteau:
+divers . textile . habits . manteau:
   icônes: 🧥
   formule: empreinte * nombre
   unité: kgCO2e
 
-divers . textile . petit article . empreinte:
+divers . textile . habits . petit article . empreinte:
   formule: 5
   unité: kgCO2e
   note: Estimation grossière de l'empreinte d'un petit article générique.
 
-divers . textile . petit article . nombre:
+divers . textile . habits . petit article . nombre:
   question: Nombre de petits articles génériques achetés sur une année
   plancher: 0
   par défaut: 1
 
-divers . textile . petit article:
+divers . textile . habits . petit article:
   titre: Autre petit article
   icônes: 🔹
   formule: empreinte * nombre
   unité: kgCO2e
   description: Vêtement plutôt léger (chaussettes, sous-vêtements, etc., par opposition à un manteau).
 
-divers . textile . gros article . empreinte:
+divers . textile . habits . gros article . empreinte:
   formule: 40
   unité: kgCO2e
   note: Estimation grossière de l'empreinte d'un gros article générique.
 
-divers . textile . gros article . nombre:
+divers . textile . habits . gros article . nombre:
   question: Nombre de gros articles génériques achetés sur une année
   plancher: 0
   par défaut: 1
 
-divers . textile . gros article:
+divers . textile . habits . gros article:
   titre: Autre gros article
   icônes: 🔷
   formule: empreinte * nombre
   unité: kgCO2e
   description: Vêtement plutôt lourd (veste imperméable, costume, etc., par opposition aux sous-vêtements).
 
-divers . textile . nombre total: 
+divers . textile . habits . nombre total:
   formule:
     somme:
       - t-shirt . nombre
@@ -267,22 +267,22 @@ divers . textile . nombre total:
       - petit article . nombre
       - gros article . nombre
 
-divers . textile . déforestation:
+divers . textile . habits . déforestation:
   formule:
     variations:
       - si: déforestation
         alors:
           variations:
-            - si: divers . textile . nombre total <= 5
+            - si: divers . textile . habits . nombre total <= 5
               alors: facteur textile * 0.5
-            - si: divers . textile . nombre total > 15
+            - si: divers . textile . habits . nombre total > 15
               alors: facteur textile * 1.5
             - sinon: facteur textile
       - sinon: 0
   unité: kgCO2e
   note: Nous considérons qu'un achat "moyen" de vêtements se situe entre 5 et 15 pièces par an.
 
-divers . textile . déforestation . facteur textile:
+divers . textile . habits . déforestation . facteur textile:
   formule: 24
   unité: kgCO2e
   note: L’étude Pendril & al. donne une empreinte moyenne de 24 kgCO2e par personne et par an liée à la déforestation importée de nos consommations de textiles.
