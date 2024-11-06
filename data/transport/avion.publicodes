@@ -80,6 +80,15 @@ transport . avion . court courrier . heures de vol:
   plancher: 0
   note: La caractérisation "court courrier" par le temps de trajet est donnée par la règle `court courrier . durée max` = 2.17h.
 
+transport . avion . notif heures court courrier:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - usager
+      - court courrier . heures de vol > 30
+  description: |
+    Vous avez renseigné un nombre d'heures de vol plutôt élevé pour des courts courriers . Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 transport . avion . court courrier . durée moyenne:
   titre: Durée moyenne passée par un Français dans les vols court-courriers
   formule: passager km moyen / vitesse moyenne
@@ -140,6 +149,15 @@ transport . avion . moyen courrier . heures de vol:
   par défaut: durée moyenne
   plancher: 0
   note: La caractérisation "moyen courrier" par le temps de trajet est donnée par la règle `court courrier . durée max`=2.17h et `moyen courrier . durée max` = 6.48h.
+
+transport . avion . notif heures moyen courrier:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - usager
+      - moyen courrier . heures de vol > 60
+  description: |
+    Vous avez renseigné un nombre d'heures de vol plutôt élevé pour des moyens courriers . Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
 
 transport . avion . moyen courrier . durée moyenne:
   titre: Durée moyenne passée par un Français dans les vols moyen-courriers
@@ -204,6 +222,15 @@ transport . avion . long courrier . heures de vol:
   par défaut: durée moyenne
   plancher: 0
   note: La caractérisation "long courrier" par le temps de trajet est donnée par la règle `moyen courrier . durée max` = 6.48h.
+
+transport . avion . notif heures long courrier:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - usager
+      - long courrier . heures de vol > 120
+  description: |
+    Vous avez renseigné un nombre d'heures de vol plutôt élevé pour des longs courriers. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
 
 transport . avion . long courrier . durée moyenne:
   titre: Durée moyenne passée par un Français dans les vols long-courriers

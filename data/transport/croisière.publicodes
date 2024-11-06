@@ -16,8 +16,13 @@ transport . croisière . usager:
     en compte.
 
 transport . croisière . empreinte:
-  applicable si: usager
-  formule: jours * empreinte par jour
+#  applicable si: usager
+#  formule: jours * empreinte par jour
+  formule:
+    variations:
+      - si: usager
+        alors: jours * empreinte par jour
+      - sinon: 0
 
 transport . croisière . jours:
   titre: Jours de croisière

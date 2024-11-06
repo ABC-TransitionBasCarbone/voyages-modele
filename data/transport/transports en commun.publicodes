@@ -16,7 +16,7 @@ transport . transports commun:
   description: |
     S'il vous est arrivé de prendre certains de ces transports de manière épisodique (en vacances par exemple) ne les comptez pas. Nous nous intéressons ici à une utilisation récurrente au quotidien.
     
-    Si vous avez pris des autocars "Macron" pour des trajets de longue distance ne les comptez pas ici, c'est l'objet de la question suivante.
+    Si vous avez pris des autocars dits "Macron" (Ouibus, Flixbus, etc.) pour des trajets de longue distance ne les comptez pas ici, c'est l'objet de la question suivante.
   formule:
     somme:
       - bus
@@ -32,11 +32,18 @@ transport . transports commun . bus:
     variations:
       - si:
           est défini: bus . présent
-        alors:
-          # This is a hack to make sure all branch is not desactivated: we need to have the value in a `somme`, if not, the value applicability is spread to the parent and all branch is desactivated.
-          somme:
-            - empreinte
+        alors: empreinte
       - sinon: empreinte par défaut
+# Je commente la veille formule (avec le hack) pour garder trace
+#  formule:
+#    variations:
+#      - si:
+#          est défini: bus . présent
+#        alors:
+#          # This is a hack to make sure all branch is not desactivated: we need to have the value in a `somme`, if not, the value applicability is spread to the parent and all branch is desactivated.
+#          somme:
+#            - empreinte
+#      - sinon: empreinte par défaut
 
 transport . transports commun . bus . empreinte:
   applicable si: bus . présent

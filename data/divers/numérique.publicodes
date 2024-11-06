@@ -43,6 +43,7 @@ divers . numérique . internet . empreinte horaire:
   unité: kgCO2e/h
 
 divers . numérique . internet . durée journalière:
+  ordre: 6
   question: Combien d'heures passez-vous par jour sur internet en dehors de vos heures de bureau (envoi de mails, surf Web, streaming vidéo, etc.) ?
   description: Essayez de renseigner une estimation cohérente avec **vos usages personnels**, c'est-à-dire sans prendre en compte ce que vous faites au travail.
   unité: h/jour
@@ -55,6 +56,7 @@ divers . numérique . internet . durée journalière:
   note: D'après Médiamétrie, les français ont passé en 2022, en moyenne, 2h18 sur Internet ([source](https://www.mediametrie.fr/fr/lannee-internet-2022))
 
 divers . numérique . appareils:
+  ordre: 4
   mosaique:
     type: nombre
     options:
@@ -433,7 +435,8 @@ divers . numérique . appareils . nombre total:
       - console portable . nombre
 
 ### Calcul d'empreinte basé sur l'achat en 2023
-divers . numérique . appareils . mosaic:  
+divers . numérique . appareils . mosaic:
+  ordre: 5
   applicable si: divers . numérique . appareils . nombre total > 0  
   mosaique:  
     type: nombre  

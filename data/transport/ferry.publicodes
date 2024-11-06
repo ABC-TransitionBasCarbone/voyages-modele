@@ -47,8 +47,13 @@ transport . ferry:
   unité: kgCO2e
 
 transport . ferry . empreinte:
-  applicable si: usager
-  formule: heures * futureco-data . transport . ferry . vitesse moyenne . métrique * futureco-data . transport . ferry . empreinte par km volume
+#  applicable si: usager
+#  formule: heures * futureco-data . transport . ferry . vitesse moyenne . métrique * futureco-data . transport . ferry . empreinte par km volume
+  formule:
+    variations:
+      - si: usager
+        alors: heures * futureco-data . transport . ferry . vitesse moyenne . métrique * futureco-data . transport . ferry . empreinte par km volume
+      - sinon: 0
   description: |
     Le modèle ferry provient de [Futur.eco](https://futur.eco/ferry).
     Ce modèle est explicité de manière simplifiée sur la page ["Empreinte par km et passager"](https://nosgestesclimat.fr/documentation/transport/ferry/empreinte-par-km-volume), et basé sur une étude approfondie ([voir la note méthodo complète](https://hackmd.io/@laem/empreinte-ferry))
@@ -85,6 +90,7 @@ transport . ferry . empreinte moyenne . durée moyenne par français:
 
 transport . ferry . heures:
   titre: Heures de ferry dans l'année
+  applicable si: usager
   question: Combien d'heures avez-vous voyagé en ferry en 2023 ?
 #  description: |
 #    Pour l'instant, nous ne prenons pas en compte les options qui peuvent augmenter ou diminuer l'empreinte d'une traversée en ferry : 
