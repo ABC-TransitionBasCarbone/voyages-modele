@@ -13,8 +13,12 @@ alimentation . déchets:
             - gestes
 
 alimentation . déchets . quantité jetée:
-  question: Comment estimeriez-vous la quantité de déchets que vous jetez ?
+  question: Parmi les pratiques ci-dessous, laquelle vous qualifie le mieux ?
   description: |
+    Cochez ce qui se rapproche le plus de vos habitude. Vous trouverez une description des réponses en cliquant sur "?". 
+    
+    Si vous faites uniquement le tri, cochez "je jette sans faire attention", nous ne considérons pas le tri comme un geste visant à réduire la quantité de déchets.
+    
     Répondez "Zéro Déchet" uniquement si vous traquez le moindre déchet.
   par défaut: "'base'"
   formule:
@@ -28,7 +32,7 @@ alimentation . déchets . quantité jetée:
 alimentation . déchets . quantité jetée . base:
   titre: Je jette sans faire attention
   description: |
-    Vous avez tendance à jeter sans vous poser de question.
+    Vous avez tendance à jeter sans vous poser de question (que vous fassiez le tri ou non).
 
 alimentation . déchets . quantité jetée . réduction:
   titre: Je limite mes déchets

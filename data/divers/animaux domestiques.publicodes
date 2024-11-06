@@ -33,6 +33,7 @@ divers . animaux domestiques:
   unité: kgCO2e
 
 divers . animaux domestiques . empreinte:
+  ordre: 1
   titre: Empreinte annuelle des animaux du foyer
   icônes: 😺🐶
   question: Combien d'animaux vivent avec vous, au sein de votre foyer ?

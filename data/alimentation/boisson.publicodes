@@ -13,6 +13,12 @@ alimentation . boisson . chaude:
       - thé . nombre
       - chocolat chaud . nombre
       - chicorée . nombre
+    suggestions:
+      aucune:
+        café . nombre: 0
+        thé . nombre: 0
+        chocolat chaud . nombre: 0
+        chicorée . nombre: 0     
   question: Quelle est votre consommation de boissons chaudes pour une semaine type (nombre de tasses par semaine) ?
   icônes: ☕️🫖
   description: |

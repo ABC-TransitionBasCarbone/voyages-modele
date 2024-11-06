@@ -77,11 +77,13 @@ alimentation . plats:
       - viande rouge . nombre
       - poisson gras . nombre
       - poisson blanc . nombre
-  question: Parmi les propositions ci-dessous, choisissez les plats de vos déjeuners et dîners d'une semaine type pour vous
+  question: Parmi les propositions ci-dessous, choisissez les plats de vos **déjeuners et dîners** d'une semaine type pour vous
   titre: Empreinte de 14 repas
   description: |
     A priori, vous en aurez 14 : 7 déjeuners et 7 dîners. Mais si vous mangez moins, ou plus, que ce nombre de repas, aucun soucis. Nous vous laissons renseigner
     ce qui représente une semaine type pour vous.
+
+    **N'incluez pas vos petit-déjeuners ici, ils sont questionnés après.**
   formule:
     somme:
       - végétalien

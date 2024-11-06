@@ -17,6 +17,7 @@ divers . électroménager:
   unité: kgCO2e
 
 divers . électroménager . appareils:
+  ordre: 2
   mosaique:
     type: nombre
     options:
@@ -441,7 +442,8 @@ divers . électroménager . appareils . nombre total:
       - robot cuisine . nombre
 
 ### Calcul d'empreinte basé sur l'achat en 2023
-divers . électroménager . appareils . mosaic:  
+divers . électroménager . appareils . mosaic:
+  ordre: 3
   applicable si: divers . électroménager . appareils . nombre total > 0  
   mosaique:  
     type: nombre  

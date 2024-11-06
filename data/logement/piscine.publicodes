@@ -26,15 +26,17 @@ importer!:
 logement . piscine:
   icônes: 🏊‍♀️
   applicable si: logement . type = 'maison'
-  formule: empreinte / habitants
-#  formule:
-#    variations:
-#      - si:
-#          toutes ces conditions:
-#            - est défini: piscine . présent
-#            - piscine . présent
-#        alors: empreinte / habitants
-#      - sinon: 0
+#  formule: empreinte / habitants
+  formule:
+    variations:
+      - si:
+          toutes ces conditions:
+            - est défini: piscine . type
+            - une de ces conditions:
+                - piscine . type = 'creusée'
+                - piscine . type = 'hors sol'
+        alors: empreinte / habitants
+      - sinon: 0
   # @Clément: Pour le moment, pas de valeur par défaut représentative pour la piscine.
   description: |
     L'installation de piscines privées **enterrées** dans les jardins français s'est accélérée ces dernières années. On en compte aujourd'hui plus de [3 millions](https://bonpote.com/impact-ecologique-dune-piscine-individuelle/).

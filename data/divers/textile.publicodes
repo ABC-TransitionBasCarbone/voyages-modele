@@ -35,7 +35,7 @@ divers . textile . habits:
         manteau . nombre: 0
         petit article . nombre: 0
         gros article . nombre: 0
-  question: Quels vêtements achetez-vous neufs en général dans une année ?
+  question: Quels vêtements avez-vous acheté neufs en 2023 ?
   icônes: 👚
   formule:
     somme:
@@ -52,12 +52,10 @@ divers . textile . habits:
       - gros article
   unité: kgCO2e
   description: |
-    À vous de nous dire ce que vous avez mis dans vos sacs de shopping cette année, ou dans une année représentative si vous faites rarement les magasins.
+    Renseignez ici uniquement les **achats vestimentaires neufs** que vous avez fait en 2023 (les achats en friperie et d'occasion sont exclus). Si vous ne vous rappelez pas de tous vos achats, ce n'est pas grave. Essayez cependant
+    de renseigner un nombre d'habits cohérent avec vos habitudes d'achats.
 
-    > Si vous achetez un pull tous 2 ans, arrondissez à `1`. Si vous achetez un pull tous les 3 ans, arrondissez à `0`.
-
-    Ne renseignez que les produits neufs. Nous excluons du calcul l'achat en friperies, la récupération, l'occasion.
-
+    Si vous achetez un pull tous 2 ans, arrondissez à 1. Si vous achetez un pull tous les 3 ans, arrondissez à 0.
   note: |
     Les données sont toutes issues de la Base Carbone sauf le short qui vient des données de Base Impact (textile, linge de maison, maroquinerie) 
     et les deux articles génériques qui sont des estimations grossières basées sur la visualisation du graphe des données de la [documentation ADEME](https://prod-basecarbonesolo.ademe-dri.fr/documentation/UPLOAD_DOC_FR/) (Scope 3 / Textile / Coton, synthétique, autre). 
@@ -66,17 +64,17 @@ divers . textile . habits:
 
     A noter que les valeurs par défaut paraissent sous-évaluées, au regard de [ces statistiques](https://fr.fashionnetwork.com/news/Sur-dix-ans-le-nombre-de-vetements-achetes-dans-les-chaines-de-mode-a-bondi-de-33-,1406055.html) sur les habitudes d'achat des français.
 
-divers . textile . habits . notif débarras surplus:
-  type: notification
-  formule: textile . habits . nombre total > 0
-  description: |
-    > Le saviez-vous ? 
-    
-    > D'après une étude commandée par l'entreprise de déménagement Movinga en 2018, les français ne porteraient pas 68% (!) de leur garde-robe. C'est donc plus des deux-tiers du contenu de nos placards qui n'en sort jamais.
-
-    > Avant d'acheter une nouvelle pièce : et si vous faisiez un peu de tri ?
-  note: |
-    [Source](https://www.corsenetinfos.corsica/Halte-au-Gaspi-Les-Francais-ne-portent-pas-68-des-vetements-qu-ils-possedent-_a34819.html)
+#divers . textile . habits . notif débarras surplus:
+#  type: notification
+#  formule: textile . habits . nombre total > 0
+#  description: |
+#    > Le saviez-vous ? 
+#    
+#    > D'après une étude commandée par l'entreprise de déménagement Movinga en 2018, les français ne porteraient pas 68% (!) de leur garde-robe. C'est donc plus des deux-tiers du contenu de nos placards qui n'en sort jamais.
+#
+#    > Avant d'acheter une nouvelle pièce : et si vous faisiez un peu de tri ?
+#  note: |
+#    [Source](https://www.corsenetinfos.corsica/Halte-au-Gaspi-Les-Francais-ne-portent-pas-68-des-vetements-qu-ils-possedent-_a34819.html)
 
 divers . textile . habits . t-shirt . empreinte:
   formule: 5.35

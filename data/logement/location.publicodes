@@ -18,7 +18,7 @@ logement . location:
 
 logement . location . nombre:
   titre: Nombre de logements en location
-  question: Combien d'investissements locatifs possediez-vous en 2023 (c.à.d des logements que vous n'habitez pas et que vous mettez en location annuelle et/ou saisonnière) ?
+  question: Combien d'investissements locatifs en France possediez-vous en 2023 (c.à.d des logements que vous n'habitez pas et que vous mettez en location annuelle et/ou saisonnière) ?
   plancher: 0
   par défaut: 0
   description: |
@@ -26,7 +26,7 @@ logement . location . nombre:
     Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que vous n'habitez pas mais que 
     vous dédiez à la location longue durée (annuelle et/ou saisonnière).
     
-    **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas**
+    **Si certains de ces investissements locatifs ont été faits en 2024, ne les comptabilisez pas.**
   note: |
     Le nombre max de logement est fixé à 10 car, selon les données de l'[INSEE](https://www.insee.fr/fr/statistiques/5432517?sommaire=5435421) (cf. Excel),
     au sein du décile supérieur, 10% des individus possède 5 logements ou plus (33% pour le centile supérieur)
@@ -34,7 +34,7 @@ logement . location . nombre:
 ### Logement 1
 logement . location . logement-1:
   applicable si: location . nombre >= 1
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage
   unité: kgCO2e
 
 logement . location . logement-1 . surface:
@@ -191,6 +191,7 @@ logement . location . logement-1 . chauffage:
   question: Quel type d'énergie votre premier investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-1 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -283,7 +284,7 @@ logement . location . logement-1 . chauffage . bois-1 . présent:
 ### Logement 2
 logement . location . logement-2:
   applicable si: location . nombre >= 2
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage  
   unité: kgCO2e
 
 logement . location . logement-2 . surface:
@@ -441,6 +442,7 @@ logement . location . logement-2 . chauffage:
   question: Quel type d'énergie votre deuxième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-2 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -533,7 +535,7 @@ logement . location . logement-2 . chauffage . bois-2 . présent:
 ### Logement 3
 logement . location . logement-3:
   applicable si: location . nombre >= 3
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage  
   unité: kgCO2e
 
 logement . location . logement-3 . surface:
@@ -687,6 +689,7 @@ logement . location . logement-3 . chauffage:
   question: Quel type d'énergie votre troisième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-3 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -779,7 +782,7 @@ logement . location . logement-3 . chauffage . bois-3 . présent:
 ### Logement 4
 logement . location . logement-4:
   applicable si: location . nombre >= 4
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage  
   unité: kgCO2e
 
 logement . location . logement-4 . surface:
@@ -936,6 +939,7 @@ logement . location . logement-4 . chauffage:
   question: Quel type d'énergie votre quatrième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-4 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1028,7 +1032,7 @@ logement . location . logement-4 . chauffage . bois-4 . présent:
 ### Logement 5
 logement . location . logement-5:
   applicable si: location . nombre >= 5
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage  
   unité: kgCO2e
 
 logement . location . logement-5 . surface:
@@ -1185,6 +1189,7 @@ logement . location . logement-5 . chauffage:
   question: Quel type d'énergie votre cinquième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-5 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1277,7 +1282,7 @@ logement . location . logement-5 . chauffage . bois-5 . présent:
 ### Logement 6
 logement . location . logement-6:
   applicable si: location . nombre >= 6
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage  
   unité: kgCO2e
 
 logement . location . logement-6 . surface:
@@ -1434,6 +1439,7 @@ logement . location . logement-6 . chauffage:
   question: Quel type d'énergie votre sixième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-6 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1526,7 +1532,7 @@ logement . location . logement-6 . chauffage . bois-6 . présent:
 ### Logement 7
 logement . location . logement-7:
   applicable si: location . nombre >= 7
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage  
   unité: kgCO2e
 
 logement . location . logement-7 . surface:
@@ -1683,6 +1689,7 @@ logement . location . logement-7 . chauffage:
   question: Quel type d'énergie votre septième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-7 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -1775,7 +1782,7 @@ logement . location . logement-7 . chauffage . bois-7 . présent:
 ### Logement 8
 logement . location . logement-8:
   applicable si: location . nombre >= 8
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre  
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage  
   unité: kgCO2e
 
 logement . location . logement-8 . surface:
@@ -1932,6 +1939,7 @@ logement . location . logement-8 . chauffage:
   question: Quel type d'énergie votre huitième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-8 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -2024,7 +2032,7 @@ logement . location . logement-8 . chauffage . bois-8 . présent:
 ### Logement 9
 logement . location . logement-9:
   applicable si: location . nombre >= 9
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage
   unité: kgCO2e
 
 logement . location . logement-9 . surface:
@@ -2181,6 +2189,7 @@ logement . location . logement-9 . chauffage:
   question: Quel type d'énergie votre neuvième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-9 . chauffage en chiffre:
   titre: numéro du chauffage
@@ -2273,7 +2282,7 @@ logement . location . logement-9 . chauffage . bois-9 . présent:
 ### Logement 10
 logement . location . logement-10:
   applicable si: location . nombre >= 10
-  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage en chiffre
+  formule: 0.0000000001 * surface * âge * DPE en chiffre * chauffage
   unité: kgCO2e
 
 logement . location . logement-10 . surface:
@@ -2430,6 +2439,7 @@ logement . location . logement-10 . chauffage:
   question: Quel type d'énergie votre dixième investissement locatif utilise-t'il pour le chauffage, l'eau chaude et la cuisson ?
   description: |
     Cochez ici toutes les sources d'énergie présentes au sein de ce logement.
+  formule: chauffage en chiffre
 
 logement . location . logement-10 . chauffage en chiffre:
   titre: numéro du chauffage

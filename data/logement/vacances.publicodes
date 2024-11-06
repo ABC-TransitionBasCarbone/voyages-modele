@@ -498,7 +498,10 @@ logement . vacances . résidences secondaires . présent:
 
 logement . vacances . résidences secondaires . nombre:
   ordre: 6
-  question: Combien de résidences secondaires possédez-vous ?
+  question: Combien de résidences secondaires en France possédez-vous ?
+  description: | 
+    Nous nous intéressons uniquement aux résidences secondaires sur le territoire national. Ne renseignez donc pas d'éventuelles biens 
+    situés à l'étranger.
   applicable si: 
     toutes ces conditions:
       - est défini: résidences secondaires . présent
