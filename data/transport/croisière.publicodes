@@ -12,7 +12,7 @@ transport . croisière:
 transport . croisière . usager:
   question: Avez-vous réalisé une ou plusieurs croisières en 2023 ?
   description: |
-    Renseignez ici seulement des croisières en pleine mer (océan ou mer). Les croisières en eau fluvial ne sont pas à prendre
+    Renseignez ici seulement des croisières en pleine mer (océan ou mer). Les croisières en eau fluviale ne sont pas à prendre
     en compte.
 
 transport . croisière . empreinte:
