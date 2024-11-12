@@ -361,7 +361,7 @@ logement . vacances . locations . empreinte par nuit:
 logement . vacances . locations . nombre de nuitées:
   ordre: 4
   applicable si: vacances . locations . présent
-  question: Combien de nuits avez-vous passées en locations meublées (Airbnbn, Abritel) en 2023?
+  question: Combien de nuits avez-vous passées en locations meublées (Airbnb, Abritel) en 2023?
   unité: nuit
   description: |
     **Rappel** : déclarez uniquement les nuits passées dans le cadre de **motifs personnels** et ne comptez pas celles passées dans le cadre de déplacements professionnels.
