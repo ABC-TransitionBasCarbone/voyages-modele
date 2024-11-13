@@ -500,7 +500,7 @@ logement . vacances . résidences secondaires . nombre:
   ordre: 6
   question: Combien de résidences secondaires en France possédez-vous ?
   description: | 
-    Nous nous intéressons uniquement aux résidences secondaires sur le territoire national. Ne renseignez donc pas d'éventuelles biens 
+    Nous nous intéressons uniquement aux résidences secondaires sur le territoire national. Ne renseignez donc pas d'éventuels biens 
     situés à l'étranger.
   applicable si: 
     toutes ces conditions:
@@ -508,14 +508,17 @@ logement . vacances . résidences secondaires . nombre:
       - résidences secondaires . présent
   plancher: 0  
   par défaut: 0
-  suggestions:  
-    Un: 1  
-    Deux: 2  
-    Trois: 3  
-    Quatre: 4
   note: |
     Pour le moment, nous n'attribuons l'empreinte de la résidence secondaire qu'aux propriétaires,
     et non "une partie" de l'empreinte à tous les français.
+
+logement . vacances . résidences secondaires . notif seuil max:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - résidences secondaires . nombre > 5
+  description: |
+    Vous ne pouvez pas renseigner plus de 5 résidences secondaires. Merci de renseigner les 5 que vous utilisez le plus souvent.
 
 logement . vacances . résidence secondaire:
 
@@ -553,11 +556,6 @@ logement . vacances . résidence secondaire . surface-1:
   par défaut: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . empreinte construction amortie:
@@ -667,6 +665,9 @@ logement . vacances . résidence secondaire . durée-1:
       tout l'été:
         nuitées week end . nombre: 0
         nuitées semaine . nombre: 8.001
+      deux semaines en hiver:
+        nuitées week end . nombre: 0.001
+        nuitées semaine . nombre: 2.001
   question: Combien de temps passez-vous dans votre première résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -826,7 +827,7 @@ logement . vacances . résidence secondaire . localisation-1 . montagne . facteu
 
 logement . vacances . résidence secondaire . saison-1:
   ordre: 8
-  question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre première résidence secondaire ?
+  question: À quelle saison vous rendez-vous majoritairement dans votre première résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 1 
   formule:
     une possibilité:
@@ -963,11 +964,6 @@ logement . vacances . résidence secondaire . surface-2:
   par défaut: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-2:
@@ -1036,6 +1032,9 @@ logement . vacances . résidence secondaire . durée-2:
       tout l'été:
         nuitées week end-2 . nombre: 0.001
         nuitées semaine-2 . nombre: 8.001
+      deux semaines en hiver:
+        nuitées week end-2 . nombre: 0.001
+        nuitées semaine-2 . nombre: 2.001
   question: Combien de temps passez-vous dans votre deuxième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1071,7 +1070,7 @@ logement . vacances . résidence secondaire . durée-2 . nuitées semaine-2 . no
 
 logement . vacances . résidence secondaire . saison-2:
   ordre: 14
-  question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre deuxième résidence secondaire ?
+  question: À quelle saison vous rendez-vous majoritairement dans votre deuxième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 2 
   formule:
     une possibilité:
@@ -1208,11 +1207,6 @@ logement . vacances . résidence secondaire . surface-3:
   par défaut: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-3:
@@ -1281,6 +1275,9 @@ logement . vacances . résidence secondaire . durée-3:
       tout l'été:
         nuitées week end-3 . nombre: 0.001
         nuitées semaine-3 . nombre: 8.001
+      deux semaines en hiver:
+        nuitées week end-3 . nombre: 0.001
+        nuitées semaine-3 . nombre: 2.001
   question: Combien de temps passez-vous dans votre troisième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1316,7 +1313,7 @@ logement . vacances . résidence secondaire . durée-3 . nuitées semaine-3 . no
 
 logement . vacances . résidence secondaire . saison-3:
   ordre: 20
-  question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre troisième résidence secondaire ?
+  question: À quelle saison vous rendez-vous majoritairement dans votre troisième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 3 
   formule:
     une possibilité:
@@ -1453,11 +1450,6 @@ logement . vacances . résidence secondaire . surface-4:
   par défaut: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-4:
@@ -1526,6 +1518,9 @@ logement . vacances . résidence secondaire . durée-4:
       tout l'été:
         nuitées week end-4 . nombre: 0.001
         nuitées semaine-4 . nombre: 8.001
+      deux semaines en hiver:
+        nuitées week end-4 . nombre: 0.001
+        nuitées semaine-4 . nombre: 2.001
   question: Combien de temps passez-vous dans votre quatrième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1561,7 +1556,7 @@ logement . vacances . résidence secondaire . durée-4 . nuitées semaine-4 . no
 
 logement . vacances . résidence secondaire . saison-4:
   ordre: 26
-  question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre quatrième résidence secondaire ?
+  question: À quelle saison vous rendez-vous majoritairement dans votre quatrième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 4 
   formule:
     une possibilité:
@@ -1699,11 +1694,6 @@ logement . vacances . résidence secondaire . surface-5:
   par défaut: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . vacances . résidence secondaire . énergie-5:
@@ -1772,6 +1762,9 @@ logement . vacances . résidence secondaire . durée-5:
       tout l'été:
         nuitées week end-5 . nombre: 0.001
         nuitées semaine-5 . nombre: 8.001
+      deux semaines en hiver:
+        nuitées week end-5 . nombre: 0.001
+        nuitées semaine-5 . nombre: 2.001
   question: Combien de temps passez-vous dans votre cinquième résidence secondaire chaque année ?
   description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
@@ -1807,7 +1800,7 @@ logement . vacances . résidence secondaire . durée-5 . nuitées semaine-5 . no
 
 logement . vacances . résidence secondaire . saison-5:
   ordre: 32
-  question: À quelle(s) saison(s) vous rendez-vous majoritairement dans votre cinquième résidence secondaire ?
+  question: À quelle saison vous rendez-vous majoritairement dans votre cinquième résidence secondaire ?
   applicable si: résidences secondaires . nombre >= 5 
   formule:
     une possibilité:

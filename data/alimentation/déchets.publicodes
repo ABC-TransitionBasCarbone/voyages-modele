@@ -30,7 +30,7 @@ alimentation . déchets . quantité jetée:
         - zéro déchet
 
 alimentation . déchets . quantité jetée . base:
-  titre: Je jette sans faire attention
+  titre: Je jette sans faire attention à la quantité
   description: |
     Vous avez tendance à jeter sans vous poser de question (que vous fassiez le tri ou non).
 

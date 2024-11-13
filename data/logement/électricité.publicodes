@@ -137,27 +137,25 @@ logement . électricité . photovoltaique:
 
 logement . électricité . photovoltaique . présent:
   non applicable si: logement . type = 'appartement'
-  question: Votre logement principal dispose-t-il de panneaux photovoltaïques ?
+  question: Votre logement principal disposait-il de panneaux photovoltaïques en 2023 ?
   par défaut: non
 
 logement . électricité . photovoltaique . production:
   applicable si: photovoltaique . présent
   icônes: 🌞⚡️
-  question: Quelle est la production annuelle d'électricité de vos panneaux solaires photovoltaïques, qu'elle soit autoconsommée ou réinjectée dans le réseau ?
+  question: Quelle était la production annuelle d'électricité de vos panneaux solaires photovoltaïques en 2023, qu'elle soit autoconsommée ou réinjectée dans le réseau ?
   plancher: 0
   par défaut: logement . surface * 0.03 kWc/m2 * logement . électricité . photovoltaique . production estimée via la puissance installée . facteur
   unité: kWh
-  suggestions:
-    1000 kWh: 1000.001
-    2000 kWh: 2000.001
-    4000 kWh: 4000.001
-    6000 kWh: 6000.001
+#  suggestions:
+#    1000 kWh: 1000.001
+#    2000 kWh: 2000.001
+#    4000 kWh: 4000.001
+#    6000 kWh: 6000.001
   aide: logement . électricité . photovoltaique . production estimée via la puissance installée . saisie
   description: |
     Nous parlons bien ici de toute l'énergie produite par vos panneaux, que vous la consommiez ou non.
-    La façon de disposer de ce chiffre varie selon votre installation. La plupart des installations présentes disposent d'une application de suivi de production qui devrait vous fournir cette donnée. 
-
-    > Nous proposons des suggestions via le nombre de panneaux en considérant que la puissance moyenne d'un panneau solaire est de 400 Wc environ, avec une production de 1300 kWh/kWc.
+    Avoir accès à ce chiffre n'est pas toujours chose aisée et varie selon votre installation. La plupart des installations récentes disposent d'une application de suivi de production qui devrait vous fournir cette donnée. 
   note: |
     Par défaut, on propose une production qui varie selon la surface du logement en considèrant qu'un logement de 100 m² possède une installation de 3 kWc, soit une puissance installée de 0,03 kWc/m².
 
@@ -187,18 +185,18 @@ logement . électricité . photovoltaique . part autoconsommation:
     toutes ces conditions:
       - photovoltaique . présent
       - photovoltaique . production > 0
-  question: Quelle part de cette électricité produite consommez-vous ?
+  question: Quelle part de cette électricité produite consommiez-vous en 2023 ?
   description: |
-    Si vous consommez toute votre production, renseignez 100%. Si vous revendez toute votre production, vous pouvez mettre 0. Dans tous les cas, il vous sera demandé par la suite votre consommation d'électricité du réseau et votre production sera prise en compte indirectement dans le calcul de vos émissions.
+    Si vous consommez toute votre production, renseignez 100%. Si vous revendez toute votre production, vous pouvez mettre 0.
   par défaut: 30
   plancher: 0
   plafond: 100
   unité: '%'
-  suggestions:
-    je réinjecte tout dans le réseau: 0.001
-    le quart de ma production: 25.001
-    la moitié de ma production: 50.001
-    je consomme 100% de ce que je produis: 100.001
+#  suggestions:
+#    je réinjecte tout dans le réseau: 0.001
+#    le quart de ma production: 25.001
+#    la moitié de ma production: 50.001
+#    je consomme 100% de ce que je produis: 100.001
 
 logement . électricité . photovoltaique . intensité carbone:
   formule: 0.0291

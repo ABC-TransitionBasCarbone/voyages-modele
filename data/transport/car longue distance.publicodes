@@ -7,7 +7,11 @@ transport . car longue distance:
 transport . car longue distance . km:
   question: Combien de kilomètres avez-vous parcouru en car pour des trajets longue distance en 2023 ?
   description: Nous nous intéressons ici aux trajets faits en autocar dits "Macron" (Ouibus, Flixbus, etc.).
-#  suggestions:
+  suggestions:
+    Paris ⇄ Bruxelles: 600
+    Bordeaux ⇄ Barcelone: 1300
+    Lille ⇄ Toulouse: 1800
+    Grenoble ⇄ Turin: 500
 #    aucun: 0
 #    traversée d'une région: 300
 #    Paris ⇄ Lyon: 800

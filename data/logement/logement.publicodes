@@ -12,6 +12,7 @@ logement:
   formule:
     somme:
       - construction
+      - informations
       - électricité
       - chauffage
       - climatisation
@@ -20,7 +21,6 @@ logement:
       - extérieur
       - vacances
       - location
-  #    - 0.0000001 * statut en chiffre * DPE en chiffre
   unité: kgCO2e
 
 logement . habitants:
@@ -34,10 +34,6 @@ logement . habitants:
   plancher: 1
   avertissement: |
     Le nombre d'habitants ne peut pas être nul ni inférieur à 1. Vous êtes le premier habitant de votre logement.
-
-    En effet, l'empreinte du logement et d'autres postes comme l'électroménager étant divisées par le nombre d'habitants, il doit être supérieur à 1.
-
-    Nous ne prenons donc pas aujourd'hui en compte les logements vides que vous possédez, ou un logement que vous louez dans lequel ni vous ni personne ne vivez.
   note: valeur par défaut d'après https://www.insee.fr/fr/statistiques/2381486.
 #  suggestions:
 #    j'habite seul: 1
@@ -53,13 +49,13 @@ logement . surface:
   plancher: 1
   avertissement: |
     La surface de votre logement ne peut-être nulle.
-  par défaut:
-    variations:
-      - si: logement . type = 'appartement'
-        alors: parc français . surface moyenne appartement
-      - si: logement . type = 'maison'
-        alors: parc français . surface moyenne maison
-      - sinon: parc français . surface moyenne
+#  par défaut:
+#    variations:
+#      - si: logement . type = 'appartement'
+#        alors: parc français . surface moyenne appartement
+#      - si: logement . type = 'maison'
+#        alors: parc français . surface moyenne maison
+#      - sinon: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
@@ -85,7 +81,7 @@ logement . type:
       possibilités:
         - maison
         - appartement
-  par défaut: "'moyen'"
+#  par défaut: "'moyen'"
   description: |
     Si vous vivez dans un habitat original, par exemple un camping-car, un camion, une péniche, etc., répondez "appartement" et répondez ensuite aux différentes questions en considérant les caractéristiques de ce qui constitue quand même votre logement.
   note: |
@@ -127,8 +123,13 @@ logement . âge:
 #    Si votre logement a moins de **50 ans**, nous vous attribuons un cinquantième de l'empreinte de sa construction. **Sinon, zéro : le logement est amorti.**
 #    Les questions sur les caractéristiques de votre logement ne vous seront pas posées ; car l'empreinte annuelle de sa contruction est considérée comme nulle.
 
+logement . informations:
+  formule: 0.0000001 * statut en chiffre * DPE en chiffre
+  unité: kgCO2e
+  note: On passe les informations de statut et de DPE dans une variable informations et non pas directement dans la somme logement car le front bug sinon
+
 logement . statut:
-  question: Etes-vous propriétaire de votre logement ?
+  question: Etiez-vous propriétaire de votre logement principal en 2023 ?
   formule:
     une possibilité:
       choix obligatoire: oui
@@ -138,7 +139,19 @@ logement . statut:
         - logé gratuit
   par défaut: "'non renseigné'"
 
-logement . statut en chiffre:
+logement . statut . propriétaire:
+  titre: Oui, j'en étais propriétaire
+
+logement . statut . locataire:
+  titre: Non, j'étais locataire
+
+logement . statut . logé gratuit:
+  titre: Non, j'étais logé à titre gratuit
+
+logement . statut . non renseigné:
+  titre: Statut non renseigné
+
+logement . informations . statut en chiffre:
   titre: numéro du statut
   formule:
     variations:
@@ -152,20 +165,8 @@ logement . statut en chiffre:
   note:  |
     L'objet de cette variable est de convertir le statut en un chiffre afin que la formule plus haut ne bug pas.
 
-logement . statut . propriétaire:
-  titre: propriétaire
-
-logement . statut . locataire:
-  titre: locataire
-
-logement . statut . logé gratuit:
-  titre: logé à titre gratuit
-
-logement . statut . non renseigné:
-  titre: statut non renseigné
-
-logement . DPE:
-  question: Quel est le DPE de votre logement principal ?
+logement . informations . DPE:
+  question: Quel était le DPE de votre logement principal en 2023 ?
   description: |
     Un DPE est un Diagnostic de Performance Energétique.  Il sert à renseigner sur la performance énergétique d’un logement ou
     d’un bâtiment, en évaluant sa consommation d’énergie et son impact en termes d’émission de gaz à effet de serre. 
@@ -183,7 +184,7 @@ logement . DPE:
         - F
         - G 
 
-logement . DPE en chiffre:
+logement . informations . DPE en chiffre:
   titre: numéro du DPE
   formule:
     variations:
@@ -205,28 +206,28 @@ logement . DPE en chiffre:
   note:  |
     L'objet de cette variable est de convertir le DPE en un chiffre afin que la formule plus haut ne bug pas.
 
-logement . DPE . A:
+logement . informations . DPE . A:
   titre: DPE A
 
-logement . DPE . B:
+logement . informations . DPE . B:
   titre: DPE B
 
-logement . DPE . C:
+logement . informations . DPE . C:
   titre: DPE C
 
-logement . DPE . D:
+logement . informations . DPE . D:
   titre: DPE D
 
-logement . DPE . E:
+logement . informations . DPE . E:
   titre: DPE E
 
-logement . DPE . F:
+logement . informations . DPE . F:
   titre: DPE G
 
-logement . DPE . G:
+logement . informations . DPE . G:
   titre: DPE F
 
-logement . DPE . non renseigné:
+logement . informations . DPE . non renseigné:
   titre: DPE non renseigné
 
 logement . facteur notif conso supérieur:

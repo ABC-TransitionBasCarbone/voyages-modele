@@ -51,7 +51,7 @@ divers . électroménager . appareils:
         cafetière . nombre: 0
         aspirateur . nombre: 0
         robot cuisine . nombre: 0
-  question: Quels appareils électroménagers de moins de 10 ans possédez-vous ?
+  question: Quel(s) appareil(s) électroménager(s) de moins de 10 ans possédez-vous ?
   description: |
     Renseignez ici l'électroménager de moins de 10 ans **que vous possédez et que vous avez acheté neufs.**
 

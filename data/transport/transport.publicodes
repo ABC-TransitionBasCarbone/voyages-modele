@@ -12,13 +12,13 @@ transport:
   formule:
     somme:
       - voiture
+      - vacances
       - avion
       - deux roues
       - mobilité douce
       - train
       - transports commun
       - car longue distance
-      - vacances
       - ferry
       - bateau
       - croisière
