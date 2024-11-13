@@ -292,6 +292,11 @@ alimentation . boisson . sucrées . facteur jus de fruits:
 alimentation . boisson . sucrées . litres:
   titre: Consommation de boissons sucrées
   question: Quelle est votre consommation par semaine de sodas, jus de fruits, etc. ?
+  suggestions:
+    aucune: 0.001
+    1 verre /jour: 1.4001
+    2 verres /weekend: 0.4001
+    5 verres /semaine: 1.001
   par défaut: 1
   plancher: 0
   unité: l/semaine
@@ -335,6 +340,12 @@ alimentation . boisson . alcool . facteur cocktail:
 alimentation . boisson . alcool . litres:
   titre: Consommation d'alcool
   question: Quelle est votre consommation par semaine d'alcool (vin, bière, etc.) ?
+  suggestions:
+    aucune: 0.001
+    1 verre /jour: 1.001
+    2 verres /weekend: 0.3001
+    5 verres /semaine: 0.75001
+    une soirée festive /semaine: 1.5001
   par défaut: 1.5
   plancher: 0
   unité: l/semaine

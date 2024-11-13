@@ -392,7 +392,7 @@ divers . loisirs . sports:
         hiver montagne . présent: non
         sports énergivores . présent: non
         autres sports . présent: non
-  question: Quels sont les sports que vous pratiquez régulièrement ?
+  question: Quel(s) sport(s) pratiquez-vous régulièrement ?
   titre: Pratiques sportives
   formule:
     variations:

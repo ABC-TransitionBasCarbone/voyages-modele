@@ -77,10 +77,12 @@ alimentation . plats:
       - viande rouge . nombre
       - poisson gras . nombre
       - poisson blanc . nombre
-  question: Parmi les propositions ci-dessous, choisissez les plats de vos **déjeuners et dîners** d'une semaine type pour vous
+  question: Parmi les propositions ci-dessous, choisissez les plats de vos déjeuners et dîners qui composaient une semaine type pour vous en 2023.
   titre: Empreinte de 14 repas
   description: |
-    A priori, vous en aurez 14 : 7 déjeuners et 7 dîners. Mais si vous mangez moins, ou plus, que ce nombre de repas, aucun soucis. Nous vous laissons renseigner
+    S'il est difficile pour vous de raisonner sur l'année passée, concentrez vous sur votre alimentation actuelle.
+
+    A priori, vous aurez 14 repas : 7 déjeuners et 7 dîners. Mais si vous mangez moins, ou plus, que ce nombre de repas, aucun soucis. Nous vous laissons renseigner
     ce qui représente une semaine type pour vous.
 
     **N'incluez pas vos petit-déjeuners ici, ils sont questionnés après.**
@@ -300,7 +302,7 @@ alimentation . petit déjeuner:
 
 alimentation . petit déjeuner . type:
   ordre: 4
-  question: Quel petit déjeuner vous correspond le plus ?
+  question: Quel est votre petit déjeuner habituel ?
   description: |
     Si vous ne retrouvez pas exactement votre petit déjeuner, choisissez celui qui s'en rapproche le plus.
 

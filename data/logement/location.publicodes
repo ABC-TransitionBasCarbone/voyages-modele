@@ -21,6 +21,8 @@ logement . location . nombre:
   question: Combien d'investissements locatifs en France possediez-vous en 2023 (c.à.d des logements que vous n'habitez pas et que vous mettez en location annuelle et/ou saisonnière) ?
   plancher: 0
   par défaut: 0
+  suggestions:
+    aucun: 0
   description: |
     Ne comptez pas ici votre logement principal et d'éventuelle(s) résidence(s) secondaire(s) que vous pourriez louer de temps en temps.
     Nous parlons ici uniquement d'investissements locatifs, c'est à dire des logements dont vous avez la propriété et que vous n'habitez pas mais que 
@@ -59,11 +61,6 @@ logement . location . logement-1 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-1 . appartement:
@@ -309,11 +306,6 @@ logement . location . logement-2 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-2 . appartement:
@@ -560,11 +552,6 @@ logement . location . logement-3 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-3 . appartement:
@@ -807,11 +794,6 @@ logement . location . logement-4 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-4 . appartement:
@@ -1057,11 +1039,6 @@ logement . location . logement-5 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-5 . appartement:
@@ -1307,11 +1284,6 @@ logement . location . logement-6 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-6 . appartement:
@@ -1557,11 +1529,6 @@ logement . location . logement-7 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-7 . appartement:
@@ -1807,11 +1774,6 @@ logement . location . logement-8 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-8 . appartement:
@@ -2057,11 +2019,6 @@ logement . location . logement-9 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-9 . appartement:
@@ -2307,11 +2264,6 @@ logement . location . logement-10 . surface:
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
 
     > Les logements ont une surface moyenne d’environ 91 m2.
-  suggestions:
-    studio: 25.001
-    3 pièces: 70.001
-    maison: 120.001
-    château 🏰: 1000.001
   unité: m2
 
 logement . location . logement-10 . appartement:

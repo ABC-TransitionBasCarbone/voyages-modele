@@ -32,10 +32,12 @@ transport . deux roues . km:
   plancher: 0
   unité: km
   suggestions:
-    vacances: 2000.001
     10km / jour: 3600.001
+    50km / semaine: 2600.001
+    100km / semaine: 5200.001
     1000km / mois: 12000.001
-    20 000km / an: 20000.001
+#    vacances: 2000.001
+#    20 000km / an: 20000.001
 
 transport . deux roues . km annuels moyen:
   formule: 3000
@@ -46,7 +48,7 @@ transport . deux roues . km annuels moyen:
 transport . deux roues . type:
   applicable si: usager
   question: Quel type de deux-roues utilisiez-vous en 2023 ?
-  par défaut: "'moto sup 250'"
+#  par défaut: "'moto sup 250'"
   formule:
     une possibilité:
       choix obligatoire: oui
@@ -131,6 +133,7 @@ transport . deux roues . pourcentage motards:
   formule: nombre deux roues circulation / population
 
 transport . deux roues . type . scooter électrique . propriétaire:
+  applicable si: deux roues . type = 'scooter électrique'
   question: Etiez-vous propriétaire du scooter électrique que vous utilisiez en 2023 ?
   description: Répondez oui si le scooter vous appartenait et non si vous faisiez de "l'autopartage"
 

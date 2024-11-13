@@ -38,7 +38,7 @@ divers . ameublement . meubles:
         chaise . nombre: 0
         petit meuble . nombre: 0
         grand meuble . nombre: 0
-  question: Quels meubles de moins de 10 ans possédez-vous ?
+  question: Quel(s) meuble(s) de moins de 10 ans possédez-vous ?
   formule:
     somme:
       - armoire

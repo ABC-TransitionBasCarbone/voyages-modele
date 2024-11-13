@@ -33,7 +33,7 @@ transport . voiture . km:
   description: |
     Veuillez utiliser autant de fois que nécessaire les catégories label, distance, fréquence et nombres d'occupants pour spécifier vos différents trajets en 2023. Sachez que vous pouvez renseigner plusieurs fois le même label (si par exemple vous avez plusieurs lieux de travail).
     
-    Si jamais vous n'avez réalisé aucun trajet en voiture en 2023, renseignez un seul trajet de 1 km (peu importe le label, la fréquence et le nombre d'occupants)
+    **Si jamais vous n'avez réalisé aucun trajet en voiture en 2023**, cliquez sur "Aucun km en 2023" et passez à la question suivante.
 
     Si vous ne vous souvenez pas de tous les trajets effectués en 2023, cherchez à renseigner avant tout les plus récurrents et les plus longs que vous avez effectué.
     De la même manière, cherchez à renseigner un nombre d'occupants (en vous incluant) le plus représentatif des trajets effectués.
@@ -41,16 +41,24 @@ transport . voiture . km:
     Si votre moyen de transport principal n'est pas une simple voiture mais un van aménagé, renseignez tout de même les km parcourus ici. Les questions suivantes vous permettront de renseigner la typologie de votre véhicule.
     
     **Enfin, pour rappel, les déplacements  dans le cadre de missions professionnelles ne sont pas à prendre en compte ici.**  
-  par défaut: km annuels moyen
+ # par défaut: km annuels moyen
   unité: km
   plancher: 0
-# Je commente les suggestions car on rend obligatoire la saisie via le tableau de détail des trajets.  
-#  suggestions:
-#    zéro: 0
+# Je commente les suggestions car on rend obligatoire la saisie via le tableau de détail des trajets mais le fait d'avoir rendu obligatoire l'aide à la saisie semble avoir désactivé la fonction suggestion. 
+  suggestions:
+    aucun km en 2023: 0.001
 #    vacances: 2000
 #    10km / jour: 3600
 #    1000km / mois: 12000
 #    20 000km / an: 20000
+
+transport . voiture . notif km nul:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - voiture . km < 3
+  description: |
+    Etes vous sûr de n'avoir fait aucun trajet en voiture en 2023 ? Si c'est le cas, passez à la questions suivante.
 
 transport . voiture . km annuels moyen:
   formule: 12200
@@ -58,6 +66,7 @@ transport . voiture . km annuels moyen:
   note: Chiffre issu de [datalab ministère écologie 2019](https://www.statistiques.developpement-durable.gouv.fr/bilan-annuel-des-transports-en-2019-0), page 3 G1.
 
 transport . voiture . utilisateur:
+  applicable si: voiture . km > 1
   question: Avez-vous majoritairement utilisé la même voiture pour les différents trajets que vous avez réalisé en 2023 ?
   formule:
     une possibilité:
@@ -104,7 +113,7 @@ transport . voiture . empreinte moyenne:
         voiture . thermique . carburant: "'essence E5 ou E10'"
 
 transport . voiture . empreinte calculée:
-  formule: (usage + construction) / voyageurs
+  formule: ((usage + construction) / voyageurs) + (0.001 * voiture . âge)
   unité: kgCO2e
 
 transport . voiture . voyageurs:
@@ -164,13 +173,12 @@ transport . voiture . motorisation:
   question: Quel était le type de voiture que vous avez utilisé en 2023 ?
   applicable si:
     toutes ces conditions:
+      - voiture . km > 1
       - est défini: utilisateur
       - une de ces conditions:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
   description: |
-    Si vous avez répondu "Oui et j'en suis propriétaire" précédemment, choississez le type de voiture que vous possédez.
-
     Si vous avez répondu "Oui mais ce n'est pas la mienne" précédemment mais qu'il vous est arrivé d'utiliser plusieurs voitures (car vous n'en possédez pas une), choisissez le type de voiture le plus représentatif de vos usages passés.
   par défaut: "'thermique'"
   formule:
@@ -203,19 +211,18 @@ transport . voiture . thermique . consommation aux 100:
   question: Quelle était la consommation moyenne de la voiture que vous avez utilisé en 2023 ?
   applicable si:
     toutes ces conditions:
+      - voiture . km > 1
       - est défini: utilisateur
       - une de ces conditions:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
       - motorisation = 'thermique'
   description: |
-    Si vous avez répondu "Oui et j'en suis propriétaire" précédemment, renseignez la consommation de votre véhicule.
-
     Si vous avez répondu "Oui mais ce n'est pas la mienne" précédemment mais qu'il vous est arrivé d'utiliser plusieurs voitures (car vous n'en possédez pas une), renseignez une consommation la représentative des véhicules utilisés.
-  suggestions:
-    5 l/100km: 5.001
-    7 l/100km: 7.001
-    9 l/100km: 9.001
+#  suggestions:
+#    5 l/100km: 5.001
+#    7 l/100km: 7.001
+#    9 l/100km: 9.001
   par défaut: consommation estimée
   unité: l/centkm
   note: Les suggestions de réponse sont à la louche, à préciser et sourcer.
@@ -389,6 +396,7 @@ transport . voiture . thermique . carburant:
   question: Quel type de carburant votre voiture consommait-elle ?
   applicable si:
     toutes ces conditions:
+      - voiture . km > 1
       - est défini: utilisateur
       - une de ces conditions:
           - utilisateur = 'propriétaire'
@@ -453,16 +461,17 @@ transport . voiture . électrique . consommation aux 100:
   titre: Consommation électrique au km
   applicable si:
     toutes ces conditions:
+      - voiture . km > 1
       - est défini: utilisateur
       - une de ces conditions:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
       - motorisation = 'électrique'
   question: Quelle était la consommation moyenne de la voiture ?
-  suggestions:
-    15 kWh/100km: 15.001
-    20 kWh/100km: 20.001
-    25 kWh/100km: 25.001
+#  suggestions:
+#    15 kWh/100km: 15.001
+#    20 kWh/100km: 20.001
+#    25 kWh/100km: 25.001
   par défaut: consommation estimée
   unité: kWh/centkm
 
@@ -485,13 +494,12 @@ transport . voiture . gabarit:
   question: Quel était le gabarit de la voiture que vous avez utilisé en 2023 ?
   applicable si:
     toutes ces conditions:
+      - voiture . km > 1
       - est défini: utilisateur
       - une de ces conditions:
           - utilisateur = 'propriétaire'
           - utilisateur = 'régulier non propriétaire'
   description: |
-    Si vous avez répondu "Oui et j'en suis propriétaire" à la question précédénte, choississez le gabarit correspond à la voiture que vous possédez.
-
     Si vous avez répondu "Oui mais ce n'est pas la mienne" à la question précédénte mais qu'il vous est arrivé d'utiliser plusieurs voitures (car vous n'en possédez pas une), choisissez le gabarit le plus représentatif de vos usages passés.
   par défaut: "'berline'"
   note: |
@@ -815,7 +823,7 @@ transport . voiture . durée de vie en km:
 transport . voiture . âge:
   applicable si:
     toutes ces conditions:
-      - km > 0
+      - voiture . km > 1
       - utilisateur = 'propriétaire'
   question: Quel était l'âge de votre voiture en 2023 ?
   description: |

@@ -13,7 +13,7 @@ logement . jardin:
         privatif . propriétaire: non
         partagé . propriétaire: non
         bois . propriétaire: non
-  question: Quel type de jardin ou surface boisée possédez-vous au sein de votre logement principal ?
+  question: Quel type de jardin ou surface boisée possédiez-vous au sein de votre logement principal ?
   description: |
     Renseignez ici le type de jardin dont vous avez **la (co)propriété pleine et entière**. Si vous aves accès à un jardin, un parc ou un bois
     municipal près de chez vous, ne cochez rien.

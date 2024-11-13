@@ -35,7 +35,7 @@ divers . textile . habits:
         manteau . nombre: 0
         petit article . nombre: 0
         gros article . nombre: 0
-  question: Quels vêtements avez-vous acheté neufs en 2023 ?
+  question: Quel(s) vêtement(s) avez-vous acheté(s) neuf(s) en 2023 ?
   icônes: 👚
   formule:
     somme:

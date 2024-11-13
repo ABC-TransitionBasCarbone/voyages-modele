@@ -10,10 +10,10 @@ importer!:
     - piscine . surface:
         applicable si: piscine . type = 'creusée'
         question: Quelle est la taille de votre piscine ?
-        description: |
-          ** A savoir !** Pensez à inclure la consommation d'électricité de votre piscine dans la consommation totale de votre logement principal (notamment si cette dernière est chauffée). 
-          
-          Si vous avez un contrat unique pour l'ensemble de votre logement principal c'est probablement le cas. Si ça ne l'est pas revenez en arrière et ajoutez là.
+#        description: |
+#          ** A savoir !** Pensez à inclure la consommation d'électricité de votre piscine dans la consommation totale de votre logement principal (notamment si cette dernière est chauffée). 
+#          
+#          Si vous avez un contrat unique pour l'ensemble de votre logement principal c'est probablement le cas. Si ça ne l'est pas revenez en arrière et ajoutez là.
         unité: m2
         suggestions:
           3 x 5 mètres: 15.001

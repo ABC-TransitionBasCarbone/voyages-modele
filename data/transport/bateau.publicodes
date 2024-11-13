@@ -21,10 +21,9 @@ transport . bateau:
         location bateau . propriétaire: non
   question: Quel(s) type(s) de bateau(x) possédiez-vous en 2023 ?
   description: |
-    La catégorie "Zodiac ou équivalent" représente les petites embarcations à moteur.
+    Si vous ne possédiez aucun bateau en 2023, cliquez sur "Aucun", puis passez à la question suivante.
 
-    La catégorie "Bateau moteur" inclut tous les autres bateaux  à moteur tel que les runabouts, les day-cruisers, les vedettes, les yachts...
-
+    La catégorie "Zodiac ou équivalent" représente les petites embarcations à moteur. La catégorie "Bateau moteur" inclut tous les autres bateaux  à moteur tel que les runabouts, les day-cruisers, les vedettes, les yachts...
     La catégorie "Voilier" inclut les monocoques, les catamarans, les trimarans et les multicoques. 
 
     **Les activités nautiques de loisir tel que jet-ski ne sont pas à prendre en compte ici.**
@@ -48,7 +47,7 @@ transport . bateau . annexe . propriétaire:
   par défaut: non
   
 transport . bateau . annexe . taille: 
-  question: Quel est le gabarit de votre petite embarcation à moteur ?
+  question: Quel était le gabarit de votre petite embarcation à moteur ?
   ordre: 3
   formule: 
     une possibilité:
@@ -79,14 +78,14 @@ transport . bateau . annexe . facteur taille:
         alors: 1
 
 transport . bateau . annexe . âge:
-  question: Quel est l'âge de votre petite embarcation à moteur ?
+  question: Quel était l'âge de votre petite embarcation à moteur ?
   ordre: 3
   description: Renseignez ici l'âge réel de votre annexe et non la durée depuis laquelle vous le possédez.
   par défaut: 15
   unité: an
 
 transport . bateau . annexe . voyageurs: 
-  question: Quel est le nombre moyen de personnes avec vous sur votre petite embarcation à moteur lors de vos sorties ?
+  question: Quel était le nombre moyen de personnes avec vous sur votre petite embarcation à moteur lors de vos sorties ?
   ordre: 3
   description: |
     Essayez d'estimer une moyenne approximative en vous incluant. Si vous faites des sorties toujours entre amis ou en famile, le nombre moyen se situe probablement autour de 4.
@@ -138,7 +137,7 @@ transport . bateau . annexe . durée:
 transport . bateau . annexe . consommation annuelle:
   titre: Consommation annuelle annexe
   ordre: 3
-  question: En moyenne, combien de litres de carburant par an consommez-vous avec votre petite embarcation à moteur ?
+  question: Combien de litres de carburant avez-vous consommez avec votre petite embarcation à moteur ?
 #  aide: transport . bateau . annexe . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs petites embarcations à moteur, faites une moyenne de leur consommation.
@@ -179,7 +178,7 @@ transport . bateau . bateau moteur . propriétaire:
   par défaut: non
 
 transport . bateau . bateau moteur . taille: 
-  question: Quel est le gabarit du bateau à moteur ?
+  question: Quel était le gabarit du bateau à moteur ?
   ordre: 2
   formule: 
     une possibilité:
@@ -216,14 +215,14 @@ transport . bateau . bateau moteur . facteur taille:
 
 transport . bateau . bateau moteur . âge:
   ordre: 2
-  question: Quel est l'âge de votre bateau à moteur ?
+  question: Quel était l'âge de votre bateau à moteur ?
   description: Renseignez ici l'âge réel de votre bateau à moteur et non la durée depuis laquelle vous le possédez.
   par défaut: 15
   unité: an
 
 transport . bateau . bateau moteur . voyageurs: 
   ordre: 2
-  question: Quel est le nombre moyen de personnes avec vous sur le bateau à moteur lors de vos sorties ?
+  question: Quel était le nombre moyen de personnes avec vous sur le bateau à moteur lors de vos sorties ?
   description: |
     Essayez d'estimer une moyenne approximative en vous incluant. Si vous faites des sorties toujours entre amis ou en famile, le nombre moyen se situe probablement autour de 4.
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
@@ -275,7 +274,7 @@ transport . bateau . bateau moteur . durée:
 transport . bateau . bateau moteur . consommation annuelle:
   ordre: 2
   titre: Consommation annuelle bateau moteur
-  question: En moyenne, combien de litres de carburant par an consommez-vous avec votre bateau à moteur ?
+  question: Combien de litres de carburant avez-vous consommez avec votre bateau à moteur ?
 #  aide: transport . bateau . bateau moteur . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs bâteaux à moteur faites une moyenne de leur consommation
@@ -318,7 +317,7 @@ transport . bateau . voilier . propriétaire:
 
 transport . bateau . voilier . taille: 
   ordre: 1
-  question: Quel est le gabarit du voilier ?
+  question: Quel était le gabarit du voilier ?
   formule: 
     une possibilité:
       choix obligatoire: oui
@@ -354,14 +353,14 @@ transport . bateau . voilier . facteur taille:
 
 transport . bateau . voilier . âge:
   ordre: 1
-  question: Quel est l'âge de votre voilier ?
+  question: Quel était l'âge de votre voilier ?
   description: Renseignez ici l'âge réel de votre voilier et non la durée depuis laquelle vous le possédez.
   par défaut: 15
   unité: an
 
 transport . bateau . voilier . voyageurs: 
   ordre: 1
-  question: Quel est le nombre moyen de personnes avec vous sur le voilier lors de vos sorties ?
+  question: Quel était le nombre moyen de personnes avec vous sur le voilier lors de vos sorties ?
   description: |
     Essayez d'estimer une moyenne approximative en vous incluant. Si vous faites des sorties toujours entre amis ou en famile, le nombre moyen se situe probablement autour de 4.
     Si vous êtes souvent seul ou en couple le nombre moyen se situe problement autour de 1.5.
@@ -412,7 +411,7 @@ transport . bateau . voilier . durée:
 transport . bateau . voilier . consommation annuelle:
   ordre: 1
   titre: Consommation annuelle voilier
-  question: En moyenne, combien de litres de carburant par an consommez-vous avec votre voilier ?
+  question: Combien de litres de carburant avez-vous consommez avec votre voilier ?
 #  aide: transport . bateau . voilier . consommation annuelle estimée via le coût . saisie
   description: |
     Si vous possédez plusieurs voiliers faites une moyenne de leur consommation
