@@ -88,7 +88,7 @@ divers . numérique . appareils:
         montre connectée . nombre: 0
         console de salon . nombre: 0
         console portable . nombre: 0
-  question: Quels appareils numériques de moins de 10 ans possédez-vous ?
+  question: Quel(s) appareil(s) numérique(s) de moins de 10 ans possédez-vous ?
   description: |
     Renseignez ici les appareils électroniques de moins de 10 ans **que vous possédez et que vous avez acheté neufs.**
 

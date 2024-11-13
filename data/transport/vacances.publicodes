@@ -13,7 +13,7 @@ transport . vacances:
         camping car . propriétaire: non
         van . propriétaire: non
         location véhicule . propriétaire: non
-  question: En 2023, que possédiez-vous pour vos week-ends, vos vacances (en plus de votre véhicule principal) ?
+  question: En 2023, que possédiez-vous pour vos week-ends et vos vacances (en plus de votre véhicule principal) ?
   icônes: 🏖
   description: |
     Sélectionner ici les autres véhicules que vous possédiez, en 2023, en plus de votre voiture. La catégorie "van aménagé" comprend les fourgons et camionettes aménagés. 
@@ -164,6 +164,11 @@ transport . vacances . camping car . km:
     Attention, les km faits en camping-car ne doivent pas avoir été inclus dans les km réalisés en voiture (la première question à laquelle vous avez répondu). Nous distinguons ces deux types de trajet.
     
     Si vous l'avez fait, revenez en arrière pour modifier vos réponses à la première question.
+  suggestions:
+    Paris ⇄ Brest: 1200
+    Bordeaux ⇄ Barcelone: 1300
+    Lille ⇄ Toulouse: 1800
+    Grenoble ⇄ Turin: 500
   par défaut: 8869
   plancher: 0
   unité: km
@@ -228,6 +233,11 @@ transport . vacances . van . km:
     Pour rappel, **si votre van aménagé est votre moyen de transport principal**, les km réalisés doivent avoir été renseignés lors de la première question (si ce n'est pas le cas revenez en arrière, décochez la possession d'un van et modifiez vos réponses à la première question).
     
     Ici nous nous intéressons aux km réalisés en 2023 avec le van que vous possédez **en plus de votre voiture.**
+  suggestions:
+    Paris ⇄ Brest: 1200
+    Bordeaux ⇄ Barcelone: 1300
+    Lille ⇄ Toulouse: 1800
+    Grenoble ⇄ Turin: 500
   par défaut: 9310
   unité: km
   plancher: 0
@@ -306,6 +316,11 @@ transport . vacances . location véhicule . km:
   description: |
     **Attention !** Assurez vous de ne pas avoir renseigné ces km lors de la première question portant sur les trajets réalisés en voiture. Si c'est ce que vous avez fait, 
     revenez en arrière pour modifier vos réponses et renseignez ici les km effectués en 2023 avec un van/camping-car de location.
+  suggestions:
+    Paris ⇄ Brest: 1200
+    Bordeaux ⇄ Barcelone: 1300
+    Lille ⇄ Toulouse: 1800
+    Grenoble ⇄ Turin: 500
   par défaut: 2000
   unité: km
   plancher: 0

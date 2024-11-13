@@ -18,7 +18,7 @@ logement . extérieur:
         tondeuse thermique . nombre: 0
         barbecue électrique ou gaz . nombre: 0
         barbecue charbon . nombre: 0
-  question: Quels équipements de moins de 10 ans possédez-vous pour l'extérieur de votre logement principal (jardin, terrasse, balcon) ?
+  question: Quel(s) équipement(s) de moins de 10 ans possédez-vous pour l'extérieur de votre logement principal (jardin, terrasse, balcon) ?
   formule:
     variations:
       - si: choix utilisateur

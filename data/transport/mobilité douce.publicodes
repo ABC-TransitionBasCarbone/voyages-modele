@@ -15,11 +15,13 @@ transport . mobilité douce:
         trottinette . présent: non
         vae . présent: non
         autres véhicules à moteur . présent: non
-  question: Quels sont vos modes de déplacements "actifs" ?
+  question: Quel(s) mode(s) de déplacement "actif" pratiquez-vous ?
   titre: Déplacements efficaces
   description: |
     Ces déplacements incluent tous ce qu'on regroupe aussi sous le terme de mobilité douce car il s'agit de déplacements alternatifs aux transports motorisés. Cela
     inclut la marche, les vélos électriques ou non, les trottinettes électriques ou non, les gyropodes, etc.
+
+    Si vous n'utilisez pas de modes de déplacements actifs, cliquez sur "Aucun", puis passez à la question suivante.
   formule:
     somme:
       - marche
@@ -154,10 +156,12 @@ transport . mobilité douce . vae . km:
   par défaut: 1000
   unité: km
   suggestions:
-    je l'utilise occasionnellement: 250.001
-    je l'utilise pour aller au travail: 1500.001
+    5km / jour: 1800.001
     10km / jour: 3600.001
-    100km / semaine: 5000.001
+    100km / semaine: 5200.001
+    500km / mois: 6000.001
+#    je l'utilise occasionnellement: 250.001
+#    je l'utilise pour aller au travail: 1500.001
 transport . mobilité douce . vae . construction amortie:
   titre: Construction amortie
   formule: construction / durée de vie
@@ -202,10 +206,12 @@ transport . mobilité douce . autres véhicules à moteur . km:
   par défaut: 1000
   unité: km
   suggestions:
-    je l'utilise occasionnellement: 250.001
-    je l'utilise pour aller au travail: 1500.001
+    5km / jour: 1800.001
     10km / jour: 3600.001
-    100km / semaine: 5000.001
+    100km / semaine: 5200.001
+    500km / mois: 6000.001
+#    je l'utilise occasionnellement: 250.001
+#    je l'utilise pour aller au travail: 1500.001
 
 transport . mobilité douce . autres véhicules à moteur . construction amortie:
   titre: Construction amortie
