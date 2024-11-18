@@ -116,6 +116,7 @@ logement . chauffage . gaz . présent:
     On touche aux limites actuelles de ce système de situation par défaut.
 
 logement . chauffage . gaz . consommation:
+  ordre: 1
   applicable si: gaz . présent
   icônes: 🔥
   question: En 2023, quelle a été la consommation annuelle de gaz de votre logement principal ?
@@ -290,6 +291,7 @@ logement . chauffage . bouteille gaz . présent:
   question: Utilisez-vous des bouteille de gaz ?
 
 logement . chauffage . bouteille gaz . consommation:
+  ordre: 3
   applicable si: bouteille gaz . présent
   question: En 2023, quelle a été votre consommation annuelle en bouteilles de gaz (13 kg) ?
   aide: logement . chauffage . bouteille gaz . consommation estimée via le poids . saisie
@@ -400,6 +402,7 @@ logement . chauffage . citerne propane . présent:
   question: Votre logement est-il chauffé via une citerne de propane ?
 
 logement . chauffage . citerne propane . consommation:
+  ordre: 4
   applicable si: citerne propane . présent
   question: En 2023, quelle a été la consommation annuelle de gaz propane en citerne de votre logement principal ?
   aide: logement . chauffage . citerne propane . consommation estimée via le coût . saisie
@@ -477,6 +480,7 @@ logement . chauffage . fioul . présent:
   question: Votre logement est-il chauffé au fioul ?
 
 logement . chauffage . fioul . consommation:
+  ordre: 5
   applicable si: fioul . présent
   question: En 2023, quelle a été la consommation annuelle de fioul domestique de votre logement principal ?
   aide: logement . chauffage . fioul . consommation estimée via le coût . saisie
@@ -554,6 +558,7 @@ logement . chauffage . bois . présent:
   question: Votre logement est-il chauffé au bois ?
 
 logement . chauffage . bois . type:
+  ordre: 6
   applicable si: bois . présent
   titre: type de bois
   question: Quel type de bois utilisez-vous au sein de votre logement principal ?
@@ -572,6 +577,7 @@ logement . chauffage . bois . type . granulés:
   titre: Granulés
 
 logement . chauffage . bois . type . granulés . consommation:
+  ordre: 8
   applicable si: type = 'granulés'
   question: En 2023, quelle a été la consommation annuelle de bois en granulés de votre logement principal ?
   aide: logement . chauffage . bois . type . granulés . consommation estimée via le coût . saisie
@@ -620,6 +626,7 @@ logement . chauffage . bois . type . bûches . intensité énergétique:
   note: Nous faisons l'hypothèse d'une consommation de bûches de 20% d'humidité, d'après l'[étude ADEME sur le chauffahe domestique au bois](https://librairie.ademe.fr/produire-autrement/872-etude-sur-le-chauffage-domestique-au-bois.html), page 10.
 
 logement . chauffage . bois . type . bûches . consommation:
+  ordre: 7
   applicable si: type = 'bûches'
   question: En 2023, quelle a été la consommation annuelle de bois en bûches de votre logement principal ?
   aide: logement . chauffage . bois . type . bûches . consommation estimée via le coût . saisie
@@ -699,6 +706,7 @@ logement . chauffage . réseau de chaleur . présent:
   question: Votre logement est-il chauffé via un réseau de chaleur ?
 
 logement . chauffage . réseau de chaleur . consommation:
+  ordre: 2
   applicable si: réseau de chaleur . présent
   icônes: 🔥
   question: En 2023, quelle a été votre consommation annuelle de chaleur via le réseau de chaleur raccordé à votre logement principal ?

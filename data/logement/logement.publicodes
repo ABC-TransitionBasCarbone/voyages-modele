@@ -124,12 +124,11 @@ logement . âge:
 #    Les questions sur les caractéristiques de votre logement ne vous seront pas posées ; car l'empreinte annuelle de sa contruction est considérée comme nulle.
 
 logement . informations:
-  formule: 0.0000001 * statut en chiffre * DPE en chiffre
+  formule: 0.001 * DPE en chiffre
   unité: kgCO2e
   note: On passe les informations de statut et de DPE dans une variable informations et non pas directement dans la somme logement car le front bug sinon
 
 logement . statut:
-  question: Etiez-vous propriétaire de votre logement principal en 2023 ?
   formule:
     une possibilité:
       choix obligatoire: oui
@@ -138,6 +137,7 @@ logement . statut:
         - locataire
         - logé gratuit
   par défaut: "'non renseigné'"
+#  question: Etiez-vous propriétaire de votre logement principal en 2023 ?
 
 logement . statut . propriétaire:
   titre: Oui, j'en étais propriétaire
@@ -151,19 +151,19 @@ logement . statut . logé gratuit:
 logement . statut . non renseigné:
   titre: Statut non renseigné
 
-logement . informations . statut en chiffre:
-  titre: numéro du statut
-  formule:
-    variations:
-      - si: statut = 'propriétaire'
-        alors: 1
-      - si: statut = 'locataire'
-        alors: 2
-      - si: statut = 'logé gratuit'
-        alors: 3
-      - sinon: 99
-  note:  |
-    L'objet de cette variable est de convertir le statut en un chiffre afin que la formule plus haut ne bug pas.
+#logement . informations . statut en chiffre:
+#  titre: numéro du statut
+#  formule:
+#    variations:
+#      - si: statut = 'propriétaire'
+#        alors: 1
+#      - si: statut = 'locataire'
+#        alors: 2
+#      - si: statut = 'logé gratuit'
+#        alors: 3
+#      - sinon: 99
+#  note:  |
+#    L'objet de cette variable est de convertir le statut en un chiffre afin que la formule plus haut ne bug pas.
 
 logement . informations . DPE:
   question: Quel était le DPE de votre logement principal en 2023 ?
@@ -222,10 +222,10 @@ logement . informations . DPE . E:
   titre: DPE E
 
 logement . informations . DPE . F:
-  titre: DPE G
+  titre: DPE F
 
 logement . informations . DPE . G:
-  titre: DPE F
+  titre: DPE G
 
 logement . informations . DPE . non renseigné:
   titre: DPE non renseigné

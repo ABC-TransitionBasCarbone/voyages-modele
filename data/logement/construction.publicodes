@@ -98,7 +98,7 @@ logement . construction . rénovation . amortissement:
 
 logement . construction . rénovation . travaux:
   applicable si: logement . âge > seuil
-  question: Quel(s) types de travaux de rénovation ont été réalisés dans votre logement (hors rafraîchissement) ?
+  question: Quel(s) types de travaux de rénovation ont été réalisés dans votre logement principal (hors rafraîchissement) ?
   description: |
     Votre logement n'est pas récent, il est donc possible qu'il ait subi des travaux de rénovation. Si vous les connaissez, renseignez les ici.
 
