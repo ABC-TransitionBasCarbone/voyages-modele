@@ -77,10 +77,10 @@ transport . transports commun . bus . vitesse:
 transport . transports commun . bus . heures par semaine:
   question: Combien d'heures passez-vous dans un bus par semaine ?
   suggestions:
-    30 mn / jour: 3.5
-    1h / jour: 7
-    1h30 / jour: 10.5
-    2h / jour: 14
+    30 mn / jour: 3.501
+    1h / jour: 7.001
+    1h30 / jour: 10.501
+    2h / jour: 14.001
   unité: h/semaine
   par défaut: 2
 

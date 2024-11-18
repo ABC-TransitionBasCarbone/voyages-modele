@@ -84,13 +84,13 @@ transport . train . km:
   question: Combien de kilomètres avez-vous parcouru en train en 2023 ?
   description: Essayez de renseigner un nombre de km cohérent avec vos habitudes et fréquences de voyage, ce n'est pas grave si vous n'êtes pas certain de votre réponse.
   suggestions:
-    Paris ⇄ Lyon: 800
-    Paris ⇄ Lille: 400
-    Paris ⇄ Brest: 1200
-    Lyon ⇄ Strasbourg: 800
-    Bordeaux ⇄ Marseille: 1300
-    Brest ⇄ Nice: 2400
-    traversée d'une région: 300
+    Paris ⇄ Lyon: 800.001
+    Paris ⇄ Lille: 400.001
+    Paris ⇄ Brest: 1200.001
+    Lyon ⇄ Strasbourg: 800.001
+    Bordeaux ⇄ Marseille: 1300.001
+    Brest ⇄ Nice: 2400.001
+    traversée d'une région: 300.001
 #    💳 grand voyageur: 10000
 #    💳 grand voyageur plus ultra: 25000
   unité: km

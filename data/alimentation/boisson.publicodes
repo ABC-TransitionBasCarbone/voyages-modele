@@ -340,11 +340,15 @@ alimentation . boisson . alcool . facteur cocktail:
 alimentation . boisson . alcool . litres:
   titre: Consommation d'alcool
   question: Quelle est votre consommation par semaine d'alcool (vin, bière, etc.) ?
+  description: |
+    Additionnez ici les quantités des verres bus sur une semaine.
+
+    _Exemple_ : Si vous buvez environ 4 verres de vin par weekend, renseignez 0,6 litre (en considérant 15cl par verre).
   suggestions:
     aucune: 0.001
-    1 verre /jour: 1.001
-    2 verres /weekend: 0.3001
-    5 verres /semaine: 0.75001
+    1 verre de vin /jour: 1.001
+    2 cocktails /weekend: 0.4001
+    5 demis /semaine: 1.25001
     une soirée festive /semaine: 1.5001
   par défaut: 1.5
   plancher: 0

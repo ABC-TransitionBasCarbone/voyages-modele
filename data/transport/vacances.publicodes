@@ -165,10 +165,10 @@ transport . vacances . camping car . km:
     
     Si vous l'avez fait, revenez en arrière pour modifier vos réponses à la première question.
   suggestions:
-    Paris ⇄ Brest: 1200
-    Bordeaux ⇄ Barcelone: 1300
-    Lille ⇄ Toulouse: 1800
-    Grenoble ⇄ Turin: 500
+    Paris ⇄ Brest: 1200.001
+    Bordeaux ⇄ Barcelone: 1300.001
+    Lille ⇄ Toulouse: 1800.001
+    Grenoble ⇄ Turin: 500.001
   par défaut: 8869
   plancher: 0
   unité: km
@@ -234,10 +234,10 @@ transport . vacances . van . km:
     
     Ici nous nous intéressons aux km réalisés en 2023 avec le van que vous possédez **en plus de votre voiture.**
   suggestions:
-    Paris ⇄ Brest: 1200
-    Bordeaux ⇄ Barcelone: 1300
-    Lille ⇄ Toulouse: 1800
-    Grenoble ⇄ Turin: 500
+    Paris ⇄ Brest: 1200.001
+    Bordeaux ⇄ Barcelone: 1300.001
+    Lille ⇄ Toulouse: 1800.001
+    Grenoble ⇄ Turin: 500.001
   par défaut: 9310
   unité: km
   plancher: 0
@@ -317,10 +317,10 @@ transport . vacances . location véhicule . km:
     **Attention !** Assurez vous de ne pas avoir renseigné ces km lors de la première question portant sur les trajets réalisés en voiture. Si c'est ce que vous avez fait, 
     revenez en arrière pour modifier vos réponses et renseignez ici les km effectués en 2023 avec un van/camping-car de location.
   suggestions:
-    Paris ⇄ Brest: 1200
-    Bordeaux ⇄ Barcelone: 1300
-    Lille ⇄ Toulouse: 1800
-    Grenoble ⇄ Turin: 500
+    Paris ⇄ Brest: 1200.001
+    Bordeaux ⇄ Barcelone: 1300.001
+    Lille ⇄ Toulouse: 1800.001
+    Grenoble ⇄ Turin: 500.001
   par défaut: 2000
   unité: km
   plancher: 0
