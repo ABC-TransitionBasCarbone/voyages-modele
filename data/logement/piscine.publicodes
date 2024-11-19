@@ -56,7 +56,7 @@ logement . piscine . type:
         - hors sol
   par défaut: "'pas de piscine'"
   description: |
-    Il est question ici de piscines privées qu'elles soient enterrées/creusées ouv hors-sol (gonflabes, en bois...).
+    Il est question ici de piscines privées qu'elles soient enterrées/creusées ou hors-sol (gonflabes, en bois...).
   note: |
     Aujourd'hui, nous posons la question à toutes les personnes qui possèdent une maison.
     Afin de limiter l'apparition de cette question pour les utilisateurs qui ne possèdent pas de terrain, ou qui ne sont absoluement pas concernés par la piscine, 

@@ -553,7 +553,7 @@ logement . vacances . résidence secondaire . surface-1:
   titre: Surface résidence 1
   applicable si: résidences secondaires . nombre >= 1  
   question: Quelle est la surface de votre première résidence secondaire ?
-  par défaut: parc français . surface moyenne
+  #par défaut: parc français . surface moyenne
   note: |
     Valeur par défaut obtenue dans [ce jeu de données du Ceren et SDES](https://www.statistiques.developpement-durable.gouv.fr/consommation-denergie-par-usage-du-residentiel).
   unité: m2
@@ -598,7 +598,7 @@ logement . vacances . résidence secondaire . localisation-1:
         - montagne
         - ville
         - campagne
-  par défaut: "'littoral nord ouest'"
+#  par défaut: "'littoral nord ouest'"
   description: Si votre résidence secondaire se situe en ville, sur le littoral, privilégiez "littoral".
 
 logement . vacances . résidence secondaire . localisation-1 . littoral méditerranéen:
@@ -669,7 +669,7 @@ logement . vacances . résidence secondaire . durée-1:
         nuitées week end . nombre: 0.001
         nuitées semaine . nombre: 2.001
   question: Combien de temps passez-vous dans votre première résidence secondaire chaque année ?
-  description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
+  description: Evitez de répondre "je ne sais pas" pour cette question et cherchez à renseigner une durée cohérentee avec le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
     somme:
       - nuitées week end
@@ -837,7 +837,7 @@ logement . vacances . résidence secondaire . saison-1:
         - surtout été
         - surtout hiver
         - hiver
-  par défaut: "'surtout été'"
+#  par défaut: "'surtout été'"
   note: |
     Au vu de la répartition des vacances scolaires annuelle, et de la répartition des localisations de résidences secondaires (40% sur le littoral, moins de 20% à la montagne), nous choisissons de considérer qu'en moyenne les propriétaires de résidence secondaire les fréquentent surtout en période estivale.
 
