@@ -669,7 +669,7 @@ logement . vacances . résidence secondaire . durée-1:
         nuitées week end . nombre: 0.001
         nuitées semaine . nombre: 2.001
   question: Combien de temps passez-vous dans votre première résidence secondaire chaque année ?
-  description: Ne renseignez bien que le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
+  description: Evitez de répondre "je ne sais pas" pour cette question et cherchez à renseigner une durée cohérentee avec le temps que vous y passez vous. Si cette résidence secondaire est utilisée par de la famille ou des amis, ne le comptez pas.
   formule:
     somme:
       - nuitées week end
