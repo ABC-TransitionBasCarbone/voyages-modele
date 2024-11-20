@@ -491,8 +491,8 @@ transport . bateau . location bateau . type:
   formule: 
     somme:
       - annexe . empreinte * (annexe . jours / commun . jours par an)
-      - type . voilier . empreinte * (bateau moteur . jours / commun . jours par an)
-      - type . bateau moteur . empreinte * (voilier . jours / commun . jours par an)
+      - voilier . empreinte * (voilier . jours / commun . jours par an)
+      - bateau moteur . empreinte * (bateau moteur . jours / commun . jours par an)
       
 transport . bateau . location bateau . type . annexe:
   titre: Zodiac ou équivalent

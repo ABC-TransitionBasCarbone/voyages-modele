@@ -30,6 +30,9 @@ logement . électricité . intensité carbone équivalente:
                   - (photovoltaique . production / consommation totale) * photovoltaique . intensité carbone
                   - ((consommation totale - photovoltaique . production) / consommation totale) * réseau . intensité carbone
       - sinon: réseau . intensité carbone
+  par défaut: réseau . intensité carbone
+#La valeur par défaut existe pour ne pas faire buguer les cas de possesion de caravane avec véhicule élec car au moment de cette question
+#l'intensite carbone équivalente n'est pas encore calculée
 
 logement . électricité . consommation totale:
   formule:
