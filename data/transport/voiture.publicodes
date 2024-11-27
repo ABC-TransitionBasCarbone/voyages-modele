@@ -31,14 +31,16 @@ transport . voiture . km:
   question: Que vous soyez conducteur ou passager et en prenant uniquement en compte vos déplacements personnels (loisirs, famille, courses, etc.) ainsi que vos déplacements domicile-travail, veuillez détailler les trajets que vous avez effectué en voiture en 2023  ?
   #question: Renseignez les différents types et les kilométrages associés aux déplacements personnels que vous faites (domicile-travail, courses, loisirs, famille, etc.) ?
   description: |
-    Veuillez utiliser autant de fois que nécessaire les catégories label, distance, fréquence et nombres d'occupants pour spécifier vos différents trajets en 2023. Sachez que vous pouvez renseigner plusieurs fois le même label (si par exemple vous avez plusieurs lieux de travail).
+    Veuillez utiliser autant de fois que nécessaire les catégories label, distance, fréquence et nombres d'occupants pour spécifier vos différents trajets en voiture en 2023. Sachez que vous pouvez renseigner plusieurs fois le même label (si par exemple vous avez plusieurs lieux de travail).
     
     **Si jamais vous n'avez réalisé aucun trajet en voiture en 2023**, cliquez sur "Aucun km en 2023" et passez à la question suivante.
 
-    Si vous ne vous souvenez pas de tous les trajets effectués en 2023, cherchez à renseigner avant tout les plus récurrents et les plus longs que vous avez effectué.
+    Si vous ne vous souvenez pas de tous les trajets effectués en voiture en 2023, cherchez à renseigner avant tout les plus récurrents et les plus longs que vous avez effectué.
     De la même manière, cherchez à renseigner un nombre d'occupants (en vous incluant) le plus représentatif des trajets effectués.
 
-    Si votre moyen de transport principal n'est pas une simple voiture mais un van aménagé, renseignez tout de même les km parcourus ici. Les questions suivantes vous permettront de renseigner la typologie de votre véhicule.
+    Si votre moyen de transport principal n'est pas une voiture mais un van aménagé, renseignez tout de même les km parcourus ici. Les questions suivantes vous permettront de spécifier la typologie de votre véhicule principal. 
+    En revanche, **si vous possédez ou vous avez loué un véhicule de vacances (camping-car, van, etc.) en plus de votre voiture, ne renseignez pas les km ici**, cette question s'intéresse uniquement au moyen de transport principal. Des questions spécifiques vous seront posées un peu après pour aborder
+    les véhicules de vacances possédés ou loués.
     
     **Enfin, pour rappel, les déplacements  dans le cadre de missions professionnelles ne sont pas à prendre en compte ici.**  
  # par défaut: km annuels moyen

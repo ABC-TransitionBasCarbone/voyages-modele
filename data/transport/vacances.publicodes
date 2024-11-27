@@ -358,7 +358,8 @@ transport . vacances . location véhicule . passagers:
   titre: Nombre de passagers
   applicable si: propriétaire
   question: Combien d'occupants (en vous incluant) étaient présents lors de vos trajets en van/camping-car de location en 2023 ?
-  description: Essayez de renseigner un nombre d'occupants (vous inclus) le plus représentatif des trajets effectués.
+  description: |
+    Essayez de renseigner un nombre d'occupants (vous inclus) le plus représentatif des trajets effectués.
   par défaut: logement . habitants
   plancher: 1
 

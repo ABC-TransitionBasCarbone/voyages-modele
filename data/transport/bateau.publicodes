@@ -146,6 +146,16 @@ transport . bateau . annexe . consommation annuelle:
   plancher: 0
   note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
+transport . bateau . annexe . notif conso faible:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: bateau . annexe . propriétaire
+      - bateau . annexe . propriétaire = oui
+      - annexe . consommation annuelle < 100
+  description: |
+    Vous avez renseigné une consommation de carburant relativement faible. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 #transport . bateau . annexe . consommation annuelle estimée via le coût:
 #  titre: Consommation estimée via le coût
 #  formule: saisie / facteur
@@ -284,6 +294,16 @@ transport . bateau . bateau moteur . consommation annuelle:
   unité: l
   note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
 
+transport . bateau . bateau moteur . notif conso faible:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: bateau . bateau moteur . propriétaire
+      - bateau . bateau moteur . propriétaire = oui
+      - bateau moteur . consommation annuelle < 200
+  description: |
+    Vous avez renseigné une consommation de carburant relativement faible. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
+
 #transport . bateau . bateau moteur . consommation annuelle estimée via le coût:
 #  titre: Consommation estimée via le coût
 #  formule: saisie / facteur
@@ -420,6 +440,16 @@ transport . bateau . voilier . consommation annuelle:
   par défaut: 250
   unité: l
   note: la valeur n'est pas sourcée faute de données sur ce sujet. A corriger éventuellement post-enquête.
+
+transport . bateau . voilier . notif conso faible:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: bateau . voilier . propriétaire
+      - bateau . voilier . propriétaire = oui
+      - voilier . consommation annuelle < 50
+  description: |
+    Vous avez renseigné une consommation de carburant relativement faible. Etes-vous certains de la valeur saisie ? Si c'est le cas, passez à la questions suivante.
 
 #transport . bateau . voilier . consommation annuelle estimée via le coût:
 #  titre: Consommation estimée via le coût
