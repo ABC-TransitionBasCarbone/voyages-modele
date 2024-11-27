@@ -111,7 +111,7 @@ logement . électricité . réseau . consommation estimée via le coût . saisie
   unité: €/mois
 
 logement . électricité . réseau . consommation estimée via le coût . facteur:
-  formule: 0.2591 # A reconsulter en septembre pour voir si Eurostat a mis à jour les données (S1 2024)
+  formule: 0.2776
   unité: €/kWh
   note: |
     Cette formule nous permet de passer des €/mois aux kWh/an.
@@ -162,13 +162,16 @@ logement . électricité . photovoltaique . production:
   note: |
     Par défaut, on propose une production qui varie selon la surface du logement en considèrant qu'un logement de 100 m² possède une installation de 3 kWc, soit une puissance installée de 0,03 kWc/m².
 
+#La condition > est là pour éviter que la notif pop dès que l'utilisateur clique "Oui" à la question sur la possession de panneaux (car est pré-enregistrée la valeur par défaut pour la production)
+#Toutefois ce n'est pas parfait car certaines saisies incohérentes peuvent ne pas se voir afficher la notif (ex : grande surface et faible nombre de panneaux renseignés par erreur (1 ou 2 par ex))
 logement . électricité . photovoltaique . notif production faible:
   type: notification
   formule:
     toutes ces conditions:
       - est défini: photovoltaique . présent
       - photovoltaique . présent = oui
-      - photovoltaique . production <  250
+      - photovoltaique . production > logement . surface * 0.03 kWc/m2 * logement . électricité . photovoltaique . production estimée via la puissance installée . facteur
+      - photovoltaique . production < 250
   description: |
     Vous avez renseigné une production plutôt faible. Etes-vous certains de cette valeur ? Ou, dans le cas ou vous auriez utilisé l'aide à la saisie, êtes-vous certains de ne pas avoir renseigné directement le nombre de panneau(x) installé(s) (on vous demande 
     en effet une petite gymnastique mentale en multipliant chaque panneau installé par 400 Wc) ? Si vous êtes certains de la valeur saisie, passez à la questions suivante.
