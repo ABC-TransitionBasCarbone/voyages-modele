@@ -162,6 +162,17 @@ logement . électricité . photovoltaique . production:
   note: |
     Par défaut, on propose une production qui varie selon la surface du logement en considèrant qu'un logement de 100 m² possède une installation de 3 kWc, soit une puissance installée de 0,03 kWc/m².
 
+logement . électricité . photovoltaique . notif production faible:
+  type: notification
+  formule:
+    toutes ces conditions:
+      - est défini: photovoltaique . présent
+      - photovoltaique . présent = oui
+      - photovoltaique . production <  250
+  description: |
+    Vous avez renseigné une production plutôt faible. Etes-vous certains de cette valeur ? Ou, dans le cas ou vous auriez utilisé l'aide à la saisie, êtes-vous certains de ne pas avoir renseigné directement le nombre de panneau(x) installé(s) (on vous demande 
+    en effet une petite gymnastique mentale en multipliant chaque panneau installé par 400 Wc) ? Si vous êtes certains de la valeur saisie, passez à la questions suivante.
+
 logement . électricité . photovoltaique . production estimée via la puissance installée:
   titre: Production estimée via la puissance installée
   formule: saisie * facteur
