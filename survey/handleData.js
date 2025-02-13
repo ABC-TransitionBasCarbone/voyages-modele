@@ -10,10 +10,13 @@ for (let i = 2; i <= numberOfRow; i ++) {
     const headerInput = inputworksheet.getRow(1).values;
     const currentRow = inputworksheet.getRow(i).values;
     const situation = {};
+    const aideSaisie = {};
 
     for (let headerIndex = 2; headerIndex <= headerInput.length; headerIndex ++) {
         if (headerInput[headerIndex] !== undefined && currentRow[headerIndex] !== "" && currentRow[headerIndex] !== undefined) {
-            if (currentRow[headerIndex] === true || currentRow[headerIndex] === false) {
+            if (headerInput[headerIndex].match('aide saisie')) {
+                aideSaisie[headerInput[headerIndex].trim()] = currentRow[headerIndex];
+            } else if (currentRow[headerIndex] === true || currentRow[headerIndex] === false) {
                 situation[headerInput[headerIndex].trim()] = currentRow[headerIndex] === true ? "oui" : "non";
             } else if (currentRow[headerIndex] !== 'je ne sais pas') {
                 if (typeof currentRow[headerIndex] === 'string') {
@@ -24,15 +27,22 @@ for (let i = 2; i <= numberOfRow; i ++) {
             }
         }
     }
-
+    console.log(aideSaisie)
     engine.setSituation({ ...situation, 'transport . deux roues . type': "'moto inf 250'"});
     const computeRow = [currentRow[1]];
 
     for (let ruleIndex = 2; ruleIndex <= headerRow.length; ruleIndex ++) {
         const rule = headerRow[ruleIndex];
-        if (rule) {
+        console.log(rule)
+        if (rule && rule.match("aide saisie")) {
+            console.log(aideSaisie[rule])
+            console.log(rule)
+            computeRow.push(aideSaisie[rule]);
+        } else if (rule) {
             computeRow.push(engine.evaluate(rule).nodeValue);
-        } else computeRow.push(0);
+        } else {
+            computeRow.push(0);
+        }
     }
 
     outputWorksheet.addRow(computeRow);
