@@ -27,16 +27,13 @@ for (let i = 2; i <= numberOfRow; i ++) {
             }
         }
     }
-    console.log(aideSaisie)
+
     engine.setSituation({ ...situation, 'transport . deux roues . type': "'moto inf 250'"});
     const computeRow = [currentRow[1]];
 
     for (let ruleIndex = 2; ruleIndex <= headerRow.length; ruleIndex ++) {
         const rule = headerRow[ruleIndex];
-        console.log(rule)
         if (rule && rule.match("aide saisie")) {
-            console.log(aideSaisie[rule])
-            console.log(rule)
             computeRow.push(aideSaisie[rule]);
         } else if (rule) {
             computeRow.push(engine.evaluate(rule).nodeValue);
@@ -48,4 +45,6 @@ for (let i = 2; i <= numberOfRow; i ++) {
     outputWorksheet.addRow(computeRow);
 }
 
+console.log("writing in file")
 await outputWorkbook.xlsx.writeFile("survey/test-output.xlsx");
+console.log("end")
