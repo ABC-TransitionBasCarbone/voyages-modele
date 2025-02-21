@@ -6,7 +6,9 @@ const { inputworksheet, numberOfRow } = await handleInputExcel();
 const { outputWorkbook, outputWorksheet, headerRow } = await initOutputExcel();
 
 const engine = new Engine(rules);
+console.log(numberOfRow)
 for (let i = 2; i <= numberOfRow; i ++) {
+    console.log(i)
     const headerInput = inputworksheet.getRow(1).values;
     const currentRow = inputworksheet.getRow(i).values;
     const situation = {};
@@ -28,7 +30,7 @@ for (let i = 2; i <= numberOfRow; i ++) {
         }
     }
 
-    engine.setSituation({ ...situation, 'transport . deux roues . type': "'moto inf 250'"});
+    engine.setSituation(situation);
     const computeRow = [currentRow[1]];
 
     for (let ruleIndex = 2; ruleIndex <= headerRow.length; ruleIndex ++) {
@@ -36,7 +38,14 @@ for (let i = 2; i <= numberOfRow; i ++) {
         if (rule && rule.match("aide saisie")) {
             computeRow.push(aideSaisie[rule]);
         } else if (rule) {
-            computeRow.push(engine.evaluate(rule).nodeValue);
+            const nodeValue = engine.evaluate(rule).nodeValue;
+            if (nodeValue) {
+                computeRow.push(engine.evaluate(rule).nodeValue);
+            } else if (situation[rule] === 'non') {
+                computeRow.push('FAUX');
+            } else {
+                computeRow.push('');
+            }
         } else {
             computeRow.push(0);
         }
