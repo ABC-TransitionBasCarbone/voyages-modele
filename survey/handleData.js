@@ -18,8 +18,8 @@ for (let i = 2; i <= numberOfRow; i ++) {
         if (headerInput[headerIndex] !== undefined && currentRow[headerIndex] !== "" && currentRow[headerIndex] !== undefined) {
             if (headerInput[headerIndex].match('aide saisie')) {
                 aideSaisie[headerInput[headerIndex].trim()] = currentRow[headerIndex];
-            } else if (currentRow[headerIndex] === true || currentRow[headerIndex] === false) {
-                situation[headerInput[headerIndex].trim()] = currentRow[headerIndex] === true ? "oui" : "non";
+            } else if (currentRow[headerIndex] === true || currentRow[headerIndex] === false || currentRow[headerIndex] === 'TRUE' || currentRow[headerIndex] === 'FALSE') {
+                situation[headerInput[headerIndex].trim()] = (currentRow[headerIndex] === true  || currentRow[headerIndex] === 'TRUE') ? "oui" : "non";
             } else if (currentRow[headerIndex] !== 'je ne sais pas') {
                 if (typeof currentRow[headerIndex] === 'string') {
                     situation[headerInput[headerIndex].trim()] = `'${currentRow[headerIndex]}'`;
